@@ -23,6 +23,10 @@ Route::get('/blog', function(){
     return view('client.blog');
 })->name('blog');
 
+Route::get('/checkout', function (){
+    return view('client.checkout');
+})->name('checkout');
+
 Route::get('/contact',[ContactController::class,'index'])->name('contact');
 Route::get('manager-admin',);
 Auth::routes();

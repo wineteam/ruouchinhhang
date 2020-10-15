@@ -12,6 +12,7 @@
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- CSS JS Style -->
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/product.css')}}">
     <link rel="stylesheet" href="{{ asset('css/fontello.css') }}">
     <script src="{{ asset('js/jquery-ui.js') }}" type="text/javascript"></script>
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -95,7 +96,7 @@
                 <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red"> £822.00</span></p>
                 <div class="subtotal">
                     <a href="" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
-                    <a href="" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
+                <a href="{{ route('checkout') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
                 </div>
             </div>
 

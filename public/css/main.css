@@ -1,6 +1,6 @@
 /* FONT */
-@font-face {font-family: Forum;src: url("../fonts/Forum-Regular.ttf")}
-@font-face {font-family: Lora;src: url("../fonts/Lora-Regular.ttf")}
+@font-face {font-family: Forum;src: url("fonts/Forum-Regular.ttf")}
+@font-face {font-family: Lora;src: url("fonts/Lora-Regular.ttf")}
 *{font-family: Lora;text-decoration: none !important;}
 /* END FONT */
 /* ALL FOR USER IN ROW */
