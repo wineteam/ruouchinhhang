@@ -1,19 +1,58 @@
-/* SCROLLS TOP */
-  // When the user scrolls down 20px from the top of the document, show the button
-  window.onscroll = function() {scrollFunction()};
+/*SEARCHING*/
+$(document).ready(function(){
+  $(".btnSearch").click(function(){
+    $(".fixed-input-search").toggleClass("active").focus();
+    $(".btnSearch").toggleClass("fa-window-close").focus();
+  });
 
-  function scrollFunction() {
-    if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-      document.getElementById("myBtnScrollTop").style.display = "block";
+  function checkForInput(element) {
+    // element is passed to the function ^
+    
+    const $button = $(element).siblings('#ButtonSearch');
+  
+    if ($(element).val().length > 0) {
+      $button.addClass('input-has-value');
+      $(".btnSearch").addClass("Display-None-Sr").focus();
     } else {
-      document.getElementById("myBtnScrollTop").style.display = "none";
+      $button.removeClass('input-has-value');
+      $(".btnSearch").removeClass("Display-None-Sr").focus();
     }
   }
-  function scrollTopOP() { 
-    $("html, body").animate( 
-        { scrollTop: "0" }, 500); 
-  }
-/* END SCROLLS TOP */
+  
+  // The lines below are executed on page load
+  $('input.search').each(function() {
+    checkForInput(this);
+  });
+  
+  // The lines below (inside) are executed on change & keyup
+  $('input.search').on('change keyup', function() {
+    checkForInput(this);  
+  });
+
+});
+/* END SEARCHING*/
+/* MENU DROPDOWN */
+$(document).ready(function(){
+  $("#btnMenuDropdown").click(function(){
+    $(".sidenav-Moblie").toggleClass("active");
+    $(".sidenav-Moblie").removeClass("icon-close-menu");
+  });
+  $("#btnCloseMenu").click(function(){
+    $(".sidenav-Moblie").removeClass("active");
+    $(".sidenav-Moblie").addClass("icon-close-menu");
+  });
+});  
+/* END MENU DROPDOWN */
+/*CART*/
+$(document).ready(function(){
+
+  $(".cart-open").click(function(){
+    $(".Cart-list").toggleClass("active").focus();
+  });
+
+});
+/* END CART*/
+
 
 /* CATALOG FILTER */
 filterSelection("all");
@@ -72,3 +111,6 @@ function scroll_to(clicked_link, nav_height) {
 		$('html, body').stop().animate({scrollTop: scroll_to}, 1000);
 	}
 }
+
+
+

@@ -4,79 +4,114 @@
     <base href="{{ asset('') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'WineTeam') }}</title>
-
-    <!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-{{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-<script src="{{ asset('js/jquery-ui.js') }}"></script>
-<script src="{{ asset('js/jquery.backstretch.js') }}"></script>
-<script src="{{ asset('js/jquery.backstretch.min.js') }}"></script>
-<script src="{{ asset('js/script.js') }}"></script>
-<script src="{{ asset('js/Multi-Item-carousel.js') }}"></script>
-<script src="{{ asset('js/Scrollstop.js') }}"></script>
-<script src="{{ asset('js/validation.js') }}"></script>
-<script src="{{ asset('js/wow.min.js') }}"></script>
-<script src="{{ asset('js/wow.js') }}"></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/fontello.css') }}">
+    <title>{{ config('app.name', 'Quanlity Wine') }}</title>
+    <link rel="icon" href="{{ asset('images/icon-website.png') }}">
 <!--================================================================================================================================================================================================================================-->
-
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- CSS JS Style -->
+    <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/fontello.css') }}">
+    <script src="{{ asset('js/jquery-ui.js') }}" type="text/javascript"></script>
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('js/jquery-ui.css') }}">
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- Font Awesome (Icon) --> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- Bootstrap 4.5.2 -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<!--================================================================================================================================================================================================================================-->
 </head>
 <body>
-         <!--====================================== scrollTopOP ======================================-->
-    <button onclick="scrollTopOP()" id="myBtnScrollTop" title="Go to top" style="display: none;"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
-    <!--====================================== END scrollTopOP ======================================-->
+    
+<!--====================================== scrollTopOP ======================================-->
+<button onclick="scrollTopOP()" id="myBtnScrollTop" title="Go to top" style="display: none;"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+<script src="{{ asset('js/Scrollstop.js') }}"></script>
+<!--====================================== END scrollTopOP ======================================-->
+
 <!--====================================== HEADER ======================================-->
     <header class="section-header padding-Header bg-white">
     <div class="container">
         <div class="row justify-content-center">
-        <div class="col-xl-3 col-md-3 col-sm-12 Display-None">
+        <div class="col-xl-3 col-md-3 col-sm-12 Display-NoneCalls">
             <div class="card card-border-0 flex-row align-items-center h-100">
                 <div class="card-header edit-icon rounded-circle">
                     <i class="fa fa-phone" aria-hidden="true"></i>
                 </div>
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms"><span class="font-weight-bold Font-Blue">Call us: <a href="" class="Font-Blue">123-456-7890</a></span> <br> info@luxurywine.com</p>
+                    <p class="card-text Re-font-ms"><span class="font-weight-bold Font-Blue">Call us: <a href="tel:123-456-7890" class="Font-Blue">123-456-7890</a></span> <br> <a class="Font-Blue" href="mailto:QuanlityWine@gmail.com">QuanlityWine@gmail.com</a></p>
                 </div>
             </div>
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12">
-            <img class="rounded mx-auto d-block" src="images/logo.png" alt="">
+            <img class="rounded mx-auto d-block" src="content/images/logo.png" alt="">
         </div>
-        <div class="col-xl-3 col-md-3 col-sm-12">
+        <div class="col-xl-3 col-md-3 col-sm-12 space_moblie2">
             <div class="card card-border-0 flex-row align-items-center h-100">
-                <div class="card-header edit-icon rounded-circle">
+                <div class="card-header edit-icon rounded-circle mr-auto-moblie-icon">
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                 </div>
+            <div class="mr-auto-moblie btn cart-open">
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms"><a href=""><span class="font-weight-bold Font-Blue">Your cart:</span> <br> <span class="Font-Yellow">0 items - £0.00</span></a></p>
+                    <p class="card-text Re-font-ms text-cart-center"><span class="font-weight-bold Font-Blue">Your cart:</span> <br> <span class="Font-Yellow">0 items - £0.00</span></p>
                 </div>
             </div>
+            </div>
+
+            <div class="Cart-list bg-white ml-auto">
+                <!-- <p class="No-products">No products in the cart.</p> -->
+                <div class="box-cart-overflow">
+                    <div class="card card-border-0 flex-row align-items-center h-100" style="margin-top: 20px;margin-left: 10px;">
+                        <div class="card-header bg-products-cart">
+                            <img src="{{ asset('images/product-1.png') }}" alt="" width="40px">
+                        </div>
+                        <div class="card-block px-2">
+                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">California Red Wine - 500ml, 2012</a></span> 
+                                <p class="Font-Red font-weight-bold">2 × £300.00</p>
+                            </p>
+                        </div>
+                    </div>
+                    <br><hr class="hr-cart-Products">
+
+                    <div class="card card-border-0 flex-row align-items-center h-100" style="margin-top: 20px;margin-left: 10px;">
+                        <div class="card-header bg-products-cart">
+                            <img src="{{ asset('images/product-1.png') }}" alt="" width="40px">
+                        </div>
+                        <div class="card-block px-2">
+                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">California Red Wine - 500ml, 2012</a></span> 
+                                <p class="Font-Red font-weight-bold">2 × £300.00</p>
+                            </p>
+                        </div>
+                    </div>
+                    <br><hr class="hr-cart-Products">
+                </div>
+
+                <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red"> £822.00</span></p>
+                <div class="subtotal">
+                    <a href="" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
+                    <a href="" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
+                </div>
+            </div>
+
         </div>
         </div>
     </div>
     </header>
 <!--====================================== END HEADER ======================================-->
+
 <!--====================================== MENU ======================================-->
     <nav class="navbar navbar-expand-lg sticky-top bg-white">
         <div class="container">
-            <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#main_nav">
+            <button class="navbar-toggler mx-auto" type="button" id="btnMenuDropdown">
                 <i class="fa fa-bars Font-Yellow" aria-hidden="true"></i>
             </button>
-            <div class="collapse navbar-collapse" id="main_nav">
+            <div class="collapse navbar-collapse navbar-collapse-custome">
                 <ul class="nav navbar-nav navbar-logo mx-auto Blue-Link position-Re">
                     <li class="nav-item"> <a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('home') }}">Home</a> </li>
                     <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('shop') }}">STORE</a></li>
@@ -93,20 +128,64 @@
                         @endif
                     @endif
                 </ul>
-                <ul class="navbar-nav position-Ab" style="right:20%">
+                <ul class="navbar-nav position-Ab Display-none3 Low-right" style="right:20%;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        <div class="nav-link">
+                            <i class="fa fa-search btnSearch" aria-hidden="true"></i>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav position-Ab Display-none3 Low-right" style="right:20.5%;top: 100%;">
+                    <li class="nav-item">
+                        <form action="" id="FromSearch">
+                            <input type="text" name="search" id="search" class="search fixed-input-search" placeholder="Search...">
+                            <button id="ButtonSearch" class="fixed-search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
                     </li>
                 </ul>
             </div> <!-- navbar-collapse.// -->
         </div><!-- container //  -->
     </nav>
+    <div id="mySidenav" class="sidenav-Moblie">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <div class="nav-link">
+                    <i class="fa fa-times btn icon-close-menu" style="font-size: 30px;" id="btnCloseMenu" aria-hidden="true"></i>
+                </div>
+            </li>
+        </ul>
+        <div class="box-menu-scroll">
+            <div id="scrollMenu">
+                <ul class="nav navbar-nav navbar-logo mx-auto Moblie-Fonts-Menu position-Re">
+                    <li class="nav-item"><a class="nav-link padding-text" href="#">Home</a> </li>
+                    <li class="nav-item"><a class="nav-link padding-text" href="#">Features</a></li>
+                    <li class="nav-item"><a class="nav-link padding-text" href="#">Store</a></li>
+                    <li class="nav-item"><a class="nav-link padding-text" href="#">Wine</a></li>
+                    <li class="nav-item"><a class="nav-link padding-text" href="#">List</a></li>
+                    <li class="nav-item"><a class="nav-link padding-text" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link padding-text" href="#">Contacts</a></li>
+                </ul>
+            </div>
+        </div>
+        <form>
+            <div class="card-body row no-gutters align-items-center search-Bottom">
+                <div class="col">
+                    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search ...">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-lg bg-white" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="vc_empty_space bg-white" style="padding: 0 0 4.1em;"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END MENU ======================================-->
 
-        <main>
-            @yield('content')
-        </main>
+<!--====================================== MAIN ======================================-->
+    <main>
+        @yield('content')
+    </main>
+<!--====================================== END MAIN ======================================-->
 
 <!--====================================== FOOTER ======================================-->
 <footer class="section-header padding-Header bg-white">
@@ -116,32 +195,40 @@
             <div class="card card-border-0 flex-row align-items-center h-100">
 
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms"><a href=""><span class="Font-dark Font-Size-07vw">ThemeREX © 2020 All rights reserved.</a></p>
+                    <p class="card-text Re-font-ms"><span class="Font-dark Font-Size-07vw">ThemeREX © 2020 All rights reserved.</span></p>
                 </div>
             </div>
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12">
-            <img class="rounded mx-auto d-block" src="images/logo.png" alt="">
+            <img class="rounded mx-auto d-block" src="content/images/logo.png" alt="">
         </div>
-        <div class="col-xl-3 col-md-3 col-sm-12">
+        <div class="col-xl-3 col-md-3 col-sm-12 Display-None">
             <div class="card card-border-0 flex-row align-items-center h-100">
-                <div class="card-header edit-icon rounded-circle" style="margin-right: 20px;">
-                    <i class="fa fa-globe" aria-hidden="true"></i>
-                </div>
+                <a href="">
+                    <div class="card-header edit-icon rounded-circle" style="margin-right: 20px;">
+                        <i class="fa fa-globe Font-dark" aria-hidden="true"></i>
+                    </div>
+                </a>
 
-                <div class="card-header edit-icon rounded-circle" style="margin-right: 20px;">
-                    <i class="fa fa-github" aria-hidden="true"></i>
-                </div>
+                <a href="">
+                    <div class="card-header edit-icon rounded-circle" style="margin-right: 20px;">
+                        <i class="fa fa-github Font-dark" aria-hidden="true"></i>
+                    </div>
+                </a>
 
-                <div class="card-header edit-icon rounded-circle">
-                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                </div>
+                <a href="">
+                    <div class="card-header edit-icon rounded-circle">
+                        <i class="fa fa-linkedin-square Font-dark" aria-hidden="true"></i>
+                    </div>
+                </a>
             </div>
+        </div>
+        <div class="text-center show-in-moblie" style="display: none;">
+            <p class="card-text Re-font-ms" style="padding-top:30px;"><span class="Font-dark">ThemeREX © 2020 All rights reserved.</p>
         </div>
         </div>
     </div>
 </footer>
 <!--====================================== END FOOTER ======================================-->
-
 </body>
 </html>
