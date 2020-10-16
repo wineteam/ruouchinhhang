@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
     <link rel="stylesheet" href="{{ asset('css/product.css')}}">
     <link rel="stylesheet" href="{{ asset('css/fontello.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/jquery-ui.js') }}" type="text/javascript"></script>
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- JQuery -->
@@ -51,7 +52,7 @@
             </div>
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12">
-            <img class="rounded mx-auto d-block" src="content/images/logo.png" alt="">
+            <img class="rounded mx-auto d-block" src="{{ asset('images/logo.png') }}" alt="">
         </div>
         <div class="col-xl-3 col-md-3 col-sm-12 space_moblie2">
             <div class="card card-border-0 flex-row align-items-center h-100">
@@ -201,7 +202,7 @@
             </div>
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12">
-            <img class="rounded mx-auto d-block" src="content/images/logo.png" alt="">
+            <img class="rounded mx-auto d-block" src="{{ asset('images/logo.png') }}" alt="">
         </div>
         <div class="col-xl-3 col-md-3 col-sm-12 Display-None">
             <div class="card card-border-0 flex-row align-items-center h-100">
