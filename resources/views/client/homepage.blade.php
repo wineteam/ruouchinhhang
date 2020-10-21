@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="home-page">
-    
+
     <!--====================================== SLIDE SHOW ======================================-->
     <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators carousel-indicators-Fix">
@@ -200,8 +200,8 @@
                         </div>
                     </div>
                 </div>
-                
-                
+
+
             </div>
             <div class="btn btn-white-Op-50 leftLst"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
             <div class="btn btn-white-Op-50 rightLst"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
@@ -238,7 +238,7 @@
                         <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="images/wine-glass.png" alt="">
                         <span class="text-center Font-Size-1vw">Filter - All</span>
                     </button>
-                    
+
                     <button class="btnfilter nobtnshow" onclick="filterSelection('White-Wines')">
                         <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="images/wine-glass.png" alt="">
                         <span class="text-center Font-Size-1vw">White Wines</span>
@@ -337,92 +337,6 @@
 </div> <!-- Dang Lam Viec -->
 <!--====================================== Empty Space ======================================-->
 <div class="vc_empty_space" style="height: 10.34em"><span class="vc_empty_space_inner"></span></div>
-<!--====================================== END Empty Space ======================================-->
-<!--====================================== BOX Col-4 ======================================-->
-<div class="container" style="width: 100%;">
-    <div class="row">
-        <div class="col-xl-4 col-md-6 col-sm-12 nopadding bg-white">
-            <div class="wpb_wrapper">
-                <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                <div id="" style="margin-left: 30px;">
-                    <h6 class="item_subtitle color_subtitle">About Us</h6>
-                    <h1 class="sc_item_title">Our History</h1>
-                    <div class="item_descr" style="width: 80%;">Luxury Wine is commited to producing estate grown wines of the highest caliber and distinction. Welcome to our website!</div>
-                    <div class="mr-subtitle">
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
-                    </div>
-                </div>
-                <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                <div class="vc_empty_space_moblie"><span class="vc_empty_space_inner"></span></div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-6 col-sm-12 nopadding Display-None">
-            <div class="">
-                <div class="vc_custom_1">
-                    <img src="images/bg-5.webp" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-6 col-sm-12 bg-items-3 nopadding">
-            <div class="wpb_wrapper">
-                <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                <div>
-                    <figure><div><img class="rounded mx-auto d-block" width="71" height="90" src="images/img_2.webp" alt=""></div></figure>
-                    <div class=""><p class="p-items-3-subtitle"><span style="color: #ffffff;">For the wine to become a premium quality we use only the best estate grown grapes harvested manually.</span></p></div>        
-                </div>
-                <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                <div class="vc_empty_space_moblie"><span class="vc_empty_space_inner"></span></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xl-4 col-md-6 col-sm-12 nopadding Display-None">
-            <div class="">
-                <div class="vc_custom_2">
-                    <img src="images/bg-6.webp" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-6 col-sm-12 bg-items-5 nopadding">
-            <div class="wpb_wrapper">
-                <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                <div>
-                    <figure><div><img class="rounded mx-auto d-block" width="71" height="90" src="images/img_1.webp" alt=""></div></figure>
-                    <div class=""><p class="p-items-3-subtitle"><span style="color: #ffffff;">We are more than 100 different wines, of which 20% to 30% are reserve wines specially selected for you</span></p></div>        
-                </div>
-                <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                <div class="vc_empty_space_moblie"><span class="vc_empty_space_inner"></span></div>
-            </div>
-            
-        </div>
-        <div class="col-xl-4 col-md-6 col-sm-12 nopadding bg-white">
-            <div class="wpb_wrapper">
-                <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                <div id="" style="margin-left: 30px;">
-                    <h6 class="item_subtitle color_subtitle">About Us</h6>
-                    <h1 class="sc_item_title">Our History</h1>
-                    <div class="item_descr" style="width: 80%;">Luxury Wine is commited to producing estate grown wines of the highest caliber and distinction. Welcome to our website!</div>
-                    <div class="mr-subtitle">
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
-                    </div>
-                </div>
-                <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                <div class="vc_empty_space_moblie"><span class="vc_empty_space_inner"></span></div>
-            </div>
-        </div>
-    </div>
-
-</div>
-<!--====================================== END BOX Col-4 ======================================-->
-<!--====================================== Empty Space ======================================-->
-<div class="vc_empty_space" style="height: 8.4em"><span class="vc_empty_space_inner"></span></div>
-<!--====================================== END Empty Space ======================================-->
-
-<!--====================================== Empty Space ======================================-->
-    <div class="vc_empty_space" style="height: 9.7em"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END Empty Space ======================================-->
 <!--====================================== Carousel with Multiple Items ======================================-->
     <div class="container">
@@ -564,7 +478,7 @@
                 <li class="carousel-items" data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
         </div>
-        
+
     </div>
 <!--====================================== END Carousel with Multiple Items ======================================-->
 <!--====================================== Empty Space ======================================-->
@@ -576,7 +490,7 @@
         <div class="col-xl-6 col-md-6 col-sm-12 nopadding bg-purple " style="overflow: hidden;">
             <img style="right: 0;width: 110%;position: relative;" src="images/contact.jpg" alt="">
             <div class="contact-home">
-               
+
                 <div style="padding-left: 80px;padding-right: 5rem;padding-top: 3rem;">
                     <h6 class="item_subtitle color_subtitle">Get in Touch</h6>
                     <h1 class="sc_item_title Font-white" style="font-size: 2.8vw;">Contacts</h1>
@@ -591,7 +505,7 @@
             </div>
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12 nopadding with-high-moblie">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2770.76689176222!2d106.62898165919992!3d10.852871199767703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529e76ef4ac4d%3A0x30d6a9932e802efe!2sFPT%20Polytechnic%20HCM%20-%20C%C6%A1%20s%E1%BB%9F%203!5e0!3m2!1svi!2s!4v1601211056224!5m2!1svi!2s" 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2770.76689176222!2d106.62898165919992!3d10.852871199767703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529e76ef4ac4d%3A0x30d6a9932e802efe!2sFPT%20Polytechnic%20HCM%20-%20C%C6%A1%20s%E1%BB%9F%203!5e0!3m2!1svi!2s!4v1601211056224!5m2!1svi!2s"
             width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
     </div>

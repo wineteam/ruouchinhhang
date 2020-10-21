@@ -25,7 +25,7 @@ class CreateBlogsTable extends Migration
             $table->string('day_up');
             $table->enum('is_published',['0','1']);
             $table->enum('especial',['0','1']);
-            $table->string('language')->default('VN');
+            $table->unsignedBigInteger('language_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

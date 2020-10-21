@@ -20,7 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->string('slug')->unique();
             $table->enum('type',['0','1']);
             $table->enum('is_published',['0','1']);
-            $table->string('language')->default('VN');
+            $table->unsignedBigInteger('language_id')->nullable();
             $table->integer('order')->nullable();
             $table->timestamps();
 

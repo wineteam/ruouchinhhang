@@ -19,13 +19,14 @@ class CreateProductsTable extends Migration
             $table->string('codeProduct')->unique();
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->string('thumbnail')->nullable();
             $table->integer('price');
             $table->integer('discount')->nullable();
             $table->string('nation');
             $table->string('description')->nullable();
             $table->integer('view')->default(0);
             $table->integer('bought')->default(0);
-            $table->string('language')->default('VN');
+            $table->unsignedBigInteger('language_id')->nullable();
             $table->enum('is_published',['0','1']);
             $table->enum('especially',['0','1']);
             $table->integer('amount')->default(0);

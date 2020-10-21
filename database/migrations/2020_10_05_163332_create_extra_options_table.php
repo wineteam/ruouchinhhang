@@ -19,7 +19,7 @@ class CreateExtraOptionsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->integer('order')->nullable();
-            $table->string('language')->default('VN');
+            $table->unsignedBigInteger('language_id')->nullable();
             $table->timestamps();
 
             $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade');

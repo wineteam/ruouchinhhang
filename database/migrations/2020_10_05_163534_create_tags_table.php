@@ -19,6 +19,7 @@ class CreateTagsTable extends Migration
             $table->unsignedBigInteger('blog_id')->nullable();
             $table->string('name');
             $table->string('slug');
+            $table->enum('primary',['1','0']);
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
