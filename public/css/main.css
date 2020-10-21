@@ -1,11 +1,10 @@
 /* FONT */
-@font-face {font-family: Forum;src: url("../fonts/Forum-Regular.ttf")}
-@font-face {font-family: Lora;src: url("../fonts/Lora-Regular.ttf")}
+@font-face {font-family: Forum;src: url("fonts/Forum-Regular.ttf")}
+@font-face {font-family: Lora;src: url("fonts/Lora-Regular.ttf")}
 *{font-family: Lora;text-decoration: none !important;}
 /* END FONT */
 /* ALL FOR USER IN ROW */
-body {background-image: url("../images/audio_bg.jpg");background-size: 100%;background-repeat: repeat;
-  background-color: #cccccc;box-sizing: border-box;}
+body {background-image: url("../images/audio_bg.jpg");background-size: 100%;background-repeat: repeat;background-color: #cccccc;}
 .Title_bg{
   background: url("../images/title_bg-1.jpg");
 }
