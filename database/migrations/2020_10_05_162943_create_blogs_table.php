@@ -24,7 +24,7 @@ class CreateBlogsTable extends Migration
             $table->integer('view')->default(0);
             $table->string('day_up');
             $table->enum('is_published',['0','1']);
-            $table->enum('especial',['0','1']);
+            $table->enum('especially',['0','1']);
             $table->unsignedBigInteger('language_id')->nullable();
             $table->timestamps();
 

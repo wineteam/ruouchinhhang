@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->integer('discount')->nullable();
             $table->string('nation');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->integer('view')->default(0);
             $table->integer('bought')->default(0);
             $table->unsignedBigInteger('language_id')->nullable();
