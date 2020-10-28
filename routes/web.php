@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomePageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,7 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', function () {
-    return view('client.homepage');
-})->name('home');
+Route::get('/',[HomePageController::class,'index'])->name('home');
 Route::get('/shop', function (){
     return view('client.products');
 })->name('shop');

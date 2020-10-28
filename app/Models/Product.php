@@ -18,4 +18,7 @@ class Product extends Model
     public function categories(){
         return $this->belongsToMany(Category::class,'category_products');
     }
+    public  function presentPrice(){
+        return number_format($this->price,0,",",".");
+    }
 }

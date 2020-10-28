@@ -69,7 +69,7 @@
 <div class="row">
     <div class="MultiCarousel" data-items="1,2,3,4" data-slide="1" id="MultiCarousel"  data-interval="1000">
         <div class="MultiCarousel-inner">
-
+            @forelse($products as $item)
             <div class="item">
                 <div class="bg-white" style="position: relative;">
                     <a href="">
@@ -78,130 +78,26 @@
                         </div>
                     </a>
                     <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Pink Moscato Rose Wine</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£18600 – £22200</h5>
+                    @forelse($item->categories as $category)
+                    <a href="#" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
+                        @if(!$loop->last)
+                            ,
+                        @endif
+                    @empty
+                        <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
+                    @endforelse
+                        <div class="col-12 mx-auto" style="padding: 20px;">
+                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{$item->id}}{{\Illuminate\Support\Str::limit($item->name,15  )}}</h5></a>
+                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">{{$item->presentPrice()}} vnđ</h5>
                         <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-3.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">2014 California Red</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£20000 – £23000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-2.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Lambert Sweet White</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£14000 – £17000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Cabernet Sauvignon Reserve</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£26000 – £34000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Pink Moscato Rose Wine</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£18600 – £22200</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-3.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">2014 California Red</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£20000 – £23000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-2.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Lambert Sweet White</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£14000 – £17000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Cabernet Sauvignon Reserve</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£26000 – £34000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
+            @empty
+            <h5>Thêm sản phẩm để hiển thị ở đây</h5>
+            @endforelse
 
 
-            </div>
-            
-            
         </div>
         <div class="btn btn-white-Op-50 leftLst"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
         <div class="btn btn-white-Op-50 rightLst"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
@@ -474,7 +370,7 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 <!--====================================== END Carousel with Multiple Items ======================================-->
 <!--====================================== Empty Space ======================================-->
