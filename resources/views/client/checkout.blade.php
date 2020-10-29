@@ -145,7 +145,7 @@
                             <td colspan="2" class="text-uppercase"><span class="font-weight-bold">£150.00</span></td>
                           </tr>
                         </tbody>
-                      </table>
+                    </table>
     
     <hr class="mb-4">
     <!--====================================== Box-Checking-ERROR ======================================-->

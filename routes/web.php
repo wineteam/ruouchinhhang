@@ -26,6 +26,9 @@ Route::get('/blog', function(){
 Route::get('/checkout', function (){
     return view('client.checkout');
 })->name('checkout');
+Route::get('/detail', function (){
+    return view('client.productdetail');
+})->name('detail');
 
 Route::get('/contact',[ContactController::class,'index'])->name('contact');
 Route::get('manager-admin',);
