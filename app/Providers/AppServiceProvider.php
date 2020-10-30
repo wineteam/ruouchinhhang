@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\LanguageSwitch;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $languages = LanguageSwitch::get();
+        view()->share('languages',$languages);
     }
 }

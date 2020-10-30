@@ -22,16 +22,17 @@
     <script src="{{ asset('js/script.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('js/jquery-ui.css') }}">
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-    <!-- Font Awesome (Icon) --> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Font Awesome (Icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- Bootstrap 4.5.2 -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
 <!--================================================================================================================================================================================================================================-->
 </head>
 <body>
-    
+
 <!--====================================== scrollTopOP ======================================-->
 <button onclick="scrollTopOP()" id="myBtnScrollTop" title="Go to top" style="display: none;"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
 <script src="{{ asset('js/Scrollstop.js') }}"></script>
@@ -43,38 +44,37 @@
         <div class="row justify-content-center">
         <div class="col-xl-3 col-md-3 col-sm-12 Display-NoneCalls">
             <div class="card card-border-0 flex-row align-items-center h-100">
-                <div class="card-header edit-icon rounded-circle">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                </div>
+                    <a href="" class="text-dark edit-icon mr-auto-moblie-icon" style="padding: 10px 15px;border: 2px solid #bdb68e"><i class="fa fa-phone" aria-hidden="true"></i></a>
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms"><span class="font-weight-bold Font-Blue">Call us: <a href="tel:123-456-7890" class="Font-Blue">123-456-7890</a></span> <br> <a class="Font-Blue" href="mailto:QuanlityWine@gmail.com">QuanlityWine@gmail.com</a></p>
+                    <p class="card-text Re-font-ms"><span class="font-weight-bold Font-Blue">{{__('Call_us')}}: <a href="tel:123-456-7890" class="Font-Blue">123-456-7890</a></span> <br> <a class="Font-Blue" href="mailto:QuanlityWine@gmail.com">QuanlityWine@gmail.com</a></p>
                 </div>
             </div>
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12">
-            <img class="rounded mx-auto d-block" src="{{ asset('images/logo.png') }}" alt="">
+            <a href="{{route('home',App()->getLocale())}}"><img class="rounded mx-auto d-block" src="{{ asset('images/logo.png') }}" alt=""></a>
         </div>
         <div class="col-xl-3 col-md-3 col-sm-12 space_moblie2">
             <div class="card card-border-0 flex-row align-items-center h-100">
-                <div class="card-header edit-icon rounded-circle mr-auto-moblie-icon">
-                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                </div>
+{{--                <div class="">--}}
+                    <a href="" class="text-dark edit-icon mr-auto-moblie-icon" style="padding: 10px 15px;border: 2px solid #bdb68e"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+{{--                </div>--}}
             <div class="mr-auto-moblie btn cart-open">
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms text-cart-center"><span class="font-weight-bold Font-Blue">Your cart:</span> <br> <span class="Font-Yellow">0 items - £0.00</span></p>
+                    <p class="card-text Re-font-ms text-cart-center"><span class="font-weight-bold Font-Blue">{{__('Your_cart')}}:</span> <br> <span class="Font-Yellow">0 items - £0.00</span></p>
                 </div>
             </div>
             </div>
 
-            <div class="Cart-list bg-white ml-auto">
+            <div class="Cart-list ml-auto">
                 <!-- <p class="No-products">No products in the cart.</p> -->
                 <div class="box-cart-overflow">
+
                     <div class="card card-border-0 flex-row align-items-center h-100" style="margin-top: 20px;margin-left: 10px;">
                         <div class="card-header bg-products-cart">
                             <img src="{{ asset('images/product-1.png') }}" alt="" width="40px">
                         </div>
                         <div class="card-block px-2">
-                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">California Red Wine - 500ml, 2012</a></span> 
+                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">California Red Wine - 500ml, 2012</a></span>
                                 <p class="Font-Red font-weight-bold">2 × £300.00</p>
                             </p>
                         </div>
@@ -86,7 +86,7 @@
                             <img src="{{ asset('images/product-1.png') }}" alt="" width="40px">
                         </div>
                         <div class="card-block px-2">
-                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">California Red Wine - 500ml, 2012</a></span> 
+                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">California Red Wine - 500ml, 2012</a></span>
                                 <p class="Font-Red font-weight-bold">2 × £300.00</p>
                             </p>
                         </div>
@@ -97,7 +97,7 @@
                 <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red"> £822.00</span></p>
                 <div class="subtotal">
                     <a href="" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
-                <a href="{{ route('checkout') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
+                <a href="{{ route('checkout',app()->getLocale()) }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
                 </div>
             </div>
 
@@ -115,20 +115,32 @@
             </button>
             <div class="collapse navbar-collapse navbar-collapse-custome">
                 <ul class="nav navbar-nav navbar-logo mx-auto Blue-Link position-Re">
-                    <li class="nav-item"> <a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('home') }}">Home</a> </li>
-                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('shop') }}">STORE</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('blog') }}">BLOG</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact') }}">CONTACTS</a></li>
+                    <li class="nav-item"> <a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('home',app()->getLocale()) }}">{{__('HOME')}}</a> </li>
+                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('shop',app()->getLocale()) }}">{{__('STORE')}}</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('blog',app()->getLocale()) }}">{{__('BLOG')}}</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact',app()->getLocale()) }}">{{__('CONTACT')}}</a></li>
                     @if(Route::has('login'))
                         @auth
                         <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="#">PROFILE</a></li>
                         @else
-                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login') }}">LOGIN</a></li>
+                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login',app()->getLocale()) }}">{{__('LOGIN')}}</a></li>
                             @if (Route::has('register'))
-                                 <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('register') }}">REGISTER</a>
+                                 <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('register',app()->getLocale()) }}">{{__('REGISTER')}}</a>
                             @endif
                         @endif
                     @endif
+                    <li class="nav-item" style="margin-top: 5px">
+                        <select name="select_language" id="select_language">
+                            @foreach($languages as $language)
+                                <option value="{{route(Route::currentRouteName(),$language->slug)}}"
+                                    @if(App()->getLocale() == $language->slug)
+                                        selected
+                                    @endif
+
+                                >{{$language->slug}}</option>
+                            @endforeach
+                        </select>
+                    </li>
                 </ul>
                 <ul class="navbar-nav position-Ab Display-none3 Low-right" style="right:20%;">
                     <li class="nav-item">
@@ -202,26 +214,18 @@
             </div>
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12">
-            <img class="rounded mx-auto d-block" src="{{ asset('images/logo.png') }}" alt="">
+            <a href="{{route('home',App()->getLocale())}}"><img class="rounded mx-auto d-block" src="{{ asset('images/logo.png') }}" alt=""></a>
         </div>
         <div class="col-xl-3 col-md-3 col-sm-12 Display-None">
             <div class="card card-border-0 flex-row align-items-center h-100">
-                <a href="">
-                    <div class="card-header edit-icon rounded-circle" style="margin-right: 20px;">
-                        <i class="fa fa-globe Font-dark" aria-hidden="true"></i>
-                    </div>
+                <a href="" class="text-dark edit-icon mr-auto-moblie-icon" style="margin-right: 20px;padding: 10px 15px;border: 2px solid #bdb68e">
+                    <i class="fa fa-globe Font-dark" aria-hidden="true"></i>
                 </a>
-
-                <a href="">
-                    <div class="card-header edit-icon rounded-circle" style="margin-right: 20px;">
-                        <i class="fa fa-github Font-dark" aria-hidden="true"></i>
-                    </div>
+                <a href="" class="text-dark edit-icon mr-auto-moblie-icon" style="margin-right: 20px;padding: 10px 15px;border: 2px solid #bdb68e">
+                    <i class="fa fa-github Font-dark" aria-hidden="true"></i>
                 </a>
-
-                <a href="">
-                    <div class="card-header edit-icon rounded-circle">
-                        <i class="fa fa-linkedin-square Font-dark" aria-hidden="true"></i>
-                    </div>
+                <a href="" class="text-dark edit-icon mr-auto-moblie-icon" style="padding: 10px 15px;border: 2px solid #bdb68e">
+                    <i class="fa fa-linkedin-square Font-dark" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -232,5 +236,13 @@
     </div>
 </footer>
 <!--====================================== END FOOTER ======================================-->
+<script>
+    $(document).ready(function (){
+        $('#select_language').change(function (){
+            var selectedLanguage = $(this).children("option:selected").val();
+            window.location.replace(selectedLanguage);
+        });
+    });
+</script>
 </body>
 </html>

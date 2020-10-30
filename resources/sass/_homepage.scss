@@ -154,7 +154,7 @@ input:focus, textarea:focus, select:focus,button:focus{outline: none;}
 .hr-cart-Products{
   width: 92%;
   margin: 0 auto;
- border: 1px solid #1d1d1d28; 
+ border: 1px solid #1d1d1d28;
 }
 .subtotal{
   height: 60px;
@@ -297,7 +297,7 @@ input:focus, textarea:focus, select:focus,button:focus{outline: none;}
 }
 
 .ul-Filter{
-  display:flex;  
+  display:flex;
   list-style:none;
 }
 .circle-box{
@@ -334,6 +334,11 @@ a .circle-box:hover{
 .blogger_padding_text{
   padding: 2.7rem 2.2rem 1.5rem;
 }
+.box_info_company{
+  background-image: url("../images/contact.jpg");
+  background-size: cover;
+  background-position: center;
+}
 /* END Blogger */
 /* contact */
 .contact-home{
@@ -342,6 +347,7 @@ a .circle-box:hover{
   background-color: #1c1e22e3;
   height: 100%;
   right: 0;
+
 }
 .btn-subtitle-contact{
   position: relative;
@@ -402,8 +408,8 @@ li .dropdown-item:hover span{color: #b9b391;transition: 0.2s;}
 	.navbar .dropdown-menu.fade-down{ top:50%; transform: rotateX(-75deg); transform-origin: 0% 0%; }
 	.navbar .dropdown-menu.fade-up{ top:150%;transition-delay: 0.7s, 300ms;}
   .navbar .nav-item:hover .dropdown-menu{ transition: 0.3s; opacity:1; visibility:visible; top:130%; transform: rotateX(0deg); }
-  
-}		
+
+}
 
 /* ============ desktop view .end// ============ */
 @media screen and (max-width: 1100px){
@@ -464,7 +470,7 @@ li .dropdown-item:hover span{color: #b9b391;transition: 0.2s;}
   .sidenav-Moblie.active{
     height: 100%;
     z-index: 10000;
-  } 
+  }
   .sidenav-Moblie.icon-close-menu {
     height: 0%;
     z-index: 1;
@@ -490,7 +496,7 @@ li .dropdown-item:hover span{color: #b9b391;transition: 0.2s;}
   .search-Bottom input{
     border-radius: 0 !important;
     font-size: 20px;
-    
+
   }
   .search-Bottom button{
     border-radius: 0 !important;

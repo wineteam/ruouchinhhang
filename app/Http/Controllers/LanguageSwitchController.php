@@ -16,7 +16,9 @@ class LanguageSwitchController extends Controller
     {
         //
     }
+    public function changeLanguage(){
 
+    }
     /**
      * Show the form for creating a new resource.
      *
