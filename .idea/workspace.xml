@@ -23,23 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8476c215-00c3-495a-85b1-5bb1ee93b73e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomePageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LanguageSwitchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LanguageSwitchController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/LanguageSwitch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/LanguageSwitch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/VN.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/vn.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/_homepage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_homepage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/homepage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/homepage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/products.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/products.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/def_face.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/client/productdetail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/checkout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -243,7 +231,7 @@
       <workItem from="1603882264650" duration="10182000" />
       <workItem from="1603956869531" duration="2717000" />
       <workItem from="1604024348423" duration="1103000" />
-      <workItem from="1604025471077" duration="17506000" />
+      <workItem from="1604025471077" duration="17796000" />
     </task>
     <servers />
   </component>
@@ -280,10 +268,10 @@
     </state>
     <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1603726739807" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603120004893" />
-    <state x="359" y="120" width="672" height="560" key="search.everywhere.popup" timestamp="1604050677356">
+    <state x="359" y="120" width="672" height="560" key="search.everywhere.popup" timestamp="1604053693017">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="359" y="120" width="672" height="560" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1604050677356" />
+    <state x="359" y="120" width="672" height="560" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1604053693017" />
     <state x="804" y="134" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603894843734" />
   </component>
 </project>

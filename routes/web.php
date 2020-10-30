@@ -15,22 +15,23 @@ use App\Http\Controllers\HomePageController;
 */
 Route::redirect('/','vn');
 Route::group(['prefix'=>'{language}'], function () {
-    Route::get('/',[HomePageController::class,'index'])->name('home');
-    Route::get('/shop', function (){
+    Route::get('/', [HomePageController::class,'index'])->name('home');
+    Route::get('/shop', function () {
         return view('client.products');
     })->name('shop');
-    Route::get('/blog', function(){
+    Route::get('/blog', function () {
         return view('client.blog');
     })->name('blog');
-    Route::get('/checkout', function (){
+    Route::get('/checkout', function () {
         return view('client.checkout');
     })->name('checkout');
 
-    Route::get('/contact',[ContactController::class,'index'])->name('contact');
-    Route::get('manager-admin',);
+    Route::get('/detail', function () {
+        return view('client.productdetail');
+    })->name('detail');
+
+    Route::get('/contact', [ContactController::class,'index'])->name('contact');
+    Route::get('manager-admin', );
     Auth::routes();
 });
-//Route::fallback(function (){
-//    redirect('/','vn');
-//});
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
