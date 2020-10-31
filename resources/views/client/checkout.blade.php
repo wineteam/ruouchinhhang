@@ -9,12 +9,12 @@
         <div>
             <div class="Display-noneX" style="height: 5.5em"><span></span></div>
             <div style="height: 5em"><span></span></div>
-            
+
             <div class="checkout-bg">
                 <h1 class="text-center Font-white">Checkout</h1>
-                <p class="text-center Font-white"><a href="{{ route('home') }}"><span>Home</span></a> / <a href="{{ route('shop') }}"><span>shop</span></a> / <a href=""><span>checkout</span></a></p>
+                <p class="text-center Font-white"><a href="{{ route('home',App()->getLocale()) }}"><span>Home</span></a> / <a href="{{ route('shop',App()->getLocale()) }}"><span>shop</span></a> / <a href=""><span>checkout</span></a></p>
             </div>
-    
+
             <div style="height: 5em"><span></span></div>
             <div class="Display-noneX" style="height: 5.8em"><span></span></div>
         </div>
@@ -29,7 +29,7 @@
             <div class="col-12 bg-Box border-top-Box box-title">
                 <p><i class="fa fa-window-maximize" aria-hidden="true"></i> Returning customer? <a href=""><span>Click here to login</span></a></p>
             </div>
-    
+
             <div class="col-12 bg-Box border-top-Box box-title">
                 <p><i class="fa fa-window-maximize" aria-hidden="true"></i> Have a coupon? <a href=""><span>Click here to enter your code</span></a></p>
             </div>
@@ -41,7 +41,7 @@
     <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12 no-pdd-buyed">
             <form class="needs-validation" novalidate>
-    
+
                 <div class="col-xl-12 col-md-12 col-sm-12 no-pdd-buyed">
                     <h4 class="mb-3">Billing details</h4>
                     <div class="row">
@@ -60,12 +60,12 @@
                             </div>
                         </div>
                     </div>
-            
+
                     <div class="mb-3">
                         <label for="Companyname">Company name <span class="text-muted">(Optional)</span></label>
                         <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="Companyname" placeholder="">
                     </div>
-                    
+
                     <div class="mb-3">
                         <label for="country">Country</label>
                         <select class="custom-select d-block w-100" id="country" required>
@@ -73,10 +73,10 @@
                         </select>
                         <div class="invalid-feedback Fix-input-checkout Fix-high-checkout">
                         Please select a valid country.
-                        </div>                 
+                        </div>
                     </div>
-            
-                    
+
+
                     <div class="mb-3">
                         <label for="Streetaddress">Street address</label>
                             <input type="text" class="form-control Fix-input-checkout" id="Streetaddress" placeholder="" value="" required>
@@ -84,12 +84,12 @@
                             Valid Street address is required.
                         </div>
                     </div>
-    
+
                     <div class="mb-3">
                     <label for="Postcode">Postcode / ZIP <span class="text-muted">(Optional)</span></label>
                     <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="Postcode" placeholder="">
                     </div>
-            
+
                     <div class="mb-3">
                         <label for="TownCity">Town / City</label>
                             <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="TownCity" placeholder="" value="" required>
@@ -97,7 +97,7 @@
                             Valid Town / City is required.
                         </div>
                     </div>
-    
+
                     <div class="mb-3">
                         <label for="Phone">Phone</label>
                             <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="Phone" placeholder="" value="" required>
@@ -105,7 +105,7 @@
                             Valid Phone is required.
                         </div>
                     </div>
-    
+
                     <div class="mb-3">
                         <label for="Emailaddress">Email address</label>
                             <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="Emailaddress" placeholder="" value="" required>
@@ -113,16 +113,16 @@
                             Valid Email address is required.
                         </div>
                     </div>
-    
+
                     <h4 class="mb-3">Billing details</h4>
                     <div class="mb-3">
                         <label for="Companyname">Company name <span class="text-muted">(Optional)</span></label>
                         <textarea class="form-control Fix-input-checkout" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                 </div>
-    
+
                 <hr class="mb-4">
-    
+
                     <h4 class="mb-3">Your order</h4>
                     <table class="table table-bordered">
                         <thead>
@@ -146,7 +146,7 @@
                           </tr>
                         </tbody>
                     </table>
-    
+
     <hr class="mb-4">
     <!--====================================== Box-Checking-ERROR ======================================-->
     <div class="container">

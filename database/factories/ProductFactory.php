@@ -47,6 +47,7 @@ class productFactory extends Factory
             'especially'=> $enum[rand(0,1)],
             'created_at' => now(),
             'updated_at' => now(),
+            
         ];
     }
     public function RandomString()

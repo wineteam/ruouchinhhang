@@ -5000,7 +5000,6 @@ input[type=button].btn-block {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card-header:first-child {
@@ -11462,12 +11461,10 @@ button:focus {
   padding: 2.7rem 2.2rem 1.5rem;
 }
 
-.home-page .contact-home {
-  position: absolute;
-  top: 0;
-  background-color: #1c1e22e3;
-  height: 100%;
-  right: 0;
+.home-page .box_info_company {
+  background-image: url(/images/contact.jpg?0abe9170f73aa881fc02104f4cbcb124);
+  background-size: cover;
+  background-position: center;
 }
 
 .home-page .btn-subtitle-contact {
@@ -12137,7 +12134,7 @@ button:focus {
 @font-face {
   font-family: "fontello";
   src: url(/fonts/fontello.eot?6695adddf87538d6faf5ad635a22ccc5);
-  src: url(/fonts/fontello.eot?6695adddf87538d6faf5ad635a22ccc5) format("embedded-opentype"), url(/fonts/fontello.woff?a71e86ec6783683e8026b81bfe79774c) format("woff"), url(/fonts/fontello.ttf?971d87d4be90305d2e2e482e243ad9d8) format("truetype"), url(/fonts/fontello.svg?a366cbb537f9c5524bf63a24d65273a0) format("svg");
+  src: url(/fonts/fontello.eot?6695adddf87538d6faf5ad635a22ccc5) format("embedded-opentype"), url(/fonts/fontello.woff?a71e86ec6783683e8026b81bfe79774c) format("woff"), url(/fonts/fontello.ttf?971d87d4be90305d2e2e482e243ad9d8) format("truetype"), url(/fonts/fontello.svg?9b97eb92baeafda46ebd85c9d35bb65f) format("svg");
   font-weight: normal;
   font-style: normal;
 }

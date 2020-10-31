@@ -5,7 +5,7 @@
    <div class="banner-page col-lg-12">
     <p class="title-page">All Products</p>
     <ul class="breadcrumb-page">
-        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('home',app()->getLocale()) }}">Home</a></li>
         <li aria-current="page">Shop</li>
     </ul>
   </div>
@@ -15,7 +15,7 @@
 <div class="bg-white pt-5 pb-5">
 <div class="container">
 <div class="row">
-  
+
   <div class=" col-xl-9 col-md-12 col-sm-12">
     <div class="row pb-3">
       <div class="col-xl-12 col-md-12 col-md-12">
@@ -69,7 +69,7 @@
           <button><i class="fa fa-shopping-bag"></i> Buy now</button>
       </div>
       </div>
-      
+
       <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
         <div class="productItem__content">
           <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-3.png') }}" alt="">
@@ -121,7 +121,7 @@
           <button><i class="fa fa-shopping-bag"></i> Buy now</button>
       </div>
       </div>
-      
+
       <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
         <div class="productItem__content">
           <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-3.png') }}" alt="">
@@ -142,7 +142,7 @@
 
     </div>
   </div>
-  
+
   <div class="col-xl-3 col-md-12 col-sm-12 px-3">
     <div class="row productCategories">
       <div class="col-xl-12 col-md-6 col-sm-12">
@@ -173,7 +173,7 @@
               <img src="{{ asset('images/product-1.png') }}" alt="" >
             </div>
             <div class="col-8">
-              <h6 class="mb-3" style="font-size: 14px;">California Red Wine</h6> 
+              <h6 class="mb-3" style="font-size: 14px;">California Red Wine</h6>
               <h6 style="color: #da3f19; font-size: 14px;">£300.00 – £365.00</h6>
             </div>
           </div>
@@ -183,7 +183,7 @@
               <img src="{{ asset('images/product-1.png') }}" alt="" >
             </div>
             <div class="col-8">
-              <h6 class="mb-3" style="font-size: 14px;">California Red Wine</h6> 
+              <h6 class="mb-3" style="font-size: 14px;">California Red Wine</h6>
               <h6 style="color: #da3f19; font-size: 14px;">£300.00 – £365.00</h6>
             </div>
           </div>
@@ -193,7 +193,7 @@
               <img src="{{ asset('images/product-1.png') }}" alt="" >
             </div>
             <div class="col-8">
-              <p class="mb-3" style="font-size: 14px;">California Red Wine</p> 
+              <p class="mb-3" style="font-size: 14px;">California Red Wine</p>
               <p style="color: #da3f19; font-size: 14px;">£300.00 – £365.00</p>
             </div>
           </div>
@@ -203,7 +203,7 @@
               <img src="{{ asset('images/product-1.png') }}" alt="" >
             </div>
             <div class="col-8">
-              <h6 class="mb-3" style="font-size: 14px;">California Red Wine</h6> 
+              <h6 class="mb-3" style="font-size: 14px;">California Red Wine</h6>
               <h6 style="color: #da3f19; font-size: 14px;">£300.00 – £365.00</h6>
             </div>
           </div>

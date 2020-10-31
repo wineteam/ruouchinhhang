@@ -141,6 +141,7 @@ input:focus, textarea:focus, select:focus,button:focus{outline: none;}
   opacity: 0;
   z-index: 0;
   display: none;
+  background-color: #ffffff;
 }
 .box-cart-overflow{
   max-height: 250px;
@@ -663,9 +664,8 @@ li .dropdown-item:hover span{color: #b9b391;transition: 0.2s;}
   font-size: 12px;
 }
 
-
-
-
+/* ============================================================================= ProDuctDetails CSS ============================================================================= */
+/* ============================================================================= ProDuctDetails CSS ============================================================================= */
 .box-images-productDetail{
   width: 100%;
   background-image: url("../images/audio_bg.jpg");
@@ -775,3 +775,29 @@ label.star:before {
   content: '\f006';
   font-family: FontAwesome;
 }
+
+/* ============================================================================= Profile CSS ============================================================================= */
+/* ============================================================================= Profile CSS ============================================================================= */
+
+.Profile-Input:hover{
+  box-shadow: none !important;
+  background-color: #ffffff !important;
+}
+.Profile-Input:focus{
+  box-shadow: none !important;
+  background-color: #ffffff !important;
+}
+.max-height-imagess{
+  overflow: hidden;
+  max-height: auto;
+}
+.pdg-images{
+  padding: 20px;
+}
+#ImagesShow{
+  width: 300px;
+  height: 300px;
+}
+input[name=file-images]{
+  padding:10px;
+  background:#d8d4be;}

@@ -23,16 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8476c215-00c3-495a-85b1-5bb1ee93b73e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/duancuoi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/duancuoi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ProductFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_162915_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_162915_create_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_162943_create_blogs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_162943_create_blogs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/def_face.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/client/productdetail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +39,21 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
+  <component name="EditorConfigPreviewManager">
+    <editorConfig file="$PROJECT_DIR$/.editorconfig" previewFile="$PROJECT_DIR$/resources/sass/_homepage.scss" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -175,17 +184,19 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\duancuoi\public\css" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\duancuoi\public\js" />
       <recent name="C:\xampp\htdocs\duancuoi\public" />
       <recent name="C:\xampp\htdocs\duancuoi\public\css" />
       <recent name="C:\xampp\htdocs\duancuoi\resources\views\client" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ruuchinhhang\public\images" />
+      <recent name="C:\xampp\htdocs\duancuoi\public\css" />
     </key>
   </component>
   <component name="RunManager">
@@ -213,7 +224,14 @@
       <workItem from="1603030141605" duration="831000" />
       <workItem from="1603119745114" duration="1548000" />
       <workItem from="1603265690098" duration="1934000" />
-      <workItem from="1603603811901" duration="6669000" />
+      <workItem from="1603603811901" duration="6794000" />
+      <workItem from="1603632528061" duration="3066000" />
+      <workItem from="1603686085755" duration="7163000" />
+      <workItem from="1603849040558" duration="773000" />
+      <workItem from="1603882264650" duration="10182000" />
+      <workItem from="1603956869531" duration="2717000" />
+      <workItem from="1604024348423" duration="1103000" />
+      <workItem from="1604025471077" duration="17796000" />
     </task>
     <servers />
   </component>
@@ -230,16 +248,30 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603120004893">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603120004893" />
-    <state x="359" y="120" width="672" height="560" key="search.everywhere.popup" timestamp="1603614921202">
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603901339282">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="359" y="120" width="672" height="560" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1603614921202" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603119779613" />
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1603901339282" />
+    <state x="371" y="96" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604043744020">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="96" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.680@0.0.1280.680" timestamp="1604043744020" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1603728960115">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1603728960115" />
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1603726739807">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1603726739807" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603120004893" />
+    <state x="359" y="120" width="672" height="560" key="search.everywhere.popup" timestamp="1604053693017">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="359" y="120" width="672" height="560" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1604053693017" />
+    <state x="804" y="134" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603894843734" />
   </component>
 </project>

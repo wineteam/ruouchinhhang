@@ -43,10 +43,10 @@
     </div>
 </div>
 <!--====================================== END SLIDE SHOW ======================================-->
-<div class="container-fluid bg-white">  <!-- Dang Lam Viec -->
-<!--====================================== Empty Space ======================================-->
-<div class="vc_empty_space" style="height: 8.4em"><span class="vc_empty_space_inner"></span></div>
-<!--====================================== END Empty Space ======================================-->
+<div class="container">  <!-- Dang Lam Viec -->
+{{--<!--====================================== Empty Space ======================================-->--}}
+{{--<div class="vc_empty_space" style="height: 8.4em"><span class="vc_empty_space_inner"></span></div>--}}
+{{--<!--====================================== END Empty Space ======================================-->--}}
 <!--====================================== Empty Space ======================================-->
 <div class="vc_empty_space" style="height: 8.4em"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END Empty Space ======================================-->
@@ -54,9 +54,9 @@
 <div class="container">
 <div class="row">
     <div class="col-sm-12 my-auto">
-        <h6 class="text-center Font-Red item_subtitle">Our Products</h6>
-        <h1 class="text-center">Preferred Products</h1>
-        <div class="text-center item_descr">We offer a great variety of wines for every price point and any occasion, from rich<br>shardonnay to elegant and creamy brut.</div>
+        <h6 class="text-center Font-Red item_subtitle text-capitalize">{{__('Our_product')}}</h6>
+        <h1 class="text-center text-capitalize">{{__('Preferred_Products')}}</h1>
+        <div class="text-center item_descr">{{__('info_company')}}</div>
     </div>
 </div>
 </div>
@@ -64,12 +64,12 @@
 <!--====================================== Empty Space ======================================-->
 <div class="vc_empty_space" style="height: 3.5em"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END Empty Space ======================================-->
-<!--====================================== CATALOG LIST ======================================-->
-<div class="container">
+<!--====================================== Product preferred list ======================================-->
+<div class="container bg-white">
 <div class="row">
     <div class="MultiCarousel" data-items="1,2,3,4" data-slide="1" id="MultiCarousel"  data-interval="1000">
         <div class="MultiCarousel-inner">
-
+            @forelse($products as $item)
             <div class="item">
                 <div class="bg-white" style="position: relative;">
                     <a href="">
@@ -77,151 +77,48 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Pink Moscato Rose Wine</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£18600 – £22200</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
+                    <a href="#"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt=""></a>
+                    @forelse($item->categories as $category)
+                    <a href="#" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
+                        @if(!$loop->last)
+                            ,
+                        @endif
+                    @empty
+                        <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
+                    @endforelse
+                        <div class="col-12 mx-auto" style="padding: 20px;">
+                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{$item->id}}{{\Illuminate\Support\Str::limit($item->name,15  )}}</h5></a>
+                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">{{$item->presentPrice()}} {{__("$")}}</h5>
+                        <a href=""class="btn-subtitle"><span class=""><span class="">{{__('Buy_now')}}</span></span></a>
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-3.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">2014 California Red</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£20000 – £23000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-2.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Lambert Sweet White</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£14000 – £17000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Cabernet Sauvignon Reserve</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£26000 – £34000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Pink Moscato Rose Wine</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£18600 – £22200</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-3.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">2014 California Red</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£20000 – £23000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-2.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Lambert Sweet White</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£14000 – £17000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="bg-white" style="position: relative;">
-                    <a href="">
-                        <div class="circle-box text-center">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt="">
-                    <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                    <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Cabernet Sauvignon Reserve</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£26000 – £34000</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                    </div>
-                </div>
+            @empty
+            <h5>Thêm sản phẩm để hiển thị ở đây</h5>
+            @endforelse
 
 
-            </div>
-            
-            
         </div>
         <div class="btn btn-white-Op-50 leftLst"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
         <div class="btn btn-white-Op-50 rightLst"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12 text-center">
-        <br/><br/><br/>
-        <hr/>
+
+</div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <br/><br/><br/>
+            <hr/>
+        </div>
     </div>
-</div>
-</div>
 <script src="{{ asset('js/Multi-Item-Carousel.js') }}"></script>
 <!--====================================== END CATALOG LIST ======================================-->
 <!--====================================== Recommendations 2 ======================================-->
 <div class="container">
     <div class="row">
         <div class="col-sm-12 my-auto">
-            <h1 class="text-center fixed-font-size-h1">Recommendations</h1>
-            <div class="text-center item_descr">We offer a great variety of wines for every price point and any occasion, from rich<br>shardonnay to elegant and creamy brut.</div>
+            <h1 class="text-center fixed-font-size-h1">{{__('Recommendations')}}</h1>
+
         </div>
     </div>
 </div>
@@ -272,7 +169,7 @@
                         <div class="col-12 mx-auto" style="padding: 20px;">
                             <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Cabernet Sauvignon Reserve</h5></a>
                             <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£26000 – £34000</h5>
-                            <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
+                            <a href=""class="btn-subtitle"><span class=""><span class="">{{__('Buy_now')}}</span></span></a>
                         </div>
                     </div>
                 </div>
@@ -344,137 +241,32 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <div class="row">
+                <div class="row bg-white">
+                    <h1 class="col-md-12 text-center mt-5 text-capitalize">{{__('Title_posts_especially')}}</h1>
+                    @foreach($blogs_esp as $blog)
                     <div class="col-xl-4 col-md-12 col-sm-12 nopadding bg-white glowing-moblie">
                         <div class="blogger_padding_text blogger_classic">
                             <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
                             <div id="" class="">
-                                <a href=""><span class="day">14</span><span class="Font-dark"> August</span></a>
-                                <h5 class="sc_item_title" style="margin-top: 30px;">Varietal Labelling Of New World Wines</h5>
+                                <img src="{{$blog->thumbnail}}" width="100%" alt="">
+                                <a href="">
+                                    <span class="day">{{\Carbon\Carbon::parse($blog->created_at)->format('d')}}</span> <span class="Font-dark">{{\Carbon\Carbon::parse($blog->created_at)->format('M')}}</span>
+                                </a>
+                                <h5 class="sc_item_title" style="margin-top: 30px;"><a class="text-danger" href="">{{$blog->title}}</a></h5>
                                 <div class="mr-subtitle">
-                                    <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
+                                    <a href=""class="btn-subtitle"><span class=""><span class="">{{__('Learn_more')}}</span></span></a>
                                 </div>
                             </div>
                             <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-12 col-sm-12 nopadding bg-white glowing-moblie">
-                        <div class="blogger_padding_text blogger_classic">
-                            <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                            <div id="" class="">
-                                <a href=""><span class="day">15</span><span class="Font-dark"> August</span></a>
-                                <h5 class="sc_item_title" style="margin-top: 30px;">Varietal Labelling Of New World Wines</h5>
-                                <div class="mr-subtitle">
-                                    <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
-                                </div>
-                            </div>
-                            <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-12 col-sm-12 nopadding bg-white glowing-moblie">
-                        <div class="blogger_padding_text blogger_classic">
-                            <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                            <div id="" class="">
-                                <a href=""><span class="day">16</span><span class="Font-dark"> August</span></a>
-                                <h5 class="sc_item_title" style="margin-top: 30px;">Varietal Labelling Of New World Wines</h5>
-                                <div class="mr-subtitle">
-                                    <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
-                                </div>
-                            </div>
-                            <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col-xl-4 col-md-12 col-sm-12 nopadding bg-white glowing-moblie">
-                        <div class="blogger_padding_text blogger_classic">
-                            <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                            <div id="" class="">
-                                <a href=""><span class="day">14</span><span class="Font-dark"> August</span></a>
-                                <h5 class="sc_item_title" style="margin-top: 30px;">Varietal Labelling Of New World Wines</h5>
-                                <div class="mr-subtitle">
-                                    <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
-                                </div>
-                            </div>
-                            <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-12 col-sm-12 nopadding bg-white glowing-moblie">
-                        <div class="blogger_padding_text blogger_classic">
-                            <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                            <div id="" class="">
-                                <a href=""><span class="day">15</span><span class="Font-dark"> August</span></a>
-                                <h5 class="sc_item_title" style="margin-top: 30px;">Varietal Labelling Of New World Wines</h5>
-                                <div class="mr-subtitle">
-                                    <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
-                                </div>
-                            </div>
-                            <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-12 col-sm-12 nopadding bg-white glowing-moblie">
-                        <div class="blogger_padding_text blogger_classic">
-                            <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                            <div id="" class="">
-                                <a href=""><span class="day">16</span><span class="Font-dark"> August</span></a>
-                                <h5 class="sc_item_title" style="margin-top: 30px;">Varietal Labelling Of New World Wines</h5>
-                                <div class="mr-subtitle">
-                                    <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
-                                </div>
-                            </div>
-                            <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col-xl-4 col-md-12 col-sm-12 nopadding bg-white glowing-moblie">
-                        <div class="blogger_padding_text blogger_classic">
-                            <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                            <div id="" class="">
-                                <a href=""><span class="day">14</span><span class="Font-dark"> August</span></a>
-                                <h5 class="sc_item_title" style="margin-top: 30px;">Varietal Labelling Of New World Wines</h5>
-                                <div class="mr-subtitle">
-                                    <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
-                                </div>
-                            </div>
-                            <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-12 col-sm-12 nopadding bg-white glowing-moblie">
-                        <div class="blogger_padding_text blogger_classic">
-                            <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                            <div id="" class="">
-                                <a href=""><span class="day">15</span><span class="Font-dark"> August</span></a>
-                                <h5 class="sc_item_title" style="margin-top: 30px;">Varietal Labelling Of New World Wines</h5>
-                                <div class="mr-subtitle">
-                                    <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
-                                </div>
-                            </div>
-                            <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-12 col-sm-12 nopadding bg-white glowing-moblie">
-                        <div class="blogger_padding_text blogger_classic">
-                            <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
-                            <div id="" class="">
-                                <a href=""><span class="day">16</span><span class="Font-dark"> August</span></a>
-                                <h5 class="sc_item_title" style="margin-top: 30px;">Varietal Labelling Of New World Wines</h5>
-                                <div class="mr-subtitle">
-                                    <a href=""class="btn-subtitle"><span class=""><span class="">Learn More</span></span></a>
-                                </div>
-                            </div>
-                            <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
-    
+
 </div>
 <!--====================================== END Carousel with Multiple Items ======================================-->
 <!--====================================== Empty Space ======================================-->
@@ -488,14 +280,13 @@
             <div class="contact-home">
 
                 <div style="padding-left: 80px;padding-right: 5rem;padding-top: 3rem;">
-                    <h6 class="item_subtitle color_subtitle">Get in Touch</h6>
-                    <h1 class="sc_item_title Font-white" style="font-size: 2.8vw;">Contacts</h1>
-                    <div class="item_descr3 Font-Yellow2" style="width: auto;">We offer a great variety for every price point and any occasion, <br> from rich shardonnay to creamy brut.</div>
-                    <div class="item_descr2 Font-Yellow2" style="width: auto;">Address: Austria, Vienna Leip Strasse 156</div>
+                    <h1 class=" color_subtitle text-capitalize">{{__('get_it_touch')}}</h1>
+                    <div class="item_descr3 Font-Yellow2" style="width: auto;">{{__('info_company')}}</div>
+                    <div class="item_descr2 Font-Yellow2" style="width: auto;">{{__('address')}}: Austria, Vienna Leip Strasse 156</div>
                     <div class="item_descr2 Font-Yellow2" style="width: auto;">Phone: <a href=""><span class="Font-Red">+125 256 36 85</span></a></div>
                     <div class="item_descr2 Font-Yellow2" style="width: auto;">E-mail: <a href=""><span class="Font-Red">office@luxurywine.com</span></a></div>
                     <div class="mr-subtitle Display-None2">
-                        <a href=""class="btn-subtitle-contact Display-None4" style="float: left;">Get In Touch</a>
+                        <a href=""class="btn-subtitle-contact Display-None4" style="float: left;">{{__('get_it_touch')}}</a>
                     </div>
                 </div>
             </div>
@@ -507,5 +298,4 @@
     </div>
 </div>
 <!--====================================== END Contact find US in Google ======================================-->
-
-    @endsection
+@endsection

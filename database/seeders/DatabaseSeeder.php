@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Table;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -15,6 +17,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          \App\Models\User::factory(20)->create();
+         DB::Table('language_switches')->insert([
+             [
+                 'name'=>'Việt Nam',
+                 'slug'=>'VN',
+                 'created_at'=>now(),
+                 'updated_at'=>now()
+             ],
+             [
+                 'name'=>'English',
+                 'slug'=>'EN',
+                 'created_at'=>now(),
+                 'updated_at'=>now()
+             ],
+         ]);
        DB::table('categories')->insert([
             [
               'user_id'=>1,
