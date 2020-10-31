@@ -103,7 +103,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="{{ asset('images/def_face.jpg') }}" class="img img-rounded img-fluid"/>
+                                    <img src="{{ asset('images/promo-3.webp') }}" class="avatar img-circle img-thumbnail"/>
                                     <p class="text-secondary text-center">15 Minutes Ago</p>
                                 </div>
                                 <div class="col-md-10">

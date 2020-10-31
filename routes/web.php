@@ -26,9 +26,29 @@ Route::group(['prefix'=>'{language}'], function () {
         return view('client.checkout');
     })->name('checkout');
 
+<<<<<<< HEAD
     Route::get('/detail', function () {
         return view('client.productdetail');
     })->name('detail');
+=======
+    Route::get('/details', function () {
+        return view('client.productdetail');
+    })->name('details');
+
+    Route::get('/profile', function () {
+        return view('client.profile');
+    })->name('profile');
+    Route::get('/forgotpassword', function () {
+        return view('client.forgotpassword');
+    })->name('forgotpassword');
+    Route::get('/change', function () {
+        return view('client.changePassword');
+    })->name('change');
+    
+    Route::get('/cartdetails', function () {
+        return view('client.cartDetails');
+    })->name('cartdetails');
+>>>>>>> Longnnb-Project
 
     Route::get('/contact', [ContactController::class,'index'])->name('contact');
     Route::get('manager-admin', );
