@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,28 +14,20 @@ use App\Http\Controllers\HomePageController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::redirect('/','vn');
-Route::group(['prefix'=>'{language}'], function () {
+  Route::redirect('/','vn');
+  Route::get('language/{language}', function ($language){
+    session()->put('language',$language);
+  return redirect()->back();
+  })->name('setLanguage');
     Route::get('/', [HomePageController::class,'index'])->name('home');
-    Route::get('/shop', function () {
-        return view('client.products');
-    })->name('shop');
+    Route::get('/shop',[ShopController::class,'index'])->name('shop');
+    Route::get('/shop/{slug}',[ShopController::class,'ShowDetailPro'])->name('ShowDetailPro');
     Route::get('/blog', function () {
         return view('client.blog');
     })->name('blog');
     Route::get('/checkout', function () {
         return view('client.checkout');
     })->name('checkout');
-
-<<<<<<< HEAD
-    Route::get('/detail', function () {
-        return view('client.productdetail');
-    })->name('detail');
-=======
-    Route::get('/details', function () {
-        return view('client.productdetail');
-    })->name('details');
-
     Route::get('/profile', function () {
         return view('client.profile');
     })->name('profile');
@@ -44,14 +37,12 @@ Route::group(['prefix'=>'{language}'], function () {
     Route::get('/change', function () {
         return view('client.changePassword');
     })->name('change');
-    
+
     Route::get('/cartdetails', function () {
         return view('client.cartDetails');
     })->name('cartdetails');
->>>>>>> Longnnb-Project
 
     Route::get('/contact', [ContactController::class,'index'])->name('contact');
     Route::get('manager-admin', );
     Auth::routes();
-});
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

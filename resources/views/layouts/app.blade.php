@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12">
-            <a href="{{route('home',App()->getLocale())}}"><img class="rounded mx-auto d-block" src="{{ asset('images/logo.png') }}" alt=""></a>
+            <a href="{{route('home')}}"><img class="rounded mx-auto d-block" src="{{ asset('images/logo.png') }}" alt=""></a>
         </div>
         <div class="col-xl-3 col-md-3 col-sm-12 space_moblie2">
             <div class="card card-border-0 flex-row align-items-center h-100">
@@ -97,7 +97,7 @@
                 <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red"> £822.00</span></p>
                 <div class="subtotal">
                     <a href="" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
-                <a href="{{ route('checkout',app()->getLocale()) }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
+                <a href="{{ route('checkout') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
                 </div>
             </div>
 
@@ -115,24 +115,24 @@
             </button>
             <div class="collapse navbar-collapse navbar-collapse-custome">
                 <ul class="nav navbar-nav navbar-logo mx-auto Blue-Link position-Re">
-                    <li class="nav-item"> <a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('home',app()->getLocale()) }}">{{__('HOME')}}</a> </li>
-                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('shop',app()->getLocale()) }}">{{__('STORE')}}</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('blog',app()->getLocale()) }}">{{__('BLOG')}}</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact',app()->getLocale()) }}">{{__('CONTACT')}}</a></li>
+                    <li class="nav-item"> <a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('home') }}">{{__('HOME')}}</a> </li>
+                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('shop') }}">{{__('STORE')}}</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('blog') }}">{{__('BLOG')}}</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact') }}">{{__('CONTACT')}}</a></li>
                     @if(Route::has('login'))
                         @auth
                         <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="#">PROFILE</a></li>
                         @else
-                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login',app()->getLocale()) }}">{{__('LOGIN')}}</a></li>
+                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login') }}">{{__('LOGIN')}}</a></li>
                             @if (Route::has('register'))
-                                 <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('register',app()->getLocale()) }}">{{__('REGISTER')}}</a>
+                                 <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('register') }}">{{__('REGISTER')}}</a>
                             @endif
                         @endif
                     @endif
                     <li class="nav-item" style="margin-top: 5px">
                         <select name="select_language" id="select_language">
                             @foreach($languages as $language)
-                                <option value="{{route(Route::currentRouteName(),$language->slug)}}"
+                                <option value="{{route('setLanguage',$language->slug)}}"
                                     @if(App()->getLocale() == $language->slug)
                                         selected
                                     @endif
@@ -214,7 +214,7 @@
             </div>
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12">
-            <a href="{{route('home',App()->getLocale())}}"><img class="rounded mx-auto d-block" src="{{ asset('images/logo.png') }}" alt=""></a>
+            <a href="{{route('home')}}"><img class="rounded mx-auto d-block" src="{{ asset('images/logo.png') }}" alt=""></a>
         </div>
         <div class="col-xl-3 col-md-3 col-sm-12 Display-None">
             <div class="card card-border-0 flex-row align-items-center h-100">
