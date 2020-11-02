@@ -77,7 +77,7 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a href="#"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt=""></a>
+                    <a href="{{route('ShowDetailPro',$item->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt=""></a>
                     @forelse($item->categories as $category)
                     <a href="#" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
                         @if(!$loop->last)
@@ -89,7 +89,7 @@
                         <div class="col-12 mx-auto" style="padding: 20px;">
                         <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{$item->id}}{{\Illuminate\Support\Str::limit($item->name,15  )}}</h5></a>
                         <h5 class="Font-Red" style="margin-bottom: 1.5rem;">{{$item->presentPrice()}} {{__("$")}}</h5>
-                        <a href=""class="btn-subtitle"><span class=""><span class="">{{__('Buy_now')}}</span></span></a>
+                        <a href="" class="btn-subtitle"><span class=""><span class="">{{__('Buy_now')}}</span></span></a>
                     </div>
                 </div>
             </div>
