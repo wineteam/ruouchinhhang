@@ -20,6 +20,7 @@ input:focus, textarea:focus, select:focus,button:focus{outline: none;}
 .Font-Yellow2{color: #D6CFA0;}
 .Font-Red{color: #d03e3b;}
 .Font-dark{color: #1d1d1d;}
+.bg-Red-I{background-color: #d03e3b;}
 .padding-text{margin: 0 0.75rem 0 0.75rem;}
 .Font-Size-1vw{font-size: 0.75vw;}
 .Font-Size-07vw{font-size: 0.7vw;}
@@ -85,6 +86,32 @@ input:focus, textarea:focus, select:focus,button:focus{outline: none;}
   transition: 0.3s;
 }
 /* END ALL FOR USER IN ROW */
+
+/*breadcrumb*/
+.breadcrumb-List{
+  padding: 0 !important;
+}
+ul.breadcrumb-List li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb-List li+li:before {
+  padding: 8px;
+  color: #787567;
+  content: "/\00a0";
+}
+ul.breadcrumb-List li a {
+  color: #CBA476;
+  text-decoration: none;
+}
+ul.breadcrumb-List li a:hover {
+  color: #CBA476;
+  text-decoration: underline;
+}
+ul.breadcrumb-List li .none-color {
+  color: #787567;
+}
+/*END breadcrumb*/
 
 /* Search */
 .Display-None-Sr {display: none !important;}
@@ -665,6 +692,77 @@ li .dropdown-item:hover span{color: #b9b391;transition: 0.2s;}
 }
 
 /* ============================================================================= ProDuctDetails CSS ============================================================================= */
+
+.quantity {
+  position: relative;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+.quantity input {
+  width: 105px;
+  height: 42px;
+  line-height: 1.65;
+  float: left;
+  display: block;
+  padding: 0;
+  margin: 0;
+  padding-left: 20px;
+  border: 1px solid #eee;
+}
+
+.quantity input:focus {
+  outline: 0;
+}
+
+.quantity-nav {
+  float: left;
+  position: relative;
+  height: 42px;
+}
+
+.quantity-button {
+  position: relative;
+  cursor: pointer;
+  border-left: 1px solid #eee;
+  width: 20px;
+  text-align: center;
+  color: #333;
+  font-size: 13px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  line-height: 1.7;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  background-color: #b9b391;
+}
+.quantity-button.quantity-up {
+  position: absolute;
+  height: 50%;
+  top: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.quantity-button.quantity-down {
+  position: absolute;
+  bottom: -1px;
+  height: 50%;
+}
+
 /* ============================================================================= ProDuctDetails CSS ============================================================================= */
 .box-images-productDetail{
   width: 100%;
@@ -801,3 +899,10 @@ label.star:before {
 input[name=file-images]{
   padding:10px;
   background:#d8d4be;}
+
+
+
+.Scroll-CartList{
+  max-height: 600px;
+  overflow: auto;
+}

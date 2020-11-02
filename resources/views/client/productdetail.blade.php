@@ -2,11 +2,11 @@
 @section('content')
 <div class="product-page">
    <!-- Breadcrumb -->
-   <div class="banner-page col-lg-12">
+  <div class="banner-page col-lg-12">
     <p class="title-page">Cabernet Sauvignon Reserve</p>
     <ul class="breadcrumb-page">
-        <li><a href="{{ route('home') }}">Home</a></li>
-        <li aria-current="page"><a href="{{ route('shop') }}">Shop</a></li>
+        <li><a href="{{ route('home',app()->getLocale()) }}">Home</a></li>
+        <li aria-current="page"><a href="{{ route('home',app()->getLocale()) }}">Shop</a></li>
         <li aria-current="page"><a href="">New Arrivals</a></li>
         <li aria-current="page">Cabernet Sauvignon Reserve</li>
     </ul>
@@ -46,8 +46,13 @@
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
             </select>
-            <br><br><br>
-            <input class="Buyed-PDetail" type="number" value="1" min="0" max="1000" step="1"/>
+            <br><br>
+
+              <div class="quantity">
+                 <input class="Buyed-PDetail" type="number" min="1" max="100" step="1" value="1">
+              </div>
+              <script src="{{ asset('js/number.js') }}"></script>
+
             <br><br><br>
             <a href=""class="btn-subtitle PDetail-BuyNow"><span class=""><span class="">Buy Now</span></span></a>
             <br><br><br><br>
