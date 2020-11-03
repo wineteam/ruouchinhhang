@@ -2,6 +2,7 @@
 @section('content')
 <div class="product-page">
    <!-- Breadcrumb -->
+<<<<<<< HEAD
    <div class="banner-page col-lg-12">
     <p class="title-page">{{$product->name}}</p>
     <ul class="breadcrumb-page">
@@ -16,6 +17,15 @@
           @endforeach
         </li>
 
+=======
+  <div class="banner-page col-lg-12">
+    <p class="title-page">Cabernet Sauvignon Reserve</p>
+    <ul class="breadcrumb-page">
+        <li><a href="{{ route('home',app()->getLocale()) }}">Home</a></li>
+        <li aria-current="page"><a href="{{ route('home',app()->getLocale()) }}">Shop</a></li>
+        <li aria-current="page"><a href="">New Arrivals</a></li>
+        <li aria-current="page">Cabernet Sauvignon Reserve</li>
+>>>>>>> 5706f968c27f147f3b286844519b8fc3656f0c4f
     </ul>
   </div>
 
@@ -47,11 +57,27 @@
             </select>
           @if(!$loop->last)
             <br><br>
+<<<<<<< HEAD
             @endif
           @endforeach
 
             <br><br><br>
             <input class="Buyed-PDetail" type="number" value="1" min="0" max="1000" step="1"/>
+=======
+            <span class="Option-PDetail2">Vintage</span>
+            <select class="mdb-select md-form option-select" style="width: 80%">
+                <option value="" disabled selected>Choose an option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+            </select>
+            <br><br>
+
+              <div class="quantity">
+                 <input class="Buyed-PDetail" type="number" min="1" max="100" step="1" value="1">
+              </div>
+              <script src="{{ asset('js/number.js') }}"></script>
+
+>>>>>>> 5706f968c27f147f3b286844519b8fc3656f0c4f
             <br><br><br>
             <a href=""class="btn-subtitle PDetail-BuyNow"><span class=""><span class="">Buy Now</span></span></a>
             <br><br><br><br>

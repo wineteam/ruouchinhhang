@@ -10,9 +10,13 @@
             <div class="Display-noneX" style="height: 5.5em"><span></span></div>
             <div style="height: 5em"><span></span></div>
 
-            <div class="checkout-bg">
-                <h1 class="text-center Font-white">Checkout</h1>
-                <p class="text-center Font-white"><a href="{{ route('home') }}"><span>Home</span></a> / <a href="{{ route('shop',App()->getLocale()) }}"><span>shop</span></a> / <a href=""><span>checkout</span></a></p>
+            <div class="checkout-bg text-center">
+                <h1 class="Font-white">Checkout</h1>
+                <ul class="breadcrumb-List">
+                    <li><a href="{{ route('home',App()->getLocale()) }}"><span>Home</span></a></li>
+                    <li><a href="{{ route('shop',App()->getLocale()) }}"><span>shop</span></a></li>
+                    <li><span class="none-color">Checkout</span></li>
+                </ul>
             </div>
 
             <div style="height: 5em"><span></span></div>
