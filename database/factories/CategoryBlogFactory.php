@@ -22,7 +22,7 @@ class CategoryBlogFactory extends Factory
     public function definition()
     {
         return [
-            'category_id'=>rand(5,8),
+            'category_id'=>rand(9,14),
             'blog_id'=>rand(1,100),
             'created_at' => now(),
             'updated_at' => now(),

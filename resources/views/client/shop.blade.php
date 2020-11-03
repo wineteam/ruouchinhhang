@@ -35,12 +35,19 @@
       </div>
     </div>
     <div class="row">
-
+    @foreach($products  as $product)
       <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
         <div class="productItem__content">
-          <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt="">
-          <p>White, Wine</p>
-          <h4>2014 California Red</h4>
+          <a href="{{route('ShowDetailPro',$product->slug)}}"> <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt=""></a>
+          @forelse($product->categories as $category)
+            <a href="#">{{$category->name}}</a>
+            @if(!$loop->last)
+              ,
+            @endif
+          @empty
+            <a href="#">Không phân loại</a>
+          @endforelse
+          <h4><a href="{{route('ShowDetailPro',$product->slug)}}">{{\Illuminate\Support\Str::limit($product->name,15)}}</a></h4>
           <p>
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -48,98 +55,15 @@
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
           </p>
-          <p>£200.00 – £230.00</p>
+          <p>{{$product->presentPrice()." ".__('$')}}</p>
           <button><i class="fa fa-shopping-bag"></i> Buy now</button>
       </div>
       </div>
+      @endforeach
 
-      <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
-        <div class="productItem__content">
-          <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-2.png') }}" alt="">
-          <p>White, Wine</p>
-          <h4>2014 California Red</h4>
-          <p>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-          </p>
-          <p>£200.00 – £230.00</p>
-          <button><i class="fa fa-shopping-bag"></i> Buy now</button>
+      <div class="col-md-12" style="display: flex;justify-content: center">
+        {{$products->links()}}
       </div>
-      </div>
-
-      <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
-        <div class="productItem__content">
-          <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-3.png') }}" alt="">
-          <p>White, Wine</p>
-          <h4>2014 California Red</h4>
-          <p>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-          </p>
-          <p>£200.00 – £230.00</p>
-          <button><i class="fa fa-shopping-bag"></i> Buy now</button>
-      </div>
-      </div>
-
-
-      <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
-        <div class="productItem__content">
-          <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt="">
-          <p>White, Wine</p>
-          <h4>2014 California Red</h4>
-          <p>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-          </p>
-          <p>£200.00 – £230.00</p>
-          <button><i class="fa fa-shopping-bag"></i> Buy now</button>
-      </div>
-      </div>
-
-      <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
-        <div class="productItem__content">
-          <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-2.png') }}" alt="">
-          <p>White, Wine</p>
-          <h4>2014 California Red</h4>
-          <p>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-          </p>
-          <p>£200.00 – £230.00</p>
-          <button><i class="fa fa-shopping-bag"></i> Buy now</button>
-      </div>
-      </div>
-
-      <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
-        <div class="productItem__content">
-          <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-3.png') }}" alt="">
-          <p>White, Wine</p>
-          <h4>2014 California Red</h4>
-          <p>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-          </p>
-          <p>£200.00 – £230.00</p>
-          <button><i class="fa fa-shopping-bag"></i> Buy now</button>
-      </div>
-      </div>
-
-
     </div>
   </div>
 
@@ -148,12 +72,9 @@
       <div class="col-xl-12 col-md-6 col-sm-12">
         <h4 class="pt-4 pb-3">Product Categories</h4>
         <div class="productCategories__list pl-2 mb-5">
-          <a href="#"><i class="fa fa-angle-right"></i>  New Arrivals</a>
-          <a href="#"><i class="fa fa-angle-right"></i>  Red Wines</a>
-          <a href="#"><i class="fa fa-angle-right"></i>  Rose Wines</a>
-          <a href="#"><i class="fa fa-angle-right"></i>  Sparkling</a>
-          <a href="#"><i class="fa fa-angle-right"></i>  White Wines</a>
-          <a href="#"><i class="fa fa-angle-right"></i>  Uncategorized</a>
+          @foreach($categories as $category)
+          <a href="#"><i class="fa fa-angle-right"></i>  {{$category->name}}</a>
+          @endforeach
         </div>
       </div>
 

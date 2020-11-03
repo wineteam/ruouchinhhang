@@ -29,13 +29,13 @@ class productFactory extends Factory
         $view = rand(0,1000);
         $bought = rand(0,1000);
         $enum = ['0','1'];
-
         return [
             'user_id'=>$userid,
             'codeProduct'=>$this->RandomString(),
             'name'=>$name,
             'slug'=>str_slug($name),
             'thumbnail'=>$this->faker->imageUrl(),
+            'detail'=>$this->faker->paragraph($maxNbChars = 10),
             'price'=>$price,
             'discount'=>$discount,
             'nation'=> $nation[array_rand($nation,1)],
@@ -47,7 +47,7 @@ class productFactory extends Factory
             'especially'=> $enum[rand(0,1)],
             'created_at' => now(),
             'updated_at' => now(),
-            
+
         ];
     }
     public function RandomString()

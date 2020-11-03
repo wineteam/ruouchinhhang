@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('thumbnail')->nullable();
+            $table->text('detail')->nullable();
             $table->integer('price');
             $table->integer('discount')->nullable();
             $table->string('nation');

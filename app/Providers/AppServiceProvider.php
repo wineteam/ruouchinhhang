@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use App\Models\LanguageSwitch;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,7 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $languages = LanguageSwitch::get();
-        view()->share('languages',$languages);
+        Paginator::useBootstrap();
+        if(Schema::hasTable('language_switches')) {
+          $languages = LanguageSwitch::get();
+          view()->share('languages', $languages);
+        }
     }
 }

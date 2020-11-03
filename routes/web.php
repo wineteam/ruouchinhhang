@@ -21,7 +21,7 @@ use App\Http\Controllers\ShopController;
   })->name('setLanguage');
     Route::get('/', [HomePageController::class,'index'])->name('home');
     Route::get('/shop',[ShopController::class,'index'])->name('shop');
-    Route::get('/shop/{slug}',[ShopController::class,'ShowDetailPro'])->name('ShowDetailPro');
+    Route::get('/shop/{product:slug}',[ShopController::class,'ShowDetailPro'])->name('ShowDetailPro');
     Route::get('/blog', function () {
         return view('client.blog');
     })->name('blog');
