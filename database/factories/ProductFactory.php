@@ -23,7 +23,6 @@ class productFactory extends Factory
     {
         $userid = rand(1,20);
         $name = $this->faker->sentence();
-        $price  = rand(500000,7000000);
         $discount = rand(0,100000);
         $nation = ['Việt Nam','America','Japan','China'];
         $view = rand(0,1000);
@@ -36,7 +35,6 @@ class productFactory extends Factory
             'slug'=>str_slug($name),
             'thumbnail'=>$this->faker->imageUrl(),
             'detail'=>$this->faker->paragraph($maxNbChars = 10),
-            'price'=>$price,
             'discount'=>$discount,
             'nation'=> $nation[array_rand($nation,1)],
             'description'=>$this->faker->paragraph($maxNbChars = 50),

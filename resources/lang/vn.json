@@ -11,10 +11,14 @@
     "Preferred_Products": "Sản phẩm hàng đầu",
     "info_company": "Chúng tôi cung cấp nhiều loại rượu khác nhau cho mọi mức giá và mọi dịp, từ phong phú đến thanh lịch.",
     "Recommendations": "Đề xuất cho bạn",
-    "Buy_now": "Mua ngay",
+    "buy_now": "Mua ngay",
     "$": "vnđ",
     "Learn_more": "Đọc thêm",
     "Title_posts_especially": "Bài viết hay",
     "get_it_touch": "Liên hệ ngay",
-    "address": "Địa chỉ"
+    "address": "Địa chỉ",
+     "product_categories": "Danh mục sản phẩm",
+  "all_products": "Tất cả sản phẩm",
+  "related_products": "Sản phẩm liên quan",
+  "top_products": "Sản phẩm nổi bật"
 }

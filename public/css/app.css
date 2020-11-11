@@ -11467,6 +11467,14 @@ button:focus {
   background-position: center;
 }
 
+.home-page .contact-home {
+  position: absolute;
+  top: 0;
+  background-color: #1c1e22e3;
+  height: 100%;
+  right: 0;
+}
+
 .home-page .btn-subtitle-contact {
   position: relative;
   border: 1px solid #bdb68e;
@@ -12676,5 +12684,722 @@ button:focus {
 
 .contact-page #sendmessage:disabled {
   cursor: not-allowed;
+}
+
+.login-page {
+  background: url(/images/banner01.jpg?dba5bd47e7cc73a2c1d5bfec0fbbd505) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  /*--A Design by W3layouts
+  Author: W3layout
+  Author URL: http://w3layouts.com
+  License: Creative Commons Attribution 3.0 Unported
+  License URL: http://creativecommons.org/licenses/by/3.0/
+  --*/
+  /*--- reset code ---*/
+  /* start editing from here */
+  /* text align right */
+  /* text align left */
+  /* text align center */
+  /* float right */
+  /* float left */
+  /* clear float */
+  /* Position Relative */
+  /* Position Absolute */
+  /* vertical align baseline */
+  /* vertical align top */
+  /* vertical menu */
+  /* horizontal menu */
+  /*--- end reset code ---*/
+  /*-- responsive design --*/
+  /*-- /responsive design --*/
+}
+
+.login-page html,
+.login-page body,
+.login-page div,
+.login-page span,
+.login-page applet,
+.login-page object,
+.login-page iframe,
+.login-page h1,
+.login-page h2,
+.login-page h3,
+.login-page h4,
+.login-page h5,
+.login-page h6,
+.login-page p,
+.login-page blockquote,
+.login-page pre,
+.login-page a,
+.login-page abbr,
+.login-page acronym,
+.login-page address,
+.login-page big,
+.login-page cite,
+.login-page code,
+.login-page del,
+.login-page dfn,
+.login-page em,
+.login-page img,
+.login-page ins,
+.login-page kbd,
+.login-page q,
+.login-page s,
+.login-page samp,
+.login-page small,
+.login-page strike,
+.login-page strong,
+.login-page sub,
+.login-page sup,
+.login-page tt,
+.login-page var,
+.login-page b,
+.login-page u,
+.login-page i,
+.login-page dl,
+.login-page dt,
+.login-page dd,
+.login-page ol,
+.login-page nav ul,
+.login-page nav li,
+.login-page fieldset,
+.login-page form,
+.login-page label,
+.login-page legend,
+.login-page table,
+.login-page caption,
+.login-page tbody,
+.login-page tfoot,
+.login-page thead,
+.login-page tr,
+.login-page th,
+.login-page td,
+.login-page article,
+.login-page aside,
+.login-page canvas,
+.login-page details,
+.login-page embed,
+.login-page figure,
+.login-page figcaption,
+.login-page footer,
+.login-page header,
+.login-page hgroup,
+.login-page menu,
+.login-page nav,
+.login-page output,
+.login-page ruby,
+.login-page section,
+.login-page summary,
+.login-page time,
+.login-page mark,
+.login-page audio,
+.login-page video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.login-page article,
+.login-page aside,
+.login-page details,
+.login-page figcaption,
+.login-page figure,
+.login-page footer,
+.login-page header,
+.login-page hgroup,
+.login-page menu,
+.login-page nav,
+.login-page section {
+  display: block;
+}
+
+.login-page ol,
+.login-page ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.login-page blockquote,
+.login-page q {
+  quotes: none;
+}
+
+.login-page blockquote:before,
+.login-page blockquote:after,
+.login-page q:before,
+.login-page q:after {
+  content: "";
+  content: none;
+}
+
+.login-page table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.login-page a {
+  text-decoration: none;
+}
+
+.login-page .txt-rt {
+  text-align: right;
+}
+
+.login-page .txt-lt {
+  text-align: left;
+}
+
+.login-page .txt-center {
+  text-align: center;
+  /*-- W3Layouts --*/
+}
+
+.login-page .float-rt {
+  float: right;
+}
+
+.login-page .float-lt {
+  float: left;
+}
+
+.login-page .clear {
+  clear: both;
+}
+
+.login-page .pos-relative {
+  position: relative;
+}
+
+.login-page .pos-absolute {
+  position: absolute;
+}
+
+.login-page .vertical-base {
+  vertical-align: baseline;
+}
+
+.login-page .vertical-top {
+  vertical-align: top;
+}
+
+.login-page nav.vertical ul li {
+  display: block;
+}
+
+.login-page nav.horizontal ul li {
+  display: inline-block;
+}
+
+.login-page img {
+  max-width: 100%;
+}
+
+.login-page h1.w3ls {
+  font-size: 50px;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
+  /*-- w3layouts --*/
+  text-transform: uppercase;
+}
+
+.login-page .content-w3ls {
+  background-color: #202123;
+  width: 70%;
+  margin: 0 auto 50px;
+  padding: 0;
+}
+
+.login-page .content-w3ls .content-agile1 {
+  width: 50%;
+  float: left;
+  background: url(/images/content.jpg?f7c30a42e2f5a7560f4f9ca5f54e9ccc) no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  height: 555px;
+}
+
+.login-page h2.agileits1 {
+  font-size: 40px;
+  font-weight: normal;
+  color: #fff;
+  text-align: Center;
+  padding: 200px 0 15px;
+  text-transform: uppercase;
+  font-family: "Monoton", cursive;
+}
+
+.login-page p.agileits2 {
+  font-size: 25px;
+  font-weight: normal;
+  color: white;
+  font-weight: normal;
+  border-color: 1px solid white;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.login-page .content-w3ls .content-agile2 {
+  width: 50%;
+  float: left;
+  padding: 50px 0 0;
+}
+
+.login-page input#firstname,
+.login-page input#email,
+.login-page input#password1,
+.login-page input#password2 {
+  width: 300px;
+  height: 50px;
+  padding: 0 15px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 200;
+  background-color: transparent;
+  /*-- w3layouts --*/
+  border-bottom: 5px solid #fff;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  font-family: "Raleway", sans-serif;
+  margin: 0 auto 20px;
+  display: block;
+  outline: none;
+}
+
+.login-page input#firstname:focus,
+.login-page input#email:focus,
+.login-page input#password1:focus,
+.login-page input#password2:focus,
+.login-page input#firstname:hover,
+.login-page input#email:hover,
+.login-page input#password1:hover,
+.login-page input#password2:hover {
+  color: #fff;
+  border-bottom: 5px solid #3970b0;
+}
+
+.login-page input::-webkit-input-placeholder {
+  color: #fff !important;
+}
+
+.login-page input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff !important;
+}
+
+.login-page input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff !important;
+}
+
+.login-page input:-ms-input-placeholder {
+  color: #fff !important;
+}
+
+.login-page input:hover::-webkit-input-placeholder {
+  color: #3970b0 !important;
+}
+
+.login-page input:hover:-moz-placeholder {
+  /* Firefox 18- */
+  color: #3970b0 !important;
+}
+
+.login-page input:hover::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #3970b0 !important;
+}
+
+.login-page input:hover:-ms-input-placeholder {
+  color: #3970b0 !important;
+}
+
+.login-page input.register {
+  width: 335px;
+  margin: 30px auto;
+  display: block;
+  height: 50px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: normal;
+  color: #fff;
+  background-color: #3970b0;
+  border-color: transparent;
+  font-family: "Raleway", sans-serif;
+  /*-- w3ls --*/
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.login-page input.register:hover {
+  color: #fff;
+  background-color: #3970b0;
+}
+
+.login-page p.wthree {
+  font-size: 16px;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  text-transform: capitalize;
+  padding-bottom: 20px;
+}
+
+.login-page ul.social-agileinfo {
+  text-align: center;
+}
+
+.login-page ul.social-agileinfo li {
+  display: inline-block;
+  margin: 0;
+}
+
+.login-page ul.social-agileinfo li a i.fa {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #fff;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+}
+
+.login-page ul.social-agileinfo li a i.fa.fa-facebook:hover {
+  background-color: #3b5998;
+  color: #fff;
+  border-color: #3b5998;
+}
+
+.login-page ul.social-agileinfo li a i.fa.fa-twitter:hover {
+  background-color: #1da1f2;
+  color: #fff;
+  border-color: #1da1f2;
+}
+
+.login-page ul.social-agileinfo li a i.fa.fa-youtube:hover {
+  background-color: #cd201f;
+  color: #fff;
+  border-color: #cd201f;
+}
+
+.login-page ul.social-agileinfo li a i.fa.fa-google-plus:hover {
+  /*-- w3ls --*/
+  background-color: #dd4b39;
+  color: #fff;
+  border-color: #dd4b39;
+}
+
+.login-page ul.social-agileinfo li a i.fa:hover {
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  -o-animation: spin 2s linear infinite;
+  -ms-animation: spin 2s linear infinite;
+}
+
+.login-page .panel-login {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.login-page .panel-login a {
+  color: #fff;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.login-page .panel-login a:hover {
+  color: #cd201f;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.login-page p.copyright {
+  font-size: 16px;
+  text-align: center;
+  color: #dadada;
+  line-height: 30px;
+  padding: 20px 10px;
+}
+
+.login-page p.copyright a {
+  color: #f15f22;
+}
+
+.login-page p.copyright a:hover {
+  color: #36b051;
+}
+
+@media (max-width: 1600px) {
+  .login-page h2.agileits1 {
+    padding: 225px 0 15px;
+  }
+}
+
+@media (max-width: 1366px) {
+  .login-page h2.agileits1 {
+    padding: 235px 0 15px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .login-page {
+    /*-- agileits --*/
+  }
+
+  .login-page h1.w3ls {
+    font-size: 40px;
+  }
+
+  .login-page .content-w3ls {
+    width: 80%;
+    margin: 0 auto 40px;
+  }
+
+  .login-page p.agileits2 {
+    font-size: 14px;
+  }
+
+  .login-page p.copyright {
+    font-size: 14px;
+  }
+
+  .login-page p.wthree {
+    font-size: 14px;
+  }
+
+  .login-page input#firstname,
+  .login-page input#email,
+  .login-page input#password1,
+  .login-page input#password2 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .login-page h1.w3ls {
+    padding: 30px 0;
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 991px) {
+  .login-page h2.agileits1 {
+    padding: 230px 0 15px;
+  }
+
+  .login-page .content-w3ls {
+    width: 90%;
+  }
+}
+
+@media (max-width: 800px) {
+  .login-page {
+    /*-- agileits --*/
+  }
+
+  .login-page input#firstname,
+  .login-page input#email,
+  .login-page input#password1,
+  .login-page input#password2 {
+    width: 260px;
+  }
+
+  .login-page input.register {
+    width: 295px;
+  }
+
+  .login-page p.agileits2 {
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-page h2.agileits1 {
+    padding: 210px 0 15px;
+  }
+}
+
+@media (max-width: 736px) {
+  .login-page .content-w3ls .content-agile1 {
+    width: 100%;
+    height: 250px;
+  }
+
+  .login-page h2.agileits1 {
+    padding: 75px 0 15px;
+  }
+
+  .login-page .content-w3ls .content-agile2 {
+    width: 100%;
+    padding: 25px 0 30px;
+  }
+
+  .login-page .content-w3ls {
+    width: 65%;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-page h2.agileits1 {
+    padding: 65px 0 10px;
+  }
+}
+
+@media (max-width: 568px) {
+  .login-page .content-w3ls {
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-page h2.agileits1 {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 414px) {
+  .login-page h1.w3ls {
+    padding: 25px 0;
+    font-size: 30px;
+  }
+
+  .login-page .content-w3ls {
+    /*-- agileinfo --*/
+    width: 85%;
+    margin: 0 auto 10px;
+  }
+}
+
+@media (max-width: 384px) {
+  .login-page input#firstname,
+  .login-page input#email,
+  .login-page input#password1,
+  .login-page input#password2 {
+    width: 230px;
+    height: 40px;
+  }
+
+  .login-page input.register {
+    width: 260px;
+    height: 45px;
+  }
+
+  .login-page p.wthree {
+    font-size: 14px;
+    padding: 0 15px 20px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 375px) {
+  .login-page h1.w3ls {
+    padding: 25px 0;
+    font-size: 27px;
+  }
+
+  .login-page h2.agileits1 {
+    font-size: 25px;
+    padding: 43px 0 10px;
+  }
+
+  .login-page .content-w3ls .content-agile1 {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 320px) {
+  .login-page {
+    /*-- agileinfo --*/
+  }
+
+  .login-page h1.w3ls {
+    padding: 25px 0;
+    font-size: 24px;
+  }
+
+  .login-page .content-w3ls .content-agile1 {
+    width: 100%;
+    height: 180px;
+  }
+
+  .login-page h2.agileits1 {
+    font-size: 22px;
+    padding: 37px 0 10px;
+  }
+
+  .login-page p.agileits2 {
+    font-size: 13px;
+  }
+
+  .login-page input#firstname,
+  .login-page input#email,
+  .login-page input#password1,
+  .login-page input#password2 {
+    width: 195px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .login-page .content-w3ls {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .login-page input.register {
+    width: 230px;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .login-page p.wthree {
+    font-size: 13px;
+    padding: 0 15px 15px;
+  }
+
+  .login-page p.copyright {
+    font-size: 13px;
+  }
 }
 

@@ -69,7 +69,7 @@
 <div class="row">
     <div class="MultiCarousel" data-items="1,2,3,4" data-slide="1" id="MultiCarousel"  data-interval="1000">
         <div class="MultiCarousel-inner">
-            @forelse($products as $item)
+            @forelse($products as $product)
             <div class="item">
                 <div class="bg-white" style="position: relative;">
                     <a href="">
@@ -77,9 +77,9 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a href="{{route('ShowDetailPro',$item->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt=""></a>
-                    @forelse($item->categories as $category)
-                    <a href="#" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
+                    <a href="{{route('ShowDetailPro',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt=""></a>
+                    @forelse($product->categories as $category)
+                    <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
                         @if(!$loop->last)
                             ,
                         @endif
@@ -87,9 +87,20 @@
                         <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
                     @endforelse
                         <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{$item->id}}{{\Illuminate\Support\Str::limit($item->name,15  )}}</h5></a>
-                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">{{$item->presentPrice()}} {{__("$")}}</h5>
-                        <a href="" class="btn-subtitle"><span class=""><span class="">{{__('Buy_now')}}</span></span></a>
+                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{$product->id}}{{\Illuminate\Support\Str::limit($product->name,15  )}}</h5></a>
+                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">
+                          @if($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') === $product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price'))
+                            {{number_format($product->presentPrice->where('name','size')->max('price') +
+                            $product->presentPrice->where('name','vintage')->max('price'))}}
+                          @else
+                            {{number_format($product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price') )}}
+                            -
+                            {{number_format($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') )}}
+                          @endif
+                          {{__("$")}}
+
+                        </h5>
+                        <a href="" class="btn-subtitle"><span class=""><span class="">{{__('buy_now')}}</span></span></a>
                     </div>
                 </div>
             </div>
@@ -135,23 +146,12 @@
                         <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="images/wine-glass.png" alt="">
                         <span class="text-center Font-Size-1vw">Filter - All</span>
                     </button>
-
-                    <button class="btnfilter nobtnshow" onclick="filterSelection('White-Wines')">
+                  @foreach($categories as $category)
+                    <button class="btnfilter nobtnshow" onclick="filterSelection({{$category->slug}})">
                         <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="images/wine-glass.png" alt="">
-                        <span class="text-center Font-Size-1vw">White Wines</span>
+                        <span class="text-center Font-Size-1vw text-capitalize">{{$category->name}}</span>
                     </button>
-                    <button class="btnfilter nobtnshow" onclick="filterSelection('Rose-Wines')">
-                        <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="images/wine-glass.png" alt="">
-                        <span class="text-center Font-Size-1vw">Rose Wines</span>
-                    </button>
-                    <button class="btnfilter nobtnshow" onclick="filterSelection('Red-Wines')">
-                        <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="images/wine-glass.png" alt="">
-                        <span class="text-center Font-Size-1vw">Red Wines</span>
-                    </button>
-                    <button class="btnfilter nobtnshow" onclick="filterSelection('Sparkling')">
-                        <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="images/wine-glass.png" alt="">
-                        <span class="text-center Font-Size-1vw">Sparkling</span>
-                    </button>
+                  @endforeach
                 </div>
             </div>
         </div>
@@ -169,65 +169,12 @@
                         <div class="col-12 mx-auto" style="padding: 20px;">
                             <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Cabernet Sauvignon Reserve</h5></a>
                             <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£26000 – £34000</h5>
-                            <a href=""class="btn-subtitle"><span class=""><span class="">{{__('Buy_now')}}</span></span></a>
+                            <a href=""class="btn-subtitle"><span class=""><span class="">{{__('buy_now')}}</span></span></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-4 col-sm-6 filterDiv padding-less Rose-Wines Sparkling show">
-                <div>
-                    <div class="bg-white" style="position: relative; margin-top: 1rem;">
-                        <a href="">
-                            <div class="circle-box text-center">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-                        </a>
-                        <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-2.png') }}" alt="">
-                        <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                        <div class="col-12 mx-auto" style="padding: 20px;">
-                            <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Lambert Sweet White</h5></a>
-                            <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£14000 – £17000</h5>
-                            <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-4 col-sm-6 filterDiv padding-less Rose-Wines White-Wines show">
-                <div>
-                    <div class="bg-white" style="position: relative; margin-top: 1rem;">
-                        <a href="">
-                            <div class="circle-box text-center">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-                        </a>
-                        <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-3.png') }}" alt="">
-                        <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                        <div class="col-12 mx-auto" style="padding: 20px;">
-                            <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">2014 California Red</h5></a>
-                            <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£20000 – £23000</h5>
-                            <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-4 col-sm-6 filterDiv padding-less Red-Wines Sparkling show">
-                <div>
-                    <div class="bg-white" style="position: relative; margin-top: 1rem;">
-                        <a href="">
-                            <div class="circle-box text-center">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-                        </a>
-                        <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt="">
-                        <span class="text-center Font-Size-07vw">New-Arrivals,White-Wines</span>
-                        <div class="col-12 mx-auto" style="padding: 20px;">
-                            <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">Pink Moscato Rose Wine</h5></a>
-                            <h5 class="Font-Red" style="margin-bottom: 1.5rem;">£18600 – £22200</h5>
-                            <a href=""class="btn-subtitle"><span class=""><span class="">Buy Now</span></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>

@@ -11,10 +11,14 @@
     "Preferred_Products": "Preferred products",
     "info_company": "We offer a great variety of wines for every price point and any occasion, from rich shardonnay to elegant and creamy brut.",
     "Recommendations": "Recommendations",
-    "Buy_now": "Buy Now",
+    "buy_now": "Buy Now",
     "$": "$",
     "Learn_more": "Learn More",
     "Title_posts_especially": "Top Posts",
     "get_it_touch": "Get in Touch",
-    "address": "Adress"
+    "address": "Adress",
+    "product_categories": "Product Categories",
+    "all_products": "all products",
+    "related_products": "Related products",
+    "top_products": "Top products"
 }

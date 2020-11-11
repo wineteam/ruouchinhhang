@@ -2,7 +2,6 @@
 @section('content')
 <div class="product-page">
    <!-- Breadcrumb -->
-<<<<<<< HEAD
    <div class="banner-page col-lg-12">
     <p class="title-page">{{$product->name}}</p>
     <ul class="breadcrumb-page">
@@ -10,22 +9,13 @@
         <li aria-current="page"><a href="{{ route('shop') }}">Shop</a></li>
         <li aria-current="page">
           @foreach($product->categories as $category)
-          <a href="">{{$category->name}}</a>
+          <a href="{{route('getProByCat',$category->slug)}}">{{$category->name}}</a>
             @if(!$loop->last)
               ,
             @endif
           @endforeach
         </li>
 
-=======
-  <div class="banner-page col-lg-12">
-    <p class="title-page">Cabernet Sauvignon Reserve</p>
-    <ul class="breadcrumb-page">
-        <li><a href="{{ route('home',app()->getLocale()) }}">Home</a></li>
-        <li aria-current="page"><a href="{{ route('home',app()->getLocale()) }}">Shop</a></li>
-        <li aria-current="page"><a href="">New Arrivals</a></li>
-        <li aria-current="page">Cabernet Sauvignon Reserve</li>
->>>>>>> 5706f968c27f147f3b286844519b8fc3656f0c4f
     </ul>
   </div>
 
@@ -42,55 +32,51 @@
         </div>
         <div class="col-xl-6">
             <h2 class="pt-4 pb-3">{{$product->name}}</h2>
-            <h4 class="pb-3 Font-Red">{{$product->presentPrice()." ".__('$')}}</h4>
+            <h4 class="pb-3 Font-Red">
+                {{number_format($product->presentPrice->where('name','size')->max('price') +
+                $product->presentPrice->where('name','vintage')->max('price'))}}
+
+              {{__("$")}}
+            </h4>
            <div class="detail">
              {!! $product->detail !!}
            </div>
             <br>
           @foreach($product->options as $option)
-            <span class="Option-PDetail">{{$option->name}}</span>
+            <span class="Option-PDetail d-block">{{$option->name}}</span>
             <select class="mdb-select md-form option-select" style="width: 80%">
                 <option value="" disabled selected>Choose an option</option>
-
-                <option value="1"></option>
-
+                @foreach($product->extras($option->id) as $extra)
+                  <option value="{{$extra->name}}">{{$extra->name}}</option>
+                @endforeach
             </select>
           @if(!$loop->last)
             <br><br>
-<<<<<<< HEAD
             @endif
           @endforeach
 
             <br><br><br>
             <input class="Buyed-PDetail" type="number" value="1" min="0" max="1000" step="1"/>
-=======
-            <span class="Option-PDetail2">Vintage</span>
-            <select class="mdb-select md-form option-select" style="width: 80%">
-                <option value="" disabled selected>Choose an option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-            </select>
-            <br><br>
-
-              <div class="quantity">
-                 <input class="Buyed-PDetail" type="number" min="1" max="100" step="1" value="1">
-              </div>
-              <script src="{{ asset('js/number.js') }}"></script>
-
->>>>>>> 5706f968c27f147f3b286844519b8fc3656f0c4f
             <br><br><br>
             <a href=""class="btn-subtitle PDetail-BuyNow"><span class=""><span class="">Buy Now</span></span></a>
             <br><br><br><br>
             <p>Product ID: {{$product->codeProduct}}</p>
             <p>Categories:
               @foreach($product->categories as $category)
-              <a href="" class="Font-Red">{{$category->name}}</a>
+              <a href="{{route('getProByCat',$category->slug)}}" class="Font-Red">{{$category->name}}</a>
                 @if(!$loop->last)
                   ,
                 @endif
               @endforeach
             </p>
-            <p>Tags: <a href="" class="Font-Red">white</a>, <a href="" class="Font-Red">wine</a></p>
+            <p>Tags:
+              @foreach($product->tags as $tag)
+              <a href="" class="Font-Red">{{$tag->name}}</a>
+              @if(!$loop->last)
+                ,
+              @endif
+              @endforeach
+            </p>
         </div>
 
         <div class="col-xl-12" style="margin-top: 50px;">
@@ -221,68 +207,54 @@
 <!--====================================== Empty Space ======================================-->
 <div class="vc_empty_space" style="height: 5.5em"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END Empty Space ======================================-->
-    <h3>Related products</h3><br>
+    <h3 class="text-capitalize text-info">{{__('related_products')}}</h3><br>
     <div class="row">
+      @forelse($productRelated as $product)
         <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
             <div class="productItem__content">
-            <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt="">
-            <p>White, Wine</p>
-            <h4>2014 California Red</h4>
-            <p>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-            </p>
-            <p>£200.00 – £230.00</p>
-            <button><i class="fa fa-shopping-bag"></i> Buy now</button>
+              <a href="{{route('ShowDetailPro',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt=""></a>
+              @foreach($product->categories as $category)
+            <a href="{{route('getProByCat',$category->slug)}}" class="text-capitalize">{{$category->name}}</a>
+                @if(!$loop->last)
+                  ,
+                @endif
+              @endforeach
+            <h4><a href="{{route('ShowDetailPro',$product->slug)}}" class="text-capitalize">{{\Illuminate\Support\Str::limit($product->name,15  )}}</a></h4>
+{{--            <p>--}}
+{{--                <i class="fa fa-star"></i>--}}
+{{--                <i class="fa fa-star"></i>--}}
+{{--                <i class="fa fa-star"></i>--}}
+{{--                <i class="fa fa-star"></i>--}}
+{{--                <i class="fa fa-star"></i>--}}
+{{--            </p>--}}
+            <h6>
+              @if($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') === $product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price'))
+                {{number_format($product->presentPrice->where('name','size')->max('price') +
+                $product->presentPrice->where('name','vintage')->max('price'))}}
+              @else
+                {{number_format($product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price') )}}
+                -
+                {{number_format($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') )}}
+              @endif
+              {{__("$")}}
+            </h6>
+              <a href="" class="btn-subtitle"><span class=""><span class="">{{__('buy_now')}}</span></span></a>
         </div>
         </div>
+      @empty
+      <h1>khong co san pham</h1>
+      @endforelse
 
-        <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
-            <div class="productItem__content">
-            <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-2.png') }}" alt="">
-            <p>White, Wine</p>
-            <h4>2014 California Red</h4>
-            <p>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-            </p>
-            <p>£200.00 – £230.00</p>
-            <button><i class="fa fa-shopping-bag"></i> Buy now</button>
-        </div>
-        </div>
-
-        <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
-            <div class="productItem__content">
-            <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-3.png') }}" alt="">
-            <p>White, Wine</p>
-            <h4>2014 California Red</h4>
-            <p>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-            </p>
-            <p>£200.00 – £230.00</p>
-            <button><i class="fa fa-shopping-bag"></i> Buy now</button>
-        </div>
-        </div>
     </div>
 </div>
 
   <div class="col-xl-3 col-md-12 col-sm-12 px-3">
     <div class="row productCategories">
       <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3">Product Categories</h4>
+        <h4 class="pt-4 pb-3 text-capitalize">{{__('product_categories')}}</h4>
         <div class="productCategories__list pl-2 mb-5">
           @foreach($categories as $category)
-            <a href="#"><i class="fa fa-angle-right"></i>  {{$category->name}}</a>
+            <a href="{{route('getProByCat',$category->slug)}}" class="text-capitalize"><i class="fa fa-angle-right text-capitalize"></i>  {{$category->name}}</a>
           @endforeach
         </div>
       </div>
@@ -296,62 +268,38 @@
         <span class="ml-5 " style="font-size: 15px; color: #c2c0b0;">Price: £155 — £<span id="numberFillter">365</span></span>
       </div>
       <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3 mt-5">Product</h4>
+        <h4 class="pt-4 pb-3 mt-5 text-capitalize">{{__('top_products')}}</h4>
         <div class="productList p-3">
-          <div class="row">
-            <div class="col-4 text-center productList__item">
-              <img src="{{ asset('images/product-1.png') }}" alt="" >
+          @foreach($proOrderBought as $product)
+            <div class="row">
+              <div class="col-4 text-center productList__item">
+                <a href="{{route('ShowDetailPro',$product->slug)}}"><img src="{{ asset('images/product-1.png') }}" alt="" ></a>
+              </div>
+              <div class="col-8">
+                <h6 class="mb-3" style="font-size: 14px;"><a href="{{route('ShowDetailPro',$product->slug)}}">{{ \Illuminate\Support\Str::limit($product->name,40)}}</a></h6>
+                <h6 style="color: #da3f19; font-size: 14px;">
+                  @if($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') === $product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price'))
+                    {{number_format($product->presentPrice->where('name','size')->max('price') +
+                    $product->presentPrice->where('name','vintage')->max('price'))}}
+                  @else
+                    {{number_format($product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price') )}}
+                    -
+                    {{number_format($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') )}}
+                  @endif
+                  {{__("$")}}
+                </h6>
+              </div>
             </div>
-            <div class="col-8">
-              <h6 class="mb-3" style="font-size: 14px;">California Red Wine</h6>
-              <h6 style="color: #da3f19; font-size: 14px;">£300.00 – £365.00</h6>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-4 text-center productList__item">
-              <img src="{{ asset('images/product-1.png') }}" alt="" >
-            </div>
-            <div class="col-8">
-              <h6 class="mb-3" style="font-size: 14px;">California Red Wine</h6>
-              <h6 style="color: #da3f19; font-size: 14px;">£300.00 – £365.00</h6>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-4 text-center productList__item">
-              <img src="{{ asset('images/product-1.png') }}" alt="" >
-            </div>
-            <div class="col-8">
-              <p class="mb-3" style="font-size: 14px;">California Red Wine</p>
-              <p style="color: #da3f19; font-size: 14px;">£300.00 – £365.00</p>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-4 text-center productList__item">
-              <img src="{{ asset('images/product-1.png') }}" alt="" >
-            </div>
-            <div class="col-8">
-              <h6 class="mb-3" style="font-size: 14px;">California Red Wine</h6>
-              <h6 style="color: #da3f19; font-size: 14px;">£300.00 – £365.00</h6>
-            </div>
-          </div>
+            <hr>
+          @endforeach
         </div>
       </div>
       <div class="col-xl-12 col-md-6 col-sm-12">
         <h4 class="pt-4 pb-3 mt-5">Tags</h4>
         <div class="tagList">
-          <p>
-          <span>new arrival</span>
-          <span>red</span>
-          <div class="List-editor"></div>
-          <span>sparkling</span>
-          <span>vintage</span>
-          <div class="List-editor"></div>
-          <span>white</span>
-          <span>wine</span>
-        </p>
+          @foreach($tagPrimary as $tag)
+          <a href="#" style="padding: 8px 15px;border: 1px solid #485460;color: #000000;display: inline-block;margin: 5px">{{$tag->name}}</a>
+          @endforeach
         </div>
       </div>
     </div>

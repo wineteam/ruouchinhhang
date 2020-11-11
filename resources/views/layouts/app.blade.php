@@ -8,6 +8,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Quanlity Wine') }}</title>
     <link rel="icon" href="{{ asset('images/icon-website.png') }}">
+  <script type="application/x-javascript">
+    addEventListener("load", function() {
+      setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+      window.scrollTo(0, 1);
+    }
+  </script>
+  <!-- fonts -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 <!--================================================================================================================================================================================================================================-->
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- CSS JS Style -->
@@ -55,7 +67,7 @@
         <div class="col-xl-3 col-md-3 col-sm-12 space_moblie2">
             <div class="card card-border-0 flex-row align-items-center h-100">
 {{--                <div class="">--}}
-                    <a href="" class="text-dark edit-icon mr-auto-moblie-icon" style="padding: 10px 15px;border: 2px solid #bdb68e"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                    <a href="{{route('cart')}}" class="text-dark edit-icon mr-auto-moblie-icon" style="padding: 10px 15px;border: 2px solid #bdb68e"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 {{--                </div>--}}
             <div class="mr-auto-moblie btn cart-open">
                 <div class="card-block px-2">
@@ -95,7 +107,7 @@
 
                 <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red"> £822.00</span></p>
                 <div class="subtotal">
-                    <a href="" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
+                    <a href="{{route('cart')}}" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
                 <a href="{{ route('checkout') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
                 </div>
             </div>
@@ -129,7 +141,7 @@
                         @endif
                     @endif
                     <li class="nav-item" style="margin-top: 5px">
-                        <select name="select_language" id="select_language">
+                      <select name="select_language" id="select_language">
                             @foreach($languages as $language)
                                 <option value="{{route('setLanguage',$language->slug)}}"
                                     @if(App()->getLocale() == $language->slug)

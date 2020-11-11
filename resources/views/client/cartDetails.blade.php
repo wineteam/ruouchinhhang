@@ -11,7 +11,7 @@
         <div class="checkout-bg text-center">
             <h1 class="Font-white">Your Cart</h1>
             <ul class="breadcrumb-List">
-                <li><a href="{{ route('home',App()->getLocale()) }}"><span>Cart</span></a></li>
+                <li><a href="{{ route('home') }}"><span>Cart</span></a></li>
             </ul>
         </div>
 
@@ -24,7 +24,7 @@
 <!--====================================== Empty Space ======================================-->
 <div class="vc_empty_space" style="height: 2.5em"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END Empty Space ======================================-->
-    
+
 
 
 <div class="px-4 px-lg-0">
@@ -32,9 +32,9 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-  
+
             <!-- Shopping cart table -->
-            
+
             <div class="Scroll-CartList">
                 <div class="table-responsive">
                 <table class="table">
@@ -118,7 +118,7 @@
             <!-- End -->
           </div>
         </div>
-  
+
         <div class="row py-5 p-4 bg-white rounded shadow-sm">
           <div class="col-lg-6">
             <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">Coupon code</div>
@@ -152,7 +152,7 @@
             </div>
           </div>
         </div>
-  
+
       </div>
     </div>
   </div>

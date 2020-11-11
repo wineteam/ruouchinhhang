@@ -9,5 +9,5 @@ class ExtraOption extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['option_id','name','slug','order','language'];
+    protected $fillable = ['product_option_id','extra_id'];
 }

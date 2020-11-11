@@ -1,9 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,18 +33,13 @@ use App\Http\Controllers\ShopController;
     Route::get('/profile', function () {
         return view('client.profile');
     })->name('profile');
-    Route::get('/forgotpassword', function () {
-        return view('client.forgotpassword');
-    })->name('forgotpassword');
+
     Route::get('/change', function () {
         return view('client.changePassword');
     })->name('change');
 
-    Route::get('/cartdetails', function () {
-        return view('client.cartDetails');
-    })->name('cartdetails');
-
+    Route::get('/cart',[CartController::class,'index'])->name('cart');
+    Route::get('category/{slug:slug}',[ShopController::class,'getProByCat'])->name('getProByCat');
     Route::get('/contact', [ContactController::class,'index'])->name('contact');
     Route::get('manager-admin', );
     Auth::routes();
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

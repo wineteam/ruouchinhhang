@@ -15,15 +15,14 @@ class CreateExtraOptionsTable extends Migration
     {
         Schema::create('extra_options', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('option_id');
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
-            $table->integer('order')->nullable();
-            $table->unsignedBigInteger('language_id')->nullable();
+            $table->unsignedBigInteger('product_option_id');
+            $table->unsignedBigInteger('extra_id');
+            $table->string('name')->nullable();
+            $table->integer('price');
             $table->timestamps();
 
-            $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade');
-
+            $table->foreign('product_option_id')->references('id')->on('product_options')->onDelete('cascade');
+            $table->foreign('extra_id')->references('id')->on('extras')->onDelete('cascade');
         });
     }
 
