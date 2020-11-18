@@ -2,31 +2,32 @@
 
 namespace Database\Factories;
 
-use App\Models\product;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class productFactory extends Factory
+class ProductFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = product::class;
+    protected $model = Product::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
+  /**
+   * Define the model's default state.
+   *
+   * @return array
+   * @throws \Exception
+   */
+    public function definition(): array
     {
-        $userid = rand(1,20);
+        $userid = random_int(1,20);
         $name = $this->faker->sentence();
-        $discount = rand(0,100000);
+        $discount = random_int(0,100000);
         $nation = ['Việt Nam','America','Japan','China'];
-        $view = rand(0,1000);
-        $bought = rand(0,1000);
+        $view = random_int(0,1000);
+        $bought = random_int(0,1000);
         $enum = ['0','1'];
         return [
             'user_id'=>$userid,
@@ -34,27 +35,33 @@ class productFactory extends Factory
             'name'=>$name,
             'slug'=>str_slug($name),
             'thumbnail'=>$this->faker->imageUrl(),
+            'price'=>random_int(100000,900000),
             'detail'=>$this->faker->paragraph($maxNbChars = 10),
             'discount'=>$discount,
             'nation'=> $nation[array_rand($nation,1)],
             'description'=>$this->faker->paragraph($maxNbChars = 50),
             'view'=> $view,
             'bought'=> $bought,
-            'language_id'=> rand(1,2),
-            'is_published'=> $enum[rand(0,1)],
-            'especially'=> $enum[rand(0,1)],
+            'language_id'=> random_int(1,2),
+            'is_published'=> '1',
+            'especially'=> $enum[random_int(0,1)],
+            'amount'=>random_int(0,300),
             'created_at' => now(),
             'updated_at' => now(),
 
         ];
     }
-    public function RandomString()
+    public function RandomString(): string
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < 6; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
+          try {
+            $randomString .= $characters[random_int(0, $charactersLength - 1)];
+          } catch (\Exception $e) {
+            echo "error while created random string";
+          }
         }
         return $randomString;
     }

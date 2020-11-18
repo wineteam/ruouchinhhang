@@ -13,10 +13,6 @@ class Product extends Model
     public function users(){
         return $this->belongsTo(User::class);
     }
-    public function options(){
-      return $this->belongsToMany(Option::class,'product_options');
-    }
-
     public function tags(){
       return $this->hasMany(Tag::class);
     }
@@ -26,8 +22,16 @@ class Product extends Model
     public function categories(){
         return $this->belongsToMany(Category::class,'category_products');
     }
-    public function presentPrice(){
-//      return $this->hasMany(ProductOption::class);
-        return  $this->hasManyThrough(ExtraOption::class,ProductOption::class);
+
+    public function language()
+    {
+      return $this->belongsTo(LanguageSwitch::class);
+    }
+    public function productRelation(){
+      return $this->hasMany(ProductRelation::class);
+    }
+    public function pricePresent() : string{
+
+      return  number_format($this->price);
     }
 }

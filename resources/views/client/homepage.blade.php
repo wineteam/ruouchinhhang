@@ -77,7 +77,7 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a href="{{route('ShowDetailPro',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt=""></a>
+                    <a href="{{route('shop.show',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt=""></a>
                     @forelse($product->categories as $category)
                     <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
                         @if(!$loop->last)
@@ -87,15 +87,12 @@
                         <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
                     @endforelse
                         <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href=""><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{$product->id}}{{\Illuminate\Support\Str::limit($product->name,15  )}}</h5></a>
+                        <a class="Hover-Red" href="{{route('shop.show',$product->slug)}}"><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{$product->id}}{{\Illuminate\Support\Str::limit($product->name,15  )}}</h5></a>
                         <h5 class="Font-Red" style="margin-bottom: 1.5rem;">
-                          @if($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') === $product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price'))
-                            {{number_format($product->presentPrice->where('name','size')->max('price') +
-                            $product->presentPrice->where('name','vintage')->max('price'))}}
-                          @else
-                            {{number_format($product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price') )}}
-                            -
-                            {{number_format($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') )}}
+                          @if($product->pricePresent('minPrice') === $product->pricePresent('maxPrice') )
+                            {{$product->pricePresent('minPrice')}}
+                            @else
+                          {{$product->pricePresent('minPrice') ."-".$product->pricepresent('maxPrice')}}
                           @endif
                           {{__("$")}}
 

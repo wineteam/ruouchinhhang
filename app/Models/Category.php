@@ -12,15 +12,18 @@ class Category extends Model
     use HasFactory;
     protected $fillable = ['name','slug','type','is_published','language','order'];
 
-    public function users(){
+    public function users(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function products(){
+    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
         return $this->belongsToMany(Product::class,'category_products');
     }
 
-    public function blogs(){
+    public function blogs(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
         return $this->belongsToMany(Blog::class,'category_blogs');
     }
 }

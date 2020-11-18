@@ -14,16 +14,17 @@ class CategoryProductFactory extends Factory
      */
     protected $model = CategoryProduct::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
+  /**
+   * Define the model's default state.
+   *
+   * @return array
+   * @throws \Exception
+   */
+    public function definition() : array
     {
         return [
-            'category_id'=>rand(1,8),
-            'product_id'=>rand(1,100),
+            'category_id'=>random_int(1,8),
+            'product_id'=>random_int(1,100),
             'created_at' => now(),
             'updated_at' => now(),
         ];

@@ -67,7 +67,7 @@
         <div class="col-xl-3 col-md-3 col-sm-12 space_moblie2">
             <div class="card card-border-0 flex-row align-items-center h-100">
 {{--                <div class="">--}}
-                    <a href="{{route('cart')}}" class="text-dark edit-icon mr-auto-moblie-icon" style="padding: 10px 15px;border: 2px solid #bdb68e"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                    <a href="{{route('cart.index')}}" class="text-dark edit-icon mr-auto-moblie-icon" style="padding: 10px 15px;border: 2px solid #bdb68e"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 {{--                </div>--}}
             <div class="mr-auto-moblie btn cart-open">
                 <div class="card-block px-2">
@@ -85,9 +85,8 @@
                             <img src="{{ asset('images/product-1.png') }}" alt="" width="40px">
                         </div>
                         <div class="card-block px-2">
-                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">California Red Wine - 500ml, 2012</a></span>
+                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">California Red Wine - 500ml, 2012</a></span></p>
                                 <p class="Font-Red font-weight-bold">2 × £300.00</p>
-                            </p>
                         </div>
                     </div>
                     <br><hr class="hr-cart-Products">
@@ -107,7 +106,7 @@
 
                 <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red"> £822.00</span></p>
                 <div class="subtotal">
-                    <a href="{{route('cart')}}" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
+                    <a href="{{route('cart.index')}}" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
                 <a href="{{ route('checkout') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
                 </div>
             </div>
@@ -257,5 +256,6 @@
     });
 </script>
 <script src="{{ asset('js/Scrollstop.js') }}"></script>
+@yield('script')
 </body>
 </html>

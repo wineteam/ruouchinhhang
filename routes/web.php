@@ -23,7 +23,8 @@ use App\Http\Controllers\CartController;
   })->name('setLanguage');
     Route::get('/', [HomePageController::class,'index'])->name('home');
     Route::get('/shop',[ShopController::class,'index'])->name('shop');
-    Route::get('/shop/{product:slug}',[ShopController::class,'ShowDetailPro'])->name('ShowDetailPro');
+    Route::get('shop/tag/{tag:slug}',[ShopController::class,'searchWithTag'])->name('shop.search.tag');
+    Route::get('/shop/{product:slug}',[ShopController::class,'show'])->name('shop.show')->middleware('checkLocaleProduct');
     Route::get('/blog', function () {
         return view('client.blog');
     })->name('blog');
@@ -37,9 +38,11 @@ use App\Http\Controllers\CartController;
     Route::get('/change', function () {
         return view('client.changePassword');
     })->name('change');
-
-    Route::get('/cart',[CartController::class,'index'])->name('cart');
+    Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+    Route::post('/cart',[CartController::class,'store'])->name('cart.store');
     Route::get('category/{slug:slug}',[ShopController::class,'getProByCat'])->name('getProByCat');
     Route::get('/contact', [ContactController::class,'index'])->name('contact');
     Route::get('manager-admin', );
+
+    Route::get('/getPrice',[ShopController::class,'getPrice']);
     Auth::routes();

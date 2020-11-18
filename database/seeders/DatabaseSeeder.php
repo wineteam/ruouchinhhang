@@ -241,30 +241,8 @@ class DatabaseSeeder extends Seeder
         ],
 
       ]);
-      \App\Models\Product::factory(20)->create();
-      \App\Models\Blog::factory(20)->create();
-      DB::table('options')->insert([
-        [
-          'name'=>'size',
-          'slug'=>'size',
-          'language_id'=>'2'
-        ],
-        [
-          'name'=>'Vintage',
-          'slug'=>'vintage',
-          'language_id'=>'2'
-        ],
-        [
-          'name'=>'Kích cỡ',
-          'slug'=>'kich_co',
-          'language_id'=>'1'
-        ],
-        [
-          'name'=>'Năm sản xuất',
-          'slug'=>'nam_san_xuat',
-          'language_id'=>'1'
-        ],
-      ]);
-      \App\Models\Tag::factory(100)->create();
+      \App\Models\Product::factory(30)->create();
+      \App\Models\Blog::factory(30)->create();
+      \App\Models\Tag::factory(150)->create();
     }
 }

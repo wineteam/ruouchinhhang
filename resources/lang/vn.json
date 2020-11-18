@@ -18,7 +18,11 @@
     "get_it_touch": "Liên hệ ngay",
     "address": "Địa chỉ",
      "product_categories": "Danh mục sản phẩm",
-  "all_products": "Tất cả sản phẩm",
-  "related_products": "Sản phẩm liên quan",
-  "top_products": "Sản phẩm nổi bật"
+    "all_products": "Tất cả sản phẩm",
+    "related_products": "Sản phẩm liên quan",
+    "top_products": "Sản phẩm nổi bật",
+    "price": "Giá",
+    "amount": "Số lượng",
+    "searchProduct": "Tìm kiếm sản phẩm",
+    "filter": "Lọc"
 }

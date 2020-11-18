@@ -5,11 +5,11 @@
    <div class="banner-page col-lg-12">
     <p class="title-page">{{$product->name}}</p>
     <ul class="breadcrumb-page">
-        <li><a href="{{ route('home') }}">Home</a></li>
-        <li aria-current="page"><a href="{{ route('shop') }}">Shop</a></li>
+        <li><a href="{{ route('home') }}">{{__('HOME')}}</a></li>
+        <li aria-current="page"><a href="{{ route('shop') }}">{{__('STORE')}}</a></li>
         <li aria-current="page">
           @foreach($product->categories as $category)
-          <a href="{{route('getProByCat',$category->slug)}}">{{$category->name}}</a>
+          <a class="text-capitalize" href="{{route('getProByCat',$category->slug)}}">{{$category->name}}</a>
             @if(!$loop->last)
               ,
             @endif
@@ -31,35 +31,28 @@
             </div>
         </div>
         <div class="col-xl-6">
-            <h2 class="pt-4 pb-3">{{$product->name}}</h2>
-            <h4 class="pb-3 Font-Red">
-                {{number_format($product->presentPrice->where('name','size')->max('price') +
-                $product->presentPrice->where('name','vintage')->max('price'))}}
 
+            <h2 class="pt-4 pb-3">{{$product->name}}</h2>
+            <h4 class="pb-3 Font-Red price-product">
+              {{__('price')}}:
+              {{$product->pricePresent('minPrice')}}
               {{__("$")}}
             </h4>
            <div class="detail">
              {!! $product->detail !!}
            </div>
             <br>
-          @foreach($product->options as $option)
-            <span class="Option-PDetail d-block">{{$option->name}}</span>
-            <select class="mdb-select md-form option-select" style="width: 80%">
-                <option value="" disabled selected>Choose an option</option>
-                @foreach($product->extras($option->id) as $extra)
-                  <option value="{{$extra->name}}">{{$extra->name}}</option>
-                @endforeach
-            </select>
-          @if(!$loop->last)
-            <br><br>
-            @endif
-          @endforeach
 
-            <br><br><br>
-            <input class="Buyed-PDetail" type="number" value="1" min="0" max="1000" step="1"/>
-            <br><br><br>
-            <a href=""class="btn-subtitle PDetail-BuyNow"><span class=""><span class="">Buy Now</span></span></a>
-            <br><br><br><br>
+            <br><br>
+            <label for="amount">{{__('amount')}} :</label>
+            <input id="amount" name="amount" class="Buyed-PDetail" type="number" value="1" min="0" max="10" step="1"/>
+            <br><br>
+          <form action="{{route('cart.store')}}" method="post">
+            @csrf
+            <input type="hidden" value="{{$product->id}}">
+            <button type="submit" class="btn btn-danger">{{__('buy_now')}}</button>
+          </form>
+            <br><br>
             <p>Product ID: {{$product->codeProduct}}</p>
             <p>Categories:
               @foreach($product->categories as $category)
@@ -71,12 +64,13 @@
             </p>
             <p>Tags:
               @foreach($product->tags as $tag)
-              <a href="" class="Font-Red">{{$tag->name}}</a>
+              <a href="{{route('shop.search.tag',$tag->slug)}}" class="Font-Red">{{$tag->name}}</a>
               @if(!$loop->last)
                 ,
               @endif
               @endforeach
             </p>
+
         </div>
 
         <div class="col-xl-12" style="margin-top: 50px;">
@@ -207,19 +201,21 @@
 <!--====================================== Empty Space ======================================-->
 <div class="vc_empty_space" style="height: 5.5em"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END Empty Space ======================================-->
+  @if(count($productRelations) > 0)
     <h3 class="text-capitalize text-info">{{__('related_products')}}</h3><br>
+  @endif
     <div class="row">
-      @forelse($productRelated as $product)
+      @forelse($productRelations as $product)
         <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
             <div class="productItem__content">
-              <a href="{{route('ShowDetailPro',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt=""></a>
+              <a href="{{route('shop.show',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt=""></a>
               @foreach($product->categories as $category)
             <a href="{{route('getProByCat',$category->slug)}}" class="text-capitalize">{{$category->name}}</a>
                 @if(!$loop->last)
                   ,
                 @endif
               @endforeach
-            <h4><a href="{{route('ShowDetailPro',$product->slug)}}" class="text-capitalize">{{\Illuminate\Support\Str::limit($product->name,15  )}}</a></h4>
+            <h4><a href="{{route('shop.show',$product->slug)}}" class="text-capitalize">{{\Illuminate\Support\Str::limit($product->name,15  )}}</a></h4>
 {{--            <p>--}}
 {{--                <i class="fa fa-star"></i>--}}
 {{--                <i class="fa fa-star"></i>--}}
@@ -227,14 +223,11 @@
 {{--                <i class="fa fa-star"></i>--}}
 {{--                <i class="fa fa-star"></i>--}}
 {{--            </p>--}}
-            <h6>
-              @if($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') === $product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price'))
-                {{number_format($product->presentPrice->where('name','size')->max('price') +
-                $product->presentPrice->where('name','vintage')->max('price'))}}
+            <h6 class="p-3 text-danger">
+              @if($product->pricePresent('minPrice') === $product->pricePresent('maxPrice') )
+                {{$product->pricePresent('minPrice')}}
               @else
-                {{number_format($product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price') )}}
-                -
-                {{number_format($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') )}}
+                {{$product->pricePresent('minPrice') ."-".$product->pricepresent('maxPrice')}}
               @endif
               {{__("$")}}
             </h6>
@@ -242,7 +235,7 @@
         </div>
         </div>
       @empty
-      <h1>khong co san pham</h1>
+
       @endforelse
 
     </div>
@@ -260,12 +253,12 @@
       </div>
 
       <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3">Filter by price</h4>
+        <h4 class="pt-4 pb-3 text-capitalize">{{__('searchProduct')}}</h4>
         <div class="form-group">
           <input type="range" class="form-control-range" id="formControlRange" min="155" max="365" value="255">
         </div>
-        <button class="btn btn-dark">Fillter</button>
-        <span class="ml-5 " style="font-size: 15px; color: #c2c0b0;">Price: £155 — £<span id="numberFillter">365</span></span>
+        <button class="btn btn-dark">{{__('filter')}}</button>
+        <span class=" ml-5 " style="font-size: 15px; color: #c2c0b0;">Price: £155 — £<span id="numberFillter">365</span></span>
       </div>
       <div class="col-xl-12 col-md-6 col-sm-12">
         <h4 class="pt-4 pb-3 mt-5 text-capitalize">{{__('top_products')}}</h4>
@@ -273,18 +266,15 @@
           @foreach($proOrderBought as $product)
             <div class="row">
               <div class="col-4 text-center productList__item">
-                <a href="{{route('ShowDetailPro',$product->slug)}}"><img src="{{ asset('images/product-1.png') }}" alt="" ></a>
+                <a href="{{route('shop.show',$product->slug)}}"><img src="{{ asset('images/product-1.png') }}" alt="" ></a>
               </div>
               <div class="col-8">
-                <h6 class="mb-3" style="font-size: 14px;"><a href="{{route('ShowDetailPro',$product->slug)}}">{{ \Illuminate\Support\Str::limit($product->name,40)}}</a></h6>
+                <h6 class="mb-3" style="font-size: 14px;"><a href="{{route('shop.show',$product->slug)}}">{{ \Illuminate\Support\Str::limit($product->name,40)}}</a></h6>
                 <h6 style="color: #da3f19; font-size: 14px;">
-                  @if($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') === $product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price'))
-                    {{number_format($product->presentPrice->where('name','size')->max('price') +
-                    $product->presentPrice->where('name','vintage')->max('price'))}}
+                  @if($product->pricePresent('minPrice') === $product->pricePresent('maxPrice') )
+                    {{$product->pricePresent('minPrice')}}
                   @else
-                    {{number_format($product->presentPrice->where('name','size')->min('price') + $product->presentPrice->where('name','vintage')->min('price') )}}
-                    -
-                    {{number_format($product->presentPrice->where('name','size')->max('price') + $product->presentPrice->where('name','vintage')->max('price') )}}
+                    {{$product->pricePresent('minPrice') ."-".$product->pricepresent('maxPrice')}}
                   @endif
                   {{__("$")}}
                 </h6>
@@ -298,7 +288,7 @@
         <h4 class="pt-4 pb-3 mt-5">Tags</h4>
         <div class="tagList">
           @foreach($tagPrimary as $tag)
-          <a href="#" style="padding: 8px 15px;border: 1px solid #485460;color: #000000;display: inline-block;margin: 5px">{{$tag->name}}</a>
+          <a href="{{route('shop.search.tag',$tag->slug)}}" style="padding: 8px 15px;border: 1px solid #485460;color: #000000;display: inline-block;margin: 5px">{{$tag->name}}</a>
           @endforeach
         </div>
       </div>
@@ -309,4 +299,11 @@
 </div>
 </div>
 <!-- ==============End Product============ -->
+@endsection
+@section('script')
+  <script>
+    $(document).ready(function (){
+
+    })
+  </script>
 @endsection

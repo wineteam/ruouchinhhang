@@ -20,5 +20,9 @@
     "product_categories": "Product Categories",
     "all_products": "all products",
     "related_products": "Related products",
-    "top_products": "Top products"
+    "top_products": "Top products",
+    "price": "Price",
+    "amount": "Amount",
+    "searchProduct": "search product",
+    "filter": "Filter"
 }

@@ -15,7 +15,7 @@
           <div class="col-lg-9 pr-lg-5 p-1">
               <!-- block blog -->
               <div class="blog-block">
-                  <div class="thumbnail-blogger">                    
+                  <div class="thumbnail-blogger">
                       <img src="images/blogger/image-1-639x534.jpg" alt="">
                       <div class="mark"></div>
                       <a href="#" aria-hidden="true" class="icons">
@@ -31,7 +31,7 @@
                   </div>
               </div>
               <div class="blog-block">
-                  <div class="thumbnail-blogger">                    
+                  <div class="thumbnail-blogger">
                       <img src="images/blogger/image-2-639x534.jpg" alt="">
                       <div class="mark"></div>
                       <a href="#" aria-hidden="true" class="icons">
@@ -47,7 +47,7 @@
                   </div>
               </div>
               <div class="blog-block">
-                  <div class="thumbnail-blogger">                    
+                  <div class="thumbnail-blogger">
                       <img src="images/blogger/image-3-639x534.jpg" alt="">
                       <div class="mark"></div>
                       <a href="#" aria-hidden="true" class="icons">
@@ -63,7 +63,7 @@
                   </div>
               </div>
               <div class="blog-block">
-                  <div class="thumbnail-blogger">                    
+                  <div class="thumbnail-blogger">
                       <img src="images/blogger/image-4-639x534.jpg" alt="">
                       <div class="mark"></div>
                       <a href="#" aria-hidden="true" class="icons">
@@ -86,10 +86,10 @@
           <div class="col-lg-3 d-none d-lg-block p-1">
               <div class="search" style="margin-bottom: 100px;">
                   <h5 style="margin-bottom: 40px;">Search</h5>
-                  <form action="" class="form-search">
+                  <form action="{{route('blog.search')}}" class="form-search">
                       <input type="text" name="searching" placeholder="Search...">
                       <button type="submit"><i class="fa fa-search"></i></button>
-                  </form>     
+                  </form>
               </div>
               <div class="recent-post" style="margin-bottom: 100px;">
                   <h5 style="margin-bottom: 40px;">Recent Posts</h5>
@@ -153,7 +153,7 @@
                           </div>
                       </div>
                   </div>
-                  
+
               </div>
 
               <div class="categories" style="margin-bottom: 100px;">
@@ -161,7 +161,7 @@
                   <ul class="categories-menu">
                       <li class="cat-item"><i class="demo-icon icon-wine"></i><a href="#">Buying Guide</a></li>
                       <li class="cat-item"><i class="demo-icon icon-wine"></i><a href="#">Catalogue</a></li>
-                      <li class="cat-item"><i class="demo-icon icon-wine"></i><a href="#">Food</a></li>              
+                      <li class="cat-item"><i class="demo-icon icon-wine"></i><a href="#">Food</a></li>
                   </ul>
               </div>
               <div class="tags" style="margin-bottom: 100px;">
