@@ -7,9 +7,9 @@ $(document).ready(function(){
 
   function checkForInput(element) {
     // element is passed to the function ^
-    
+
     const $button = $(element).siblings('#ButtonSearch');
-  
+
     if ($(element).val().length > 0) {
       $button.addClass('input-has-value');
       $(".btnSearch").addClass("Display-None-Sr").focus();
@@ -18,15 +18,15 @@ $(document).ready(function(){
       $(".btnSearch").removeClass("Display-None-Sr").focus();
     }
   }
-  
+
   // The lines below are executed on page load
   $('input.search').each(function() {
     checkForInput(this);
   });
-  
+
   // The lines below (inside) are executed on change & keyup
   $('input.search').on('change keyup', function() {
-    checkForInput(this);  
+    checkForInput(this);
   });
 
 });
@@ -41,7 +41,7 @@ $(document).ready(function(){
     $(".sidenav-Moblie").removeClass("active");
     $(".sidenav-Moblie").addClass("icon-close-menu");
   });
-});  
+});
 /* END MENU DROPDOWN */
 /*CART*/
 $(document).ready(function(){
@@ -81,7 +81,7 @@ function FilterRemoveClass(element, name) {
     arr2 = name.split(" ");
     for (i = 0; i < arr2.length; i++) {
     while (arr1.indexOf(arr2[i]) > -1) {
-        arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        arr1.splice(arr1.indexOf(arr2[i]), 1);
     }
     }
     element.className = arr1.join(" ");
@@ -112,6 +112,18 @@ function scroll_to(clicked_link, nav_height) {
 	}
 }
 
+/* LOAD MORE IN BLOGS */
+$(function() {
+  var $posts = $("#posts");
+  var $ul = $("ul.pagination");
+  $ul.hide(); // Prevent the default Laravel paginator from showing, but we need the links...
 
-
+  $(".see-more").click(function() {
+    $.get($ul.find("a[rel='next']").attr("href"), function(response) {
+      $posts.append(
+        $(response).find("#posts").html()
+      );
+    });
+  });
+});
 

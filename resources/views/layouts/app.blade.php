@@ -127,7 +127,7 @@
                 <ul class="nav navbar-nav navbar-logo mx-auto Blue-Link position-Re">
                     <li class="nav-item"> <a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('home') }}">{{__('HOME')}}</a> </li>
                     <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('shop') }}">{{__('STORE')}}</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('blog') }}">{{__('BLOG')}}</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('blog.index') }}">{{__('BLOG')}}</a></li>
                     <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact') }}">{{__('CONTACT')}}</a></li>
                     @if(Route::has('login'))
                         @auth
@@ -207,7 +207,9 @@
 
 <!--====================================== MAIN ======================================-->
     <main>
+        <div class="container-fluid bg-white">
         @yield('content')
+        </div>
     </main>
 <!--====================================== END MAIN ======================================-->
 

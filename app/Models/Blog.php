@@ -11,8 +11,12 @@ class Blog extends Model
     protected $fillable = ['user_id','title','slug','description','thumbnail','content','view','day_up','is_published','especially','language'];
 
 
-    public function users(){
-        return $this->belongsTo(User::class);
+    public function user(){
+        return $this->belongsTo(User::class)->first();
+    }
+
+    public function tags(){
+        return $this->hasMany(Tag::class);
     }
 
     public function categories(){

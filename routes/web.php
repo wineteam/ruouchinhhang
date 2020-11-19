@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
@@ -25,9 +26,14 @@ use App\Http\Controllers\CartController;
     Route::get('/shop',[ShopController::class,'index'])->name('shop');
     Route::get('shop/tag/{tag:slug}',[ShopController::class,'searchWithTag'])->name('shop.search.tag');
     Route::get('/shop/{product:slug}',[ShopController::class,'show'])->name('shop.show')->middleware('checkLocaleProduct');
-    Route::get('/blog', function () {
-        return view('client.blog');
-    })->name('blog');
+
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+    Route::get('/blog/{blog:slug}', [BlogController::class, 'show'])->name('blog.show');
+
+    Route::post('blog/search', [BlogController::class, 'search'])->name('blog.search');
+
+
+
     Route::get('/checkout', function () {
         return view('client.checkout');
     })->name('checkout');

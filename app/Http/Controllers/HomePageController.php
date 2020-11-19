@@ -25,6 +25,8 @@ class HomePageController extends Controller
         $join->on('language_id', '=', 'language_switches.id')
           ->where('language_switches.slug', '=', App()->getLocale());
       })->where('is_published','1')->where('especially','1')->inRandomOrder()->take(3)->orderBy('view','desc')->get();
+
+      
       return view('client.homepage')->with(['products'=>$products,'blogs_esp'=>$blogs_esp,'categories'=>$cateogries]);
     }
 }
