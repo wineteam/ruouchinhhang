@@ -22,7 +22,7 @@
 
                   @foreach($blogs as $myblogs)
                     <!-- block blog -->
-                    <div class="blog-block" id="posts">
+                    <div class="blog-block Blogs-Limit" style="display: none">
                         <div class="thumbnail-blogger">
                             <img src="{{$myblogs->thumbnail}}" alt="">
                             <div class="mark"></div>
@@ -41,7 +41,7 @@
                   @endforeach
 
                     <div class="loadmore">
-                        <button class="btn-loadMore">Load More</button>
+                        <button class="btn-loadMore" id="loadMore">Load More</button>
                     </div>
               </div>
 
@@ -52,5 +52,6 @@
       {{-- end blogger --}}
 </div>
 
+<script src="{{ asset('js/loadmore-blog.js') }}"></script>
 
 @endsection

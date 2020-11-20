@@ -22,7 +22,7 @@ class BlogController extends Controller
         $blogs = Blog::join('language_switches', function ($join) {
             $join->on('language_id', '=', 'language_switches.id')
                 ->where('language_switches.slug', '=', App()->getLocale());
-        })->select('blogs.*')->where('is_published','1')->orderBy('created_at','desc')->take('8')->get();
+        })->select('blogs.*')->where('is_published','1')->orderBy('created_at','desc')->get();
       session()->forget('message');
         return view('client.blog')->with(['blogs'=>$blogs]);
     }
