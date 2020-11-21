@@ -37,16 +37,16 @@
     <div class="categories" style="margin-bottom: 100px;">
         <h5 style="margin-bottom: 40px;">Categories</h5>
         <ul class="categories-menu">
-            <li class="cat-item"><i class="demo-icon icon-wine"></i><a href="#">Buying Guide</a></li>
-            <li class="cat-item"><i class="demo-icon icon-wine"></i><a href="#">Catalogue</a></li>
-            <li class="cat-item"><i class="demo-icon icon-wine"></i><a href="#">Food</a></li>
+            @foreach($categorieBlog as $CateBlog)
+            <li class="cat-item"><i class="demo-icon icon-wine"></i><a href="{{route('blog.search.categories',$CateBlog->slug)}}">{{$CateBlog->name}}</a></li>
+            @endforeach
         </ul>
     </div>
     <div class="tags" style="margin-bottom: 100px;">
         <h5 style="margin-bottom: 40px;">Tags</h5>
         <div class="tagclound">
           @foreach($tagPrimaryBLog as $tag)
-            <a href="#">{{$tag->name}}</a>
+            <a href="{{route('blog.search.tag',$tag->slug)}}">{{$tag->name}}</a>
           @endforeach
         </div>
     </div>

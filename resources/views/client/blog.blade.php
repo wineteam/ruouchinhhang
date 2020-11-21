@@ -7,6 +7,10 @@
         <div class="banner-page col-lg-12">
           @if(session()->has('message'))
             <p class="title-page">Search for: {{session()->get('message')}}</p>
+          @elseif(session()->has('messageBlog2'))
+            <p class="title-page">Tag : {{session()->get('messageBlog2')}}</p>
+          @elseif(session()->has('messageBlog3'))
+            <p class="title-page">Categories : {{session()->get('messageBlog3')}}</p>
           @else
             <p class="title-page">All Posts</p>
           @endif

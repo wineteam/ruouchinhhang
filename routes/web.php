@@ -31,8 +31,9 @@ use App\Http\Controllers\CartController;
     Route::get('/blog/{blog:slug}', [BlogController::class, 'show'])->name('blog.show');
 
     Route::post('blog/search', [BlogController::class, 'search'])->name('blog.search');
+    Route::get('blog/tag/{tag:slug}',[BlogController::class,'searchWithTag'])->name('blog.search.tag');
 
-
+    Route::get('blog/category/{slug:slug}',[BlogController::class,'getBlogByCat'])->name('blog.search.categories');
 
     Route::get('/checkout', function () {
         return view('client.checkout');

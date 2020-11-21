@@ -17,31 +17,89 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
+
+      $categorieBlog =  Category::join('language_switches', function ($join) {
+        $join->on('language_id', '=', 'language_switches.id')
+          ->where('language_switches.slug', '=', App()->getLocale());
+      })->select('categories.*')->where('is_published','1')->where('type','0')->get();
+
         $blogs = Blog::join('language_switches', function ($join) {
             $join->on('language_id', '=', 'language_switches.id')
                 ->where('language_switches.slug', '=', App()->getLocale());
         })->select('blogs.*')->where('is_published','1')->orderBy('created_at','desc')->get();
-      session()->forget('message');
-        return view('client.blog')->with(['blogs'=>$blogs]);
+
+      session()->forget('message','messageBlog2','messageBlog3');
+
+        return view('client.blog')->with(['blogs'=>$blogs,'categorieBlog'=>$categorieBlog]);
     }
 
     public function show(Blog $blog){
+
+      $categorieBlog =  Category::join('language_switches', function ($join) {
+        $join->on('language_id', '=', 'language_switches.id')
+          ->where('language_switches.slug', '=', App()->getLocale());
+      })->select('categories.*')->where('is_published','1')->where('type','0')->get();
+
         $blogPOST = Blog::join('language_switches', function ($join) {$join->on('language_id', '=', 'language_switches.id')->where('language_switches.slug', '=', App()->getLocale());}
         )->select('blogs.*')->where('is_published','1')->where('especially','1')->inRandomOrder()->take(4)->orderBy('view','desc')->get();
-      return view('client.blogdetails')->with(['blogs'=>$blogPOST,'blog'=>$blog]);;
+
+      return view('client.blogdetails')->with(['blogs'=>$blogPOST,'blog'=>$blog,'categorieBlog'=>$categorieBlog]);;
 
     }
-    public  function search(Request $request)
-    {
+    public  function search(Request $request){
+
+      $categorieBlog =  Category::join('language_switches', function ($join) {
+        $join->on('language_id', '=', 'language_switches.id')
+          ->where('language_switches.slug', '=', App()->getLocale());
+      })->select('categories.*')->where('is_published','1')->where('type','0')->get();
+
        $blogs = Blog::join('language_switches', function ($join) {
          $join->on('blogs.language_id', '=', 'language_switches.id')
            ->where('language_switches.slug', '=', App()->getLocale());
        })->join('tags','blogs.id','=','tags.blog_id')->where('blogs.title','like','%'.$request->searching.'%')
          ->orWhere('tags.name','like','%'.$request->searching.'%')->where('blogs.is_published','1')->get();
+
        session()->flash('message',$request->searching);
-      return view('client.blog')->with(['blogs'=>$blogs]);
+      return view('client.blog')->with(['blogs'=>$blogs,'categorieBlog'=>$categorieBlog]);
+    }
+
+    public function getBlogByCat(Category $slug){
+
+      $blogPOST = Blog::join('language_switches', function ($join) {$join->on('language_id', '=', 'language_switches.id')->where('language_switches.slug', '=', App()->getLocale());}
+      )->select('blogs.*')->where('is_published','1')->where('especially','1')->inRandomOrder()->take(4)->orderBy('view','desc')->get();
+
+      $tagPrimaryBLog = DB::table('tags')->where('primary','1')->limit('8')->get();
+      
+      $categorieBlog =  Category::join('language_switches', function ($join) {
+        $join->on('language_id', '=', 'language_switches.id')
+          ->where('language_switches.slug', '=', App()->getLocale());
+      })->select('categories.*')->where('is_published','1')->where('type','0')->get();
+
+      session()->flash('messageBlog3',$slug->name);
+
+      return view('client.blog')->with(['categorieBlog'=>$categorieBlog,'tagPrimaryBLog'=>$tagPrimaryBLog,'blogs'=>$blogPOST]);
+    }
+
+    public function searchWithTag(Tag $tag){
+
+      $categorieBlog =  Category::join('language_switches', function ($join) {
+        $join->on('language_id', '=', 'language_switches.id')
+          ->where('language_switches.slug', '=', App()->getLocale());
+      })->select('categories.*')->where('is_published','1')->where('type','0')->get();
+
+      $blogPOST = Blog::join('language_switches', function ($join) {$join->on('language_id', '=', 'language_switches.id')->where('language_switches.slug', '=', App()->getLocale());}
+      )->select('blogs.*')->where('is_published','1')->where('especially','1')->inRandomOrder()->take(4)->orderBy('view','desc')->get();
+
+      $blogsRecent = Blog::join('language_switches', function ($join) {
+        $join->on('language_id', '=', 'language_switches.id')
+          ->where('language_switches.slug', '=', App()->getLocale());
+      })->select('blogs.*')->where('is_published','1')->orderBy('view','desc')->take(4)->get();
+      
+      $tagPrimaryBLog = Tag::where('blog_id','!=',null)->where('primary','1')->limit('8')->get();
+      session()->flash('messageBlog2',$tag->name);
+
+      return view('client.blog')->with(['tagPrimaryBLog'=>$tagPrimaryBLog,'blogsRecent'=>$blogsRecent,'blogs'=>$blogPOST,'categorieBlog'=>$categorieBlog]);
     }
 
     /**
