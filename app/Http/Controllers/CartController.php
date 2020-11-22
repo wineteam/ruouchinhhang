@@ -10,6 +10,11 @@ class CartController extends Controller
     return view('client.cartDetails');
   }
   public function store(Request $request){
-    Cart::add();
+    if(!session()->has('cart')){
+      session()->put('cart',[]);
+      return 'setting';
+    }
+    return "oke";
+
   }
 }

@@ -23,7 +23,7 @@ use App\Http\Controllers\CartController;
   })->name('setLanguage');
     Route::get('/', [HomePageController::class,'index'])->name('home');
     Route::get('/shop',[ShopController::class,'index'])->name('shop');
-    Route::get('shop/tag/{tag:slug}',[ShopController::class,'searchWithTag'])->name('shop.search.tag');
+    Route::get('shop/tag/{tag:slug}',[ShopController::class,'getProWithTag'])->name('shop.search.tag');
     Route::get('/shop/{product:slug}',[ShopController::class,'show'])->name('shop.show')->middleware('checkLocaleProduct');
     Route::get('/blog', function () {
         return view('client.blog');

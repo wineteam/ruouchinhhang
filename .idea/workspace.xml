@@ -23,32 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8476c215-00c3-495a-85b1-5bb1ee93b73e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomePageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/LanguageSwitch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/LanguageSwitch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/CategoryProductFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CategoryProductFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ProductFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_162915_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_162915_create_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_162957_create_options_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_163308_create_product_options_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_09_134142_create_extras_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_10_163332_create_extra_options_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/vn.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/vn.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/homepage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/homepage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/productdetail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/productdetail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/shop.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +37,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="EditorConfigPreviewManager">
     <editorConfig file="$PROJECT_DIR$/.editorconfig" previewFile="$PROJECT_DIR$/resources/sass/_homepage.scss" />
@@ -209,7 +190,7 @@
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -284,7 +265,12 @@
       <workItem from="1605545270577" duration="610000" />
       <workItem from="1605603291311" duration="12126000" />
       <workItem from="1605652051973" duration="1529000" />
-      <workItem from="1605677491346" duration="8771000" />
+      <workItem from="1605677491346" duration="13957000" />
+      <workItem from="1605767418950" duration="1123000" />
+      <workItem from="1605803082740" duration="1601000" />
+      <workItem from="1605875024069" duration="626000" />
+      <workItem from="1605961526883" duration="818000" />
+      <workItem from="1606032123472" duration="1248000" />
     </task>
     <servers />
   </component>
@@ -304,10 +290,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="395" y="91" key="#Inspections" timestamp="1605636390369">
+    <state x="395" y="91" key="#Inspections" timestamp="1605714060611">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="395" y="91" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1605636390369" />
+    <state x="395" y="91" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1605714060611" />
     <state x="382" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605543854419">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -321,6 +307,10 @@
     </state>
     <state x="371" y="96" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.680@0.0.1280.680" timestamp="1604043744020" />
     <state x="445" y="116" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605636764568" />
+    <state x="507" y="325" width="522" height="252" key="ComposerInitDialogKey" timestamp="1605711628225">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="507" y="325" width="522" height="252" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1605711628225" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1604927600143">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -334,11 +324,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="541" y="143" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1605701897020" />
-    <state x="194" y="62" key="SettingsEditor" timestamp="1605695720713">
+    <state x="194" y="62" key="SettingsEditor" timestamp="1606051113100">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1603728960115" />
-    <state x="194" y="62" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605695720713" />
+    <state x="194" y="62" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606051113100" />
     <state x="213" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1604904484596" />
     <state x="618" y="319" key="VCS.ChangelistChooser" timestamp="1604926661020">
       <screen x="0" y="0" width="1536" height="824" />

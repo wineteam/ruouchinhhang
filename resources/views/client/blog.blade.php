@@ -86,7 +86,7 @@
           <div class="col-lg-3 d-none d-lg-block p-1">
               <div class="search" style="margin-bottom: 100px;">
                   <h5 style="margin-bottom: 40px;">Search</h5>
-                  <form action="{{route('blog.search')}}" class="form-search">
+                  <form action="" class="form-search">
                       <input type="text" name="searching" placeholder="Search...">
                       <button type="submit"><i class="fa fa-search"></i></button>
                   </form>

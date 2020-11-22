@@ -68,7 +68,7 @@ class ShopController extends Controller
         ->with(['products'=>$products,'categories'=>$categories,'proOrderBought'=>$proOrderBought,'tagPrimary'=>$tag_primary]);
     }
 
-    public function searchWithTag(Tag $tag){
+    public function getProWithTag(Tag $tag){
 
       $products = Product::join('tags','products.id','=','tags.product_id')
         ->where('tags.slug','=',$tag->slug)
