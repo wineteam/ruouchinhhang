@@ -1,6 +1,6 @@
 <div class="col-lg-3 d-none d-lg-block p-1">
     <div class="search" style="margin-bottom: 100px;">
-        <h5 style="margin-bottom: 40px;">Search</h5>
+        <h5 style="margin-bottom: 40px;">{{__('search')}}</h5>
 
 
     <form method="POST" action="{{route('blog.search')}}" class="form-search">
@@ -12,7 +12,7 @@
 
     </div>
     <div class="recent-post" style="margin-bottom: 100px;">
-        <h5 style="margin-bottom: 40px;">Recent Posts</h5>
+        <h5 style="margin-bottom: 40px;">{{__('Recent_Posts')}}</h5>
 
         @foreach($blogsRecent as $myblogs)
         <div class="block-recent-post">
@@ -35,7 +35,7 @@
     </div>
 
     <div class="categories" style="margin-bottom: 100px;">
-        <h5 style="margin-bottom: 40px;">Categories</h5>
+        <h5 style="margin-bottom: 40px;">{{__('catelog')}}</h5>
         <ul class="categories-menu">
             @foreach($categorieBlog as $CateBlog)
             <li class="cat-item"><i class="demo-icon icon-wine"></i><a href="{{route('blog.search.categories',$CateBlog->slug)}}">{{$CateBlog->name}}</a></li>

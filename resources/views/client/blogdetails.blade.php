@@ -9,7 +9,7 @@
             <p class="title-page">{{$blog->title}}</p>
             <ul class="breadcrumb-page">
                 <li><a  href="{{ route('home',app()->getLocale()) }}">{{__('HOME')}}</a></li>
-                <li><a href="{{route('blog.index')}}">{{__('Blog')}}</a></li>
+                <li><a href="{{route('blog.index')}}">{{__('BLOG')}}</a></li>
             </ul>
         </div>
         <!-- Content blogger -->
@@ -24,7 +24,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                  by
+                  {{__('by')}}
                   <a href="#">
                     {{$blog->user()->name}}
                   </a>
@@ -33,7 +33,7 @@
                 <hr>
 
                 <!-- Date/Time -->
-                <p>Posted on {{\Carbon\Carbon::parse( $blog->day_up)->format('d/m/Y')}}</p>
+                <p>{{__('Posted_on')}} {{\Carbon\Carbon::parse( $blog->day_up)->format('d/m/Y')}}</p>
 
                 <hr>
 

@@ -1,7 +1,9 @@
 {
+    "ALL": "All",
     "HOME": "HOME",
     "STORE": "STORE",
     "BLOG": "BLOG",
+    "POST": "Posts",
     "CONTACT": "CONTACT",
     "LOGIN": "LOGIN",
     "REGISTER": "REGISTER",
@@ -24,5 +26,13 @@
     "price": "Price",
     "amount": "Amount",
     "searchProduct": "search product",
-    "filter": "Filter"
+    "filter": "Filter",
+    "search": "Search",
+    "catelog": "Categories",
+    "Recent_Posts": "Recent Posts",
+    "by": "By",
+    "Posted_on": "Posted on",
+    "GetinTouch": "Get in Touch",
+    "SendaMessage": "Send a Message",
+    "agree": "I agree that my submitted data is being collected and stored."
 }

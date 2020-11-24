@@ -1,10 +1,12 @@
 {
+    "ALL": "Tất cả",
     "HOME": "Trang chủ",
     "STORE": "Cửa Hàng",
     "BLOG": "Bài Viết",
-    "CONTACT": "LIÊN HỆ",
-    "LOGIN": "ĐĂNG NHẬP",
-    "REGISTER": "ĐĂNG KÝ",
+    "POST": "Bài viết",
+    "CONTACT": "Liên hệ",
+    "LOGIN": "Đăng nhập",
+    "REGISTER": "Đăng ký",
     "Your_cart": "Giỏ hàng",
     "Call_us": "Liên hệ",
     "Our_product": "Sản phẩm của chúng tôi",
@@ -14,6 +16,7 @@
     "buy_now": "Mua ngay",
     "$": "vnđ",
     "Learn_more": "Đọc thêm",
+    "Load_more": "Tải thêm",
     "Title_posts_especially": "Bài viết hay",
     "get_it_touch": "Liên hệ ngay",
     "address": "Địa chỉ",
@@ -24,5 +27,13 @@
     "price": "Giá",
     "amount": "Số lượng",
     "searchProduct": "Tìm kiếm sản phẩm",
-    "filter": "Lọc"
+    "filter": "Lọc",
+    "search": "Tìm kiếm",
+    "catelog": "Danh mục",
+    "Recent_Posts": "Bài viết gần đây",
+    "by": "Đăng bởi",
+    "Posted_on": "Đăng ngày",
+    "GetinTouch": "Liên hệ với chúng tôi",
+    "SendaMessage": "Gửi tin nhắn",
+    "agree": "Tôi đồng ý rằng dữ liệu đã gửi của tôi đang được thu thập và lưu trữ."
 }

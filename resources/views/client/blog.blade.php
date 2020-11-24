@@ -12,11 +12,11 @@
           @elseif(session()->has('messageBlog3'))
             <p class="title-page">Categories : {{session()->get('messageBlog3')}}</p>
           @else
-            <p class="title-page">All Posts</p>
+            <p class="title-page">{{__('ALL')}} {{__('POST')}}</p>
           @endif
             <ul class="breadcrumb-page">
                 <li><a  href="{{ route('home',app()->getLocale()) }}">{{__('HOME')}}</a></li>
-                <li aria-current="page">Blog</li>
+                <li aria-current="page">{{__('BLOG')}}</li>
             </ul>
         </div>
         <!-- Content blogger -->
@@ -39,13 +39,13 @@
                         <div class="detail-blogger">
                             <p>{{\Carbon\Carbon::parse( $myblogs->day_up)->format('d/m/Y')}} <span>september</span></p>
                             <h1  class="title-blog"><a href="{{route('blog.show',$myblogs->slug)}}">{{$myblogs->title}}{{$myblogs->id}}{{\Illuminate\Support\Str::limit($myblogs->title,5  )}}</a></h1>
-                            <a href="{{route('blog.show',$myblogs->slug)}}" class="learn-more">Learn more</a>
+                            <a href="{{route('blog.show',$myblogs->slug)}}" class="learn-more">{{__('Learn_more')}}</a>
                         </div>
                     </div>
                   @endforeach
 
                     <div class="loadmore">
-                        <button class="btn-loadMore" id="loadMore">Load More</button>
+                        <button class="btn-loadMore" id="loadMore">{{__('Load_more')}}</button>
                     </div>
               </div>
 

@@ -3,18 +3,25 @@
 <!--======================================  CONTACT ======================================-->
     <div class="contact-page">
         <div class="contact  bg-white">
-            <div class="container-fluid">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 my-auto">
-                            <h1 class="text-center">Contact</h1>
-                            <div class="text-center item_descr">
-                                <span>Home / <span>Contacts</span></span>
-                            </div>
-                        </div>
+            <!--====================================== Title Cart ======================================-->
+            <div class="container-fluid Title_bg">
+                <div>
+                    <div class="Display-noneX" style="height: 5.5em"><span></span></div>
+                    <div style="height: 5em"><span></span></div>
+
+                    <div class="checkout-bg text-center">
+                        <h1 class="Font-white">{{__('CONTACT')}}</h1>
+                        <ul class="breadcrumb-List">
+                            <li><a href="{{ route('home') }}"><span>{{__('HOME')}}</span></a></li>
+                            <li><span class="none-color">{{__('CONTACT')}}</span></li>
+                        </ul>
                     </div>
+
+                    <div style="height: 5em"><span></span></div>
+                    <div class="Display-noneX" style="height: 5.8em"><span></span></div>
                 </div>
-            </div>
+            </div><!-- /.sc_content -->
+            <!--====================================== END Title Cart ======================================-->
             <div class="vc_empty_space" style="padding: 0 0 4.1em;"><span class="vc_empty_space_inner"></span></div>
         
             <div class="map">
@@ -27,8 +34,8 @@
         
             <div class="container">           
                         <div class="col-sm-12 my-auto">
-                            <h6 class="text-center Font-Red item_subtitle">Send a Message</h6>
-                            <h1 class="text-center">Get in Touch</h1>
+                            <h6 class="text-center Font-Red item_subtitle">{{__('SendaMessage')}}</h6>
+                            <h1 class="text-center">{{__('GetinTouch')}}</h1>
                         </div>
                     <div class="block-contact col-12">
                         <form class="form-contact"> 
@@ -40,11 +47,11 @@
                             <div class="form-check">
                                 <input class="form-check-input"  onclick="checkedbox()" type="checkbox" id="CheckApply">
                                 <label class="form-check-label" for="CheckApply">
-                                    I agree that my submitted data is being collected and stored.
+                                    {{__('agree')}}
                                 </label>
                             </div>
                            <div class="button-submit">
-                            <button id="sendmessage" type="submit" class="btn btn-danger">Send Message</button>
+                            <button id="sendmessage" type="submit" class="btn btn-danger">{{__('SendaMessage')}}</button>
                            </div>
                         </form>
                     </div>
