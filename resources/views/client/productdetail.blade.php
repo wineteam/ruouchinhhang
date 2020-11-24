@@ -41,11 +41,16 @@
            <div class="detail">
              {!! $product->detail !!}
            </div>
-            <br>
 
-            <br><br>
+            <br>
             <label for="amount">{{__('amount')}} :</label>
-            <input id="amount" name="amount" class="Buyed-PDetail" type="number" value="1" min="0" max="10" step="1"/>
+            <br>
+            <div class="number-input">
+              <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+              <input id="amount" name="amount" class="Buyed-PDetail" type="number" value="1" min="0" max="10" step="1"/>
+              <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            </div>
+
             <br><br>
           <form action="{{route('cart.store')}}" method="post">
             @csrf
