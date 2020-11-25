@@ -2,6 +2,7 @@
 @section('content')
 <div class="container-fluid bg-white">
 
+<<<<<<< HEAD
     <div class="blog-page">
         <!-- Breadcrumb -->
         <div class="banner-page col-lg-12">
@@ -23,6 +24,82 @@
         <div class="container">
             <div class="row">
               <div class="col-lg-9 pr-lg-5 p-1">
+=======
+              <div class="loadmore">
+                  <button class="btn-loadMore">Load More</button>
+              </div>
+          </div>
+          <div class="col-lg-3 d-none d-lg-block p-1">
+              <div class="search" style="margin-bottom: 100px;">
+                  <h5 style="margin-bottom: 40px;">Search</h5>
+                  <form action="" class="form-search">
+                      <input type="text" name="searching" placeholder="Search...">
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+              </div>
+              <div class="recent-post" style="margin-bottom: 100px;">
+                  <h5 style="margin-bottom: 40px;">Recent Posts</h5>
+                  <div class="block-recent-post">
+                      <div class="recent-post-thumb">
+                          <a href="#">
+                              <img src="images/blogger/image-1-639x534.jpg" width="100%" height="auto"  alt="">
+                          </a>
+                      </div>
+                      <div class="recent-post-content px-3">
+                          <h6 class="recent-post-title">
+                              <a href="#">Winemaking - Art, Science, Magic or Technology</a>
+                          </h6>
+                          <div class="post-info">
+                              <p style="color: #BDB68E;font-size: 13px;">September 30 9, 2020</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="block-recent-post">
+                      <div class="recent-post-thumb">
+                          <a href="#">
+                              <img src="images/blogger/image-2-639x534.jpg" width="100%" height="auto"  alt="">
+                          </a>
+                      </div>
+                      <div class="recent-post-content px-3">
+                          <h6 class="recent-post-title">
+                              <a href="#">Winemaking - Art, Science, Magic or Technology</a>
+                          </h6>
+                          <div class="post-info">
+                              <p style="color: #BDB68E;font-size: 13px;">September 30 9, 2020</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="block-recent-post">
+                      <div class="recent-post-thumb">
+                          <a href="#">
+                              <img src="images/blogger/image-3-639x534.jpg" width="100%" height="auto"  alt="">
+                          </a>
+                      </div>
+                      <div class="recent-post-content px-3">
+                          <h6 class="recent-post-title">
+                              <a href="#">Winemaking - Art, Science, Magic or Technology</a>
+                          </h6>
+                          <div class="post-info">
+                              <p style="color: #BDB68E;font-size: 13px;">September 30 9, 2020</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="block-recent-post">
+                      <div class="recent-post-thumb">
+                          <a href="#">
+                              <img src="images/blogger/image-4-639x534.jpg" width="100%" height="auto"  alt="">
+                          </a>
+                      </div>
+                      <div class="recent-post-content px-3">
+                          <h6 class="recent-post-title">
+                              <a href="#">Winemaking - Art, Science, Magic or Technology</a>
+                          </h6>
+                          <div class="post-info">
+                              <p style="color: #BDB68E;font-size: 13px;">September 30 9, 2020</p>
+                          </div>
+                      </div>
+                  </div>
+>>>>>>> 7e43e3be61f75db1b48ac984824911d95937a482
 
                   @foreach($blogs as $myblogs)
                     <!-- block blog -->
