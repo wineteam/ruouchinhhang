@@ -9,20 +9,6 @@ use MongoDB\Driver\Session;
 
 class CartController extends Controller
 {
-<<<<<<< HEAD
-  public function index()
-  {
-    return view('client.cartDetails');
-  }
-  public function store(Request $request){
-    if(!session()->has('cart')){
-      session()->put('cart',[]);
-      return 'setting';
-    }
-    return "oke";
-
-  }
-=======
     /**
      * Display a listing of the resource.
      *
@@ -127,5 +113,4 @@ class CartController extends Controller
       Cart::remove($id);
       return redirect()->back();
     }
->>>>>>> hoaianh-client
 }

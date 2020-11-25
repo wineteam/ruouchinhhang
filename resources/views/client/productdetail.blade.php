@@ -52,29 +52,12 @@
              {!! $product->detail !!}
            </div>
 
-<<<<<<< HEAD
-            <br>
-            <label for="amount">{{__('amount')}} :</label>
-            <br>
-            <div class="number-input">
-              <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
-              <input id="amount" name="amount" class="Buyed-PDetail" type="number" value="1" min="0" max="10" step="1"/>
-              <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-            </div>
-
-            <br><br>
-          <form action="{{route('cart.store')}}" method="post">
-            @csrf
-            <input type="hidden" value="{{$product->id}}">
-            <button type="submit" class="btn btn-danger">{{__('buy_now')}}</button>
-=======
             <br><br>
           <form action="{{route('cart.store')}}" method="post" >
             <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
             <label for="qty">{{__('amount')}} :</label>
             <input name="qty" id="qty" type="number" value="1" min="0" max="10" step="1"/>
             <button  class="btn btn-danger add_product">{{__('buy_now')}}</button>
->>>>>>> hoaianh-client
           </form>
           <br><br>
             <br><br>

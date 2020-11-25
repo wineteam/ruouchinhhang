@@ -38,10 +38,6 @@ class ShopController extends Controller
         ->with(['products'=>$products]);
     }
 
-<<<<<<< HEAD
-    public function getProWithTag(Tag $tag){
-
-=======
   public function getProByNat($slug)
   {
     $products = Product::join('language_switches', function ($join) {
@@ -53,7 +49,6 @@ class ShopController extends Controller
       ->with(['products'=>$products]);
   }
     public function searchWithTag(Tag $tag){
->>>>>>> hoaianh-client
       $products = Product::join('tags','products.id','=','tags.product_id')
         ->where('tags.slug','=',$tag->slug)
         ->where('is_published','1')
