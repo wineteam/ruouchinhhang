@@ -15,12 +15,10 @@ class CreateInfoSitesTable extends Migration
     {
         Schema::create('info_sites', function (Blueprint $table) {
             $table->id();
-            $table->string('logo')->nullable();
             $table->string('fan_page')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->string('link_map')->nullable();
             $table->timestamps();
         });
     }

@@ -21,8 +21,6 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->string('thumbnail')->nullable();
             $table->integer('price');
-            $table->string('size');
-            $table->string('vintage');
             $table->text('detail')->nullable();
             $table->integer('discount')->nullable();
             $table->string('nation');
@@ -36,6 +34,7 @@ class CreateProductsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('language_id')->references('id')->on('language_switches')->nullOnDelete();
         });
     }
 

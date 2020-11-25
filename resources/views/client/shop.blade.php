@@ -36,11 +36,11 @@
         </div>
       </div>
     </div>
-    <div class="row" style="align-items: stretch">
+    <div class="row">
     @foreach($products  as $product)
       <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
-        <div class="productItem__content" style="height: 100%">
-          <a href="{{route('shop.show',$product->slug)}}"> <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{$product->thumbnail}}" alt=""></a>
+        <div class="productItem__content">
+          <a href="{{route('shop.show',$product->slug)}}"> <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt=""></a>
           @forelse($product->categories as $category)
             <a href="{{route('getProByCat',$category->slug)}}" style="font-size: 14px" class="text-capitalize">{{$category->name}}</a>
             @if(!$loop->last)
@@ -49,7 +49,7 @@
           @empty
             <a href="#">Không phân loại</a>
           @endforelse
-          <h4><a class="text-danger" href="{{route('shop.show',$product->slug)}}">{{$product->id}}{{\Illuminate\Support\Str::limit($product->name,14)}}</a></h4>
+          <h4><a class="text-danger" href="{{route('shop.show',$product->slug)}}">{{\Illuminate\Support\Str::limit($product->name,14)}}</a></h4>
 {{--          <p>--}}
 {{--            <i class="fa fa-star"></i>--}}
 {{--            <i class="fa fa-star"></i>--}}
@@ -57,18 +57,14 @@
 {{--            <i class="fa fa-star"></i>--}}
 {{--            <i class="fa fa-star"></i>--}}
 {{--          </p>--}}
-          @if($product->pricePresent('discount') != 0 && $product->pricePresent('discount') != null )
-            <p class="text-danger text-center text-capitalize">{{__('promotion')}}</p>
-            <h6 style="color: #da3f19; font-size: 14px;">
-            {{$product->pricePresent('discount')}}
-              {{__('$')}}
-            </h6>
-          @else
-            <h6 style="color: #da3f19; font-size: 14px;">
-              {{$product->pricePresent('price')}}
-              {{__('$')}}
-            </h6>
-          @endif
+          <h6 style="color: #da3f19; font-size: 14px;">
+            @if($product->pricePresent('minPrice') === $product->pricePresent('maxPrice') )
+              {{$product->pricePresent('minPrice')}}
+            @else
+              {{$product->pricePresent('minPrice') ."-".$product->pricepresent('maxPrice')}}
+            @endif
+            {{__('$')}}</h6>
+          <a href=""class="btn-subtitle"><span class=""><span class="">{{__('buy_now')}}</span></span></a>
       </div>
       </div>
       @endforeach
@@ -85,7 +81,7 @@
         <h4 class="pt-4 pb-3 text-capitalize">{{__('product_categories')}}</h4>
         <div class="productCategories__list pl-2 mb-5">
           @foreach($categories as $category)
-            <a href="{{route('getProByCat',$category->slug)}}"  class="text-capitalize"><i class="fa fa-angle-right"></i>  {{$category->name}}</a>
+          <a href="{{route('getProByCat',$category->slug)}}"  class="text-capitalize"><i class="fa fa-angle-right"></i>  {{$category->name}}</a>
           @endforeach
         </div>
       </div>
@@ -104,21 +100,18 @@
           @foreach($proOrderBought as $product)
           <div class="row">
             <div class="col-4 text-center productList__item">
-              <a href="{{route('shop.show',$product->slug)}}"><img src="{{ $product->thumbnail }}" alt="" ></a>
+              <a href="{{route('shop.show',$product->slug)}}"><img src="{{ asset('images/product-1.png') }}" alt="" ></a>
             </div>
             <div class="col-8">
               <h6 class="mb-3" style="font-size: 14px;"><a href="{{route('shop.show',$product->slug)}}">{{ \Illuminate\Support\Str::limit($product->name,40)}}</a></h6>
-              @if($product->pricePresent('discount') != 0 && $product->pricePresent('discount') != null )
-                <h6 style="color: #da3f19; font-size: 14px;">
-                  {{$product->pricePresent('discount')}}
-                  {{__('$')}}
-                </h6>
-              @else
-                <h6 style="color: #da3f19; font-size: 14px;">
-                  {{$product->pricePresent('price')}}
-                  {{__('$')}}
-                </h6>
-              @endif
+              <h6 style="color: #da3f19; font-size: 14px;">
+                @if($product->pricePresent('minPrice') === $product->pricePresent('maxPrice') )
+                  {{$product->pricePresent('minPrice')}}
+                @else
+                  {{$product->pricePresent('minPrice') ."-".$product->pricepresent('maxPrice')}}
+                @endif
+                {{__('$')}}
+              </h6>
             </div>
           </div>
           <hr>

@@ -10,10 +10,9 @@
 
         <div class="checkout-bg text-center">
             <h1 class="Font-white">Your Cart</h1>
-          <ul class="breadcrumb-page">
-            <li><a  href="{{ route('home',app()->getLocale()) }}">{{__('HOME')}}</a></li>
-            <li aria-current="page">Cart</li>
-          </ul>
+            <ul class="breadcrumb-List">
+                <li><a href="{{ route('home') }}"><span>Cart</span></a></li>
+            </ul>
         </div>
 
         <div style="height: 5em"><span></span></div>
@@ -56,31 +55,62 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse(Cart::content() as $item)
                     <tr>
                         <th scope="row" class="border-0">
                         <div class="p-2">
-                            <img src="{{ $item->model->thumbnail }}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                            <img src="{{ asset('images/product-1.png') }}" alt="" width="70" class="img-fluid rounded shadow-sm">
                             <div class="ml-3 d-inline-block align-middle">
-                            <h5 class="mb-0"> <a href="{{route('shop.show',$item->model->slug)}}" class="text-dark d-inline-block align-middle">{{\Illuminate\Support\Str::limit($item->name,30)}}</a></h5>
+                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Cabernet Sauvignon Reserve</a></h5>
+                            <span class="text-muted font-weight-normal font-italic d-block">Category: New Arrivals, White Wines</span>
                             </div>
                         </div>
                         </th>
-                        <td class="border-0 align-middle"><strong>{{number_format($item->price)}}</strong></td>
-                        <td class="border-0 align-middle"><strong>{{$item->qty}}</strong></td>
-                        <td class="border-0 align-middle">
-                          <form action="{{route('cart.destroy',$item->rowId)}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger deleteItem text-light"><i class="fa fa-trash"></i></button>
-                          </form>
-                        </td>
+                        <td class="border-0 align-middle"><strong>£26000</strong></td>
+                        <td class="border-0 align-middle"><strong>3</strong></td>
+                        <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
                     </tr>
-                    @empty
-                     <tr>
-                       <h3 class="text-center text-info">Ban chua mua hang</h3>
-                     </tr>
-                    @endforelse
+                    <tr>
+                        <th scope="row" class="border-0">
+                        <div class="p-2">
+                            <img src="{{ asset('images/product-1.png') }}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                            <div class="ml-3 d-inline-block align-middle">
+                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Cabernet Sauvignon Reserve</a></h5>
+                            <span class="text-muted font-weight-normal font-italic d-block">Category: New Arrivals, White Wines</span>
+                            </div>
+                        </div>
+                        </th>
+                        <td class="border-0 align-middle"><strong>£26000</strong></td>
+                        <td class="border-0 align-middle"><strong>3</strong></td>
+                        <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="border-0">
+                        <div class="p-2">
+                            <img src="{{ asset('images/product-1.png') }}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                            <div class="ml-3 d-inline-block align-middle">
+                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Cabernet Sauvignon Reserve</a></h5>
+                            <span class="text-muted font-weight-normal font-italic d-block">Category: New Arrivals, White Wines</span>
+                            </div>
+                        </div>
+                        </th>
+                        <td class="border-0 align-middle"><strong>£26000</strong></td>
+                        <td class="border-0 align-middle"><strong>3</strong></td>
+                        <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="border-0">
+                        <div class="p-2">
+                            <img src="{{ asset('images/product-1.png') }}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                            <div class="ml-3 d-inline-block align-middle">
+                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Cabernet Sauvignon Reserve</a></h5>
+                            <span class="text-muted font-weight-normal font-italic d-block">Category: New Arrivals, White Wines</span>
+                            </div>
+                        </div>
+                        </th>
+                        <td class="border-0 align-middle"><strong>£26000</strong></td>
+                        <td class="border-0 align-middle"><strong>3</strong></td>
+                        <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                    </tr>
                     </tbody>
                 </table>
                 </div>
@@ -90,24 +120,21 @@
         </div>
 
         <div class="row py-5 p-4 bg-white rounded shadow-sm">
-          @if(session()->has('message'))
-          <div class="col-lg-12 mb-3">
-            <h4 class="text-danger text-center text-capitalize">{{session()->get('message')}}</h4>
-          </div>
-          @endif
           <div class="col-lg-6">
             <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">Coupon code</div>
             <div class="p-4">
               <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
-              <form action="{{route('coupon.store')}}" method="post">
-                @csrf
               <div class="input-group mb-4 border rounded-pill p-2">
-                  <input type="text" placeholder="Apply coupon" name="coupon_code" aria-describedby="button-addon3" class="form-control border-0">
-                  <div class="input-group-append border-0">
-                  <button id="button-addon3" type="submit" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+                <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
+                <div class="input-group-append border-0">
+                  <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
                 </div>
               </div>
-              </form>
+            </div>
+            <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">Instructions for seller</div>
+            <div class="p-4">
+              <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
+              <textarea name="" cols="30" rows="2" class="form-control"></textarea>
             </div>
           </div>
           <div class="col-lg-6">
@@ -115,30 +142,13 @@
             <div class="p-4">
               <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
               <ul class="list-unstyled mb-4">
-                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Subtotal </strong><strong>{{number_format(Cart::subtotal())." ".__('$')}}</strong></li>
-                @if(session()->has('coupon'))
-                <li class="d-flex justify-content-between py-3 border-bottom">
-                  <strong class="text-muted">Discount({{session()->get('coupon')['name']}})
-                    <form action="{{route('coupon.destroy')}}" method="post">
-                      @csrf
-                      @method('delete')
-                      <button class="btn-sm btn-danger">Remove</button>
-                    </form>
-                  </strong>
-                  <strong>{{number_format(session()->get('coupon')['discount'])." ".__('$')}}</strong>
-                </li>
-                  <li class="d-flex justify-content-between py-3 border-bottom">
-                    <strong class="text-muted">New subtotal</strong>
-                    <strong> {{number_format($newSubtotal)." ".__('$')}}</strong>
-                  </li>
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">New Tax(60%)</strong><strong>{{number_format($newTax)." ".__('$')}}</strong></li>
-                @else
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax(60%)</strong><strong>{{ number_format(Cart::tax())." ".__('$')}}</strong></li>
-                @endif
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li>
                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                  <h5 class="font-weight-bold">{{Cart::total()." ".__('$')}}</h5>
+                  <h5 class="font-weight-bold">$400.00</h5>
                 </li>
-              </ul><a href="{{route('checkout.index')}}" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+              </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
             </div>
           </div>
         </div>
@@ -153,15 +163,4 @@
 
 
 
-@endsection
-@section('script')
-  <script>
-    $('.deleteItem').click(function () {
-      // escape here if the confirm is false;
-      if (!confirm('Are you sure?')) return false;
-      var btn = this;
-      setTimeout(function () { $(btn).attr('disabled', 'disabled'); }, 1);
-      return true;
-    });
-  </script>
 @endsection

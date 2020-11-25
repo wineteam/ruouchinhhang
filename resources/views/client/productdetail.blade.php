@@ -27,50 +27,45 @@
     <div class="row">
         <div class="col-xl-6 pt-4 pb-3">
             <div class="box-images-productDetail">
-                <img class="rounded mx-auto d-block" style="margin-bottom: 1rem;" width="60%" height="auto" src="{{$product->thumbnail }}" alt="">
+                <img class="rounded mx-auto d-block" style="margin-bottom: 1rem;" width="60%" height="auto" src="{{ asset('images/product-1.png') }}" alt="">
             </div>
         </div>
         <div class="col-xl-6">
 
             <h2 class="pt-4 pb-3">{{$product->name}}</h2>
-          @if($product->discount <= 0 || $product->discount == null)
             <h4 class="pb-3 Font-Red price-product">
               {{__('price')}}:
-              {{$product->pricePresent('price')}}
+              {{$product->pricePresent('minPrice')}}
               {{__("$")}}
             </h4>
-          @else
-            <h4 class="pb-3 Font-Red price-product" >
-              {{__('price')}}:
-              <span style="text-decoration: line-through !important;">{{$product->pricePresent('price')}}</span>
-              <span> {{$product->pricePresent('discount')}}</span>
-              {{__("$")}}
-            </h4>
-          @endif
-          <h6 class="text-info">{{__('nation')}}: <a href="{{route('getProByNat',$product->nation)}}">{{$product->nation}}</a></h6>
            <div class="detail">
              {!! $product->detail !!}
            </div>
 
+            <br>
+            <label for="amount">{{__('amount')}} :</label>
+            <br>
+            <div class="number-input">
+              <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+              <input id="amount" name="amount" class="Buyed-PDetail" type="number" value="1" min="0" max="10" step="1"/>
+              <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            </div>
+
             <br><br>
-          <form action="{{route('cart.store')}}" method="post" >
-            <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
-            <label for="qty">{{__('amount')}} :</label>
-            <input name="qty" id="qty" type="number" value="1" min="0" max="10" step="1"/>
-            <button  class="btn btn-danger add_product">{{__('buy_now')}}</button>
+          <form action="{{route('cart.store')}}" method="post">
+            @csrf
+            <input type="hidden" value="{{$product->id}}">
+            <button type="submit" class="btn btn-danger">{{__('buy_now')}}</button>
           </form>
-          <br><br>
             <br><br>
             <p>Product ID: {{$product->codeProduct}}</p>
             <p>Categories:
-              @forelse($product->categories as $category)
-                <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
+              @foreach($product->categories as $category)
+              <a href="{{route('getProByCat',$category->slug)}}" class="Font-Red">{{$category->name}}</a>
                 @if(!$loop->last)
                   ,
                 @endif
-              @empty
-                <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
-              @endforelse
+              @endforeach
             </p>
             <p>Tags:
               @foreach($product->tags as $tag)
@@ -107,11 +102,11 @@
                             <tbody>
                             <tr class="col-3">
                                 <td colspan="1" class="font-weight-bold">Size</td>
-                                <td colspan="2">{{$product->size}}</td>
+                                <td colspan="2">500ml, 750ml</td>
                             </tr>
                             <tr class="col-9">
                                 <td colspan="1" class="font-weight-bold">Vintage</td>
-                                <td colspan="2">{{$product->vintage}}</td>
+                                <td colspan="2">2012, 2014</td>
                             </tr>
                             </tbody>
                         </table>
@@ -127,7 +122,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="{{ $product->thumbnail }}" class="avatar img-circle img-thumbnail"/>
+                                    <img src="{{ asset('images/promo-3.webp') }}" class="avatar img-circle img-thumbnail"/>
                                     <p class="text-secondary text-center">15 Minutes Ago</p>
                                 </div>
                                 <div class="col-md-10">
@@ -218,15 +213,13 @@
       @forelse($productRelations as $product)
         <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
             <div class="productItem__content">
-              <a href="{{route('shop.show',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ $product->thumbnail }}" alt=""></a>
-              @forelse($product->categories as $category)
-                <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
+              <a href="{{route('shop.show',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt=""></a>
+              @foreach($product->categories as $category)
+            <a href="{{route('getProByCat',$category->slug)}}" class="text-capitalize">{{$category->name}}</a>
                 @if(!$loop->last)
                   ,
                 @endif
-              @empty
-                <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
-              @endforelse
+              @endforeach
             <h4><a href="{{route('shop.show',$product->slug)}}" class="text-capitalize">{{\Illuminate\Support\Str::limit($product->name,15  )}}</a></h4>
 {{--            <p>--}}
 {{--                <i class="fa fa-star"></i>--}}
@@ -235,26 +228,15 @@
 {{--                <i class="fa fa-star"></i>--}}
 {{--                <i class="fa fa-star"></i>--}}
 {{--            </p>--}}
-              @if($product->discount <= 0 || $product->discount == null)
-                <h6 class="pb-3 Font-Red price-product">
-                  {{__('price')}}:
-                  {{$product->pricePresent('price')}}
-                  {{__("$")}}
-                </h6>
+            <h6 class="p-3 text-danger">
+              @if($product->pricePresent('minPrice') === $product->pricePresent('maxPrice') )
+                {{$product->pricePresent('minPrice')}}
               @else
-                <p style="color: red; font-size: 14px" class="text-capitalize">{{__('promotion')}}</p>
-                <h6 class="pb-3 Font-Red price-product">
-                  {{__('price')}}:
-                  {{$product->pricePresent('discount')}}
-                  {{__("$")}}
-                </h6>
-
+                {{$product->pricePresent('minPrice') ."-".$product->pricepresent('maxPrice')}}
               @endif
-              <form action="{{route('cart.store')}}" method="POST">
-                @csrf
-                <input type="hidden" value="{{$product->id}}">
-                <button  class="btn btn-danger add_product">{{__('buy_now')}}</button>
-              </form>
+              {{__("$")}}
+            </h6>
+              <a href="" class="btn-subtitle"><span class=""><span class="">{{__('buy_now')}}</span></span></a>
         </div>
         </div>
       @empty
@@ -289,23 +271,18 @@
           @foreach($proOrderBought as $product)
             <div class="row">
               <div class="col-4 text-center productList__item">
-                <a href="{{route('shop.show',$product->slug)}}"><img src="{{$product->thumbnail }}" alt="" ></a>
+                <a href="{{route('shop.show',$product->slug)}}"><img src="{{ asset('images/product-1.png') }}" alt="" ></a>
               </div>
               <div class="col-8">
                 <h6 class="mb-3" style="font-size: 14px;"><a href="{{route('shop.show',$product->slug)}}">{{ \Illuminate\Support\Str::limit($product->name,40)}}</a></h6>
-                @if($product->discount <= 0 || $product->discount == null)
-                  <h6 class="pb-3 Font-Red price-product">
-                    {{__('price')}}:
-                    {{$product->pricePresent('price')}}
-                    {{__("$")}}
-                  </h6>
-                @else
-                  <h6 class="pb-3 Font-Red price-product">
-                    {{__('price')}}:
-                    {{$product->pricePresent('discount')}}
-                    {{__("$")}}
-                  </h6>
-                @endif
+                <h6 style="color: #da3f19; font-size: 14px;">
+                  @if($product->pricePresent('minPrice') === $product->pricePresent('maxPrice') )
+                    {{$product->pricePresent('minPrice')}}
+                  @else
+                    {{$product->pricePresent('minPrice') ."-".$product->pricepresent('maxPrice')}}
+                  @endif
+                  {{__("$")}}
+                </h6>
               </div>
             </div>
             <hr>
@@ -334,5 +311,4 @@
 
     })
   </script>
-
 @endsection

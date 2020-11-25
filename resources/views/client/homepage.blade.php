@@ -69,7 +69,7 @@
 <div class="row">
     <div class="MultiCarousel" data-items="1,2,3,4" data-slide="1" id="MultiCarousel"  data-interval="1000">
         <div class="MultiCarousel-inner">
-            @forelse($productsEsp as $product)
+            @forelse($products as $product)
             <div class="item">
                 <div class="bg-white" style="position: relative;">
                     <a href="">
@@ -77,7 +77,7 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a href="{{route('shop.show',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ $product->thumbnail}} }}" alt=""></a>
+                    <a href="{{route('shop.show',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-4.png') }}" alt=""></a>
                     @forelse($product->categories as $category)
                     <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
                         @if(!$loop->last)
@@ -88,20 +88,16 @@
                     @endforelse
                         <div class="col-12 mx-auto" style="padding: 20px;">
                         <a class="Hover-Red" href="{{route('shop.show',$product->slug)}}"><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{$product->id}}{{\Illuminate\Support\Str::limit($product->name,15  )}}</h5></a>
-                          @if($product->discount <= 0 || $product->discount == null)
-                            <h5 class="p-3 Font-Red">
-                              {{__('price')}}:
-                              {{$product->pricePresent('price')}}
-                              {{__("$")}}
-                            </h5>
-                          @else
-                            <p style="color: red; font-size: 14px">{{__('promotion')}}</p>
-                            <h5 class="p-3 Font-Red">
-                              {{__('price')}}:
-                              {{$product->pricePresent('discount')}}
-                              {{__("$")}}
-                            </h5>
+                        <h5 class="Font-Red" style="margin-bottom: 1.5rem;">
+                          @if($product->pricePresent('minPrice') === $product->pricePresent('maxPrice') )
+                            {{$product->pricePresent('minPrice')}}
+                            @else
+                          {{$product->pricePresent('minPrice') ."-".$product->pricepresent('maxPrice')}}
                           @endif
+                          {{__("$")}}
+
+                        </h5>
+                        <a href="{{route('shop.show',$product->slug)}}" class="btn-subtitle"><span class=""><span class="">{{__('buy_now')}}</span></span></a>
                     </div>
                 </div>
             </div>
@@ -158,7 +154,7 @@
         </div>
         <div class="row">
 
-            @forelse($productsRec as $product)
+            @forelse($products as $product)
 
             <div class="col-xl-3 col-md-4 col-sm-6 filterDiv padding-less {{$category->slug}} show">
                 <div>
@@ -168,7 +164,7 @@
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </div>
                         </a>
-                        <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ $product->thumbnail }}" alt="">
+                        <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ asset('images/product-1.png') }}" alt="">
 
                         @forelse($product->categories as $category)
                             <span class="text-center Font-Size-07vw">
@@ -187,21 +183,17 @@
                                     {{$product->id}}{{\Illuminate\Support\Str::limit($product->name,15  )}}
                                 </h5>
                             </a>
-                          @if($product->discount <= 0 || $product->discount == null)
-                            <h5 class="p-3 Font-Red">
-                              {{__('price')}}:
-                              {{$product->pricePresent('price')}}
-                              {{__("$")}}
+                            <h5 class="Font-Red" style="margin-bottom: 1.5rem;">
+                            
+                                @if($product->pricePresent('minPrice') === $product->pricePresent('maxPrice') )
+                                {{$product->pricePresent('minPrice')}}
+                                @else
+                                {{$product->pricePresent('minPrice') ."-".$product->pricepresent('maxPrice')}}
+                                @endif
+                                {{__("$")}}
+                            
                             </h5>
-                          @else
-                            <p style="color: red; font-size: 14px">{{__('promotion')}}</p>
-                            <h5 class="p-3 Font-Red">
-                              {{__('price')}}:
-                              {{$product->pricePresent('discount')}}
-                              {{__("$")}}
-                            </h5>
-                          @endif
-
+                            <a href="{{route('shop.show',$product->slug)}}"class="btn-subtitle"><span class=""><span class="">{{__('buy_now')}}</span></span></a>
                         </div>
                     </div>
                 </div>
@@ -233,12 +225,14 @@
                         <div class="blogger_padding_text blogger_classic">
                             <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
                             <div id="" class="">
-                              <a href="{{route('blog.show',$blog->slug)}}"><img src="{{$blog->thumbnail}}" width="100%" alt=""></a>
-                                <a href="#">
+                                <img src="{{$blog->thumbnail}}" width="100%" alt="">
+                                <a href="">
                                     <span class="day">{{\Carbon\Carbon::parse($blog->created_at)->format('d')}}</span> <span class="Font-dark">{{\Carbon\Carbon::parse($blog->created_at)->format('M')}}</span>
                                 </a>
-                                <h5 class="sc_item_title" style="margin-top: 30px;"><a class="text-danger" href="{{route('blog.show',$blog->slug)}}">{{\Illuminate\Support\Str::limit($blog->title,30)}}</a></h5>
-
+                                <h5 class="sc_item_title" style="margin-top: 30px;"><a class="text-danger" href="{{$blog->slug}}">{{$blog->title}}</a></h5>
+                                <div class="mr-subtitle">
+                                    <a href="{{route('blog.show',$blog->slug)}}"class="btn-subtitle"><span class=""><span class="">{{__('Learn_more')}}</span></span></a>
+                                </div>
                             </div>
                             <div class="vc_empty_space" style="height: 3.2em"><span class="vc_empty_space_inner"></span></div>
                         </div>

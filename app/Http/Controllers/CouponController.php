@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Coupon;
 use Illuminate\Http\Request;
-use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CouponController extends Controller
 {
@@ -32,19 +31,11 @@ class CouponController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $coupon = Coupon::where('code',$request->coupon_code)->first();
-        if (!$coupon){
-          return redirect()->route('cart.index')->with('message','Ma giam gia khong chinh xac');
-        }
-        session()->put('coupon',[
-          'name'=>$coupon->code,
-          'discount'=>$coupon->discount(Cart::subtotal())
-        ]);
-        return redirect()->route('cart.index')->with('message','Su dung ma giam gia thanh cong');
+        //
     }
 
     /**
@@ -85,11 +76,10 @@ class CouponController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Coupon  $coupon
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Coupon $coupon)
     {
-        session()->forget('coupon');
-        return redirect()->back();
+        //
     }
 }

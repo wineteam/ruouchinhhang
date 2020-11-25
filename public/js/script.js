@@ -4,6 +4,7 @@ $(document).ready(function(){
     $(".fixed-input-search").toggleClass("active").focus();
     $(".btnSearch").toggleClass("fa-window-close").focus();
   });
+
   function checkForInput(element) {
     // element is passed to the function ^
 

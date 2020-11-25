@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','codeProduct','name','slug','thumbnail','price','size','vintage','detail','discount','nation','description','view','bought','language_id','is_published','especially','amount'];
+    protected $fillable = ['user_id','codeProduct','name','slug','thumbnail','detail','discount','nation','description','view','bought','language','is_published','especially','amount'];
 
     public function users(){
         return $this->belongsTo(User::class);
@@ -30,7 +30,8 @@ class Product extends Model
     public function productRelation(){
       return $this->hasMany(ProductRelation::class);
     }
-    public function pricePresent($option) : string{
-      return  number_format($this->$option);
+    public function pricePresent() : string{
+
+      return  number_format($this->price);
     }
 }

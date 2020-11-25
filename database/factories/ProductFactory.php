@@ -28,8 +28,6 @@ class ProductFactory extends Factory
         $nation = ['Việt Nam','America','Japan','China'];
         $view = random_int(0,1000);
         $bought = random_int(0,1000);
-        $size = ['500ml','700ml'];
-        $vintage = ['1990','2012','2014','1988'];
         $enum = ['0','1'];
         return [
             'user_id'=>$userid,
@@ -38,8 +36,6 @@ class ProductFactory extends Factory
             'slug'=>str_slug($name),
             'thumbnail'=>$this->faker->imageUrl(),
             'price'=>random_int(100000,900000),
-            'size'=>$size[random_int(0,1)],
-            'vintage'=>$vintage[random_int(0,3)],
             'detail'=>$this->faker->paragraph($maxNbChars = 10),
             'discount'=>$discount,
             'nation'=> $nation[array_rand($nation,1)],

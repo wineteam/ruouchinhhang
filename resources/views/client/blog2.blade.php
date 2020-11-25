@@ -37,8 +37,8 @@
     <div class="categories" style="margin-bottom: 100px;">
         <h5 style="margin-bottom: 40px;">{{__('catelog')}}</h5>
         <ul class="categories-menu">
-            @foreach($categoriesBlog as $CateBlog)
-            <li class="cat-item"><i class="demo-icon icon-wine"></i><a class="text-capitalize" href="{{route('blog.search.categories',$CateBlog->slug)}}">{{$CateBlog->name}}</a></li>
+            @foreach($categorieBlog as $CateBlog)
+            <li class="cat-item"><i class="demo-icon icon-wine"></i><a href="{{route('blog.search.categories',$CateBlog->slug)}}">{{$CateBlog->name}}</a></li>
             @endforeach
         </ul>
     </div>
