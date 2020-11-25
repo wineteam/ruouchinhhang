@@ -1,17 +1,16 @@
 @extends('layouts.app')
 @section('content')
+<<<<<<< HEAD
 <div class="container-fluid bg-white">
 
 <<<<<<< HEAD
+=======
+>>>>>>> hoaianh-client
     <div class="blog-page">
         <!-- Breadcrumb -->
         <div class="banner-page col-lg-12">
-          @if(session()->has('message'))
-            <p class="title-page">Search for: {{session()->get('message')}}</p>
-          @elseif(session()->has('messageBlog2'))
-            <p class="title-page">Tag : {{session()->get('messageBlog2')}}</p>
-          @elseif(session()->has('messageBlog3'))
-            <p class="title-page">Categories : {{session()->get('messageBlog3')}}</p>
+          @if(isset($message))
+            <p class="title-page text-capitalize">{{$message}}</p>
           @else
             <p class="title-page">{{__('ALL')}} {{__('POST')}}</p>
           @endif
@@ -115,15 +114,23 @@
                         </div>
                         <div class="detail-blogger">
                             <p>{{\Carbon\Carbon::parse( $myblogs->day_up)->format('d/m/Y')}} <span>september</span></p>
+<<<<<<< HEAD
                             <h1  class="title-blog"><a href="{{route('blog.show',$myblogs->slug)}}">{{$myblogs->title}}{{$myblogs->id}}{{\Illuminate\Support\Str::limit($myblogs->title,5  )}}</a></h1>
                             <a href="{{route('blog.show',$myblogs->slug)}}" class="learn-more">{{__('Learn_more')}}</a>
+=======
+                            <h1  class="title-blog"><a href="{{route('blog.show',$myblogs->slug)}}">{{$myblogs->id}}{{\Illuminate\Support\Str::limit($myblogs->title,100  )}}</a></h1>
+                            <a href="{{route('blog.show',$myblogs->slug)}}" class="learn-more">Learn more</a>
+>>>>>>> hoaianh-client
                         </div>
                     </div>
                   @endforeach
-
+                    @if(count($blogs) > 4)
                     <div class="loadmore">
                         <button class="btn-loadMore" id="loadMore">{{__('Load_more')}}</button>
                     </div>
+                    @elseif(count($blogs) == 0)
+                      <h2 class="text-danger text-center">Nothing</h2>
+                    @endif
               </div>
 
               @include('client.blog2')
@@ -131,7 +138,7 @@
       </div>
       </div>
       {{-- end blogger --}}
-</div>
+
 
 <script src="{{ asset('js/loadmore-blog.js') }}"></script>
 

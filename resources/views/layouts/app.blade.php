@@ -57,7 +57,9 @@
             <div class="card card-border-0 flex-row align-items-center h-100">
                     <a href="" class="text-dark edit-icon mr-auto-moblie-icon" style="padding: 10px 15px;border: 2px solid #bdb68e"><i class="fa fa-phone" aria-hidden="true"></i></a>
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms"><span class="font-weight-bold Font-Blue">{{__('Call_us')}}: <a href="tel:123-456-7890" class="Font-Blue">123-456-7890</a></span> <br> <a class="Font-Blue" href="mailto:QuanlityWine@gmail.com">QuanlityWine@gmail.com</a></p>
+                    <p class="card-text Re-font-ms"><span class="font-weight-bold Font-Blue">{{__('Call_us')}}: <a href="tel:123-456-7890" class="Font-Blue">{{$info->phone}}</a></span>
+                    <br>
+                    <a class="Font-Blue" href="mailto:QuanlityWine@gmail.com">{{$info->email}}</a></p>
                 </div>
             </div>
         </div>
@@ -71,7 +73,7 @@
 {{--                </div>--}}
             <div class="mr-auto-moblie btn cart-open">
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms text-cart-center"><span class="font-weight-bold Font-Blue">{{__('Your_cart')}}:</span> <br> <span class="Font-Yellow">0 items - £0.00</span></p>
+                    <p class="card-text Re-font-ms text-cart-center"><span class="font-weight-bold Font-Blue">{{__('Your_cart')}}:</span> <br> <span class="Font-Yellow">{{Cart::count()}} item(s) </span></p>
                 </div>
             </div>
             </div>
@@ -79,35 +81,25 @@
             <div class="Cart-list ml-auto">
                 <!-- <p class="No-products">No products in the cart.</p> -->
                 <div class="box-cart-overflow">
-
+                  @forelse(Cart::content() as $item)
                     <div class="card card-border-0 flex-row align-items-center h-100" style="margin-top: 20px;margin-left: 10px;">
                         <div class="card-header bg-products-cart">
-                            <img src="{{ asset('images/product-1.png') }}" alt="" width="40px">
+                            <img src="{{ $item->model->thumbnail }}" alt="" width="40px">
                         </div>
                         <div class="card-block px-2">
-                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">California Red Wine - 500ml, 2012</a></span></p>
-                                <p class="Font-Red font-weight-bold">2 × £300.00</p>
+                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">{{\Illuminate\Support\Str::limit($item->name,20)}}</a></span></p>
+                                <p class="Font-Red font-weight-bold">{{number_format($item->price)." ".__('$')." x ".$item->qty}}</p>
                         </div>
                     </div>
                     <br><hr class="hr-cart-Products">
-
-                    <div class="card card-border-0 flex-row align-items-center h-100" style="margin-top: 20px;margin-left: 10px;">
-                        <div class="card-header bg-products-cart">
-                            <img src="{{ asset('images/product-1.png') }}" alt="" width="40px">
-                        </div>
-                        <div class="card-block px-2">
-                            <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">California Red Wine - 500ml, 2012</a></span>
-                                <p class="Font-Red font-weight-bold">2 × £300.00</p>
-                            </p>
-                        </div>
-                    </div>
-                    <br><hr class="hr-cart-Products">
+                  @empty
+                  @endforelse
                 </div>
 
-                <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red"> £822.00</span></p>
+                <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red">{{number_format(Cart::subtotal())." ".__('$')}}</span></p>
                 <div class="subtotal">
                     <a href="{{route('cart.index')}}" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
-                <a href="{{ route('checkout') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
+                <a href="{{ route('checkout.index') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
                 </div>
             </div>
 
@@ -207,7 +199,7 @@
 
 <!--====================================== MAIN ======================================-->
     <main>
-        <div class="container-fluid bg-white">
+        <div class="bg-white">
         @yield('content')
         </div>
     </main>
@@ -221,7 +213,7 @@
             <div class="card card-border-0 flex-row align-items-center h-100">
 
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms"><span class="Font-dark Font-Size-07vw">ThemeREX © 2020 All rights reserved.</span></p>
+                    <p class="card-text Re-font-ms"><span class="Font-dark Font-Size-07vw">{{$info->address}}.</span></p>
                 </div>
             </div>
         </div>
@@ -255,6 +247,19 @@
             var selectedLanguage = $(this).children("option:selected").val();
             window.location.replace(selectedLanguage);
         });
+      $(".add_product").click(function (e){
+        e.preventDefault();
+        $.ajax({
+          url: "cart",
+          type: "POST",
+          data: {
+            product_id: $('#product_id').val(),
+            qty: $('#qty').val()
+          }
+        }).done(function (response){
+          alert("da them san pham " +response+ "vao gio hang")
+        })
+      })
     });
 </script>
 <script src="{{ asset('js/Scrollstop.js') }}"></script>

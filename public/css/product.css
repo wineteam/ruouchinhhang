@@ -8,11 +8,6 @@ body {
 .boxSelect option {
   font-size: 12px;
 }
-.productItem__content {
-  width: auto;
-  padding: 50px 10px;
-  background-image: url(../images/audio_bg.jpg);
-}
 .productItem__content p:nth-child(2) {
   padding-top: 10px;
   font-size: 14px;

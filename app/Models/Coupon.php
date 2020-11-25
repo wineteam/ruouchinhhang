@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+
 class Coupon extends Model
 {
     use HasFactory;
@@ -12,5 +12,17 @@ class Coupon extends Model
 
     public function users(){
         return $this->belongsTo(User::class);
+    }
+
+    public function discount($total)
+    {
+      if ($this->type == 'fixed') {
+        return $this->value;
+      }
+
+      if($this->type == 'percent') {
+        return round(($this->percent_off / 100) * $total);
+      }
+      return 0;
     }
 }

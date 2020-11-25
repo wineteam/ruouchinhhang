@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "ALL": "All",
     "HOME": "HOME",
     "STORE": "STORE",
@@ -7,6 +8,14 @@
     "CONTACT": "CONTACT",
     "LOGIN": "LOGIN",
     "REGISTER": "REGISTER",
+=======
+    "HOME": "Home",
+    "STORE": "Store",
+    "BLOG": "Blog",
+    "CONTACT": "Contact",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+>>>>>>> hoaianh-client
     "Your_cart": "Your cart",
     "Call_us": "Call us",
     "Our_product": "Our product",
@@ -27,6 +36,7 @@
     "amount": "Amount",
     "searchProduct": "search product",
     "filter": "Filter",
+<<<<<<< HEAD
     "search": "Search",
     "catelog": "Categories",
     "Recent_Posts": "Recent Posts",
@@ -35,4 +45,11 @@
     "GetinTouch": "Get in Touch",
     "SendaMessage": "Send a Message",
     "agree": "I agree that my submitted data is being collected and stored."
+=======
+    "promotion": "promotion",
+    "nation": "Nation",
+    "search for": "Search for",
+    "category": "Category",
+    "tag": "Tag"
+>>>>>>> hoaianh-client
 }

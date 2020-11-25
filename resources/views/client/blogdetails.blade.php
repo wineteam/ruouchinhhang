@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-<div class="container-fluid bg-white">
-
     <div class="blog-page">
         <!-- Breadcrumb -->
         <div class="banner-page col-lg-12">
@@ -48,7 +45,7 @@
                 <p>{{$blog->content}}</p>
 
                 <hr>
-                
+
               </div>
 
               <!-- Sidebar Widgets Column -->
@@ -63,7 +60,4 @@
       </div>
       </div>
       {{-- end blogger --}}
-
-</div>
-
 @endsection
