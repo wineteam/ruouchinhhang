@@ -28,9 +28,12 @@
     "amount": "Số lượng",
     "searchProduct": "Tìm kiếm sản phẩm",
     "filter": "Lọc",
-    "promotion": "Khuyến mãi",
-    "nation": "Quốc gia",
-    "search for": "Tìm kiếm cho",
-    "category": "Danh mục",
-    "tag": "Từ khóa"
+    "search": "Tìm kiếm",
+    "catelog": "Danh mục",
+    "Recent_Posts": "Bài viết gần đây",
+    "by": "Đăng bởi",
+    "Posted_on": "Đăng ngày",
+    "GetinTouch": "Liên hệ với chúng tôi",
+    "SendaMessage": "Gửi tin nhắn",
+    "agree": "Tôi đồng ý rằng dữ liệu đã gửi của tôi đang được thu thập và lưu trữ."
 }
