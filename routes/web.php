@@ -59,8 +59,9 @@ use App\Http\Controllers\CartController;
   Route::get('/change', function () {
       return view('client.changePassword');
   })->name('change');
-
+//contact
   Route::get('/contact', [ContactController::class,'index'])->name('contact');
+  Route::post('/contact',[ContactController::class,'sendMail'])->name('contact.sendMail');
   Route::get('manager-admin', );
 
   Auth::routes();

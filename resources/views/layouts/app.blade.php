@@ -27,18 +27,12 @@
     <link rel="stylesheet" href="{{ asset('css/product.css')}}">
     <link rel="stylesheet" href="{{ asset('css/fontello.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/jquery-ui.js') }}" type="text/javascript"></script>
-    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('js/script.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('js/jquery-ui.css') }}">
+    <script src="{{ mix('js/app.js') }}"></script>
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- Font Awesome (Icon) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-    <!-- Bootstrap 4.5.2 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 <!--================================================================================================================================================================================================================================-->
 </head>
@@ -240,26 +234,13 @@
     </div>
 </footer>
 <!--====================================== END FOOTER ======================================-->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function (){
         $('#select_language').change(function (){
             var selectedLanguage = $(this).children("option:selected").val();
             window.location.replace(selectedLanguage);
         });
-      $(".add_product").click(function (e){
-        e.preventDefault();
-        $.ajax({
-          url: "cart",
-          type: "POST",
-          data: {
-            product_id: $('#product_id').val(),
-            qty: $('#qty').val()
-          }
-        }).done(function (response){
-          alert("da them san pham " +response+ "vao gio hang")
-        })
-      })
+
     });
 </script>
 <script src="{{ asset('js/Scrollstop.js') }}"></script>

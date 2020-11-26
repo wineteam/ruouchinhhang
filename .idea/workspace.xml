@@ -22,59 +22,23 @@
     <select />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <list default="true" id="8476c215-00c3-495a-85b1-5bb1ee93b73e" name="Default Changelist" comment="" />
-=======
     <list default="true" id="8476c215-00c3-495a-85b1-5bb1ee93b73e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
->>>>>>> 7e43e3be61f75db1b48ac984824911d95937a482
-=======
-    <list default="true" id="8476c215-00c3-495a-85b1-5bb1ee93b73e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/duancuoi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/duancuoi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CouponController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CouponController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomePageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Coupon.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Coupon.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ProductFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_162915_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_162915_create_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_164328_create_language_switches_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_8_05_164328_create_language_switches_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_19_150348_create_info_sites_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_19_150348_create_info_sites_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/vn.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/vn.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/blog2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/blog2.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/blogdetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/blogdetails.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/cartDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/cartDetails.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/homepage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/homepage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/contact.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/productdetail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/productdetail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/shop.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
->>>>>>> hoaianh-client
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,11 +202,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-<<<<<<< HEAD
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-=======
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
->>>>>>> hoaianh-client
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -317,23 +277,18 @@
       <workItem from="1605545270577" duration="610000" />
       <workItem from="1605603291311" duration="12126000" />
       <workItem from="1605652051973" duration="1529000" />
-<<<<<<< HEAD
       <workItem from="1605677491346" duration="8771000" />
       <workItem from="1605766695753" duration="93000" />
       <workItem from="1605767833485" duration="21000" />
       <workItem from="1605767856036" duration="5689000" />
       <workItem from="1605796673233" duration="179000" />
       <workItem from="1605797547402" duration="22000" />
-<<<<<<< HEAD
-=======
       <workItem from="1605677491346" duration="13957000" />
       <workItem from="1605767418950" duration="1123000" />
       <workItem from="1605803082740" duration="1601000" />
       <workItem from="1605875024069" duration="626000" />
       <workItem from="1605961526883" duration="818000" />
       <workItem from="1606032123472" duration="1248000" />
->>>>>>> 7e43e3be61f75db1b48ac984824911d95937a482
-=======
       <workItem from="1606052361501" duration="11227000" />
       <workItem from="1606142368813" duration="728000" />
       <workItem from="1606147362631" duration="2163000" />
@@ -341,7 +296,7 @@
       <workItem from="1606205172347" duration="28755000" />
       <workItem from="1606273806194" duration="18014000" />
       <workItem from="1606306326529" duration="536000" />
->>>>>>> hoaianh-client
+      <workItem from="1606334062305" duration="2382000" />
     </task>
     <servers />
   </component>
@@ -361,17 +316,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-<<<<<<< HEAD
-    <state x="395" y="91" key="#Inspections" timestamp="1605714060611">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="395" y="91" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1605714060611" />
-=======
     <state x="395" y="91" key="#Inspections" timestamp="1606280127225">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="395" y="91" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1606280127225" />
->>>>>>> hoaianh-client
     <state x="382" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605543854419">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -384,24 +332,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="371" y="96" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.680@0.0.1280.680" timestamp="1604043744020" />
-<<<<<<< HEAD
-    <state x="445" y="116" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605636764568" />
-<<<<<<< HEAD
-    <state x="600" y="152" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1605772304782" />
-=======
-    <state x="507" y="325" width="522" height="252" key="ComposerInitDialogKey" timestamp="1605711628225">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="507" y="325" width="522" height="252" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1605711628225" />
->>>>>>> 7e43e3be61f75db1b48ac984824911d95937a482
-=======
     <state x="445" y="116" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606235043507" />
     <state x="600" y="152" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1605772304782" />
     <state x="507" y="325" key="ComposerInitDialogKey" timestamp="1606148610464">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="507" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1606148610464" />
->>>>>>> hoaianh-client
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1604927600143">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -415,21 +351,16 @@
     <state x="541" y="143" key="NewPhpClassDialog" timestamp="1606214655770">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-<<<<<<< HEAD
-    <state x="541" y="143" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1605701897020" />
-    <state x="194" y="62" key="SettingsEditor" timestamp="1606051113100">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1603728960115" />
-    <state x="194" y="62" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606051113100" />
-=======
     <state x="541" y="143" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1606214655770" />
-    <state x="194" y="62" key="SettingsEditor" timestamp="1606236174336">
+    <state x="572" y="336" key="NewPhpFileDialog" timestamp="1606335222123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="572" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1606335222123" />
+    <state x="194" y="62" key="SettingsEditor" timestamp="1606334815831">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1603728960115" />
-    <state x="194" y="62" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606236174336" />
->>>>>>> hoaianh-client
+    <state x="194" y="62" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606334815831" />
     <state x="213" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1604904484596" />
     <state x="618" y="319" key="VCS.ChangelistChooser" timestamp="1604926661020">
       <screen x="0" y="0" width="1536" height="824" />
@@ -452,11 +383,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1606052674567" />
-    <state x="804" y="134" width="672" height="678" key="search.everywhere.popup" timestamp="1606300038933">
+    <state x="804" y="134" width="672" height="678" key="search.everywhere.popup" timestamp="1606336295508">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="359" y="120" width="672" height="560" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1604053693017" />
-    <state x="804" y="134" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1606300038933" />
+    <state x="804" y="134" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1606336295508" />
     <state x="1035" y="176" width="813" height="889" key="search.everywhere.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1605772780990" />
     <state x="491" y="324" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1605653108614">
       <screen x="0" y="0" width="1536" height="824" />

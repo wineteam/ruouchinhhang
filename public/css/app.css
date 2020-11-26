@@ -63,32 +63,7 @@ nav,
 section {
   display: block;
 }
-/* Style the list */
-ul.breadcrumb-page {
-  padding: 10px 16px;
-  list-style: none;
-}
 
-/* Display list items side by side */
-ul.breadcrumb-page li {
-  display: inline;
-  font-size: 18px;
-}
-
-/* Add a slash symbol (/) before/behind each list item */
-ul.breadcrumb-page li+li:before {
-  padding: 8px;
-  color: #787567;
-  content: "/\00a0";
-}
-ul.breadcrumb-page li[aria-current="page"]{
-  color: #787567;
-}
-/* Add a color to all links inside the list */
-ul.breadcrumb-page li a {
-  color: #CBA476;
-  text-decoration: none;
-}
 body {
   margin: 0;
   font-family: "Nunito", sans-serif;
@@ -12048,30 +12023,30 @@ button:focus {
 
 .product-page .title-page {
   color: #ffffff;
-  font-size: 54px;
+  font-size: 34px;
 }
 
-.product-page ul.breadcrumb-page {
+ ul.breadcrumb-page {
   padding: 10px 16px;
   list-style: none;
 }
 
-.product-page ul.breadcrumb-page li {
+ ul.breadcrumb-page li {
   display: inline;
   font-size: 18px;
 }
 
-.product-page ul.breadcrumb-page li + li:before {
+ul.breadcrumb-page li + li:before {
   padding: 8px;
   color: #787567;
   content: "/\A0";
 }
 
-.product-page ul.breadcrumb-page li[aria-current=page] {
+ul.breadcrumb-page li[aria-current=page] {
   color: #787567;
 }
 
-.product-page ul.breadcrumb-page li a {
+ ul.breadcrumb-page li a {
   color: #CBA476;
   text-decoration: none;
 }
@@ -12087,6 +12062,7 @@ button:focus {
 
 .product-page .productItem__content {
   width: auto;
+  padding: 50px 10px;
   background-image: url(/images/audio_bg.jpg?e0a7a3981522b2b610e09f815c222e31);
 }
 

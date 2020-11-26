@@ -29,5 +29,8 @@
     "nation": "Nation",
     "search for": "Search for",
     "category": "Category",
-    "tag": "Tag"
+    "tag": "Tag",
+    "cart": "Cart",
+    "send_message": "Send Message",
+    "send": "Send"
 }

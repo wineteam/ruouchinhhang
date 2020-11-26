@@ -331,7 +331,20 @@
 @section('script')
   <script>
     $(document).ready(function (){
+      $(".add_product").click(function (e){
+        e.preventDefault();
 
+        $.ajax({
+          url: "cart",
+          type: "POST",
+          data: {
+            product_id: $('#product_id').val(),
+            qty: $('#qty').val()
+          }
+        }).done(function (response){
+          swal("da them san pham " +response+ "vao gio hang")
+        })
+      })
     })
   </script>
 

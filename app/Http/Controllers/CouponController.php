@@ -38,7 +38,7 @@ class CouponController extends Controller
     {
         $coupon = Coupon::where('code',$request->coupon_code)->first();
         if (!$coupon){
-          return redirect()->route('cart.index')->with('message','Ma giam gia khong chinh xac');
+          return redirect()->route('cart.index')->withError('Ma giam gia khong chinh xac');
         }
         session()->put('coupon',[
           'name'=>$coupon->code,
