@@ -44,7 +44,7 @@ class CouponController extends Controller
           'name'=>$coupon->code,
           'discount'=>$coupon->discount(Cart::subtotal())
         ]);
-        return redirect()->route('cart.index')->with('message','Su dung ma giam gia thanh cong');
+        return redirect()->route('cart.index')->with('message-coupon','Su dung ma giam gia thanh cong');
     }
 
     /**

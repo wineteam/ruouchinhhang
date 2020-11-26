@@ -90,13 +90,12 @@
                   @endforelse
                 </div>
 
-                <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red">{{number_format(Cart::subtotal())." ".__('$')}}</span></p>
+                <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red">{{(Cart::subtotal())." ".__('$')}}</span></p>
                 <div class="subtotal">
                     <a href="{{route('cart.index')}}" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
                 <a href="{{ route('checkout.index') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
                 </div>
             </div>
-
         </div>
         </div>
     </div>
@@ -117,7 +116,8 @@
                     <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact') }}">{{__('CONTACT')}}</a></li>
                     @if(Route::has('login'))
                         @auth
-                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="#">PROFILE</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{route('profile.show',Auth::user()->name)}}">{{__('profile')}}</a></li>
+                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('Logout') }}">Logout</a></li>
                         @else
                         <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login') }}">{{__('LOGIN')}}</a></li>
                             @if (Route::has('register'))
@@ -234,6 +234,17 @@
     </div>
 </footer>
 <!--====================================== END FOOTER ======================================-->
+<script>
+    /*CART*/
+    $(document).ready(function(){
+
+    $(".cart-open").click(function(){
+    $(".Cart-list").toggleClass("active").focus();
+    });
+
+    });
+    /* END CART*/
+</script>
 <script>
     $(document).ready(function (){
         $('#select_language').change(function (){

@@ -91,8 +91,8 @@
 
         <div class="row py-5 p-4 bg-white rounded shadow-sm">
           <div class="col-lg-12 mb-3">
-            @if(session()->has('message'))
-            <h4 class="alert-success alert text-center text-capitalize">{{session()->get('message')}}</h4>
+            @if(session()->has('message-coupon'))
+            <h4 class="alert-success alert text-center text-capitalize">{{session()->get('message-coupon')}}</h4>
             @endif
             @if(session()->has('error'))
                 <h4 class="alert-danger alert text-center text-capitalize">{{session()->get('error')}}</h4>

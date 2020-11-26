@@ -32,5 +32,19 @@
     "tag": "Tag",
     "cart": "Cart",
     "send_message": "Send Message",
-    "send": "Send"
+    "send": "Send",
+    "profile": "Your profile",
+    "infoProfile": "Welcome",
+    "Reset_Password": "Reset Password",
+    "E-Mail_Address": "E-Mail_Address",
+    "Password": "Password",
+    "Confirm_Password": "Confirm Password",
+    "Menu_profile": "Menu profile",
+    "Forgotpassword": "Forgot your password ?",
+    "Uploadadifferentphoto": "Upload a different photo...",
+    "name_user": "Your name",
+    "Email": "Your E-mail",
+    "Phone": "Phone number",
+    "Save": "Save",
+    "SendPasswordResetLink": "Send Password Reset Link"
 }

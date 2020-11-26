@@ -35,5 +35,19 @@
     "tag": "Từ khóa",
     "cart": "Giỏ hàng",
     "send_message": "Gửi Mail",
-    "send": "Gửi"
+    "send": "Gửi",
+    "profile": "Tài khoản của tôi",
+    "infoProfile": "Thông tin tài khoản",
+    "Reset_Password": "Thay đổi mật khẩu",
+    "E-Mail_Address": "Địa chỉ E-mail",
+    "Password": "Mật khẩu",
+    "Confirm_Password": "Xác nhận mật khẩu",
+    "Menu_profile": "Menu tài khoản",
+    "Forgotpassword": "Quên mật khẩu",
+    "Uploadadifferentphoto": "Tải lên một ảnh khác...",
+    "name_user": "Tên khách hàng",
+    "Email": "E-mail khách hàng",
+    "Phone": "Số điện thoại",
+    "Save": "Lưu lại",
+    "SendPasswordResetLink": "Gửi liên kết đặt lại mật khẩu"
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\BlogController;
   use App\Http\Controllers\checkoutController;
   use App\Http\Controllers\CouponController;
@@ -9,6 +10,9 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +32,7 @@ use App\Http\Controllers\CartController;
 //  shop
   Route::middleware('passDataForShopPage')->group(function () {
     Route::get('/shop',[ShopController::class,'index'])->name('shop');
-    Route::get('shop/tag/{tag:slug}',[ShopController::class,'getProWithTag'])->name('shop.search.tag');
+    Route::get('shop/tag/{tag:slug}',[ShopController::class,'searchWithTag'])->name('shop.search.tag');
     Route::get('/shop/{product:slug}',[ShopController::class,'show'])->name('shop.show')->middleware('checkLocaleProduct');
     Route::get('/category/{slug:slug}',[ShopController::class,'getProByCat'])->name('getProByCat');
     Route::get('/nation/{slug:slug}',[ShopController::class,'getProByNat'])->name('getProByNat');
@@ -51,14 +55,14 @@ use App\Http\Controllers\CartController;
   Route::delete('/coupon/destroy',[CouponController::class,'destroy'])->name('coupon.destroy');
 
 
-  Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
-  Route::get('/profile', function () {
-      return view('client.profile');
-  })->name('profile');
 
-  Route::get('/change', function () {
-      return view('client.changePassword');
-  })->name('change');
+//Login
+  Route::get('/Logout', [LoginController::class,'Logout'])->name('Logout');
+//Profile
+  Route::get('/profile/{name:name}', [ProfileController::class,'show'])->name('profile.show')->middleware('CheckLogin');
+
+  Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
+
 //contact
   Route::get('/contact', [ContactController::class,'index'])->name('contact');
   Route::post('/contact',[ContactController::class,'sendMail'])->name('contact.sendMail');
