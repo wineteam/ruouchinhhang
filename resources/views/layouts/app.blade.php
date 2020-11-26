@@ -27,18 +27,12 @@
     <link rel="stylesheet" href="{{ asset('css/product.css')}}">
     <link rel="stylesheet" href="{{ asset('css/fontello.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/jquery-ui.js') }}" type="text/javascript"></script>
-    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('js/script.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('js/jquery-ui.css') }}">
+    <script src="{{ mix('js/app.js') }}"></script>
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- Font Awesome (Icon) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-    <!-- Bootstrap 4.5.2 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 <!--================================================================================================================================================================================================================================-->
 </head>
@@ -96,13 +90,12 @@
                   @endforelse
                 </div>
 
-                <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red">{{number_format(Cart::subtotal())." ".__('$')}}</span></p>
+                <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red">{{(Cart::subtotal())." ".__('$')}}</span></p>
                 <div class="subtotal">
                     <a href="{{route('cart.index')}}" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
                 <a href="{{ route('checkout.index') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
                 </div>
             </div>
-
         </div>
         </div>
     </div>
@@ -123,7 +116,8 @@
                     <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact') }}">{{__('CONTACT')}}</a></li>
                     @if(Route::has('login'))
                         @auth
-                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="#">PROFILE</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{route('profile.show',Auth::user()->name)}}">{{__('profile')}}</a></li>
+                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('Logout') }}">Logout</a></li>
                         @else
                         <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login') }}">{{__('LOGIN')}}</a></li>
                             @if (Route::has('register'))
@@ -240,26 +234,24 @@
     </div>
 </footer>
 <!--====================================== END FOOTER ======================================-->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script>
+    /*CART*/
+    $(document).ready(function(){
+
+    $(".cart-open").click(function(){
+    $(".Cart-list").toggleClass("active").focus();
+    });
+
+    });
+    /* END CART*/
+</script>
 <script>
     $(document).ready(function (){
         $('#select_language').change(function (){
             var selectedLanguage = $(this).children("option:selected").val();
             window.location.replace(selectedLanguage);
         });
-      $(".add_product").click(function (e){
-        e.preventDefault();
-        $.ajax({
-          url: "cart",
-          type: "POST",
-          data: {
-            product_id: $('#product_id').val(),
-            qty: $('#qty').val()
-          }
-        }).done(function (response){
-          alert("da them san pham " +response+ "vao gio hang")
-        })
-      })
+
     });
 </script>
 <script src="{{ asset('js/Scrollstop.js') }}"></script>

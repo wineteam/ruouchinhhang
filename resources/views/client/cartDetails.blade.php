@@ -11,8 +11,8 @@
         <div class="checkout-bg text-center">
             <h1 class="Font-white">Your Cart</h1>
           <ul class="breadcrumb-page">
-            <li><a  href="{{ route('home',app()->getLocale()) }}">{{__('HOME')}}</a></li>
-            <li aria-current="page">Cart</li>
+            <li><a href="{{ route('home') }}">{{__('HOME')}}</a></li>
+            <li aria-current="page"><a>{{__('cart')}}</a></li>
           </ul>
         </div>
 
@@ -69,7 +69,7 @@
                         <td class="border-0 align-middle"><strong>{{number_format($item->price)}}</strong></td>
                         <td class="border-0 align-middle"><strong>{{$item->qty}}</strong></td>
                         <td class="border-0 align-middle">
-                          <form action="{{route('cart.destroy',$item->rowId)}}" method="post">
+                          <form action="{{route('cart.destroy',$item->rowId)}}" id="delete_item" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger deleteItem text-light"><i class="fa fa-trash"></i></button>
@@ -90,11 +90,16 @@
         </div>
 
         <div class="row py-5 p-4 bg-white rounded shadow-sm">
-          @if(session()->has('message'))
           <div class="col-lg-12 mb-3">
-            <h4 class="text-danger text-center text-capitalize">{{session()->get('message')}}</h4>
+            @if(session()->has('message-coupon'))
+            <h4 class="alert-success alert text-center text-capitalize">{{session()->get('message-coupon')}}</h4>
+            @endif
+            @if(session()->has('error'))
+                <h4 class="alert-danger alert text-center text-capitalize">{{session()->get('error')}}</h4>
+            @endif
           </div>
-          @endif
+
+
           <div class="col-lg-6">
             <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">Coupon code</div>
             <div class="p-4">
@@ -133,7 +138,7 @@
                   </li>
                   <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">New Tax(60%)</strong><strong>{{number_format($newTax)." ".__('$')}}</strong></li>
                 @else
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax(60%)</strong><strong>{{ number_format(Cart::tax())." ".__('$')}}</strong></li>
+                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax(60%)</strong><strong>{{ Cart::tax()." ".__('$')}}</strong></li>
                 @endif
                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                   <h5 class="font-weight-bold">{{Cart::total()." ".__('$')}}</h5>
@@ -156,12 +161,27 @@
 @endsection
 @section('script')
   <script>
-    $('.deleteItem').click(function () {
-      // escape here if the confirm is false;
-      if (!confirm('Are you sure?')) return false;
-      var btn = this;
-      setTimeout(function () { $(btn).attr('disabled', 'disabled'); }, 1);
-      return true;
+    $('.deleteItem').click(function (e) {
+      e.preventDefault();
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+        .then((willDelete) => {
+          if (willDelete) {
+            swal("Poof! Your imaginary file has been deleted!", {
+              icon: "success",
+            });
+            setTimeout($('#delete_item').submit(),3000);
+          } else {
+            swal("Your imaginary file is safe!");
+          }
+        });
     });
+
+
   </script>
 @endsection
