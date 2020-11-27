@@ -1,15 +1,17 @@
 <?php
 
 use App\Http\Controllers\BlogController;
-  use App\Http\Controllers\checkoutController;
-  use App\Http\Controllers\CommentController;
-  use App\Http\Controllers\CouponController;
-  use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\checkoutController;
+use App\Http\Controllers\CouponController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,16 +53,15 @@ use App\Http\Controllers\CartController;
   Route::post('/coupon',[CouponController::class,'store'])->name('coupon.store');
   Route::delete('/coupon/destroy',[CouponController::class,'destroy'])->name('coupon.destroy');
 
-//comment
-  Route::post('/comment',[CommentController::class,'add'])->name('comment.add');
-  Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
-  Route::get('/profile', function () {
-      return view('client.profile');
-  })->name('profile');
+//Login
+  Route::get('/Logout', [LoginController::class,'Logout'])->name('Logout');
+//Profile
+  Route::get('/profile/{name:name}', [ProfileController::class,'show'])->name('profile.show');
+  Route::middleware('auth')->group(function(){
 
-  Route::get('/change', function () {
-      return view('client.changePassword');
-  })->name('change');
+  });
+  Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
+
 //contact
   Route::get('/contact', [ContactController::class,'index'])->name('contact');
   Route::post('/contact',[ContactController::class,'sendMail'])->name('contact.sendMail');

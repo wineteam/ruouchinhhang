@@ -5000,6 +5000,7 @@ input[type=button].btn-block {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card-header:first-child {
@@ -12023,7 +12024,7 @@ button:focus {
 
 .product-page .title-page {
   color: #ffffff;
-  font-size: 34px;
+  font-size: 54px;
 }
 
  ul.breadcrumb-page {
@@ -12035,8 +12036,7 @@ button:focus {
   display: inline;
   font-size: 18px;
 }
-
-ul.breadcrumb-page li + li:before {
+ ul.breadcrumb-page li + li:before {
   padding: 8px;
   color: #787567;
   content: "/\A0";
