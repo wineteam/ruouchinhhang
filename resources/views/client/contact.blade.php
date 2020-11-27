@@ -34,15 +34,13 @@
 
             <div class="container">
                         <div class="col-sm-12 my-auto">
-                          @if(session()->has('message'))
-                            <h6 class="alert alert-success text-center text-capitalize">{{session()->get('message')}}</h6>
+                          @if(session()->has('message-contact'))
+                            <h6 class="alert alert-success text-center text-capitalize">{{session()->get('message-contact')}}</h6>
                           @endif
                           @if(session()->has('error'))
                               <h6 class="alert alert-danger text-center text-capitalize">{{session()->get('error')}}</h6>
                           @endif
-
-                            <h6 class="text-center Font-Red item_subtitle">{{__('client.send_message')}}</h6>
-                            <h1 class="text-center">{{__('client.GetinTouch')}}</h1>
+                            <h2 class="text-center text-info text-capitalize">{{__('client.send_message')}}</h2>
                         </div>
                     <div class="block-contact col-12">
                         <form class="form-contact" method="post" action="{{route('contact.sendMail')}}">

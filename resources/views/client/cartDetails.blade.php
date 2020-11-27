@@ -78,7 +78,7 @@
                     </tr>
                     @empty
                      <tr>
-                       <h3 class="text-center alert alert-danger">__('client. chua mua hang</h3>
+                       <h3 class="text-center alert alert-danger">Bạn chưa mua hàng</h3>
                      </tr>
                     @endforelse
                     </tbody>

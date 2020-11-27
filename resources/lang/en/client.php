@@ -32,6 +32,6 @@ return [
     "category"=> "Category",
     "tag"=> "Tag",
     "cart"=> "Cart",
-    "send_message"=> "Send Message",
+    "send_message"=> "Contact us",
     "send"=> "Send",
 ];

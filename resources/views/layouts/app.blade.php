@@ -89,11 +89,7 @@
                   @endforelse
                 </div>
 
-<<<<<<< HEAD
-                <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red">{{number_format(Cart::subtotal())." ".__('client.$')}}</span></p>
-=======
                 <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red">{{(Cart::subtotal())." ".__('$')}}</span></p>
->>>>>>> ec64f125b3602b2faddd3e369fc7661c8ca75267
                 <div class="subtotal">
                     <a href="{{route('cart.index')}}" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
                 <a href="{{ route('checkout.index') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
@@ -119,8 +115,8 @@
                     <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact') }}">{{__('client.CONTACT')}}</a></li>
                     @if(Route::has('login'))
                         @auth
-                <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{route('profile.show',Auth::user()->name)}}">{{__('profile')}}</a></li>
-                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('Logout') }}">Logout</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{route('profile.edit',Auth::user()->id)}}">{{__('profile')}}</a></li>
+                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('Logout') }}">{{__('Logout')}}</a></li>
                         @else
                         <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login') }}">{{__('client.LOGIN')}}</a></li>
                             @if (Route::has('register'))
@@ -257,6 +253,7 @@
 
     });
 </script>
+<script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/Scrollstop.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
 

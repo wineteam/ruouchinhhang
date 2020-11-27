@@ -35,6 +35,6 @@ return [
     "category"=> "Danh mục",
     "tag"=> "Từ khóa",
     "cart"=> "Giỏ hàng",
-    "send_message"=> "Gửi Mail",
+    "send_message"=> "Liên hệ với chúng tôi",
     "send"=> "Gửi"
 ];

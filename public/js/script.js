@@ -54,15 +54,30 @@ $(document).ready(function(){
 
 
 /* CATALOG FILTER */
-filterSelection("all");
+filterSelection('all')
 function filterSelection(c) {
     var x, i;
     x = document.getElementsByClassName("filterDiv");
-    if (c == "all") c = "";
-    for (i = 0; i < x.length; i++) {
-    FilterRemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) FilterAddClass(x[i], "show");
+    if (c === "all") {
+      let divVisible = [];
+      for (i = 0; i < x.length; i++) {
+        let arr = x[i].className;
+        let Name = arr.split(' ');
+        divVisible.push(Name[0]);
+        // FilterRemoveClass(x[i], "show");
+        FilterRemoveClass(x[i], "show");
+      }
+      const unique = divVisible.filter((v, i, a) => a.indexOf(v) === i);
+      // console.log(document.getElementsByClassName(unique[0]))
+      const even = (x) => FilterAddClass(document.getElementsByClassName(x)[0],'show');
+      unique.some(even);
+      return ;
     }
+    for (i = 0; i < x.length; i++) {
+      FilterRemoveClass(x[i], "show");
+      if (x[i].className.indexOf(c) > -1) FilterAddClass(x[i], "show");
+    }
+
 }
 
 function FilterAddClass(element, name) {

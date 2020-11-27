@@ -42,14 +42,14 @@
         <div class="productItem__content" style="height: 100%">
           <a href="{{route('shop.show',$product->slug)}}"> <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{$product->thumbnail}}" alt=""></a>
           @forelse($product->categories as $category)
-            <a href="{{route('getProByCat',$category->slug)}}" style="font-size: 14px" class="text-capitalize">{{$category->name}}</a>
+            <a href="{{route('getProByCat',$category->slug)}}" style="" class="text-capitalize">{{$category->name}}</a>
             @if(!$loop->last)
               ,
             @endif
           @empty
             <a href="#">Không phân loại</a>
           @endforelse
-          <h4><a class="text-danger" href="{{route('shop.show',$product->slug)}}">{{$product->id}}{{\Illuminate\Support\Str::limit($product->name,14)}}</a></h4>
+          <h4><a class="text-danger" href="{{route('shop.show',$product->slug)}}">{{\Illuminate\Support\Str::limit($product->name,14)}}</a></h4>
 {{--          <p>--}}
 {{--            <i class="fa fa-star"></i>--}}
 {{--            <i class="fa fa-star"></i>--}}
@@ -59,15 +59,15 @@
 {{--          </p>--}}
           @if($product->pricePresent('discount') != 0 && $product->pricePresent('discount') != null )
             <p class="text-danger text-center text-capitalize">{{__('client.promotion')}}</p>
-            <h6 style="color: #da3f19; font-size: 14px;">
+            <h4 style="color: #da3f19; ;">
             {{$product->pricePresent('discount')}}
               {{__('client.$')}}
-            </h6>
+            </h4>
           @else
-            <h6 style="color: #da3f19; font-size: 14px;">
+            <h4 style="color: #da3f19; ;">
               {{$product->pricePresent('price')}}
               {{__('client.$')}}
-            </h6>
+            </h4>
           @endif
       </div>
       </div>
@@ -107,17 +107,17 @@
               <a href="{{route('shop.show',$product->slug)}}"><img src="{{ $product->thumbnail }}" alt="" ></a>
             </div>
             <div class="col-8">
-              <h6 class="mb-3" style="font-size: 14px;"><a href="{{route('shop.show',$product->slug)}}">{{ \Illuminate\Support\Str::limit($product->name,40)}}</a></h6>
+              <h4 class="mb-3" style=";"><a href="{{route('shop.show',$product->slug)}}">{{ \Illuminate\Support\Str::limit($product->name,40)}}</a></h4>
               @if($product->pricePresent('discount') != 0 && $product->pricePresent('discount') != null )
-                <h6 style="color: #da3f19; font-size: 14px;">
+                <h4 style="color: #da3f19; ;">
                   {{$product->pricePresent('discount')}}
                   {{__('client.$')}}
-                </h6>
+                </h4>
               @else
-                <h6 style="color: #da3f19; font-size: 14px;">
+                <h4 style="color: #da3f19; ;">
                   {{$product->pricePresent('price')}}
                   {{__('client.$')}}
-                </h6>
+                </h4>
               @endif
             </div>
           </div>

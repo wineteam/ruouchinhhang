@@ -8,14 +8,8 @@ body {
 .boxSelect option {
   font-size: 12px;
 }
-.productItem__content p:nth-child(2) {
-  padding-top: 10px;
-  font-size: 14px;
-  color: #a3a39f;
-}
-.productItem__content p:nth-child(5) {
-  font-size: 20px;
-  color: #da3f19;
+.productItem__content p{
+  padding: 0;
 }
 .productItem__content button {
   background-color: #c7b7b1;

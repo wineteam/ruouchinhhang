@@ -87,7 +87,7 @@
                         <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
                     @endforelse
                         <div class="col-12 mx-auto" style="padding: 20px;">
-                        <a class="Hover-Red" href="{{route('shop.show',$product->slug)}}"><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{$product->id}}{{\Illuminate\Support\Str::limit($product->name,15  )}}</h5></a>
+                        <a class="Hover-Red" href="{{route('shop.show',$product->slug)}}"><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{\Illuminate\Support\Str::limit($product->name,15  )}}</h5></a>
                           @if($product->discount <= 0 || $product->discount == null)
                             <h5 class="p-3 Font-Red">
                               {{__('client.price')}}:
@@ -156,11 +156,11 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
-
             @forelse($productsRec as $product)
-
-            <div class="col-xl-3 col-md-4 col-sm-6 filterDiv padding-less {{$category->slug}} show">
+              @foreach($product->categories()->get() as $category)
+            <div class="product-{{$product->id}} col-xl-3 col-md-4 col-sm-6 filterDiv padding-less  {{$category->slug}} show">
                 <div>
                     <div class="bg-white" style="position: relative; margin-top: 1rem;">
                         <a href="{{route('shop.show',$product->slug)}}">
@@ -206,10 +206,10 @@
                     </div>
                 </div>
             </div>
+            @endforeach
             @empty
             <h5>Thêm sản phẩm để hiển thị ở đây</h5>
             @endforelse
-
         </div>
     </div>
 </div>

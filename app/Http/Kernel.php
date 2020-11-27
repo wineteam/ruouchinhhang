@@ -67,6 +67,6 @@ class Kernel extends HttpKernel
         'passDataForShopPage'=>\App\Http\Middleware\passDataForShopPage::class,
         'passDataForBLogPage'=>\App\Http\Middleware\passDataForBlogPage::class,
         //******************************************************************** */
-        'CheckLogin'=>\App\Http\Middleware\CheckLogin::class,
+        'CheckAdminLogin'=>\App\Http\Middleware\CheckAdminLogin::class,
     ];
 }
