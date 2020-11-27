@@ -189,71 +189,79 @@
               <span>{{__('dashboard')}}</span>
               </a>
           </li>
-          <li class="sub-menu">
+          <li class="sub-menu"><!-- CATELOG -->
             <a href="javascript:;">
              <i class="fas fa-book-open"></i>
               <span>Danh mục</span>
               </a>
             <ul class="sub">
-              <li><a href="mng-category-product.html">Danh mục sản phẩm</a></li>
-              <li><a href="mng-category-post.html">Danh mục bài viết</a></li>
-          
+              <li><a href="{{route ('dashboard.catelog')}}">Danh mục tổng</a></li>
+              <li><a href="{{route ('dashboard.catelog_product')}}">Danh mục sản phẩm</a></li>
+              <li><a href="{{route ('dashboard.catelog_blog')}}">Danh mục bài viết</a></li>
             </ul>
           </li>
-          <li>
-            <a href="mng-product.html">
+          <li><!-- PRODUCTS -->
+            <a href="{{route ('dashboard.tags')}}">
+              <i class="fa fa-tags" aria-hidden="true"></i>
+              <span>Tags</span>
+            </a>
+          </li>
+          <li><!-- PRODUCTS -->
+            <a href="{{route ('dashboard.product')}}">
               <i class="fas fa-wine-bottle"></i>
               <span>Sản phẩm </span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{route ('dashboard.blog')}}">
               <i class="far fa-newspaper"></i>
               <span>Bài viết </span>
             </a>
           </li>
           <li>
-            <a href="mng-coupon.html">
-              <i class="fas fa-credit-card"></i>
+            <a href="{{route ('dashboard.coupon')}}">
+              <i class="fa fa-ticket" aria-hidden="true"></i>
               <span>Mã giảm giá </span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{route ('dashboard.comment')}}">
               <i class="fas fa-comment"></i>
               <span>Bình luận </span>
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="fas fa-plus"></i>
-              <span>Đặc tính </span>
+            <a href="{{route ('dashboard.banner')}}">
+              <i class="fa fa-picture-o" aria-hidden="true"></i>
+              <span>Banner</span>
             </a>
           </li>
           <li>
-            <a class="active" href="inbox.html">
-              <i class="fa fa-envelope"></i>
-              <span>Mail </span>
-              <span class="label label-theme pull-right mail-info">2</span>
+            <a href="{{route ('dashboard.language')}}">
+              <i class="fas fa-language"></i>
+              <span>Ngôn ngữ</span>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <i class="fas fa-file-invoice-dollar"></i>
-              <span>Đơn hàng </span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
+          <li class="sub-menu"><!-- CATELOG -->
+            <a href="javascript:;">
               <i class="fa fa-users"></i>
               <span>Tài khoản</span>
-            </a>
+              </a>
+            <ul class="sub">
+              <li><a href="{{route ('dashboard.user')}}">Tài khoản</a></li>
+              <li><a href="{{route ('dashboard.AdminUser')}}">Quyền quản trị</a></li>
+              <li><a href="{{route ('dashboard.Passreset')}}">Thay mật khẩu</a></li>
+            </ul>
           </li>
-          <li>
-            <a href="#">
-              <i class="fas fa-language"></i>
-              <span>Ngôn ngữ </span>
-            </a>
+          <li class="sub-menu"><!-- ORDERS -->
+            <a href="javascript:;">
+              <i class="fas fa-file-invoice-dollar"></i>
+              <span>Đơn hàng</span>
+              </a>
+            <ul class="sub">
+              <li><a href="{{route ('dashboard.order')}}">Đơn hàng</a></li>
+              <li><a href="{{route ('dashboard.orderdetail')}}">Đơn hàng chi tiết</a></li>
+            </ul>
           </li>
         </ul>
         <!-- sidebar menu end-->
@@ -268,7 +276,7 @@
     <footer class="site-footer">
       <div class="text-center">
         <p>
-          &copy; Copyrights <strong>Wineteam</strong>. All Rights Reserved
+          &copy; Copyrights <strong>Brand Genuine Wine</strong>. All Rights Reserved
         </p>
         <div class="credits">
 

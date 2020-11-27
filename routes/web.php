@@ -70,6 +70,21 @@ Route::middleware('auth')->group(function(){
 Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
   Route::get('/dashboard/product', [DashboardController::class,'showproduct'])->name('dashboard.product');
+  Route::get('/dashboard/blog', [DashboardController::class,'showblog'])->name('dashboard.blog');
+  Route::get('/dashboard/comment', [DashboardController::class,'showcomment'])->name('dashboard.comment');
+  Route::get('/dashboard/catelog', [DashboardController::class,'showcatelog'])->name('dashboard.catelog');
+  Route::get('/dashboard/catelog_product', [DashboardController::class,'showcatelog_product'])->name('dashboard.catelog_product');
+  Route::get('/dashboard/catelog_blog', [DashboardController::class,'showcatelog_blog'])->name('dashboard.catelog_blog');
+  Route::get('/dashboard/tags', [DashboardController::class,'showtags'])->name('dashboard.tags');
+  Route::get('/dashboard/banner', [DashboardController::class,'showbanner'])->name('dashboard.banner');
+  Route::get('/dashboard/coupon', [DashboardController::class,'showcoupon'])->name('dashboard.coupon');
+  Route::get('/dashboard/language', [DashboardController::class,'showlanguage'])->name('dashboard.language');
+  Route::get('/dashboard/order', [DashboardController::class,'showorder'])->name('dashboard.order');
+  Route::get('/dashboard/orderdetail', [DashboardController::class,'showorderdetail'])->name('dashboard.orderdetail');
+  Route::get('/dashboard/user', [DashboardController::class,'showuser'])->name('dashboard.user');
+  Route::get('/dashboard/AdminUser', [DashboardController::class,'showAdminUser'])->name('dashboard.AdminUser');
+  Route::get('/dashboard/Passreset', [DashboardController::class,'showPassreset'])->name('dashboard.Passreset');
+  
 });
 
 
