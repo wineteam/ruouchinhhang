@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="{{ asset('css/product.css')}}">
     <link rel="stylesheet" href="{{ asset('css/fontello.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- Font Awesome (Icon) -->
@@ -116,8 +115,8 @@
                     <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact') }}">{{__('CONTACT')}}</a></li>
                     @if(Route::has('login'))
                         @auth
-                <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{route('profile.show',Auth::user()->name)}}">{{__('profile')}}</a></li>
-                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('Logout') }}">Logout</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{route('profile.edit',Auth::user()->id)}}">{{__('profile')}}</a></li>
+                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('Logout') }}">{{__('Logout')}}</a></li>
                         @else
                         <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login') }}">{{__('LOGIN')}}</a></li>
                             @if (Route::has('register'))
@@ -254,6 +253,7 @@
 
     });
 </script>
+<script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/Scrollstop.js') }}"></script>
 @yield('script')
 </body>

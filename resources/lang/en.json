@@ -48,5 +48,20 @@
     "Email": "Your E-mail",
     "Phone": "Phone number",
     "Save": "Save",
-    "SendPasswordResetLink": "Send Password Reset Link"
+    "SendPasswordResetLink": "Send Password Reset Link",
+    "Logout": "Logout",
+    "dashboard": "dashboard",
+    "GetinTouch": "Get in Touch",
+    "search": "Search",
+    "Recent_Posts": "Recent Posts",
+    "catelog": "Categories",
+    "totally": "Totally",
+    "product": "Products",
+    "accountuser": "Account user",
+    "new": "New",
+    "order": "Order",
+    "comment": "Comment",
+    "reviews": "Reviews",
+    "topposts": "Top most viewed articles of the week",
+    "allmoney": "Total income for the week"
 }

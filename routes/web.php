@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\BlogController;
   use App\Http\Controllers\checkoutController;
@@ -10,6 +9,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 
@@ -58,8 +58,20 @@ use App\Http\Controllers\ProfileController;
 
 //Login
   Route::get('/Logout', [LoginController::class,'Logout'])->name('Logout');
+
+
 //Profile
-  Route::get('/profile/{name:name}', [ProfileController::class,'show'])->name('profile.show')->middleware('CheckLogin');
+//Route::get('/profile/{name:name}', [ProfileController::class,'show'])->name('profile.show')->middleware('CheckLogin');
+Route::middleware('auth')->group(function(){
+  Route::get('/profile', [ProfileController::class,'edit'])->name('profile.edit');
+  Route::post('/profile/{id}', [ProfileController::class,'update'])->name('profile.update');
+});
+
+Route::middleware('CheckAdminLogin')->group(function(){
+  Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
+  Route::get('/dashboard/product', [DashboardController::class,'showproduct'])->name('dashboard.product');
+});
+
 
   Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
 

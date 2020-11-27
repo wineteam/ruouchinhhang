@@ -49,5 +49,20 @@
     "Email": "E-mail khách hàng",
     "Phone": "Số điện thoại",
     "Save": "Lưu lại",
-    "SendPasswordResetLink": "Gửi liên kết đặt lại mật khẩu"
+    "SendPasswordResetLink": "Gửi liên kết đặt lại mật khẩu",
+    "Logout": "Đăng xuất",
+    "dashboard": "Bảng điều khiển",
+    "GetinTouch": "Liên hệ với chúng tôi",
+    "search": "Tìm kiếm",
+    "Recent_Posts": "Bài viết gần đây",
+    "catelog": "Danh mục",
+    "totally": "Tổng",
+    "product": "Sản phẩm",
+    "accountuser": "Tài khoản người dùng",
+    "new": "Mới",
+    "order": "đơn hàng",
+    "comment": "Bình luận",
+    "reviews": "Đánh giá",
+    "topposts": "Top bài viết xem nhiều nhất tuần",
+    "allmoney": "Tổng thu nhập trong tuần"
 }
