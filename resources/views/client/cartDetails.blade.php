@@ -78,7 +78,7 @@
                     </tr>
                     @empty
                      <tr>
-                       <h3 class="text-center text-info">Ban chua mua hang</h3>
+                       <h3 class="text-center alert alert-danger">__('client. chua mua hang</h3>
                      </tr>
                     @endforelse
                     </tbody>
@@ -91,61 +91,64 @@
 
         <div class="row py-5 p-4 bg-white rounded shadow-sm">
           <div class="col-lg-12 mb-3">
-            @if(session()->has('message'))
-            <h4 class="alert-success alert text-center text-capitalize">{{session()->get('message')}}</h4>
+            @if(session()->has('message-coupon'))
+            <h4 class="alert-success alert text-center text-capitalize">{{session()->get('message-coupon')}}</h4>
             @endif
             @if(session()->has('error'))
                 <h4 class="alert-danger alert text-center text-capitalize">{{session()->get('error')}}</h4>
             @endif
           </div>
 
-
-          <div class="col-lg-6">
-            <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">Coupon code</div>
-            <div class="p-4">
-              <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
-              <form action="{{route('coupon.store')}}" method="post">
-                @csrf
-              <div class="input-group mb-4 border rounded-pill p-2">
-                  <input type="text" placeholder="Apply coupon" name="coupon_code" aria-describedby="button-addon3" class="form-control border-0">
-                  <div class="input-group-append border-0">
-                  <button id="button-addon3" type="submit" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
-                </div>
+          @if(Cart::count() > 0)
+            <div class="col-lg-6">
+              <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">Coupon code</div>
+              <div class="p-4">
+                <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
+                <form action="{{route('coupon.store')}}" method="post">
+                  @csrf
+                  <div class="input-group mb-4 border rounded-pill p-2">
+                    <input type="text" placeholder="Apply coupon" name="coupon_code" aria-describedby="button-addon3" class="form-control border-0">
+                    <div class="input-group-append border-0">
+                      <button id="button-addon3" type="submit" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+                    </div>
+                  </div>
+                </form>
               </div>
-              </form>
             </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">Order summary </div>
-            <div class="p-4">
-              <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
-              <ul class="list-unstyled mb-4">
-                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Subtotal </strong><strong>{{number_format(Cart::subtotal())." ".__('$')}}</strong></li>
-                @if(session()->has('coupon'))
-                <li class="d-flex justify-content-between py-3 border-bottom">
-                  <strong class="text-muted">Discount({{session()->get('coupon')['name']}})
-                    <form action="{{route('coupon.destroy')}}" method="post">
-                      @csrf
-                      @method('delete')
-                      <button class="btn-sm btn-danger">Remove</button>
-                    </form>
-                  </strong>
-                  <strong>{{number_format(session()->get('coupon')['discount'])." ".__('$')}}</strong>
-                </li>
-                  <li class="d-flex justify-content-between py-3 border-bottom">
-                    <strong class="text-muted">New subtotal</strong>
-                    <strong> {{number_format($newSubtotal)." ".__('$')}}</strong>
+            <div class="col-lg-6">
+              <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">Order summary </div>
+              <div class="p-4">
+                <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+                <ul class="list-unstyled mb-4">
+                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Subtotal </strong><strong>{{number_format(Cart::subtotal())." ".__('$')}}</strong></li>
+                  @if(session()->has('coupon'))
+                    <li class="d-flex justify-content-between py-3 border-bottom">
+                      <strong class="text-muted">Discount({{session()->get('coupon')['name']}})
+                        <form action="{{route('coupon.destroy')}}" method="post">
+                          @csrf
+                          @method('delete')
+                          <button class="btn-sm btn-danger">Remove</button>
+                        </form>
+                      </strong>
+                      <strong>{{number_format(session()->get('coupon')['discount'])." ".__('$')}}</strong>
+                    </li>
+                    <li class="d-flex justify-content-between py-3 border-bottom">
+                      <strong class="text-muted">New subtotal</strong>
+                      <strong> {{number_format($newSubtotal)." ".__('$')}}</strong>
+                    </li>
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">New Tax(60%)</strong><strong>{{number_format($newTax)." ".__('$')}}</strong></li>
+                  @else
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax(60%)</strong><strong>{{ Cart::tax()." ".__('$')}}</strong></li>
+                  @endif
+                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+                    <h5 class="font-weight-bold">{{Cart::total()." ".__('$')}}</h5>
                   </li>
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">New Tax(60%)</strong><strong>{{number_format($newTax)." ".__('$')}}</strong></li>
-                @else
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax(60%)</strong><strong>{{ Cart::tax()." ".__('$')}}</strong></li>
-                @endif
-                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                  <h5 class="font-weight-bold">{{Cart::total()." ".__('$')}}</h5>
-                </li>
-              </ul><a href="{{route('checkout.index')}}" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                </ul><a href="{{route('checkout.index')}}" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+              </div>
             </div>
-          </div>
+          @endif
+
+
         </div>
 
       </div>

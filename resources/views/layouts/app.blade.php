@@ -27,9 +27,8 @@
     <link rel="stylesheet" href="{{ asset('css/product.css')}}">
     <link rel="stylesheet" href="{{ asset('css/fontello.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
-    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+  <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- Font Awesome (Icon) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -51,7 +50,7 @@
             <div class="card card-border-0 flex-row align-items-center h-100">
                     <a href="" class="text-dark edit-icon mr-auto-moblie-icon" style="padding: 10px 15px;border: 2px solid #bdb68e"><i class="fa fa-phone" aria-hidden="true"></i></a>
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms"><span class="font-weight-bold Font-Blue">{{__('Call_us')}}: <a href="tel:123-456-7890" class="Font-Blue">{{$info->phone}}</a></span>
+                    <p class="card-text Re-font-ms"><span class="font-weight-bold Font-Blue">{{__('client.Call_us')}}: <a href="tel:123-456-7890" class="Font-Blue">{{$info->phone}}</a></span>
                     <br>
                     <a class="Font-Blue" href="mailto:QuanlityWine@gmail.com">{{$info->email}}</a></p>
                 </div>
@@ -67,7 +66,7 @@
 {{--                </div>--}}
             <div class="mr-auto-moblie btn cart-open">
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms text-cart-center"><span class="font-weight-bold Font-Blue">{{__('Your_cart')}}:</span> <br> <span class="Font-Yellow">{{Cart::count()}} item(s) </span></p>
+                    <p class="card-text Re-font-ms text-cart-center"><span class="font-weight-bold Font-Blue">{{__('client.Your_cart')}}:</span> <br> <span class="Font-Yellow">{{Cart::count()}} item(s) </span></p>
                 </div>
             </div>
             </div>
@@ -82,7 +81,7 @@
                         </div>
                         <div class="card-block px-2">
                             <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">{{\Illuminate\Support\Str::limit($item->name,20)}}</a></span></p>
-                                <p class="Font-Red font-weight-bold">{{number_format($item->price)." ".__('$')." x ".$item->qty}}</p>
+                                <p class="Font-Red font-weight-bold">{{number_format($item->price)." ".__('client.$')." x ".$item->qty}}</p>
                         </div>
                     </div>
                     <br><hr class="hr-cart-Products">
@@ -90,7 +89,7 @@
                   @endforelse
                 </div>
 
-                <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red">{{number_format(Cart::subtotal())." ".__('$')}}</span></p>
+                <p class="font-weight-bold" style="padding: 20px 0px 0 5%;">Subtotal: <span class="Font-Red">{{number_format(Cart::subtotal())." ".__('client.$')}}</span></p>
                 <div class="subtotal">
                     <a href="{{route('cart.index')}}" class="btn-subtitle-cart" style="margin-left: 5%;"><span class="">View cart</span></a>
                 <a href="{{ route('checkout.index') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
@@ -111,17 +110,17 @@
             </button>
             <div class="collapse navbar-collapse navbar-collapse-custome">
                 <ul class="nav navbar-nav navbar-logo mx-auto Blue-Link position-Re">
-                    <li class="nav-item"> <a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('home') }}">{{__('HOME')}}</a> </li>
-                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('shop') }}">{{__('STORE')}}</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('blog.index') }}">{{__('BLOG')}}</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact') }}">{{__('CONTACT')}}</a></li>
+                    <li class="nav-item"> <a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('home') }}">{{__('client.HOME')}}</a> </li>
+                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('shop') }}">{{__('client.STORE')}}</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('blog.index') }}">{{__('client.BLOG')}}</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact') }}">{{__('client.CONTACT')}}</a></li>
                     @if(Route::has('login'))
                         @auth
                         <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="#">PROFILE</a></li>
                         @else
-                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login') }}">{{__('LOGIN')}}</a></li>
+                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login') }}">{{__('client.LOGIN')}}</a></li>
                             @if (Route::has('register'))
-                                 <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('register') }}">{{__('REGISTER')}}</a>
+                                 <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('register') }}">{{__('client.REGISTER')}}</a>
                             @endif
                         @endif
                     @endif
@@ -228,7 +227,7 @@
             </div>
         </div>
         <div class="text-center show-in-moblie" style="display: none;">
-            <p class="card-text Re-font-ms" style="padding-top:30px;"><span class="Font-dark">ThemeREX © 2020 All rights reserved.</p>
+          <p class="card-text Re-font-ms" style="padding-top:30px;"><span class="Font-dark"></span>{{$info->address}}.</p>
         </div>
         </div>
     </div>
@@ -244,6 +243,8 @@
     });
 </script>
 <script src="{{ asset('js/Scrollstop.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
+
 @yield('script')
 </body>
 </html>

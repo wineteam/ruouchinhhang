@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
   use App\Http\Controllers\checkoutController;
+  use App\Http\Controllers\CommentController;
   use App\Http\Controllers\CouponController;
   use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,7 @@ use App\Http\Controllers\CartController;
 //  shop
   Route::middleware('passDataForShopPage')->group(function () {
     Route::get('/shop',[ShopController::class,'index'])->name('shop');
-    Route::get('shop/tag/{tag:slug}',[ShopController::class,'getProWithTag'])->name('shop.search.tag');
+    Route::get('shop/tag/{tag:slug}',[ShopController::class,'searchWithTag'])->name('shop.search.tag');
     Route::get('/shop/{product:slug}',[ShopController::class,'show'])->name('shop.show')->middleware('checkLocaleProduct');
     Route::get('/category/{slug:slug}',[ShopController::class,'getProByCat'])->name('getProByCat');
     Route::get('/nation/{slug:slug}',[ShopController::class,'getProByNat'])->name('getProByNat');
@@ -50,7 +51,8 @@ use App\Http\Controllers\CartController;
   Route::post('/coupon',[CouponController::class,'store'])->name('coupon.store');
   Route::delete('/coupon/destroy',[CouponController::class,'destroy'])->name('coupon.destroy');
 
-
+//comment
+  Route::post('/comment',[CommentController::class,'add'])->name('comment.add');
   Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
   Route::get('/profile', function () {
       return view('client.profile');

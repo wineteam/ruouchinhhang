@@ -7,12 +7,12 @@
       @if(session()->has('message'))
         {{session()->get('message')}}
       @else
-        {{__('all_products')}}
+        {{__('client.all_products')}}
       @endif
     </p>
     <ul class="breadcrumb-page">
-        <li><a href="{{ route('home',app()->getLocale()) }}">{{__('HOME')}}</a></li>
-        <li aria-current="page">{{__('STORE')}}</li>
+        <li><a href="{{ route('home',app()->getLocale()) }}">{{__('client.HOME')}}</a></li>
+        <li aria-current="page">{{__('client.STORE')}}</li>
     </ul>
   </div>
 
@@ -58,15 +58,15 @@
 {{--            <i class="fa fa-star"></i>--}}
 {{--          </p>--}}
           @if($product->pricePresent('discount') != 0 && $product->pricePresent('discount') != null )
-            <p class="text-danger text-center text-capitalize">{{__('promotion')}}</p>
+            <p class="text-danger text-center text-capitalize">{{__('client.promotion')}}</p>
             <h6 style="color: #da3f19; font-size: 14px;">
             {{$product->pricePresent('discount')}}
-              {{__('$')}}
+              {{__('client.$')}}
             </h6>
           @else
             <h6 style="color: #da3f19; font-size: 14px;">
               {{$product->pricePresent('price')}}
-              {{__('$')}}
+              {{__('client.$')}}
             </h6>
           @endif
       </div>
@@ -82,7 +82,7 @@
   <div class="col-xl-3 col-md-12 col-sm-12 px-3">
     <div class="row productCategories">
       <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3 text-capitalize">{{__('product_categories')}}</h4>
+        <h4 class="pt-4 pb-3 text-capitalize">{{__('client.product_categories')}}</h4>
         <div class="productCategories__list pl-2 mb-5">
           @foreach($categories as $category)
             <a href="{{route('getProByCat',$category->slug)}}"  class="text-capitalize"><i class="fa fa-angle-right"></i>  {{$category->name}}</a>
@@ -91,15 +91,15 @@
       </div>
 
       <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3 text-capitalize">{{__('searchProduct')}}</h4>
+        <h4 class="pt-4 pb-3 text-capitalize">{{__('client.searchProduct')}}</h4>
         <div class="form-group">
           <input type="range" class="form-control-range" id="formControlRange" min="155" max="365" value="255">
         </div>
-        <button class="btn btn-dark">{{__('filter')}}</button>
-        <span class="ml-5 " style="font-size: 15px; color: #c2c0b0;">{{__('price')}}: £155 — {{__("$")}}<span id="numberFillter">365</span></span>
+        <button class="btn btn-dark">{{__('client.filter')}}</button>
+        <span class="ml-5 " style="font-size: 15px; color: #c2c0b0;">{{__('client.price')}}: £155 — {{__("$")}}<span id="numberFillter">365</span></span>
       </div>
       <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3 mt-5 text-capitalize">{{__('top_products')}}</h4>
+        <h4 class="pt-4 pb-3 mt-5 text-capitalize">{{__('client.top_products')}}</h4>
         <div class="productList p-3">
           @foreach($proOrderBought as $product)
           <div class="row">
@@ -111,12 +111,12 @@
               @if($product->pricePresent('discount') != 0 && $product->pricePresent('discount') != null )
                 <h6 style="color: #da3f19; font-size: 14px;">
                   {{$product->pricePresent('discount')}}
-                  {{__('$')}}
+                  {{__('client.$')}}
                 </h6>
               @else
                 <h6 style="color: #da3f19; font-size: 14px;">
                   {{$product->pricePresent('price')}}
-                  {{__('$')}}
+                  {{__('client.$')}}
                 </h6>
               @endif
             </div>

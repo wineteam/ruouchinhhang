@@ -10,10 +10,10 @@
                     <div style="height: 5em"><span></span></div>
 
                     <div class="checkout-bg text-center">
-                        <h1 class="Font-white">{{__('CONTACT')}}</h1>
+                        <h1 class="Font-white">{{__('client.CONTACT')}}</h1>
                         <ul class="breadcrumb-List">
-                            <li><a href="{{ route('home') }}"><span>{{__('HOME')}}</span></a></li>
-                            <li><span class="none-color">{{__('CONTACT')}}</span></li>
+                            <li><a href="{{ route('home') }}"><span>{{__('client.HOME')}}</span></a></li>
+                            <li><span class="none-color">{{__('client.CONTACT')}}</span></li>
                         </ul>
                     </div>
 
@@ -41,8 +41,8 @@
                               <h6 class="alert alert-danger text-center text-capitalize">{{session()->get('error')}}</h6>
                           @endif
 
-                            <h6 class="text-center Font-Red item_subtitle">{{__('send_message')}}</h6>
-                            <h1 class="text-center">{{__('GetinTouch')}}</h1>
+                            <h6 class="text-center Font-Red item_subtitle">{{__('client.send_message')}}</h6>
+                            <h1 class="text-center">{{__('client.GetinTouch')}}</h1>
                         </div>
                     <div class="block-contact col-12">
                         <form class="form-contact" method="post" action="{{route('contact.sendMail')}}">
@@ -53,7 +53,7 @@
                             </div>
                             <textarea name="message" rows="5" placeholder="Message*"></textarea>
                            <div class="button-submit">
-                            <button id="send_message" type="submit" class="btn btn-danger">{{__('send')}}</button>
+                            <button id="send_message" type="submit" class="btn btn-danger">{{__('client.send')}}</button>
                            </div>
                         </form>
                     </div>

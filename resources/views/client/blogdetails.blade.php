@@ -53,11 +53,7 @@
 
             </div>
             <!-- /.row -->
-
-
-
           </div>
-      </div>
       </div>
       {{-- end blogger --}}
 @endsection

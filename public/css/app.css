@@ -12177,27 +12177,27 @@ ul.breadcrumb-page li[aria-current=page] {
   font-size: 54px;
 }
 
-.blog-page ul.breadcrumb-page {
+ ul.breadcrumb-page {
   padding: 10px 16px;
   list-style: none;
 }
 
-.blog-page ul.breadcrumb-page li {
+ ul.breadcrumb-page li {
   display: inline;
   font-size: 18px;
 }
 
-.blog-page ul.breadcrumb-page li + li:before {
+ ul.breadcrumb-page li + li:before {
   padding: 8px;
   color: #787567;
   content: "/\A0";
 }
 
-.blog-page ul.breadcrumb-page li[aria-current=page] {
+ ul.breadcrumb-page li[aria-current=page] {
   color: #787567;
 }
 
-.blog-page ul.breadcrumb-page li a {
+ul.breadcrumb-page li a {
   color: #CBA476;
   text-decoration: none;
 }
