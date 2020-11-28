@@ -61,9 +61,10 @@
                       <div style="display: flex;justify-content: space-between">
                         <a href="" class="btn btn-sm btn-primary">{{__('edit')}}</a>
                         <a href="" class="btn btn-sm btn-warning">{{__('show')}}</a>
-                        <form action="">
-                            <input type="hidden" value="">
-                            <button class="btn btn-sm btn-danger">{{__('delete')}}</button>
+                        <form action="#"  method="post">
+                          @csrf
+                          @method('delete')
+                          <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
                         </form>
                       </div>
                     </td>
@@ -86,4 +87,18 @@
     </div>
     </section>
   </section>
+@endsection
+@section('script')
+  <script>
+    $('.deleteItem').click(function (e) {
+      e.preventDefault();
+      var formname = $(this).parent();
+      const confirmDelete = confirm("ban muon xoa nguoi dung nay");
+      if(confirmDelete == true){
+        formname.submit();
+        return true;
+      }
+      return false;
+    });
+  </script>
 @endsection

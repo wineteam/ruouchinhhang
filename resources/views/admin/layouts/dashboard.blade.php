@@ -33,6 +33,9 @@
   <link href="{{ asset('css/styleADmin.css')}}" rel="stylesheet">
   <link href="{{ asset('css/style-responsive.css')}}" rel="stylesheet">
   <script src="{{ asset('lib/chart-master/Chart.js')}}"></script>
+
+  <script src="{{ mix('js/app.js') }}"></script>
+
 </head>
 
 <body>
@@ -169,7 +172,7 @@
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="{{ route('Logout') }}">{{__('Logout')}}</a></li>
         </ul>
-        
+
       </div>
     </header>
     <!--header end-->
@@ -248,7 +251,7 @@
               <span>Tài khoản</span>
               </a>
             <ul class="sub">
-              <li><a href="{{route ('dashboard.user')}}">Tài khoản</a></li>
+              <li><a href="{{route ('MngUser.index')}}">Tài khoản</a></li>
               <li><a href="{{route ('dashboard.AdminUser')}}">Quyền quản trị</a></li>
               <li><a href="{{route ('dashboard.Passreset')}}">Thay mật khẩu</a></li>
             </ul>
@@ -344,6 +347,7 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   </script>
+  @yield('script')
 </body>
 
 </html>

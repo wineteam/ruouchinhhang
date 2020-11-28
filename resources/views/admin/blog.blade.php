@@ -32,38 +32,63 @@
                             <th scope="col" width="60">#</th>
                             <th scope="col">{{__('image')}}</th>
                             <th scope="col">{{__('title')}}</th>
+                            <th scope="col">{{__('author')}}</th>
                             <th scope="col">{{__('catelog')}}</th>
-                            <th scope="col">{{__('tag')}}</th>
-                            <th scope="col">{{__('view')}}</th>
-                            <th scope="col">{{__('Language')}}</th>
-                            <th scope="col" width="200">{{__('Datecreate')}}</th>
+                            <th scope="col" >{{__('tag')}}</th>
+                            <th scope="col" width="80">{{__('view')}}</th>
+                            <th scope="col"width="80">{{__('Language')}}</th>
+                            <th scope="col" width="100">{{__('Datecreate')}}</th>
                             <th scope="col" width="129">{{__('Action')}}</th>
                         </tr>
                         </thead>
                         <tbody>
                 
                         
-                      <tr>
-                        <td><input type="checkbox"></td>
-                        <td><img src="./img/wines-header.jpg" width="100px" alt=""></td>
-                        <td><a href="">Winemaking – Art, Science, Magic or Technology?</a></td>
-                       
-                        <td>White wine</td>
-                        <td>ABC</td>
-                        <td>2323</td>
-                        <td>Việt nam</td>
-                        <td>16/10/2020</td>
-                        <td>
-                            <div style="display: flex;justify-content: space-between">
-                                <a href="" class="btn btn-sm btn-primary">{{__('edit')}}</a>
-                                <a href="" class="btn btn-sm btn-warning">{{__('show')}}</a>
-                                <form action="">
-                                    <input type="hidden" value="">
-                                    <button class="btn btn-sm btn-danger">{{__('delete')}}</button>
-                                </form>
-                            </div>
-                        </td>
-                      </tr>
+                      @foreach ($blogs as $blog)
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td><img src="{{$blog->thumbnail}}" width="100px" alt=""></td>
+                          <td><a href="">{{$blog->title}}</a></td>
+                          <td>{{$blog->user()->name}}</td>
+                          <td>
+                            @foreach ($categorys as $category)
+                              {{$category->name}}
+                              @if(!$loop->last)
+                              ,
+                              @endif
+                            @endforeach
+                          </td>
+                          <td>
+                            @foreach ($tags as $tag)
+                              {{$tag->name}}
+                              @if(!$loop->last)
+                              ,
+                              @endif
+                            @endforeach
+                          </td>
+                          <td>{{$blog->view}}</td>
+                          <td>
+                            @if ($blog->language_id == 1)
+                                Tiếng việt
+                            @else
+                                Tiếng anh
+                            @endif
+                          </td>
+                          <td>16/10/2020</td>
+                          <td>
+                              <div style="display: flex;justify-content: space-between">
+                                  <a href="" class="btn btn-sm btn-primary">{{__('edit')}}</a>
+                                  <a href="" class="btn btn-sm btn-warning">{{__('show')}}</a>
+
+                                  <form action="{{route('dashboard.blog.delete',$blog->id)}}" id="delete_blog_{{$blog->id}}" method="post">
+                                          @csrf
+                                          @method('delete')
+                                          <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
+                                        </form>
+                              </div>
+                          </td>
+                        </tr>
+                      @endforeach
                     
                         
                            
@@ -86,5 +111,18 @@
   </section>
 </section>
 @endsection
-
+@section('script')
+  <script>
+    $('.deleteItem').click(function (e) {
+      e.preventDefault();
+      var formname = $(this).parent();
+      const confirmDelete = confirm("ban muon xoa nguoi dung nay");
+      if(confirmDelete == true){
+        formname.submit();
+        return true;
+      }
+      return false;
+    });
+  </script>
+@endsection
 
