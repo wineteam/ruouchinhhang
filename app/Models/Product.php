@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Laravelista\Comments\Commentable;
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory,Commentable;
     protected $fillable = ['user_id','codeProduct','name','slug','thumbnail','price','size','vintage','detail','discount','nation','description','view','bought','language_id','is_published','especially','amount'];
 
     public function users(){
@@ -32,5 +32,15 @@ class Product extends Model
     }
     public function pricePresent($option) : string{
       return  number_format($this->$option);
+    }
+
+    public function canBeRated(): bool
+    {
+      return true; // default false
+    }
+
+    public function mustBeApproved(): bool
+    {
+      return true; // default false
     }
 }

@@ -82,7 +82,9 @@
     "coupon":"Coupons","code":"Code","value":"Value","expirationdate": "Expiration date",
     "user": "Users","Content":"Content","display": "Display","articlecomment": "Article comment",
     "link": "Link","location": "Location",
-    "listlanguage": "List language","listuser": "List Users","Administration":"Administration","listorder":"List orders",
+    "listlanguage": "List language","listuser": "List Users","Administration":"Administration","listorder":"List orders","edituser":"Edit Users","createuser": "Create Users","editComfin":"Edit confirmation","choose":"Choose",
     "Passreset":"Password Reset Lists","datepurchase": "Date purchase","deliverydate": "Delivery date",
-    "details": "Details","procode":"Prodeuct code","proname":"Product name","quantity": "Quantity"
+    "details": "Details","procode":"Prodeuct code","proname":"Product name","quantity": "Quantity","author": "Author",
+    "cancel": "Cancel","entername":"Enter name...","enteremail":"Enter E-mail...","enterpass":"Enter password...","enteraddress":"Enter Address","enterphone":"Enter Phone number...",
+    "ConfirmPassword": "Confirm Password"
 }

@@ -12062,21 +12062,14 @@ ul.breadcrumb-page li[aria-current=page] {
 
 .product-page .productItem__content {
   width: auto;
-  padding: 50px 10px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-topright: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+  /*padding: 3px;*/
   background-image: url(/images/audio_bg.jpg?e0a7a3981522b2b610e09f815c222e31);
 }
-
-.product-page .productItem__content p:nth-child(2) {
-  padding-top: 10px;
-  font-size: 14px;
-  color: #a3a39f;
-}
-
-.product-page .productItem__content p:nth-child(5) {
-  font-size: 20px;
-  color: #da3f19;
-}
-
 .product-page .productItem__content button {
   background-color: #c7b7b1;
   border: 1px solid #c7b7b1;
@@ -12177,27 +12170,27 @@ ul.breadcrumb-page li[aria-current=page] {
   font-size: 54px;
 }
 
-.blog-page ul.breadcrumb-page {
+ ul.breadcrumb-page {
   padding: 10px 16px;
   list-style: none;
 }
 
-.blog-page ul.breadcrumb-page li {
+ ul.breadcrumb-page li {
   display: inline;
   font-size: 18px;
 }
 
-.blog-page ul.breadcrumb-page li + li:before {
+ ul.breadcrumb-page li + li:before {
   padding: 8px;
   color: #787567;
   content: "/\A0";
 }
 
-.blog-page ul.breadcrumb-page li[aria-current=page] {
+ ul.breadcrumb-page li[aria-current=page] {
   color: #787567;
 }
 
-.blog-page ul.breadcrumb-page li a {
+ul.breadcrumb-page li a {
   color: #CBA476;
   text-decoration: none;
 }

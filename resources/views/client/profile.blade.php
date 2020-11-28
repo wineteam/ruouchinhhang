@@ -48,8 +48,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="Companyname">{{__('Email')}}</label>
-                <h6 class="alert alert-info" id="email"></h6>
+                    <label for="email">{{__('Email')}}</label>
+                    <div class="form-control Profile-Input Fix-high-checkout">
+                      <h6 id="email" style="padding-top: 15px"></h6>
+                    </div>
                 </div>
 
                 <div class="mb-3">

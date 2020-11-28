@@ -18,9 +18,9 @@ class CheckAdminLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        $roles = Auth::user()->roles()->get();
         if (Auth::check())
-            {
+        {
+            $roles = Auth::user()->roles()->get();
                 if (count($roles) >= 1){
                     return $next($request); 
                 }

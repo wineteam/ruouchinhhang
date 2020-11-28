@@ -5,8 +5,8 @@
    <div class="banner-page col-lg-12">
     <p class="title-page">{{$product->name}}</p>
     <ul class="breadcrumb-page">
-        <li><a href="{{ route('home') }}">{{__('HOME')}}</a></li>
-        <li aria-current="page"><a href="{{ route('shop') }}">{{__('STORE')}}</a></li>
+        <li><a href="{{ route('home') }}">{{__('client.HOME')}}</a></li>
+        <li aria-current="page"><a href="{{ route('shop') }}">{{__('client.STORE')}}</a></li>
         <li aria-current="page">
           @foreach($product->categories as $category)
           <a class="text-capitalize" href="{{route('getProByCat',$category->slug)}}">{{$category->name}}</a>
@@ -35,19 +35,19 @@
             <h2 class="pt-4 pb-3">{{$product->name}}</h2>
           @if($product->discount <= 0 || $product->discount == null)
             <h4 class="pb-3 Font-Red price-product">
-              {{__('price')}}:
+              {{__('client.price')}}:
               {{$product->pricePresent('price')}}
               {{__("$")}}
             </h4>
           @else
             <h4 class="pb-3 Font-Red price-product" >
-              {{__('price')}}:
+              {{__('client.price')}}:
               <span style="text-decoration: line-through !important;">{{$product->pricePresent('price')}}</span>
               <span> {{$product->pricePresent('discount')}}</span>
               {{__("$")}}
             </h4>
           @endif
-          <h6 class="text-info">{{__('nation')}}: <a href="{{route('getProByNat',$product->nation)}}">{{$product->nation}}</a></h6>
+          <h6 class="text-info">{{__('client.nation')}}: <a href="{{route('getProByNat',$product->nation)}}">{{$product->nation}}</a></h6>
            <div class="detail">
              {!! $product->detail !!}
            </div>
@@ -55,9 +55,9 @@
             <br><br>
           <form action="{{route('cart.store')}}" method="post" >
             <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
-            <label for="qty">{{__('amount')}} :</label>
+            <label for="qty">{{__('client.amount')}} :</label>
             <input name="qty" id="qty" type="number" value="1" min="0" max="10" step="1"/>
-            <button  class="btn btn-danger add_product">{{__('buy_now')}}</button>
+            <button  class="btn btn-danger add_product">{{__('client.buy_now')}}</button>
           </form>
           <br><br>
             <br><br>
@@ -88,7 +88,7 @@
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                   <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Description</a>
                   <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Additional information</a>
-                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Reviews (0)</a>
+                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Reviews ({{$product->comments()->count()}})</a>
                 </div>
             </nav>
 
@@ -122,44 +122,7 @@
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <div class="box-infomation-PDetail">
                         <h4 class="mb-3">Reviews</h4>
-
-                        <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="{{ $product->thumbnail }}" class="avatar img-circle img-thumbnail"/>
-                                    <p class="text-secondary text-center">15 Minutes Ago</p>
-                                </div>
-                                <div class="col-md-10">
-                                    <p>
-                                        <a class="float-left" href=""><strong>Maniruzzaman Akash</strong></a>
-                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                    </p>
-                                    <div class="clearfix"></div>
-                                    <p>
-                                        Lorem Ipsum is simply dummy text of the pr make  but also the
-                                        leap into electronic typesetting, remaining essentially unchanged.
-                                        It was popularised in the 1960s with the release of Letraset sheets
-                                        containing Lorem Ipsum passages, and more recently with desktop publishing
-                                        software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <hr><br>
-
-                        <p>There are no reviews yet.</p>
-                        <hr><br>
-                        <p>Be the first to review “Cabernet Sauvignon Reserve”</p>
                         <p class="font-italic">Your email address will not be published. Required fields are marked *</p>
-
-                        <form action="">
-
                             <div class="stars">
                                 <span>Your rating</span>
                                     <form action="">
@@ -177,31 +140,10 @@
                                 </div>
 
                                 <p>Your review *</p>
-                                <textarea class="form-control Fix-input-checkout" id="exampleFormControlTextarea1" rows="3" required></textarea>
-
-                                <br>
-
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="firstName">Name</label>
-                                        <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="firstName" placeholder="" value="" required>
-                                        <div class="invalid-feedback">
-                                        Valid Name is required.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="lastName">Email</label>
-                                        <input type="email" class="form-control Fix-input-checkout Fix-high-checkout" id="lastName" placeholder="" value="" required>
-                                        <div class="invalid-feedback">
-                                        Valid Email is required.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <button class="btn btn-red-checkout" type="submit"><span style="font-size: 13pt">Submit</span></button>
-
-                        </form>
-
+                                @comments([
+                                'model' => $product,
+                                'approved' => true
+                                ])
                     </div>
                 </div>
             </div>
@@ -212,7 +154,7 @@
 <div class="vc_empty_space" style="height: 5.5em"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END Empty Space ======================================-->
   @if(count($productRelations) > 0)
-    <h3 class="text-capitalize text-info">{{__('related_products')}}</h3><br>
+    <h3 class="text-capitalize text-info">{{__('client.related_products')}}</h3><br>
   @endif
     <div class="row">
       @forelse($productRelations as $product)
@@ -237,14 +179,14 @@
 {{--            </p>--}}
               @if($product->discount <= 0 || $product->discount == null)
                 <h6 class="pb-3 Font-Red price-product">
-                  {{__('price')}}:
+                  {{__('client.price')}}:
                   {{$product->pricePresent('price')}}
                   {{__("$")}}
                 </h6>
               @else
-                <p style="color: red; font-size: 14px" class="text-capitalize">{{__('promotion')}}</p>
+                <p style="color: red; font-size: 14px" class="text-capitalize">{{__('client.promotion')}}</p>
                 <h6 class="pb-3 Font-Red price-product">
-                  {{__('price')}}:
+                  {{__('client.price')}}:
                   {{$product->pricePresent('discount')}}
                   {{__("$")}}
                 </h6>
@@ -253,7 +195,7 @@
               <form action="{{route('cart.store')}}" method="POST">
                 @csrf
                 <input type="hidden" value="{{$product->id}}">
-                <button  class="btn btn-danger add_product">{{__('buy_now')}}</button>
+                <button  class="btn btn-danger add_product">{{__('client.buy_now')}}</button>
               </form>
         </div>
         </div>
@@ -267,7 +209,7 @@
   <div class="col-xl-3 col-md-12 col-sm-12 px-3">
     <div class="row productCategories">
       <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3 text-capitalize">{{__('product_categories')}}</h4>
+        <h4 class="pt-4 pb-3 text-capitalize">{{__('client.product_categories')}}</h4>
         <div class="productCategories__list pl-2 mb-5">
           @foreach($categories as $category)
             <a href="{{route('getProByCat',$category->slug)}}" class="text-capitalize"><i class="fa fa-angle-right text-capitalize"></i>  {{$category->name}}</a>
@@ -276,15 +218,15 @@
       </div>
 
       <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3 text-capitalize">{{__('searchProduct')}}</h4>
+        <h4 class="pt-4 pb-3 text-capitalize">{{__('client.searchProduct')}}</h4>
         <div class="form-group">
           <input type="range" class="form-control-range" id="formControlRange" min="155" max="365" value="255">
         </div>
-        <button class="btn btn-dark">{{__('filter')}}</button>
+        <button class="btn btn-dark">{{__('client.filter')}}</button>
         <span class=" ml-5 " style="font-size: 15px; color: #c2c0b0;">Price: £155 — £<span id="numberFillter">365</span></span>
       </div>
       <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3 mt-5 text-capitalize">{{__('top_products')}}</h4>
+        <h4 class="pt-4 pb-3 mt-5 text-capitalize">{{__('client.top_products')}}</h4>
         <div class="productList p-3">
           @foreach($proOrderBought as $product)
             <div class="row">
@@ -295,13 +237,13 @@
                 <h6 class="mb-3" style="font-size: 14px;"><a href="{{route('shop.show',$product->slug)}}">{{ \Illuminate\Support\Str::limit($product->name,40)}}</a></h6>
                 @if($product->discount <= 0 || $product->discount == null)
                   <h6 class="pb-3 Font-Red price-product">
-                    {{__('price')}}:
+                    {{__('client.price')}}:
                     {{$product->pricePresent('price')}}
                     {{__("$")}}
                   </h6>
                 @else
                   <h6 class="pb-3 Font-Red price-product">
-                    {{__('price')}}:
+                    {{__('client.price')}}:
                     {{$product->pricePresent('discount')}}
                     {{__("$")}}
                   </h6>

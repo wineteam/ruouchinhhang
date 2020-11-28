@@ -24,6 +24,6 @@ class ContactController extends Controller
       if (count(Mail::failures()) > 0){
         return redirect()->route('contact')->withError('Hien tai khong the gui mail. Vui long thu lai sau!');
       }
-      return redirect()->back()->with('message','Cam on phan hoi cua ban');
+      return redirect()->back()->with('message-contact','Cam on phan hoi cua ban');
   }
 }

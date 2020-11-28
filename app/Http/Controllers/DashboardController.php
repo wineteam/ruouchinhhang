@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,11 @@ class DashboardController extends Controller
     }
 
     public function showblog(){
-        return view('admin.blog');
+        $blogs = Blog::all();
+        $tags = Tag::select('tags.*')->where('primary', '1')->get();
+        $categorys = Category::select('categories.*')->where('is_published','1')->where('type','1')->get();
+        return view('admin.blog')->with(["blogs"=>$blogs,"tags"=>$tags,"categorys"=>$categorys]);
+
     }
 
     public function showproduct(){
@@ -71,9 +76,6 @@ class DashboardController extends Controller
         return view('admin.comment');
     }
 
-    public function showuser(){
-        return view('admin.user');
-    }
 
     public function showAdminUser(){
         return view('admin.AdminUser');

@@ -6,11 +6,11 @@
           @if(isset($message))
             <p class="title-page text-capitalize">{{$message}}</p>
           @else
-            <p class="title-page">{{__('ALL')}} {{__('POST')}}</p>
+            <p class="title-page">{{__('client.ALL')}} {{__('client.POST')}}</p>
           @endif
             <ul class="breadcrumb-page">
-                <li><a  href="{{ route('home',app()->getLocale()) }}">{{__('HOME')}}</a></li>
-                <li aria-current="page">{{__('BLOG')}}</li>
+                <li><a  href="{{ route('home',app()->getLocale()) }}">{{__('client.HOME')}}</a></li>
+                <li aria-current="page">{{__('client.BLOG')}}</li>
             </ul>
         </div>
         <!-- Content blogger -->
@@ -38,13 +38,13 @@
                     @endforeach
                     @if(count($blogs) > 4)
                     <div class="loadmore">
-                        <button class="btn-loadMore" id="loadMore">{{__('Load_more')}}</button>
+                        <button class="btn-loadMore" id="loadMore">{{__('client.Load_more')}}</button>
                     </div>
                     @elseif(count($blogs) == 0)
                         <h2 class="text-danger text-center">Nothing</h2>
                     @endif
                 </div>
-                
+
               @include('client.blog2')
             </div>
         </div>

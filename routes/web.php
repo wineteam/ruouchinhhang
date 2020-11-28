@@ -1,9 +1,10 @@
 <?php
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\BlogController;
-  use App\Http\Controllers\checkoutController;
-  use App\Http\Controllers\CouponController;
-  use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\checkoutController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\MngUserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,8 +56,6 @@ use App\Http\Controllers\ProfileController;
   Route::post('/coupon',[CouponController::class,'store'])->name('coupon.store');
   Route::delete('/coupon/destroy',[CouponController::class,'destroy'])->name('coupon.destroy');
 
-
-
 //Login
   Route::get('/Logout', [LoginController::class,'Logout'])->name('Logout');
 
@@ -70,7 +70,11 @@ Route::middleware('auth')->group(function(){
 Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
   Route::get('/dashboard/product', [DashboardController::class,'showproduct'])->name('dashboard.product');
+
+
   Route::get('/dashboard/blog', [DashboardController::class,'showblog'])->name('dashboard.blog');
+  Route::delete('/dashboard/blog/delete/{id}',[BlogController::class,'delete'])->name('dashboard.blog.delete');//Xóa bài viết
+
   Route::get('/dashboard/comment', [DashboardController::class,'showcomment'])->name('dashboard.comment');
   Route::get('/dashboard/catelog', [DashboardController::class,'showcatelog'])->name('dashboard.catelog');
   Route::get('/dashboard/catelog_product', [DashboardController::class,'showcatelog_product'])->name('dashboard.catelog_product');
@@ -81,12 +85,20 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/language', [DashboardController::class,'showlanguage'])->name('dashboard.language');
   Route::get('/dashboard/order', [DashboardController::class,'showorder'])->name('dashboard.order');
   Route::get('/dashboard/orderdetail', [DashboardController::class,'showorderdetail'])->name('dashboard.orderdetail');
-  Route::get('/dashboard/user', [DashboardController::class,'showuser'])->name('dashboard.user');
+
+
+  Route::get('/dashboard/user', [MngUserController::class,'index'])->name('MngUser.index');
+  Route::get('/dashboard/user/addnew', [MngUserController::class,'addnew'])->name('MngUser.addnew');
+  Route::post('/dashboard/user/create', [MngUserController::class,'create'])->name('MngUser.create');
+
+  Route::get('/dashboard/user/edit/{id}', [MngUserController::class,'edit'])->name('MngUser.edit');
+  Route::patch('/dashboard/user/update/{id}', [MngUserController::class,'update'])->name('MngUser.update');
+  Route::delete('/dashboard/user/delete/{id}',[MngUserController::class,'destroy'])->name('MngUser.destroy');//Xóa người dùng
+
+
   Route::get('/dashboard/AdminUser', [DashboardController::class,'showAdminUser'])->name('dashboard.AdminUser');
   Route::get('/dashboard/Passreset', [DashboardController::class,'showPassreset'])->name('dashboard.Passreset');
-  
 });
-
 
   Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
 
