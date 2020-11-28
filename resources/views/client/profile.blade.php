@@ -20,9 +20,9 @@
               <div class="text-center">
                   <div class="max-height-imagess">
                     @if(Auth::user()->avatar == NULL)
-                        <img src="{{ asset('images/avatar_noImg.png') }}" id="ImagesShow" class="avatar img-circle img-thumbnail" alt="avatar">
+                        <img src="{{ asset('images/avatar_noImg.png') }}" id="ImagesShow" class="avatar img-thumbnail" alt="avatar">
                     @else
-                        <img src="{{ asset('storage/avatar_user/'.Auth::user()->avatar) }}" id="ImagesShow" class="avatar img-circle img-thumbnail" alt="avatar">
+                        <img src="{{ asset('storage/avatar_user/'.Auth::user()->avatar) }}" id="ImagesShow" class="avatar img-thumbnail" alt="avatar">
                     @endif
                   </div>
                 <h6 class="pdg-images">{{__('Uploadadifferentphoto')}}</h6>
@@ -33,16 +33,28 @@
               <ul class="list-group">
                 <li class="list-group-item text-muted">{{__('Menu_profile')}}</li>
                 <li class="list-group-item text-right"><a href="{{ route('home') }}" class="Font-Red"><span class="pull-left">{{__('HOME')}}</span></a></li>
+                @if (count($roles) >= 1)
+                <li class="list-group-item text-right"><a href="{{ route('dashboard') }}" class="Font-Red"><span class="pull-left">{{__('Dashboard')}}</span></a></li>
+                @endif
               </ul>
               <div class="vc_empty_space" style="height: 3.5em"><span class="vc_empty_space_inner"></span></div>
           </div>
 
           <div class="col-xl-8 col-md-12 col-sm-12">
-                <h3 class="mb-3">{{__('infoProfile')}} {{Auth::user()->name}}</h3>
+                <h3 class="mb-3">
+                  {{__('infoProfile')}} <br>
+                  @if (count($roles) >= 1)
+                  <a href="{{ route('dashboard') }}"><span class="Font-Red text-uppercase font-weight-bold">ADMIN</span> <span class="Font-dark">{{Auth::user()->name}}</span></a>
+                  @else
+                  {{Auth::user()->name}}
+                  @endif
+                </h3>
 
                 <div class="row">
                     <div class="col-md-12 mb-3">
-                    <label for="firstName">{{__('name_user')}}</label>
+                    <label for="firstName">
+                      {{__('name_user')}}
+                    </label>
                         <input type="text" class="form-control Profile-Input Fix-high-checkout" id="firstName" value="{{Auth::user()->name}}" name="name">
                     </div>
                 </div>

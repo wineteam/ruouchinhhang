@@ -86,5 +86,8 @@
     "Passreset":"Password Reset Lists","datepurchase": "Date purchase","deliverydate": "Delivery date",
     "details": "Details","procode":"Prodeuct code","proname":"Product name","quantity": "Quantity","author": "Author",
     "cancel": "Cancel","entername":"Enter name...","enteremail":"Enter E-mail...","enterpass":"Enter password...","enteraddress":"Enter Address","enterphone":"Enter Phone number...",
-    "ConfirmPassword": "Confirm Password"
+    "ConfirmPassword": "Confirm Password",
+
+    "catelogall": "Main Category","catelogproduct": "Products Category","catelogblog":"Blogs Category",
+    "account": "Account","historyPass": "History Reset Password"
 }

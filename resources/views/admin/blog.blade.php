@@ -80,11 +80,11 @@
                                   <a href="" class="btn btn-sm btn-primary">{{__('edit')}}</a>
                                   <a href="" class="btn btn-sm btn-warning">{{__('show')}}</a>
 
-                                  <form action="{{route('dashboard.blog.delete',$blog->id)}}" id="delete_blog_{{$blog->id}}" method="post">
-                                          @csrf
-                                          @method('delete')
-                                          <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
-                                        </form>
+                                  <form action="{{route('MngBlog.delete',$blog->id)}}" id="delete_blog_{{$blog->id}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
+                                  </form>
                               </div>
                           </td>
                         </tr>
