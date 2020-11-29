@@ -3,9 +3,8 @@
     // TODO: There should be a better place for this.
     $markdown->setSafeMode(true);
 @endphp
-<div class="card" id="comment-{{ $comment->getKey() }}">
-  <div class="card-body">
-    <div class="row">
+
+    <div class="row" id="comment-{{ $comment->getKey() }}">
       <div class="col-md-2" >
         <img src="https://www.gravatar.com/avatar/{{ md5($comment->commenter->email ?? $comment->guest_email) }}.jpg?s=64" alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar" class="avatar img-circle img-thumbnail"/>
         <p class="text-secondary text-center">{{ $comment->created_at->diffForHumans() }}</p>
@@ -97,10 +96,26 @@
             </div>
           </div>
         @endcan
+        <br />
+          <?php
+              if (!isset($indentationLevel)) {
+                  $indentationLevel = 1;
+              } else {
+                  $indentationLevel++;
+              }
+          ?>
+          @if($grouped_comments->has($comment->getKey()) && $indentationLevel <= $maxIndentationLevel)
+              @foreach($grouped_comments[$comment->getKey()] as $child)
+                  @include('comments::_comment', [
+                      'comment' => $child,
+                      'grouped_comments' => $grouped_comments
+                  ])
+              @endforeach
+          @endif
+
       </div>
     </div>
-  </div>
-</div>
+
 
 {{--<div id="comment-{{ $comment->getKey() }}" class="media">--}}
 {{--    <img class="mr-3" src="https://www.gravatar.com/avatar/{{ md5($comment->commenter->email ?? $comment->guest_email) }}.jpg?s=64" alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar">--}}

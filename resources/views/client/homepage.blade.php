@@ -160,53 +160,53 @@
         <div class="row">
             @forelse($productsRec as $product)
               @foreach($product->categories()->get() as $category)
-            <div class="product-{{$product->id}} col-xl-3 col-md-4 col-sm-6 filterDiv padding-less  {{$category->slug}} show">
-                <div>
-                    <div class="bg-white" style="position: relative; margin-top: 1rem;">
-                        <a href="{{route('shop.show',$product->slug)}}">
-                            <div class="circle-box text-center">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-                        </a>
-                        <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ $product->thumbnail }}" alt="">
-
-                        @forelse($product->categories as $category)
-                            <span class="text-center Font-Size-07vw">
-                                <a href="{{route('getProByCat',$category->slug)}}">{{$category->name}}</a>
-                            </span>
-                            @if(!$loop->last)
-                                ,
-                            @endif
-                            @empty
-                                <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
-                        @endforelse
-
-                        <div class="col-12 mx-auto" style="padding: 20px;">
-                            <a class="Hover-Red" href="{{route('shop.show',$product->slug)}}">
-                                <h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">
-                                    {{$product->id}}{{\Illuminate\Support\Str::limit($product->name,15  )}}
-                                </h5>
+                <div class="product-{{$product->id}} col-xl-3 col-md-4 col-sm-6 filterDiv padding-less  {{$category->slug}} show">
+                    <div>
+                        <div class="bg-white" style="position: relative; margin-top: 1rem;">
+                            <a href="{{route('shop.show',$product->slug)}}">
+                                <div class="circle-box text-center">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </div>
                             </a>
-                          @if($product->discount <= 0 || $product->discount == null)
-                            <h5 class="p-3 Font-Red">
-                              {{__('client.price')}}:
-                              {{$product->pricePresent('price')}}
-                              {{__("$")}}
-                            </h5>
-                          @else
-                            <p style="color: red; font-size: 14px">{{__('client.promotion')}}</p>
-                            <h5 class="p-3 Font-Red">
-                              {{__('client.price')}}:
-                              {{$product->pricePresent('discount')}}
-                              {{__("$")}}
-                            </h5>
-                          @endif
+                            <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ $product->thumbnail }}" alt="">
 
+                            @forelse($product->categories as $category)
+                                <span class="text-center Font-Size-07vw">
+                                    <a href="{{route('getProByCat',$category->slug)}}">{{$category->name}}</a>
+                                </span>
+                                @if(!$loop->last)
+                                    ,
+                                @endif
+                                @empty
+                                    <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
+                            @endforelse
+
+                            <div class="col-12 mx-auto" style="padding: 20px;">
+                                <a class="Hover-Red" href="{{route('shop.show',$product->slug)}}">
+                                    <h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">
+                                      {{\Illuminate\Support\Str::limit($product->name,15  )}}
+                                    </h5>
+                                </a>
+                              @if($product->discount <= 0 || $product->discount == null)
+                                <h5 class="p-3 Font-Red">
+                                  {{__('client.price')}}:
+                                  {{$product->pricePresent('price')}}
+                                  {{__("$")}}
+                                </h5>
+                              @else
+                                <p style="color: red; font-size: 14px">{{__('client.promotion')}}</p>
+                                <h5 class="p-3 Font-Red">
+                                  {{__('client.price')}}:
+                                  {{$product->pricePresent('discount')}}
+                                  {{__("$")}}
+                                </h5>
+                              @endif
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
+              @endforeach
             @empty
             <h5>Thêm sản phẩm để hiển thị ở đây</h5>
             @endforelse

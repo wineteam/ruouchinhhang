@@ -16,11 +16,12 @@ class HomePageController extends Controller
       $productsEsp = Product::join('language_switches', function ($join) {
           $join->on('language_id', '=', 'language_switches.id')
               ->where('language_switches.slug', '=', App()->getLocale());
-      })->select('products.*')->where('is_published','1')->where('especially','1')->inRandomOrder()->take(10)->get();
+      })->select('products.*')->where('is_published','1')->where('especially','1')->inRandomOrder()->take(6)->get();
       $productsRec = Product::join('language_switches', function ($join) {
         $join->on('language_id', '=', 'language_switches.id')
           ->where('language_switches.slug', '=', App()->getLocale());
-      })->select('products.*')->where('is_published','1')->orderBy('view','desc')->take(4)->get();
+      })->select('products.*')->where('is_published','1')->inRandomOrder()->take(8)->get();
+
       $blogs_esp = Blog::join('language_switches', function ($join) {
         $join->on('language_id', '=', 'language_switches.id')
           ->where('language_switches.slug', '=', App()->getLocale());

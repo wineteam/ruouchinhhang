@@ -12067,6 +12067,7 @@ ul.breadcrumb-page li[aria-current=page] {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   overflow: hidden;
+  padding-bottom: 30px;
   /*padding: 3px;*/
   background-image: url(/images/audio_bg.jpg?e0a7a3981522b2b610e09f815c222e31);
 }

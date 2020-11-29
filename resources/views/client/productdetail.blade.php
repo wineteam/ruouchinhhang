@@ -138,12 +138,11 @@
                                       <label class="star star-1" for="star-1"></label>
                                     </form>
                                 </div>
-
-                                <p>Your review *</p>
-                                @comments([
-                                'model' => $product,
-                                'approved' => true
-                                ])
+                      <p>Your review *</p>
+                            @comments([
+                            'model' => $product,
+                            'approved' => true
+                            ])
                     </div>
                 </div>
             </div>
