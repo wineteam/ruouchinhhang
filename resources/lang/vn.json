@@ -91,6 +91,6 @@
     "ConfirmPassword": "Xác nhận lại mật khẩu",
 
     "catelogall": "Danh mục tổng","catelogproduct": "Danh mục sản phẩm","catelogblog":"Danh mục bài viết",
-    "account": "Tài khoản","historyPass": "Lịch sử thay đổi"
+    "account": "Tài khoản","historyPass": "Lịch sử thay đổi","latest":"Mới nhất","oldest": "Cũ nhất"
 
 }

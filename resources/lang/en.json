@@ -89,5 +89,5 @@
     "ConfirmPassword": "Confirm Password",
 
     "catelogall": "Main Category","catelogproduct": "Products Category","catelogblog":"Blogs Category",
-    "account": "Account","historyPass": "History Reset Password"
+    "account": "Account","historyPass": "History Reset Password","latest":"Latest","oldest": "Oldest"
 }

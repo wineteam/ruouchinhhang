@@ -6,26 +6,31 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\UserHasRole;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class MngUserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-      $users = User::paginate(12);
+      $users = User::orderBy('created_at','desc')->paginate(12);
       return view('admin.user')->with(["users"=>$users]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */    
+    public function orderPro($order)
+    {
+      if($order === "old"){
+        $users = User::paginate(12);
+        $old = "selected";
+        return view('admin.user',compact('users','old'));
+      }
+        $new = "selected";
+        $users = User::orderBy('created_at','desc')->paginate(12);
+        return view('admin.user',compact('users','new'));
+    }
+    public function search(Request $request){
+      $users = User::where('name','like','%'.$request->name.'%')->paginate(12);
+      return view('admin.user')->with(["users"=>$users]);
+    }
     public function addnew(User $id)
     {
       return view('admin.add_user');
@@ -67,13 +72,6 @@ class MngUserController extends Controller
       return view('admin.edit_user')->with(['user'=>$id,'roles'=>$newRoles]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,$id)
     {
       $user = User::find($id);
@@ -95,16 +93,15 @@ class MngUserController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(User $id)
     {
       $id->delete();
-      session()->flash('message', 'Xóa sản phẩm thành công');
+      session()->flash('message', 'Xóa Người dùng thành công');
       return redirect()->back();
     }
+
+    public function deleteAll(Request $request) {
+      $deleted = User::whereIn('id',$request->userId)->delete();
+      return redirect()->back()->with('message','Da xoa thanh cong');
+   }
 }
