@@ -116,7 +116,6 @@
                     @if(Route::has('login'))
                         @auth
                 <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{route('profile.edit',Auth::user()->id)}}">{{__('profile')}}</a></li>
-                        <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('Logout') }}">{{__('Logout')}}</a></li>
                         @else
                         <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login') }}">{{__('client.LOGIN')}}</a></li>
                             @if (Route::has('register'))
@@ -135,21 +134,6 @@
                                 >{{$language->slug}}</option>
                             @endforeach
                         </select>
-                    </li>
-                </ul>
-                <ul class="navbar-nav position-Ab Display-none3 Low-right" style="right:20%;">
-                    <li class="nav-item">
-                        <div class="nav-link">
-                            <i class="fa fa-search btnSearch" aria-hidden="true"></i>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav position-Ab Display-none3 Low-right" style="right:20.5%;top: 100%;">
-                    <li class="nav-item">
-                        <form action="" id="FromSearch">
-                            <input type="text" name="search" id="search" class="search fixed-input-search" placeholder="Search...">
-                            <button id="ButtonSearch" class="fixed-search"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </form>
                     </li>
                 </ul>
             </div> <!-- navbar-collapse.// -->
@@ -176,16 +160,7 @@
                 </ul>
             </div>
         </div>
-        <form>
-            <div class="card-body row no-gutters align-items-center search-Bottom">
-                <div class="col">
-                    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search ...">
-                </div>
-                <div class="col-auto">
-                    <button class="btn btn-lg bg-white" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </div>
-            </div>
-        </form>
+
     </div>
     <div class="vc_empty_space bg-white" style="padding: 0 0 4.1em;"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END MENU ======================================-->

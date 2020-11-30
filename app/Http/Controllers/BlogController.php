@@ -75,4 +75,11 @@ class BlogController extends Controller
     return view('client.blog')->with(['blogs' => $blogPOST,'message'=>__('tag').': '.$tag->name]);
   }
 
+  public function delete(Blog $id)
+    {
+        $id->delete();
+        session()->flash('success', 'Xóa bài viết thành công');
+        return redirect()->back();
+    }
+
 }

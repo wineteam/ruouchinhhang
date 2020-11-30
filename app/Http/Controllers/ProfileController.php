@@ -17,7 +17,8 @@ class ProfileController extends Controller
 //    }
   public function edit()
   {
-    return view('client.profile');
+    $roles = Auth::user()->roles()->get();
+    return view('client.profile')->with(['roles'=>$roles]);
   }
 
   public function update(Request $request)

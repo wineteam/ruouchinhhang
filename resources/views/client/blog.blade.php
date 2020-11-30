@@ -45,7 +45,7 @@
                     @endif
                 </div>
 
-              @include('client.blog2')
+              @include('include.boxRightBlog')
             </div>
         </div>
     </div>

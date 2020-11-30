@@ -33,6 +33,9 @@
   <link href="{{ asset('css/styleADmin.css')}}" rel="stylesheet">
   <link href="{{ asset('css/style-responsive.css')}}" rel="stylesheet">
   <script src="{{ asset('lib/chart-master/Chart.js')}}"></script>
+
+  <script src="{{ mix('js/app.js') }}"></script>
+
 </head>
 
 <body>
@@ -169,7 +172,7 @@
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="{{ route('Logout') }}">{{__('Logout')}}</a></li>
         </ul>
-        
+
       </div>
     </header>
     <!--header end-->
@@ -181,7 +184,15 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="{{route('profile.edit',Auth::user()->id)}}"><img src="{{ asset('storage/avatar_user/'.Auth::user()->avatar) }}" width="80"></a></p>
+          <p class="centered">
+            <a href="{{route('profile.edit',Auth::user()->id)}}">
+              @if(Auth::user()->avatar == NULL)
+                  <img src="{{ asset('images/avatar_noImg.png') }}" id="ImagesShow" class="avatar img-thumbnail" alt="avatar">
+              @else
+                  <img src="{{ asset('storage/avatar_user/'.Auth::user()->avatar) }}" id="ImagesShow" class="avatar img-thumbnail" alt="avatar">
+              @endif
+            </a>
+          </p>
           <h5 class="centered">{{Auth::user()->name}}</h5>
           <li class="mt">
           <a class="active" href="{{route ('dashboard')}}">
@@ -192,65 +203,65 @@
           <li class="sub-menu"><!-- CATELOG -->
             <a href="javascript:;">
              <i class="fas fa-book-open"></i>
-              <span>Danh mục</span>
+              <span>{{__('catelog')}}</span>
               </a>
             <ul class="sub">
-              <li><a href="{{route ('dashboard.catelog')}}">Danh mục tổng</a></li>
-              <li><a href="{{route ('dashboard.catelog_product')}}">Danh mục sản phẩm</a></li>
-              <li><a href="{{route ('dashboard.catelog_blog')}}">Danh mục bài viết</a></li>
+              <li><a href="{{route ('MngCateLog.index')}}">{{__('catelogall')}}</a></li>
+              <li><a href="{{route ('MngCateLogProDuct.index')}}">{{__('catelogproduct')}}</a></li>
+              <li><a href="{{route ('MngCateLogBlog.index')}}">{{__('catelogblog')}}</a></li>
             </ul>
           </li>
           <li><!-- PRODUCTS -->
-            <a href="{{route ('dashboard.tags')}}">
+            <a href="{{route ('MngTags.index')}}">
               <i class="fa fa-tags" aria-hidden="true"></i>
-              <span>Tags</span>
+              <span>{{__('tags')}}</span>
             </a>
           </li>
           <li><!-- PRODUCTS -->
-            <a href="{{route ('dashboard.product')}}">
+            <a href="{{route ('MngProduct.index')}}">
               <i class="fas fa-wine-bottle"></i>
-              <span>Sản phẩm </span>
+              <span>{{__('product')}}</span>
             </a>
           </li>
           <li>
-            <a href="{{route ('dashboard.blog')}}">
+            <a href="{{route ('MngBlog.index')}}">
               <i class="far fa-newspaper"></i>
-              <span>Bài viết </span>
+              <span>{{__('BLOG')}}</span>
             </a>
           </li>
           <li>
-            <a href="{{route ('dashboard.coupon')}}">
+            <a href="{{route ('MngCoupon.index')}}">
               <i class="fa fa-ticket" aria-hidden="true"></i>
-              <span>Mã giảm giá </span>
+              <span>{{__('coupon')}}</span>
             </a>
           </li>
           <li>
-            <a href="{{route ('dashboard.comment')}}">
+            <a href="{{route ('MngComment.index')}}">
               <i class="fas fa-comment"></i>
-              <span>Bình luận </span>
+              <span>{{__('comment')}}</span>
             </a>
           </li>
           <li>
-            <a href="{{route ('dashboard.banner')}}">
+            <a href="{{route ('MngBanner.index')}}">
               <i class="fa fa-picture-o" aria-hidden="true"></i>
-              <span>Banner</span>
+              <span>{{__('Banner')}}</span>
             </a>
           </li>
           <li>
-            <a href="{{route ('dashboard.language')}}">
+            <a href="{{route ('MngLanguage.index')}}">
               <i class="fas fa-language"></i>
-              <span>Ngôn ngữ</span>
+              <span>{{__('Language')}}</span>
             </a>
           </li>
           <li class="sub-menu"><!-- CATELOG -->
             <a href="javascript:;">
               <i class="fa fa-users"></i>
-              <span>Tài khoản</span>
+              <span>{{__('account')}}</span>
               </a>
             <ul class="sub">
-              <li><a href="{{route ('dashboard.user')}}">Tài khoản</a></li>
-              <li><a href="{{route ('dashboard.AdminUser')}}">Quyền quản trị</a></li>
-              <li><a href="{{route ('dashboard.Passreset')}}">Thay mật khẩu</a></li>
+              <li><a href="{{route ('MngUser.index')}}">{{__('account')}} {{__('user')}}</a></li>
+              <li><a href="{{route ('MngAdminUser.index')}}">{{__('Administration')}}</a></li>
+              <li><a href="{{route ('MngPassReset.index')}}">{{__('historyPass')}}</a></li>
             </ul>
           </li>
           <li class="sub-menu"><!-- ORDERS -->
@@ -259,8 +270,8 @@
               <span>Đơn hàng</span>
               </a>
             <ul class="sub">
-              <li><a href="{{route ('dashboard.order')}}">Đơn hàng</a></li>
-              <li><a href="{{route ('dashboard.orderdetail')}}">Đơn hàng chi tiết</a></li>
+              <li><a href="{{route ('MngOrder.index')}}">Đơn hàng</a></li>
+              <li><a href="{{route ('MngOrderDetail.index')}}">Đơn hàng chi tiết</a></li>
             </ul>
           </li>
         </ul>
@@ -344,6 +355,7 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   </script>
+  @yield('script')
 </body>
 
 </html>

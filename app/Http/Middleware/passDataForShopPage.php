@@ -20,6 +20,8 @@ class passDataForShopPage
      */
     public function handle(Request $request, Closure $next)
     {
+      $nations = Product::select('nation')->distinct()->get();
+      $vintages = Product::select('vintage')->distinct()->get();
       $tagPrimary = Tag::where('primary','1')->limit('8')->get();
       $categories =  Category::join('language_switches', function ($join) {
         $join->on('language_id', '=', 'language_switches.id')
@@ -29,7 +31,7 @@ class passDataForShopPage
         $join->on('language_id', '=', 'language_switches.id')
           ->where('language_switches.slug', '=', App()->getLocale());
       })->select('products.*')->where('is_published','1')->orderBy('bought','desc')->take(4)->get();
-      View::share(['tagPrimary'=>$tagPrimary,'categories'=>$categories,'proOrderBought'=>$proOrderBought]);
+      View::share(['tagPrimary'=>$tagPrimary,'categories'=>$categories,'proOrderBought'=>$proOrderBought,'nations'=>$nations,'vintages'=>$vintages]);
       return $next($request);
     }
 }

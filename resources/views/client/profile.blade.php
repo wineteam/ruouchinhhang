@@ -20,9 +20,9 @@
               <div class="text-center">
                   <div class="max-height-imagess">
                     @if(Auth::user()->avatar == NULL)
-                        <img src="{{ asset('images/avatar_noImg.png') }}" id="ImagesShow" class="avatar img-circle img-thumbnail" alt="avatar">
+                        <img src="{{ asset('images/avatar_noImg.png') }}" id="ImagesShow" class="avatar img-thumbnail" alt="avatar">
                     @else
-                        <img src="{{ asset('storage/avatar_user/'.Auth::user()->avatar) }}" id="ImagesShow" class="avatar img-circle img-thumbnail" alt="avatar">
+                        <img src="{{ asset('storage/avatar_user/'.Auth::user()->avatar) }}" id="ImagesShow" class="avatar img-thumbnail" alt="avatar">
                     @endif
                   </div>
                 <h6 class="pdg-images">{{__('Uploadadifferentphoto')}}</h6>
@@ -32,24 +32,38 @@
 
               <ul class="list-group">
                 <li class="list-group-item text-muted">{{__('Menu_profile')}}</li>
-                <li class="list-group-item text-right"><a href="{{ route('home') }}" class="Font-Red"><span class="pull-left">{{__('HOME')}}</span></a></li>
+                <li class="list-group-item text-left"><a href="{{ route('home') }}" class="text-success">{{__('HOME')}}</a></li>
+                @if (count($roles) >= 1)
+                <li class="list-group-item text-left"><a href="{{ route('dashboard') }}" class="Font-Red">{{__('Dashboard')}}</a></li>
+                @endif
+                <li  class="list-group-item text-left"><a class="Font-Red pull-left" href="{{ route('Logout') }}">{{__('Logout')}}</a></li>
               </ul>
               <div class="vc_empty_space" style="height: 3.5em"><span class="vc_empty_space_inner"></span></div>
           </div>
 
           <div class="col-xl-8 col-md-12 col-sm-12">
-                <h3 class="mb-3">{{__('infoProfile')}} {{Auth::user()->name}}</h3>
+                <h2 class="mb-3 text-center text-info">
+                  {{__('infoProfile')}} <br>
+                  @if (count($roles) >= 1)
+                  <a href="{{ route('dashboard') }}"><span class="Font-Red text-uppercase font-weight-bold">ADMIN</span> <span class="Font-dark">{{Auth::user()->name}}</span></a>
+                  @else
 
+                  @endif
+                </h2>
                 <div class="row">
                     <div class="col-md-12 mb-3">
-                    <label for="firstName">{{__('name_user')}}</label>
+                    <label for="firstName">
+                      {{__('name_user')}}
+                    </label>
                         <input type="text" class="form-control Profile-Input Fix-high-checkout" id="firstName" value="{{Auth::user()->name}}" name="name">
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="Companyname">{{__('Email')}}</label>
-                <h6 class="alert alert-info" id="email"></h6>
+                    <label for="email">{{__('Email')}}</label>
+                    <div class="form-control Profile-Input Fix-high-checkout">
+                      <h6 id="email" style="padding-top: 15px"></h6>
+                    </div>
                 </div>
 
                 <div class="mb-3">
@@ -83,9 +97,6 @@
         const FirstName = name.slice(0,2);
         const Lastname = name.substring(name.indexOf('@'),name.length);
         $('#email').text(FirstName+"*****"+Lastname);
-        // $('#email').text = ;
-
-
     })
 </script>
 @endsection

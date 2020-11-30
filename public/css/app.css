@@ -12079,9 +12079,41 @@ ul.breadcrumb-page li[aria-current=page] {
   font-size: 12px;
   transition: background-color 2s;
 }
-
+/* form search */
+.form-search{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  transition: 0.5s;
+}
+input[name="name"]{
+  padding: 6px 8px;
+  border: 1px solid #BDB68E;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+  transition: 0.5s;
+}
+.form-search button[type="submit"]{
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  border: none;
+  background: transparent;
+  margin-top: -0.5em;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  z-index: 0;
+  /* pointer-events: none; */
+  cursor: pointer;
+}
+.form-search input[name="name"]:focus{
+  background: #FCFAF8;
+  border: 1px solid transparent;
+}
 .product-page .productItem__content button:hover {
-  background-color: red;
+  background-color: #ed0d0d;
 }
 
 .product-page .productCategories__list {

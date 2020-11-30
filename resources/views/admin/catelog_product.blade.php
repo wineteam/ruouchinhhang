@@ -50,9 +50,10 @@
                                   <td>Việt Nam</td>
                                   <td style="display: flex;justify-content: space-between">
                                       <a href="" class="btn btn-sm btn-primary">{{__('edit')}}</a>
-                                      <form action="">
-                                          <input type="hidden" value="">
-                                          <button class="btn btn-sm btn-danger">{{__('delete')}}</button>
+                                     <form action="#"  method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
                                       </form>
                                   </td>
                               </tr>
@@ -75,4 +76,43 @@
       </div>
     </section>
   </section>
+@endsection
+@section('script')
+<script>
+    $(document).ready(function(){
+      $('.deleteItem').click(function (e) {
+      e.preventDefault();
+      var formname = $(this).parent();
+      const confirmDelete = confirm("Bạn chắc chắn xóa chứ ?");
+      if(confirmDelete == true){
+        formname.submit();
+        return true;
+      }
+      return false;
+    });
+
+      $('#selectAllRow').on('click', function(e) {
+        if($(this).is(':checked',true))  
+        {
+          $(".selectAllchilden").prop('checked', true);  
+          $(".sheetDelete").css("display", "block");;
+        } else {  
+          $(".selectAllchilden").prop('checked',false);  
+          $(".sheetDelete").css("display", "none");;
+        }  
+      });
+
+      $('.selectAllchilden').on('click', function(e) {
+        if($(this).is(':checked',true))  
+        {
+          $(".sheetDelete").css("display", "block");;
+        } else {  
+          $(".sheetDelete").css("display", "none");;
+        }  
+      });
+
+    });
+
+
+</script>
 @endsection

@@ -3,6 +3,7 @@ use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\MngUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
@@ -11,7 +12,22 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MngAdminUserController;
+use App\Http\Controllers\MngBannerController;
+use App\Http\Controllers\MngBlogController;
+use App\Http\Controllers\MngCateLogBlogController;
+use App\Http\Controllers\MngCateLogController;
+use App\Http\Controllers\MngCateLogProDuctController;
+use App\Http\Controllers\MngCommentController;
+use App\Http\Controllers\MngCouponController;
+use App\Http\Controllers\MngLanguageController;
+use App\Http\Controllers\MngOrderController;
+use App\Http\Controllers\MngOrderDetailController;
+use App\Http\Controllers\MngPassResetController;
+use App\Http\Controllers\MngProductController;
+use App\Http\Controllers\MngTagsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +49,11 @@ use App\Http\Controllers\ProfileController;
   Route::middleware('passDataForShopPage')->group(function () {
     Route::get('/shop',[ShopController::class,'index'])->name('shop');
     Route::get('shop/tag/{tag:slug}',[ShopController::class,'searchWithTag'])->name('shop.search.tag');
-    Route::get('/shop/{product:slug}',[ShopController::class,'show'])->name('shop.show')->middleware('checkLocaleProduct');
-    Route::get('/category/{slug:slug}',[ShopController::class,'getProByCat'])->name('getProByCat');
-    Route::get('/nation/{slug:slug}',[ShopController::class,'getProByNat'])->name('getProByNat');
+    Route::get('/shop/product/{product:slug}',[ShopController::class,'show'])->name('shop.show')->middleware('checkLocaleProduct');
+    Route::get('/shop/category/{slug:slug}',[ShopController::class,'getProByCat'])->name('getProByCat');
+    Route::get('/shop/nation/{slug:slug}',[ShopController::class,'getProByNat'])->name('getProByNat');
+    Route::get('/shop/searchByName',[ShopController::class,'searchByName'])->name('shop.searchByName');
+    Route::get('/shop/search',[ShopController::class,'filterProducts'])->name('shop.filters');
   });
 //  cart
   Route::get('/cart',[CartController::class,'index'])->name('cart.index');
@@ -54,7 +72,7 @@ use App\Http\Controllers\ProfileController;
   Route::post('/coupon',[CouponController::class,'store'])->name('coupon.store');
   Route::delete('/coupon/destroy',[CouponController::class,'destroy'])->name('coupon.destroy');
 
-//Login
+//Logout
   Route::get('/Logout', [LoginController::class,'Logout'])->name('Logout');
 
 
@@ -66,22 +84,73 @@ Route::middleware('auth')->group(function(){
 });
 
 Route::middleware('CheckAdminLogin')->group(function(){
+
   Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
-  Route::get('/dashboard/product', [DashboardController::class,'showproduct'])->name('dashboard.product');
-  Route::get('/dashboard/blog', [DashboardController::class,'showblog'])->name('dashboard.blog');
-  Route::get('/dashboard/comment', [DashboardController::class,'showcomment'])->name('dashboard.comment');
-  Route::get('/dashboard/catelog', [DashboardController::class,'showcatelog'])->name('dashboard.catelog');
-  Route::get('/dashboard/catelog_product', [DashboardController::class,'showcatelog_product'])->name('dashboard.catelog_product');
-  Route::get('/dashboard/catelog_blog', [DashboardController::class,'showcatelog_blog'])->name('dashboard.catelog_blog');
-  Route::get('/dashboard/tags', [DashboardController::class,'showtags'])->name('dashboard.tags');
-  Route::get('/dashboard/banner', [DashboardController::class,'showbanner'])->name('dashboard.banner');
-  Route::get('/dashboard/coupon', [DashboardController::class,'showcoupon'])->name('dashboard.coupon');
-  Route::get('/dashboard/language', [DashboardController::class,'showlanguage'])->name('dashboard.language');
-  Route::get('/dashboard/order', [DashboardController::class,'showorder'])->name('dashboard.order');
-  Route::get('/dashboard/orderdetail', [DashboardController::class,'showorderdetail'])->name('dashboard.orderdetail');
-  Route::get('/dashboard/user', [DashboardController::class,'showuser'])->name('dashboard.user');
-  Route::get('/dashboard/AdminUser', [DashboardController::class,'showAdminUser'])->name('dashboard.AdminUser');
-  Route::get('/dashboard/Passreset', [DashboardController::class,'showPassreset'])->name('dashboard.Passreset');
+//ADMIN - CATELOG
+  Route::get('/dashboard/categories', [MngCateLogController::class,'index'])->name('MngCateLog.index');
+//ADMIN - CATELOG_PRODUCTS
+  Route::get('/dashboard/categories_products', [MngCateLogProDuctController::class,'index'])->name('MngCateLogProDuct.index');
+//ADMIN - CATELOG_BLOGS
+  Route::get('/dashboard/categories_blogs', [MngCateLogBlogController::class,'index'])->name('MngCateLogBlog.index');
+//ADMIN - TAGS
+  Route::get('/dashboard/tags', [MngTagsController::class,'index'])->name('MngTags.index');
+//ADMIN - PRODUCTS
+  Route::get('/dashboard/product', [MngProductController::class,'index'])->name('MngProduct.index');
+  Route::get('/dashboard/product/search', [MngProductController::class,'search'])->name('MngProduct.search');
+  Route::get('/dashboard/product/order={order}', [MngProductController::class,'orderPro'])->name('MngProduct.order');
+//ADMIN - USERS - CREATES
+  Route::get('/dashboard/product/add', [MngProductController::class,'add'])->name('MngProduct.add');
+  Route::post('/dashboard/product/create', [MngProductController::class,'create'])->name('MngProduct.create');
+//ADMIN - USERS - EIDTS
+  Route::get('/dashboard/product/edit/{id}', [MngProductController::class,'edit'])->name('MngProduct.edit');
+  Route::patch('/dashboard/product/update/{id}', [MngProductController::class,'update'])->name('MngProduct.update');
+//ADMIN - USERS - DELETE
+  Route::delete('/dashboard/product/delete/{id}',[MngProductController::class,'destroy'])->name('MngProduct.destroy');//Xóa người dùng
+  Route::delete('/dashboard/product/DeleteAll', [MngProductController::class,'deleteAll'])->name('MngProduct.deleteAll');
+//ADMIN - BLOGS
+  Route::get('/dashboard/blog', [MngBlogController::class,'index'])->name('MngBlog.index');
+//ADMIN - BLOGS - DELETE
+  Route::delete('/dashboard/blog/delete/{id}',[MngBlogController::class,'delete'])->name('MngBlog.delete');//Xóa bài viết
+//ADMIN - COUPONS
+  Route::get('/dashboard/coupon', [MngCouponController::class,'index'])->name('MngCoupon.index');
+//ADMIN - COMMENTS
+  Route::get('/dashboard/comment', [MngCommentController::class,'index'])->name('MngComment.index');
+//ADMIN - BANNERS
+  Route::get('/dashboard/banner', [MngBannerController::class,'index'])->name('MngBanner.index');
+//ADMIN - LANGUAGES
+  Route::get('/dashboard/language', [MngLanguageController::class,'index'])->name('MngLanguage.index');
+//ADMIN - USERS
+  Route::get('/dashboard/user', [MngUserController::class,'index'])->name('MngUser.index');
+  Route::get('/dashboard/user/search', [MngUserController::class,'search'])->name('MngUser.search');
+  Route::get('/dashboard/user/order={order}', [MngUserController::class,'orderPro'])->name('MngUser.order');
+//ADMIN - USERS - CREATES
+  Route::get('/dashboard/user/add', [MngUserController::class,'add'])->name('MngUser.add');
+  Route::post('/dashboard/user/create', [MngUserController::class,'create'])->name('MngUser.create');
+//ADMIN - USERS - EIDTS
+  Route::get('/dashboard/user/edit/{id}', [MngUserController::class,'edit'])->name('MngUser.edit');
+  Route::patch('/dashboard/user/update/{id}', [MngUserController::class,'update'])->name('MngUser.update');
+//ADMIN - USERS - DELETE
+  Route::delete('/dashboard/user/delete/{id}',[MngUserController::class,'destroy'])->name('MngUser.destroy');
+//Xóa người dùng
+  Route::delete('/dashboard/user/DeleteAll', [MngUserController::class,'deleteAll'])->name('MngUser.deleteAll');
+//ADMIN - ADMINGUSERS
+  Route::get('/dashboard/AdminUser', [MngAdminUserController::class,'index'])->name('MngAdminUser.index');
+//ADMIN - PASSWORD_RESETS
+  Route::get('/dashboard/Passreset', [MngPassResetController::class,'index'])->name('MngPassReset.index');
+//ADMIN - ORDERS
+  Route::get('/dashboard/order', [MngOrderController::class,'index'])->name('MngOrder.index');
+//ADMIN - ORDERS_DETAILS
+  Route::get('/dashboard/orderDetail', [MngOrderDetailController::class,'index'])->name('MngOrderDetail.index');
+
+
+
+
+
+
+
+
+
+
 });
 
   Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');

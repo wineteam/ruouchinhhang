@@ -9,7 +9,7 @@
           <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
           <div class="link-to-category">
             <img src="{{ asset('Images/IconImages/wine-glass.png') }}" width="10%" alt="" style="z-index: 1000">
-            <a href="{{route ('dashboard.product')}}">{{__('totally')}} {{$productsCount}} {{__('product')}}</a>
+            <a href="{{route ('MngProduct.index')}}">{{__('totally')}} {{$productsCount}} {{__('product')}}</a>
           </div>
         </div>
        </div>
@@ -18,7 +18,7 @@
           <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
           <div class="link-to-category">
             <img src="{{ asset('Images/IconImages/box.png') }}" width="10%" alt="" style="z-index: 1000">         
-            <a href="{{route ('dashboard.order')}}">{{NULL}} {{__('order')}}</a>
+            <a href="{{route ('MngOrder.index')}}">{{NULL}} {{__('order')}}</a>
           </div>
         </div>
        </div>
@@ -27,7 +27,7 @@
           <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
           <div class="link-to-category">
             <img src="{{ asset('Images/IconImages/account.png') }}" width="10%" alt="" style="z-index: 1000">
-            <a href="{{route ('dashboard.user')}}">{{$usersCount}} {{__('accountuser')}}</a>
+            <a href="{{route ('MngUser.index')}}">{{$usersCount}} {{__('accountuser')}}</a>
           </div>
         </div>
        </div>
@@ -39,7 +39,7 @@
          <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
          <div class="link-to-category">
           <img src="{{ asset('Images/IconImages/blog.png') }}" width="10%" alt="" style="z-index: 1000">             
-           <a href="{{route ('dashboard.blog')}}">{{__('totally')}} {{$blogsCount}} {{__('BLOG')}}</a>
+           <a href="{{route ('MngBlog.index')}}">{{__('totally')}} {{$blogsCount}} {{__('BLOG')}}</a>
          </div>
        </div>
       </div>
@@ -48,7 +48,7 @@
          <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
          <div class="link-to-category">
           <img src="{{ asset('Images/IconImages/comment.png') }}" width="10%" alt="" style="z-index: 1000">         
-           <a href="{{route ('dashboard.comment')}}">{{NULL}} {{__('comment')}} / {{__('reviews')}}</a>
+           <a href="{{route ('MngBlog.index')}}">{{NULL}} {{__('comment')}} / {{__('reviews')}}</a>
          </div>
        </div>
       </div>
@@ -57,7 +57,7 @@
          <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
          <div class="link-to-category">
           <img src="{{ asset('Images/IconImages/catelog.png') }}" width="10%" alt="" style="z-index: 1000">
-           <a href="{{route ('dashboard.catelog')}}">{{$categoriesCount}} {{__('catelog')}}</a>
+           <a href="{{route ('MngCateLog.index')}}">{{$categoriesCount}} {{__('catelog')}}</a>
          </div>
        </div>
       </div>

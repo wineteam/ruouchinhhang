@@ -49,7 +49,7 @@
               </div>
 
               <!-- Sidebar Widgets Column -->
-              @include('client.blog2')
+              @include('include.boxRightBlog')
 
             </div>
             <!-- /.row -->

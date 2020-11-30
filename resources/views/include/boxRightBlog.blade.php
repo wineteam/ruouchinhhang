@@ -1,17 +1,13 @@
 <div class="col-lg-3 d-none d-lg-block p-1">
     <div class="search" style="margin-bottom: 100px;">
-        <h5 style="margin-bottom: 40px;">{{__('search')}}</h5>
-
-
-    <form method="POST" action="{{route('blog.search')}}" class="form-search">
-        @csrf
-            <input type="text" name="searching" placeholder="Search...">
-            <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-
-
+        <h5 style="margin-bottom: 40px;">{{__('client.search')}}</h5>
+        <form method="POST" action="{{route('blog.search')}}" class="form-search">
+            @csrf
+                <input type="text" name="searching" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
     </div>
-    <div class="recent-post" style="margin-bottom: 100px;">
+    <div class="recent-post" style="margin-bottom: 50px;">
         <h5 style="margin-bottom: 40px;">{{__('Recent_Posts')}}</h5>
 
         @foreach($blogsRecent as $myblogs)

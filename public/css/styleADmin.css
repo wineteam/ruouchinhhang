@@ -3566,3 +3566,8 @@ ul.chat-available-user li a:hover {
     max-height: 250px;
   overflow: auto;
 }
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////*/
+.activeDisplay{
+    display: block !important;
+}

@@ -5,7 +5,7 @@
 <!--====================================== SLIDE SHOW ======================================-->
 <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators carousel-indicators-Fix">
-    <li class="carousel-items" data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+    <li class="carousel-items active" data-target="#carouselIndicators" data-slide-to="0"></li>
     <li class="carousel-items" data-target="#carouselIndicators" data-slide-to="1"></li>
     <li class="carousel-items" data-target="#carouselIndicators" data-slide-to="2"></li>
     </ol>
@@ -16,7 +16,7 @@
             <div class="carousel-caption d-none d-md-block FIX-Carousel-Caption">
                 <h1 style="padding-bottom: 10px;" class="Font-Yellow text-left carousel-SlideShow Forum">New Luxury Wine<br>from France</h1>
                 <p class="Font-dark text-left Edit-Font-Size-SlideShow">Our friendly wine experts have put their experience and knowledge to good use building our collection of balanced and available wines. </p>
-                <a href=""class="btn-subtitle btn-subtitle-Sildeshow Display-noneX" style="float: left;">Learn More</a>
+                <a href="" class="btn-subtitle btn-subtitle-Sildeshow Display-noneX" style="float: left;">Learn More</a>
             </div>
         </a>
     </div>
@@ -26,7 +26,7 @@
             <div class="carousel-caption d-none d-md-block FIX-Carousel-Caption">
                 <h1 style="padding-bottom: 10px;" class="Font-Yellow text-left carousel-SlideShow Forum">Season of tasting<br>on Luxury Wine</h1>
                 <p class="Font-dark text-left Edit-Font-Size-SlideShow">We offer a great variety of wines for every price point and any occasion, from rich and lemony Chardonnay to elegant and creamy brut.  </p>
-                <a href=""class="btn-subtitle btn-subtitle-Sildeshow Display-noneX" style="float: left;">Learn More</a>
+                <a href="" class="btn-subtitle btn-subtitle-Sildeshow Display-noneX" style="float: left;">Learn More</a>
             </div>
         </a>
     </div>
@@ -36,7 +36,7 @@
             <div class="carousel-caption d-none d-md-block FIX-Carousel-Caption">
                 <h1 style="padding-bottom: 10px;" class="Font-Yellow text-left carousel-SlideShow Forum">Market<br>Seasonal Discounts  </h1>
                 <p class="Font-dark text-left Edit-Font-Size-SlideShow">We are extremely proud to introduce 2012 Duckhorn Vineyards Napa Valley Chardonnay. Purchase 10 bottles of this wine and get 20% off!</p>
-                <a href=""class="btn-subtitle btn-subtitle-Sildeshow Display-noneX" style="float: left;">Learn More</a>
+                <a href="" class="btn-subtitle btn-subtitle-Sildeshow Display-noneX" style="float: left;">Learn More</a>
             </div>
         </a>
     </div>
@@ -144,12 +144,12 @@
             <div class="col-6 col-10 mx-auto">
                 <div id="myBtnContainer" class="text-center">
                     <button class="btnfilter nobtnshow" onclick="filterSelection('all')">
-                        <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="images/wine-glass.png" alt="">
+                        <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="{{asset('images/wine-glass.png')}}" alt="">
                         <span class="text-center Font-Size-1vw">Filter - All</span>
                     </button>
                   @foreach($categories as $category)
                     <button class="btnfilter nobtnshow" onclick="filterSelection('{{$category->slug}}')">
-                        <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="images/wine-glass.png" alt="">
+                        <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="{{asset('images/wine-glass.png')}}" alt="">
                         <span class="text-center Font-Size-1vw text-capitalize">{{$category->name}}</span>
                     </button>
                   @endforeach
@@ -172,7 +172,7 @@
 
                             @forelse($product->categories as $category)
                                 <span class="text-center Font-Size-07vw">
-                                    <a href="{{route('getProByCat',$category->slug)}}">{{$category->name}}</a>
+                                    <a href="{{route('getProByCat',$category->slug)}}" class="text-capitalize">{{$category->name}}</a>
                                 </span>
                                 @if(!$loop->last)
                                     ,

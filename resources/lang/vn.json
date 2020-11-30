@@ -53,7 +53,7 @@
     "Logout": "Đăng xuất",
     "dashboard": "Bảng điều khiển",
     "GetinTouch": "Liên hệ với chúng tôi",
-    "search": "Tìm kiếm",
+    "search": "Tìm kiếm theo tên",
     "Recent_Posts": "Bài viết gần đây",
     "catelog": "Danh mục",
     "totally": "Tổng",
@@ -84,7 +84,13 @@
     "coupon":"Mã giảm giá","code":"Mã","value":"Giá trị","expirationdate": "Ngày hết hạn",
     "user": "Người dùng","Content":"Nội dung","display": "Hiển thị","articlecomment": "Quản lý bình luận",
     "link": "Đường dẫn","location": "Vị trí",
-    "listlanguage": "Danh sách ngôn ngữ","listuser": "Danh sách người dùng","Administration": "Quyền quản trị","listorder":"Danh sách đơn hàng",
+    "listlanguage": "Danh sách ngôn ngữ","listuser": "Danh sách người dùng","Administration": "Quyền quản trị","listorder":"Danh sách đơn hàng","edituser":"Chỉnh sửa người dùng","createuser": "Thêm tài khoản mới","editComfin":"Xác nhận chỉnh sửa","choose":"Chọn",
     "Passreset": "Danh sách thay đổi mật khẩu","datepurchase": "Ngày mua","deliverydate": "Ngày giao",
-    "details": "Chi tiết","procode":"Mã sãn phẩm","proname":"Tên sản phẩm","quantity": "Số lượng mua"
+    "details": "Chi tiết","procode":"Mã sãn phẩm","proname":"Tên sản phẩm","quantity": "Số lượng mua","author": "Tác giả",
+    "cancel": "Hủy bỏ","entername":"Nhập tên người dùng...","enteremail":"Nhập E-mail người dùng...","enterpass":"Nhập mật khẩu người dùng...","enteraddress":"Nhập địa chỉ người dùng...","enterphone":"Nhập số điện thoại người dùng...",
+    "ConfirmPassword": "Xác nhận lại mật khẩu",
+
+    "catelogall": "Danh mục tổng","catelogproduct": "Danh mục sản phẩm","catelogblog":"Danh mục bài viết",
+    "account": "Tài khoản","historyPass": "Lịch sử thay đổi","latest":"Mới nhất","oldest": "Cũ nhất"
+
 }

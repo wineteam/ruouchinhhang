@@ -208,6 +208,13 @@
   <div class="col-xl-3 col-md-12 col-sm-12 px-3">
     <div class="row productCategories">
       <div class="col-xl-12 col-md-6 col-sm-12">
+        <div class="search" style="margin-bottom: 50px;">
+          <h5 style="margin-bottom: 40px;">{{__('client.search')}}</h5>
+          <form method="GET" action="{{route('shop.searchByName')}}" class="form-search">
+            <input type="text" name="name" placeholder="Search...">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
         <h4 class="pt-4 pb-3 text-capitalize">{{__('client.product_categories')}}</h4>
         <div class="productCategories__list pl-2 mb-5">
           @foreach($categories as $category)
@@ -215,15 +222,7 @@
           @endforeach
         </div>
       </div>
-
-      <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3 text-capitalize">{{__('client.searchProduct')}}</h4>
-        <div class="form-group">
-          <input type="range" class="form-control-range" id="formControlRange" min="155" max="365" value="255">
-        </div>
-        <button class="btn btn-dark">{{__('client.filter')}}</button>
-        <span class=" ml-5 " style="font-size: 15px; color: #c2c0b0;">Price: £155 — £<span id="numberFillter">365</span></span>
-      </div>
+        @include('include.boxRightShop')
       <div class="col-xl-12 col-md-6 col-sm-12">
         <h4 class="pt-4 pb-3 mt-5 text-capitalize">{{__('client.top_products')}}</h4>
         <div class="productList p-3">
