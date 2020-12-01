@@ -231,7 +231,6 @@
 <script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/Scrollstop.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
-
 @yield('script')
 </body>
 </html>

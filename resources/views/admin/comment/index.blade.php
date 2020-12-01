@@ -7,17 +7,17 @@
               <div class="card">
                   <div class="card-header">
                       <h4>{{__('articlecomment')}}</h4>
-                      <form class="form-inline float-left">
-                  
+                      <form class="form-inline float-left" >
+
                         <div class="form-group mx-sm-3 mb-2">
-                         
+
                           <input type="text" class="form-control" id="SearchRow" placeholder="...">
                         </div>
                         <button type="submit" class="btn btn-info mb-2">{{__('search')}}</button>
                       </form>
-                       
+
                       <a href="#" class="btn btn-sm btn-warning float-right">{{__('addnew')}}</a>
-                      <div class="form-group float-right mr-4">     
+                      <div class="form-group float-right mr-4">
                         <select class="form-control" id="orderItem">
                           <option>Mới nhất</option>
                           <option>Cũ nhất</option>
@@ -47,7 +47,7 @@
                                   </td>
                                   <td>White wine</td>
                                   <td>16/10/2020</td>
-                                  <td><input type="checkbox"></td>    
+                                  <td><input type="checkbox"></td>
                                   <td style="display: flex;justify-content: space-between">
                                      <form action="#"  method="post">
                                         @csrf
@@ -56,13 +56,13 @@
                                       </form>
                                   </td>
                               </tr>
-                             
+
                           </tbody>
                       </table>
                       <div class="action mt-3">
                         <input type="checkbox" id="selectAllRow">
                         <label for="selectAllRow">{{__('selectall')}}</label>
-    
+
                         <form class="float-right" action="">
                           <input type="hidden">
                           <button class="btn btn-sm btn-danger" type="submit">{{__('deleteselec')}}</button>
@@ -90,23 +90,23 @@
     });
 
       $('#selectAllRow').on('click', function(e) {
-        if($(this).is(':checked',true))  
+        if($(this).is(':checked',true))
         {
-          $(".selectAllchilden").prop('checked', true);  
+          $(".selectAllchilden").prop('checked', true);
           $(".sheetDelete").css("display", "block");;
-        } else {  
-          $(".selectAllchilden").prop('checked',false);  
+        } else {
+          $(".selectAllchilden").prop('checked',false);
           $(".sheetDelete").css("display", "none");;
-        }  
+        }
       });
 
       $('.selectAllchilden').on('click', function(e) {
-        if($(this).is(':checked',true))  
+        if($(this).is(':checked',true))
         {
           $(".sheetDelete").css("display", "block");;
-        } else {  
+        } else {
           $(".sheetDelete").css("display", "none");;
-        }  
+        }
       });
 
     });

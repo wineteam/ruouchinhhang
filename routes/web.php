@@ -1,33 +1,32 @@
 <?php
-use App\Http\Controllers\Auth\LoginController as AuthLoginController;
+
+use App\Http\Controllers\admin\MngCateLogController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\CouponController;
-use App\Http\Controllers\MngUserController;
+use App\Http\Controllers\admin\MngUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\MngAdminUserController;
-use App\Http\Controllers\MngBannerController;
-use App\Http\Controllers\MngBlogController;
-use App\Http\Controllers\MngCateLogBlogController;
-use App\Http\Controllers\MngCateLogController;
-use App\Http\Controllers\MngCateLogProDuctController;
-use App\Http\Controllers\MngCommentController;
-use App\Http\Controllers\MngCouponController;
-use App\Http\Controllers\MngLanguageController;
-use App\Http\Controllers\MngOrderController;
-use App\Http\Controllers\MngOrderDetailController;
-use App\Http\Controllers\MngPassResetController;
-use App\Http\Controllers\MngProductController;
-use App\Http\Controllers\MngTagsController;
+use App\Http\Controllers\admin\MngAdminUserController;
+use App\Http\Controllers\admin\MngBannerController;
+use App\Http\Controllers\admin\MngBlogController;
+use App\Http\Controllers\admin\MngCateLogBlogController;
+use App\Http\Controllers\admin\MngCateLogProDuctController;
+use App\Http\Controllers\admin\MngCommentController;
+use App\Http\Controllers\admin\MngCouponController;
+use App\Http\Controllers\admin\MngLanguageController;
+use App\Http\Controllers\admin\MngOrderController;
+use App\Http\Controllers\admin\MngOrderDetailController;
+use App\Http\Controllers\admin\MngPassResetController;
+use App\Http\Controllers\admin\MngProductController;
+use App\Http\Controllers\admin\MngTagsController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,9 +84,9 @@ Route::middleware('auth')->group(function(){
 
 Route::middleware('CheckAdminLogin')->group(function(){
 
-  Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
+  Route::get('/admin/dashboard', [DashboardController::class,'index'])->name('dashboard');
 //ADMIN - CATELOG
-  Route::get('/dashboard/categories', [MngCateLogController::class,'index'])->name('MngCateLog.index');
+  Route::get('/admin/categories', [MngCateLogController::class,'index'])->name('MngCateLog.index');
 //ADMIN - CATELOG_PRODUCTS
   Route::get('/dashboard/categories_products', [MngCateLogProDuctController::class,'index'])->name('MngCateLogProDuct.index');
 //ADMIN - CATELOG_BLOGS
@@ -109,8 +108,10 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::delete('/dashboard/product/DeleteAll', [MngProductController::class,'deleteAll'])->name('MngProduct.deleteAll');
 //ADMIN - BLOGS
   Route::get('/dashboard/blog', [MngBlogController::class,'index'])->name('MngBlog.index');
+//ADMIN - BLOGS - create
+  Route::get('/dashboard/blog/create', [MngBlogController::class,'create'])->name('MngBlog.create');
 //ADMIN - BLOGS - DELETE
-  Route::delete('/dashboard/blog/delete/{id}',[MngBlogController::class,'delete'])->name('MngBlog.delete');//Xóa bài viết
+  Route::delete('/dashboard/blog/delete/{id}',[MngBlogController::class,'destroy'])->name('MngBlog.destroy');//Xóa bài viết
 //ADMIN - COUPONS
   Route::get('/dashboard/coupon', [MngCouponController::class,'index'])->name('MngCoupon.index');
 //ADMIN - COMMENTS
@@ -124,8 +125,8 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/user/search', [MngUserController::class,'search'])->name('MngUser.search');
   Route::get('/dashboard/user/order={order}', [MngUserController::class,'orderPro'])->name('MngUser.order');
 //ADMIN - USERS - CREATES
-  Route::get('/dashboard/user/add', [MngUserController::class,'add'])->name('MngUser.add');
-  Route::post('/dashboard/user/create', [MngUserController::class,'create'])->name('MngUser.create');
+  Route::get('/dashboard/user/create', [MngUserController::class,'create'])->name('MngUser.create');
+  Route::post('/dashboard/user/store', [MngUserController::class,'store'])->name('MngUser.store');
 //ADMIN - USERS - EIDTS
   Route::get('/dashboard/user/edit/{id}', [MngUserController::class,'edit'])->name('MngUser.edit');
   Route::patch('/dashboard/user/update/{id}', [MngUserController::class,'update'])->name('MngUser.update');
@@ -141,14 +142,6 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/order', [MngOrderController::class,'index'])->name('MngOrder.index');
 //ADMIN - ORDERS_DETAILS
   Route::get('/dashboard/orderDetail', [MngOrderDetailController::class,'index'])->name('MngOrderDetail.index');
-
-
-
-
-
-
-
-
 
 
 });

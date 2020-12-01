@@ -1,30 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\Option;
+use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class OptionController extends Controller
+class MngBlogController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        //
+      $blogs = Blog::all();
+      $tags = Tag::select('tags.*')->where('primary', '1')->get();
+      $categorys = Category::select('categories.*')->where('is_published','1')->where('type','1')->get();
+      return view('admin.post.index')->with(["blogs"=>$blogs,"tags"=>$tags,"categorys"=>$categorys]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('admin.create-post');
     }
 
     /**
@@ -41,10 +47,10 @@ class OptionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Option  $option
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Option $option)
+    public function show($id)
     {
         //
     }
@@ -52,10 +58,10 @@ class OptionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Option  $option
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Option $option)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +70,10 @@ class OptionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Option  $option
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Option $option)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +81,10 @@ class OptionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Option  $option
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Option $option)
+    public function destroy($id)
     {
         //
     }

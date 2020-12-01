@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class MngCommentController extends Controller
 {
     public function index(){
-        return view('admin.comment');
+        return view('admin.comment.index');
     }
 }

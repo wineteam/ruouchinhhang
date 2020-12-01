@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\Tag;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -17,7 +15,7 @@ class DashboardController extends Controller
 
         $blogViews = Blog::select('blogs.*')->where('is_published', '1')->orderBy('view', 'desc')->get();
 
-        return view('admin.main')->with
+        return view('admin.dashboard.index')->with
         ([
             "products"=>$products,"users"=>$users,"blogs"=>$blogs,"categories"=>$categories,"blogViews"=>$blogViews,
             'productsCount'=>$productsCount,"usersCount"=>$usersCount,"blogsCount"=>$blogsCount,"categoriesCount"=>$categoriesCount

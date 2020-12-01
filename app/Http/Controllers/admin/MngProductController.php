@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +12,7 @@ class MngProductController extends Controller
     public function index()
     {
       $products = Product::orderBy('created_at','desc')->paginate(12);
-      return view('admin.product')->with(["products"=>$products]);
+      return view('admin.product.index')->with(["products"=>$products]);
     }
     public function orderPro($order)
     {
@@ -22,19 +23,19 @@ class MngProductController extends Controller
       }
         $new = "selected";
         $products = Product::orderBy('created_at','desc')->paginate(12);
-        return view('admin.product',compact('products','new'));
+        return view('admin.product.index',compact('products','new'));
     }
     public function search(Request $request){
       $products = Product::where('name','like','%'.$request->name.'%')->paginate(12);
       return view('admin.product')->with(["products"=>$products]);
     }
-    
-    public function addnew(Product $id)
+
+    public function create()
     {
-      return view('admin.add_product');
+      return view('admin.product.create');
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
       $request->validate([
         'name' => ['required', 'string', 'max:255'],
@@ -66,7 +67,7 @@ class MngProductController extends Controller
       );
       Product::create($data);
       session()->flash('success', 'Thêm tài khoản thành công');
-      
+
       return redirect('/dashboard/user');
     }
 
@@ -82,41 +83,20 @@ class MngProductController extends Controller
             $role['checked'] = true;
           }
         }
-          array_push($newRoles,$role);
+          $newRoles[] = $role;
       }
-      return view('admin.edit_user')->with(['user'=>$id,'roles'=>$newRoles]);
+      return view('admin.product.edit')->with(['user'=>$id,'roles'=>$newRoles]);
     }
 
     public function update(Request $request,$id)
     {
-      $user = Product::find($id);
-      if(isset($request->name)){
-        $user->name = $request->name;
-      }
-      if(isset($request->phone)){
-        $user->phone = $request->phone;
-      }
-      if(isset($request->address)){
-        $user->address = $request->address;
-      }
-      $updated = $user->save();
-      if(isset($request->roles) && $updated == true){
-        $user->roles()->sync($request->roles);
-      }
-      session()->flash('message','success');
-      return redirect()->back();
 
     }
 
     public function destroy(Product $id)
     {
-      $id->delete();
-      session()->flash('message', 'Xóa Người dùng thành công');
-      return redirect()->back();
+
     }
 
-    public function deleteAll(Request $request) {
-      $deleted = Product::whereIn('id',$request->productId)->delete();
-      return redirect()->back()->with('message','Da xoa thanh cong');
-   }
+
 }

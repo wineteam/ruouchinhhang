@@ -122,22 +122,22 @@
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <div class="box-infomation-PDetail">
                         <h4 class="mb-3">Reviews</h4>
-                        <p class="font-italic">Your email address will not be published. Required fields are marked *</p>
-                            <div class="stars">
-                                <span>Your rating</span>
-                                    <form action="">
-                                      <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                      <label class="star star-5" for="star-5"></label>
-                                      <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                      <label class="star star-4" for="star-4"></label>
-                                      <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                      <label class="star star-3" for="star-3"></label>
-                                      <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                      <label class="star star-2" for="star-2"></label>
-                                      <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                      <label class="star star-1" for="star-1"></label>
-                                    </form>
-                                </div>
+{{--                        <p class="font-italic">Your email address will not be published. Required fields are marked *</p>--}}
+{{--                            <div class="stars">--}}
+{{--                                <span>Your rating</span>--}}
+{{--                                    <form action="">--}}
+{{--                                      <input class="star star-5" id="star-5" type="radio" name="star"/>--}}
+{{--                                      <label class="star star-5" for="star-5"></label>--}}
+{{--                                      <input class="star star-4" id="star-4" type="radio" name="star"/>--}}
+{{--                                      <label class="star star-4" for="star-4"></label>--}}
+{{--                                      <input class="star star-3" id="star-3" type="radio" name="star"/>--}}
+{{--                                      <label class="star star-3" for="star-3"></label>--}}
+{{--                                      <input class="star star-2" id="star-2" type="radio" name="star"/>--}}
+{{--                                      <label class="star star-2" for="star-2"></label>--}}
+{{--                                      <input class="star star-1" id="star-1" type="radio" name="star"/>--}}
+{{--                                      <label class="star star-1" for="star-1"></label>--}}
+{{--                                    </form>--}}
+{{--                                </div>--}}
                       <p>Your review *</p>
                             @comments([
                             'model' => $product,
@@ -288,4 +288,40 @@
     })
   </script>
 
+@endsection
+@section('script')
+  <script>
+    ;(function($){
+
+      /**
+       * Store scroll position for and set it after reload
+       *
+       * @return {boolean} [loacalStorage is available]
+       */
+      $.fn.scrollPosReaload = function(){
+        if (localStorage) {
+          var posReader = localStorage["posStorage"];
+          if (posReader) {
+            $(window).scrollTop(posReader);
+            localStorage.removeItem("posStorage");
+          }
+          $(this).click(function(e) {
+            localStorage["posStorage"] = $(window).scrollTop();
+          });
+
+          return true;
+        }
+
+        return false;
+      }
+
+      /* ================================================== */
+
+      $(document).ready(function() {
+        // Feel free to set it for any element who trigger the reload
+        $('.comment-form').scrollPosReaload();
+      });
+
+    }(jQuery));
+  </script>
 @endsection

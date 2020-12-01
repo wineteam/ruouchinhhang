@@ -10,7 +10,7 @@
                 {{ $errors->first('commentable_id') }}
             </div>
         @endif
-        <form method="POST" action="{{ route('comments.store') }}">
+        <form method="POST" action="{{ route('comments.store') }}" name="comment-form">
             @csrf
             @honeypot
             <input type="hidden" name="commentable_type" value="\{{ get_class($model) }}" />
@@ -51,3 +51,4 @@
     </div>
 </div>
 <br />
+

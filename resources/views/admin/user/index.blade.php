@@ -16,7 +16,7 @@
                       <button type="submit" class="btn btn-info mb-2">{{__('search')}}</button>
                 </form>
 
-                    <a href="{{route('MngUser.addnew')}}" class="btn btn-sm btn-warning float-right">{{__('addnew')}}</a>
+                    <a href="{{route('MngUser.create')}}" class="btn btn-sm btn-warning float-right">{{__('addnew')}}</a>
                     <div class="form-group float-right mr-4">
                       <select class="form-control" id="orderItem" onchange="location = this.value;">
                         <option @if(isset($new)) {{$new}} @endif value="{{route('MngUser.order','new')}}">{{__('latest')}}</option>
@@ -42,7 +42,7 @@
                         </thead>
 
                         <tbody>
-                         
+
                             @foreach ($users as $user)
                               <tr>
                               <td><input type="checkbox" name='userId[]' value="{{$user->id}}" class="selectAllchilden"></td>
@@ -62,7 +62,7 @@
                                 </td>
                               </tr>
                             @endforeach
-                       
+
                         </tbody>
                     </table>
                   </form>
@@ -97,23 +97,23 @@
     });
 
       $('#selectAllRow').on('click', function(e) {
-        if($(this).is(':checked',true))  
+        if($(this).is(':checked',true))
         {
-          $(".selectAllchilden").prop('checked', true);  
+          $(".selectAllchilden").prop('checked', true);
           $(".sheetDelete").css("display", "block");;
-        } else {  
-          $(".selectAllchilden").prop('checked',false);  
+        } else {
+          $(".selectAllchilden").prop('checked',false);
           $(".sheetDelete").css("display", "none");;
-        }  
+        }
       });
 
       $('.selectAllchilden').on('click', function(e) {
-        if($(this).is(':checked',true))  
+        if($(this).is(':checked',true))
         {
           $(".sheetDelete").css("display", "block");;
-        } else {  
+        } else {
           $(".sheetDelete").css("display", "none");;
-        }  
+        }
       });
 
     });

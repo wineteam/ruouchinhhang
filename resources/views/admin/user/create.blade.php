@@ -6,15 +6,15 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                   <h4>{{__('createuser')}}</h4>                                       
+                   <h4>{{__('createuser')}}</h4>
                 </div>
 
                 <div class="card-body">
-                <form method="POST" action="{{route('MngUser.create')}}">
+                <form method="POST" action="{{route('MngUser.store')}}">
                         @csrf
                         <div class="form-group">
                             <label for="name">{{__('name_user')}}</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus id="name" name="name" value="" placeholder="{{__('entername')}}">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror "  value="{{ old('name') }}" required autocomplete="name" autofocus id="name" name="name" placeholder="{{__('entername')}}">
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">{{__('Email')}}</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" id="email" name="email" value="" placeholder="{{__('enteremail')}}">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" id="email" placeholder="{{__('enteremail')}}">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">{{__('Password')}}</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" id="password" name="password" value="" placeholder="{{__('enterpass')}}">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" id="password"  placeholder="{{__('enterpass')}}">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

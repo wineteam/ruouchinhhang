@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\UserHasRole;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class MngUserController extends Controller
@@ -14,29 +13,29 @@ class MngUserController extends Controller
     public function index()
     {
       $users = User::orderBy('created_at','desc')->paginate(12);
-      return view('admin.user')->with(["users"=>$users]);
+      return view('admin.user.index')->with(["users"=>$users]);
     }
     public function orderPro($order)
     {
       if($order === "old"){
         $users = User::paginate(12);
         $old = "selected";
-        return view('admin.user',compact('users','old'));
+        return view('admin.user.index',compact('users','old'));
       }
         $new = "selected";
         $users = User::orderBy('created_at','desc')->paginate(12);
-        return view('admin.user',compact('users','new'));
+        return view('admin.user.index',compact('users','new'));
     }
     public function search(Request $request){
       $users = User::where('name','like','%'.$request->name.'%')->paginate(12);
-      return view('admin.user')->with(["users"=>$users]);
+      return view('admin.user.index')->with(["users"=>$users]);
     }
-    public function addnew(User $id)
+    public function create(User $id)
     {
-      return view('admin.add_user');
+      return view('admin.user.create');
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
       $request->validate([
         'name' => ['required', 'string', 'max:255'],
@@ -51,7 +50,7 @@ class MngUserController extends Controller
       );
       User::create($data);
       session()->flash('success', 'Thêm tài khoản thành công');
-      
+
       return redirect('/dashboard/user');
     }
 
@@ -67,9 +66,9 @@ class MngUserController extends Controller
             $role['checked'] = true;
           }
         }
-          array_push($newRoles,$role);
+          $newRoles[] = $role;
       }
-      return view('admin.edit_user')->with(['user'=>$id,'roles'=>$newRoles]);
+      return view('admin.user.edit')->with(['user'=>$id,'roles'=>$newRoles]);
     }
 
     public function update(Request $request,$id)
@@ -102,6 +101,9 @@ class MngUserController extends Controller
 
     public function deleteAll(Request $request) {
       $deleted = User::whereIn('id',$request->userId)->delete();
-      return redirect()->back()->with('message','Da xoa thanh cong');
+      if($deleted) {
+        return redirect()->back()->with('message', 'Da xoa thanh cong');
+      }
+      return redirect()->back()->with('message', 'Xoa khong thanh cong');
    }
 }
