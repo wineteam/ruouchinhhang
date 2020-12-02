@@ -41,6 +41,16 @@ class MngUserController extends Controller
         'name' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
+      ],
+      [ 
+        'name.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+        'email.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+        'email.unique' => 'Mảng :attribute đã tồn tại',
+
+        'password.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+        'password.min.string' => 'Mảng :attribute quá ngắn.',
+        'password.confirmed' => 'Mảng :attribute của :attribute confirmed không khớp.',
       ]);
       $data=array(
           'name'=>$request->name,

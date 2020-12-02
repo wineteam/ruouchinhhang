@@ -6,98 +6,141 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                   <h4>Thêm sản phẩm</h4>                     
-                    
-                    <div class="form-group float-right mr-3">
-                      <label for="option">Thêm thuộc tính</label>
-                      <select class="form-control" id="option">
-                        <option>Kích cỡ</option>
-                        <option>Năm sản xuất</option>
-                  
-                      </select>
-                      <a href="" class="btn btn-sm btn-info mt-2">Thêm</a>
-                    </div>
+                   <h4>Thêm sản phẩm</h4>                           
                 </div>
-
                 <div class="card-body">
-                  <form>
+                  <form method="POST" action="{{route('MngProduct.store')}}" enctype="application/multipart">
+                  @csrf
                     <div class="form-group">
-                      <label for="nameProduct">Tên sản phẩm *</label>
-                      <input type="text" class="form-control" id="nameProduct" placeholder="Nhập tên sản phẩm">
+                      <label for="name">Tên sản phẩm *</label>
+                    <input type="text" class="form-control" name="name" value="{{old('name')}}" id="name" placeholder="Nhập tên sản phẩm">
+                      @error('name')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="form-group">
-                      <label for="size">Chọn kích cỡ</label>
-                      <select class="form-control" id="size">
-                        <option>500ml</option>
-                        <option>700ml</option>
+                      <label for="codePro">Mã sản phẩm *</label>
+                      <input type="text" class="form-control" name="codePro" value="{{old('codePro')}}" id="codePro" placeholder="Nhập mã sản phẩm">
+                      @error('codePro')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="size">Kích cỡ</label>
+                      <input type="text" class="form-control" name="size" value="{{old('size')}}" id="size" placeholder="Nhập kích cỡ">
+                      @error('size')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="vintage">Năm sản xuất</label>
+                      <input type="text" class="form-control" name="vintage" value="{{old('vintage')}}" id="vintage" placeholder="Nhập kích cỡ">
+                      @error('vintage')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="detail">Mô tả</label>
+                      <textarea name="detail" id="detail" value="{{old('detail')}}" class="form-control" rows="2"></textarea>
+                      @error('detail')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="thumbnail">Hình ảnh sản phẩm</label> <br>
+                    <img src="{{ asset('images/noImg.jpg') }}" id="ImagesProduct" class="img-thumbnail" alt="" width="250px"> <br><br>
+                      <input type='file' id="thumbnail" value="noImg.jpg" name="thumbnail" onchange="readURL_Images(this);"/>
+                      @error('thumbnail')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
+                    </div>
                   
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="thumbnail">Hình ảnh sản phẩm</label>
-                      <input type="file" class="form-control" id="thumbnail">
-                    </div>
-                    <div class="form-group">
-                      <label for="codepro">Mã sản phẩm *</label>
-                      <input type="text" class="form-control" id="codepro" placeholder="Nhập mã sản phẩm">
-                    </div>
                     <div class="form-group">
                       <label for="price">Giá *</label>
-                      <input type="number" class="form-control" id="price" placeholder="Nhập giá sản phẩm">
+                      <input type="number" name="price" class="form-control" value="{{old('price')}}" id="price" placeholder="Nhập giá sản phẩm">
+                      @error('price')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="form-group">
                       <label for="discount">Giá giảm</label>
-                      <input type="text" class="form-control" id="discount" placeholder="Nhập giá giảm sản phẩm">
+                      <input type="number" name="discount" class="form-control" value="{{old('discount')}}" id="discount" placeholder="Nhập giá giảm sản phẩm">
+                      @error('discount')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="form-group">
                       <label for="nation">Quốc gia *</label>
-                      <input type="text" class="form-control" id="nation" placeholder="Nhập quốc gia">
+                      <input type="text" class="form-control" name="nation" value="{{old('nation')}}" id="nation" placeholder="Nhập quốc gia">
+                      @error('nation')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="form-group">
                       <label for="amount">Số lượng *</label>
-                      <input type="number" class="form-control" id="amount" placeholder="Nhập số lượng sản phẩm">
+                      <input type="number" class="form-control" name="amount" value="{{old('amount')}}" id="amount" placeholder="Nhập số lượng sản phẩm">
+                      @error('amount')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="form-group">
                       <label for="categories">Chọn danh mục *</label>
-                      <select class="form-control" multiple id="categories">
-                        <option>White wine</option>
-                        <option>Red wine</option>
-                        <option>Rose wine</option>
+
+                      <select id="categories" name="categories[]"  class="form-control" multiple="multiple">
+                        @foreach ($categories as $category)
+                          <option value="{{$category->slug}}">{{$category->name}}</option>
+                        @endforeach
+                        @error('categories')
+                          <br><div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </select>
+
                     </div>
                     <div class="form-group">
-                      <label for="details">Mô tả</label>
-                      <textarea class="form-control" id="details" rows="3"></textarea>
+                      <label for="description">Giới thiệu sản phẩm</label>
+                      <textarea class="form-control" name="description" id="description" value="{{old('description')}}" rows="2"></textarea>
+                      @error('description')
+                        <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <label>Tags</label>
                       <div class="" id="tags">
 
                       </div>
-                    </div>
+                    </div> --}}
                    
                     <div class="form-group">
                       <label for="is_public">Hiển thị sản phẩm</label>
-                      <select class="form-control"  id="is_public">
+                      <select class="form-control" name="is_published"  id="is_public">
                         <option value="1">Có</option>
                         <option value="0">Không</option>
-                    
                       </select>
+                      @error('is_published')
+                        <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                     </div>
                     
                     <div class="form-group">
                       <label for="especial">Đặc biệt</label>
-                      <select class="form-control" id="especial">
+                      <select class="form-control" name="especially" id="especial">
                         <option value="1">Có</option>
                         <option value="0">Không</option>
                       </select>
+                      @error('especially')
+                        <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="form-group">
                       <label for="language">Ngôn ngữ</label>
-                      <select class="form-control" id="especial">
-                        <option value="1">Việt Nam</option>
-                        <option value="0">English</option>
+                      <select class="form-control" name="language_id" id="especial">
+                       @foreach ($languages as $language)
+                        <option value="{{$language->id}}">{{$language->name}}</option>
+                       @endforeach
                       </select>
+                      @error('language_id')
+                        <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                     </div>
                     <button class="btn btn-success" type="submit">Thêm</button>
                   </form>
@@ -108,5 +151,26 @@
     </section>
   </section>
 @endsection
+@section('script')
+<script>
+  $(document).ready(function() {
+    $("#categories").select2({
+    placeholder: "elect categories"
+  })
+});
 
+function readURL_Images(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
+        reader.onload = function (e) {
+            $('#ImagesProduct')
+                .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+</script>
+@endsection

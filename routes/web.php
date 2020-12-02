@@ -84,7 +84,7 @@ Route::middleware('auth')->group(function(){
 
 Route::middleware('CheckAdminLogin')->group(function(){
 
-  Route::get('/admin/dashboard', [DashboardController::class,'index'])->name('dashboard');
+  Route::get('/admin/dashboard', [DashboardController::class,'index'])->name('dashboard.index');
 //ADMIN - CATELOG
   Route::get('/admin/categories', [MngCateLogController::class,'index'])->name('MngCateLog.index');
 //ADMIN - CATELOG_PRODUCTS
@@ -98,8 +98,8 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/product/search', [MngProductController::class,'search'])->name('MngProduct.search');
   Route::get('/dashboard/product/order={order}', [MngProductController::class,'orderPro'])->name('MngProduct.order');
 //ADMIN - USERS - CREATES
-  Route::get('/dashboard/product/add', [MngProductController::class,'add'])->name('MngProduct.add');
-  Route::post('/dashboard/product/create', [MngProductController::class,'create'])->name('MngProduct.create');
+  Route::get('/dashboard/product/create', [MngProductController::class,'create'])->name('MngProduct.create');
+  Route::post('/dashboard/product/store', [MngProductController::class,'store'])->name('MngProduct.store');
 //ADMIN - USERS - EIDTS
   Route::get('/dashboard/product/edit/{id}', [MngProductController::class,'edit'])->name('MngProduct.edit');
   Route::patch('/dashboard/product/update/{id}', [MngProductController::class,'update'])->name('MngProduct.update');
@@ -118,6 +118,13 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/comment', [MngCommentController::class,'index'])->name('MngComment.index');
 //ADMIN - BANNERS
   Route::get('/dashboard/banner', [MngBannerController::class,'index'])->name('MngBanner.index');
+  Route::get('/dashboard/banner/search', [MngBannerController::class,'search'])->name('MngBanner.search');
+  Route::get('/dashboard/banner/order={order}', [MngBannerController::class,'orderPro'])->name('MngBanner.order');
+//Xóa All người dùng
+  Route::delete('/dashboard/banner/DeleteAll', [MngBannerController::class,'deleteAll'])->name('MngBanner.deleteAll');
+//ADMIN - USERS - CREATES
+  Route::get('/dashboard/banner/create', [MngBannerController::class,'create'])->name('MngBanner.create');
+  Route::post('/dashboard/banner/store', [MngBannerController::class,'store'])->name('MngBanner.store');
 //ADMIN - LANGUAGES
   Route::get('/dashboard/language', [MngLanguageController::class,'index'])->name('MngLanguage.index');
 //ADMIN - USERS
@@ -132,12 +139,8 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::patch('/dashboard/user/update/{id}', [MngUserController::class,'update'])->name('MngUser.update');
 //ADMIN - USERS - DELETE
   Route::delete('/dashboard/user/delete/{id}',[MngUserController::class,'destroy'])->name('MngUser.destroy');
-//Xóa người dùng
+//Xóa All người dùng
   Route::delete('/dashboard/user/DeleteAll', [MngUserController::class,'deleteAll'])->name('MngUser.deleteAll');
-//ADMIN - ADMINGUSERS
-  Route::get('/dashboard/AdminUser', [MngAdminUserController::class,'index'])->name('MngAdminUser.index');
-//ADMIN - PASSWORD_RESETS
-  Route::get('/dashboard/Passreset', [MngPassResetController::class,'index'])->name('MngPassReset.index');
 //ADMIN - ORDERS
   Route::get('/dashboard/order', [MngOrderController::class,'index'])->name('MngOrder.index');
 //ADMIN - ORDERS_DETAILS

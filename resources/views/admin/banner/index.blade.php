@@ -6,26 +6,29 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>{{__('Banner')}}</h4>
-                    <form class="form-inline float-left">
-                
-                      <div class="form-group mx-sm-3 mb-2">
-                       
-                        <input type="text" class="form-control" id="SearchRow" placeholder="...">
+                  <h4>{{__('Banner')}}</h4>
+                  <form class="form-inline float-left" method="GET" action="{{route('MngBanner.search')}}">
+
+                        <div class="form-group mx-sm-3 mb-2">
+
+                          <input type="text" class="form-control" id="SearchRow" name="name" placeholder="...">
+                        </div>
+                        <button type="submit" class="btn btn-info mb-2">{{__('search')}}</button>
+                  </form>
+
+                      <a href="{{route('MngBanner.create')}}" class="btn btn-sm btn-warning float-right">{{__('addnew')}}</a>
+                      <div class="form-group float-right mr-4">
+                        <select class="form-control" id="orderItem" onchange="location = this.value;">
+                          <option @if(isset($new)) {{$new}} @endif value="{{route('MngBanner.order','new')}}">{{__('latest')}}</option>
+                          <option @if(isset($old)) {{$old}} @endif value="{{route('MngBanner.order','old')}}">{{__('oldest')}}</option>
+                        </select>
                       </div>
-                      <button type="submit" class="btn btn-info mb-2">{{__('search')}}</button>
-                    </form>
-                     
-                    <a href="#" class="btn btn-sm btn-warning float-right">{{__('addnew')}}</a>
-                    <div class="form-group float-right mr-4">     
-                      <select class="form-control" id="orderItem">
-                        <option>Mới nhất</option>
-                        <option>Cũ nhất</option>
-                      </select>
-                    </div>
                 </div>
 
                 <div class="card-body">
+                  <form  method="POST" id="deleteAllUser" action="{{route('MngBanner.deleteAll')}}">
+                    @csrf
+                    @method('delete')
                     <table class="table table-bordered mb-0">
                         <thead>
                         <tr>
@@ -41,42 +44,37 @@
                         </thead>
                         <tbody>
                 
-                        
-                      <tr>
-                        <td><input type="checkbox"></td>
-                        <td><img src="./img/wines-header.jpg" width="100px" alt=""></td>
-                        <td><a href="">Cheems</a></td>
-                        <td>BONK BONK BONK BONK</td>
-                        <td>Link,vn,com</td>
-                        <td>20</td>
-                        <td>16/10/2020</td>
-                        <td>
-                            <div style="display: flex;justify-content: space-between">
-                                <a href="" class="btn btn-sm btn-primary">{{__('edit')}}</a>
-                                <form action="#"  method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
-                                      </form>
-                            </div>
-                        </td>
-                      </tr>
-                    
-                        
-                           
+                      @foreach ($banner as $banners)
+                        <tr>
+                          <td><input type="checkbox" class="selectAllchilden"></td>
+                          <td><img src="{{$banners->thumbnail}}" width="100px" alt=""></td>
+                          <td><a href="">{{$banners->name}}</a></td>
+                          <td>{{$banners->description}}</td>
+                          <td>{{$banners->link}}</td>
+                          <td>{{$banners->order}}</td>
+                          <td>{{\Carbon\Carbon::parse( $banners->created_at)->format('d/m/Y')}}</td>
+                          <td>
+                              <div style="display: flex;justify-content: space-between">
+                                  <a href="" class="btn btn-sm btn-primary">{{__('edit')}}</a>
+                                  <form action="#"  method="post">
+                                          @csrf
+                                          @method('delete')
+                                          <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
+                                        </form>
+                              </div>
+                          </td>
+                        </tr>
+                      @endforeach
+                       
                         </tbody>
                     </table>
-                    <div class="action mt-3">
+                  </form>
+                  <div class="action mt-3">
                       <input type="checkbox" id="selectAllRow">
                       <label for="selectAllRow">{{__('selectall')}}</label>
-                
-                      <form class="float-right" action="">
-                        <input type="hidden">
-                        <button class="btn btn-sm btn-danger" type="submit">{{__('deleteselec')}}</button>
-                      </form>
-                    </div>
+                      <button style="float: right; display:none" class="btn btn-sm btn-danger sheetDelete" form="deleteAllUser" type="submit">{{__('deleteselec')}}</button>
+                  </div>
                 </div>
-
             </div>
         </div>
     </div>

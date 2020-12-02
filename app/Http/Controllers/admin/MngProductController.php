@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\LanguageSwitch;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,43 +34,80 @@ class MngProductController extends Controller
 
     public function create()
     {
-      return view('admin.product.create');
+     
+      $categories = Category::all();
+      $languages = LanguageSwitch::all();
+      return view('admin.product.create')->with(['categories'=>$categories,'languages'=>$languages]);
     }
 
     public function store(Request $request)
     {
-      $request->validate([
-        'name' => ['required', 'string', 'max:255'],
-        'slug' => ['required', 'string', 'max:255', 'confirmed'],
-        'thumbnail' => ['required', 'string', 'max:255'],
-        'price' => ['required', 'string', 'max:255'],
-        'size' => ['required', 'string', 'max:255'],
-        'vintage' => ['required', 'string', 'max:255'],
-        'detail' => ['required', 'string', 'max:255'],
-        'discount' => ['required', 'string', 'max:255'],
-        'nation' => ['required', 'string', 'max:255'],
-        'description' => ['required', 'string', 'max:255'],
-        'language_id' => ['required', 'string', 'max:255'],
-        'id_puclished' => ['required', 'string', 'max:255'],
-      ]);
-      $data=array(
-          'name'=>$request->name,
-          'slug'=>$request->slug,
-          'thumbnail'=>$request->thumbnail,
-          'price'=>$request->price,
-          'size'=>$request->size,
-          'vintage'=>$request->vintage,
-          'detail'=>$request->detail,
-          'discount'=>$request->discount,
-          'nation'=>$request->nation,
-          'description'=>$request->description,
-          'language_id'=>$request->language_id,
-          'id_puclished'=>$request->id_puclished,
-      );
-      Product::create($data);
-      session()->flash('success', 'Thêm tài khoản thành công');
+      $this->validate($request,[
+        'name' => 'required | string | max:255',
+        'codePro' => 'required | string',
+        'price' => 'required | integer',
+        'size' => 'required | string | max:255',
+        'vintage' => 'required | string | max:255',
+        'detail' => 'max:255',
+        'discount' => 'required | integer',
+        'nation' => 'required | string | max:255',
+        'amount' => 'required | integer',
+        //'thumbnail' => 'mimes:jpeg,png,bmp,tiff | max:2048',
+      ],
+      $messages = [
+        'name.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
-      return redirect('/dashboard/user');
+        'codePro.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+        'price.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+        'price.integer' => 'Mảng :attribute yêu câu số nguyên.',
+
+        'size.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+        'vintage.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+        'detail.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+        'discount.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+        'discount.integer' => 'Mảng :attribute yêu câu số nguyên.',
+
+        'nation.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+        'description.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+        'amount.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+        'amount.integer' => 'Mảng :attribute yêu câu số nguyên.',
+
+        'thumbnail.mimes' => 'Hình ảnh không hợp lệ.',
+      ]);
+
+      $user_id = Auth()->user()->id;
+      $product = new Product;
+      $product->user_id = $user_id;
+      $product->codeProduct = $request->codePro;
+      $product->name = $request->name;
+      $product->slug = str_slug($request->name);
+      $product->thumbnail  = $request->thumbnail;
+      $product->price = $request->price;
+      $product->size = $request->size;
+      $product->vintage = $request->vintage;
+      $product->detail = $request->detail;
+      $product->discount = $request->discount;
+      $product->nation = $request->nation;
+      $product->description = $request->description;
+      $product->language_id  = $request->language_id;
+      $product->is_published  = $request->is_published;
+      $product->especially  = $request->especially;
+      $product->amount = $request->amount;
+      $saved = $product->save();
+      if($saved === true && $request->hasFile('thumbnail')){
+        $path = $product->id.$request->image->getClientOriginalName();
+        $product->avatar = $path;
+        $request->thumbnail->storeAs('product_images',$path,'public');
+      };
+      session()->flash('success', 'Thêm thành công');
+
+      return redirect()->back()->with($messages);
     }
 
     public function edit(Product $id)

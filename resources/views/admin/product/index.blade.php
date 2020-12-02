@@ -16,7 +16,7 @@
                       <button type="submit" class="btn btn-info mb-2">{{__('search')}}</button>
                     </form>
 
-                    <a href="{{route('MngProduct.addnew')}}" class="btn btn-sm btn-warning float-right">{{__('addnew')}}</a>
+                    <a href="{{route('MngProduct.create')}}" class="btn btn-sm btn-warning float-right">{{__('addnew')}}</a>
                     <div class="form-group float-right mr-4">
                       <select class="form-control" id="orderItem" onchange="location = this.value;">
                         <option @if(isset($new)) {{$new}} @endif value="{{route('MngProduct.order','new')}}">{{__('latest')}}</option>

@@ -36,6 +36,9 @@
 
   <script src="{{ mix('js/app.js') }}"></script>
 
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+
+
 </head>
 
 <body>
@@ -195,13 +198,13 @@
           </p>
           <h5 class="centered">{{Auth::user()->name}}</h5>
           <li class="mt">
-          <a class="active" href="{{route ('dashboard')}}">
-              <i class="fa fa-dashboard"></i>
-              <span>{{__('dashboard')}}</span>
+              <a class="EffectActive"  href="{{route ('dashboard.index')}}">
+                <i class="fa fa-dashboard"></i>
+                <span>{{__('dashboard')}}</span>
               </a>
           </li>
           <li class="sub-menu"><!-- CATELOG -->
-            <a href="javascript:;">
+            <a href="javascript:;" class="EffectActive">
              <i class="fas fa-book-open"></i>
               <span>{{__('catelog')}}</span>
               </a>
@@ -248,21 +251,10 @@
             </a>
           </li>
           <li>
-            <a href="{{route ('MngLanguage.index')}}">
-              <i class="fas fa-language"></i>
-              <span>{{__('Language')}}</span>
-            </a>
-          </li>
-          <li class="sub-menu"><!-- CATELOG -->
-            <a href="javascript:;">
+            <a href="{{route ('MngUser.index')}}">
               <i class="fa fa-users"></i>
               <span>{{__('account')}}</span>
-              </a>
-            <ul class="sub">
-              <li><a href="{{route ('MngUser.index')}}">{{__('account')}} {{__('user')}}</a></li>
-              <li><a href="{{route ('MngAdminUser.index')}}">{{__('Administration')}}</a></li>
-              <li><a href="{{route ('MngPassReset.index')}}">{{__('historyPass')}}</a></li>
-            </ul>
+            </a>
           </li>
           <li class="sub-menu"><!-- ORDERS -->
             <a href="javascript:;">
@@ -313,6 +305,7 @@
   <!--script for this page-->
   <script src="lib/sparkline-chart.js"></script>
   <script src="lib/zabuto_calendar.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <script type="application/javascript">
     $(document).ready(function() {
       $("#date-popover").popover({
@@ -354,6 +347,18 @@
       var to = $("#" + id).data("to");
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
+
+    $(document).ready(function () {
+    $('li .EffectActive').click(function(e) {
+
+        $('li EffectActive.active').removeClass('active');
+
+        var $parent = $(this).parent();
+        $parent.addClass('active');
+        e.preventDefault();
+    });
+    });
+
   </script>
   @yield('script')
 </body>

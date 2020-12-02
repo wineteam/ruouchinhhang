@@ -34,7 +34,7 @@
                 <li class="list-group-item text-muted">{{__('Menu_profile')}}</li>
                 <li class="list-group-item text-left"><a href="{{ route('home') }}" class="text-success">{{__('HOME')}}</a></li>
                 @if (count($roles) >= 1)
-                <li class="list-group-item text-left"><a href="{{ route('dashboard') }}" class="Font-Red">{{__('Dashboard')}}</a></li>
+                <li class="list-group-item text-left"><a href="{{ route('dashboard.index') }}" class="Font-Red">{{__('Dashboard')}}</a></li>
                 @endif
                 <li  class="list-group-item text-left"><a class="Font-Red pull-left" href="{{ route('Logout') }}">{{__('Logout')}}</a></li>
               </ul>
@@ -42,10 +42,10 @@
           </div>
 
           <div class="col-xl-8 col-md-12 col-sm-12">
-                <h2 class="mb-3 text-center text-info">
-                  {{__('infoProfile')}} <br>
-                  @if (count($roles) >= 1)
-                  <a href="{{ route('dashboard') }}"><span class="Font-Red text-uppercase font-weight-bold">ADMIN</span> <span class="Font-dark">{{Auth::user()->name}}</span></a>
+                <h2 class="mb-3 text-left text-info">
+                  <span class="Font-dark">{{__('infoProfile')}}</span>
+                  @if (Auth::check())
+                  <span class="Font-Blue">{{Auth::user()->name}}</span>
                   @else
 
                   @endif
