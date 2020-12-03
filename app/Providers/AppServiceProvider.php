@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
        if(Schema::hasTable('info_sites')){
-         $info = infoSite::firstOrFail();
+         $info = infoSite::first();
          if($info) {
            View::share('info', $info);
          }

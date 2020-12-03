@@ -12,7 +12,7 @@ class MngUserController extends Controller
 {
     public function index()
     {
-      $users = User::orderBy('created_at','desc')->paginate(12);
+      $users = User::orderBy('id','desc')->paginate(12);
       return view('admin.user.index')->with(["users"=>$users]);
     }
     public function orderPro($order)
@@ -23,7 +23,7 @@ class MngUserController extends Controller
         return view('admin.user.index',compact('users','old'));
       }
         $new = "selected";
-        $users = User::orderBy('created_at','desc')->paginate(12);
+        $users = User::orderBy('id','desc')->paginate(12);
         return view('admin.user.index',compact('users','new'));
     }
     public function search(Request $request){
@@ -42,7 +42,7 @@ class MngUserController extends Controller
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
       ],
-      [ 
+      [
         'name.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
         'email.required' => 'Mảng :attribute yêu cầu bắt buộc.',
@@ -110,7 +110,8 @@ class MngUserController extends Controller
     }
 
     public function deleteAll(Request $request) {
-      $deleted = User::whereIn('id',$request->userId)->delete();
+      $user_id = explode(',',$request->user_id[0]);
+      $deleted = User::whereIn('id',$user_id)->delete();
       if($deleted) {
         return redirect()->back()->with('message', 'Da xoa thanh cong');
       }
