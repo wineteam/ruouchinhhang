@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\LanguageSwitch;
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Http\Request;
-use App\Http\Requests\RequestAddProduct;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -41,11 +41,47 @@ class MngProductController extends Controller
      
       $categories = Category::all();
       $languages = LanguageSwitch::all();
-      return view('admin.product.create')->with(['categories'=>$categories,'languages'=>$languages]);
+      $Tag = Tag::all();
+      return view('admin.product.create')->with(['categories'=>$categories,'languages'=>$languages,'Tag'=>$Tag]);
     }
 
-    public function store(RequestAddProduct $request)
+    public function store(Request $request)
     {
+      $request->validate([
+          'name' => 'required | string | max:255',
+          'codePro' => 'required | string',
+          'price' => 'required | integer',
+          'size' => 'required | string | max:255',
+          'vintage' => 'required | string | max:255',
+          'detail' => 'max:255',
+          'discount' => 'required | integer',
+          'nation' => 'required | string | max:255',
+          'amount' => 'required | integer',
+      ],
+      [
+          'name.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+          'codePro.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+          'price.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'price.integer' => 'Mảng :attribute yêu câu số nguyên.',
+
+          'size.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+          'vintage.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+          'detail.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+          'discount.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'discount.integer' => 'Mảng :attribute yêu câu số nguyên.',
+
+          'nation.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+          'description.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+          'amount.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'amount.integer' => 'Mảng :attribute yêu câu số nguyên.',
+      ]);
       $user_id = Auth()->user()->id;
       $product = new Product;
       $product->user_id = $user_id;
@@ -69,8 +105,11 @@ class MngProductController extends Controller
       $product->especially  = $request->especially;
       $product->amount = $request->amount;
       $saved = $product->save();
-      if(isset($request->roles) && $saved === true){
+      if(isset($request->categories) && $saved === true){
         $product->categories->sync($request->categories);
+      }
+      if(isset($request->tags) && $saved == true){
+        $product->tags->sync($request->tags);
       }
       if($saved === false){ //ERRORS < HERE
         Storage::delete($name);
@@ -95,7 +134,19 @@ class MngProductController extends Controller
         }
           $categories[] = $Categorys;
       }
-      return view('admin.product.edit')->with(['product'=>$id,'categories'=>$categories]);
+      $NTags = [];
+      $TagsChecked = $id->tags()->get();
+      $Tag = Tag::all();
+      foreach ($Tag as $Tags){
+        $Tags['checked'] = false;
+        foreach ($TagsChecked as $TagChecked){
+          if ($Tags['slug'] === $TagChecked->slug){
+            $Tags['checked'] = true;
+          }
+        }
+          $NTags[] = $Tags;
+      }
+      return view('admin.product.edit')->with(['product'=>$id,'categories'=>$categories,'NTags'=>$NTags]);
     }
 
     public function update(Request $request,$id)
@@ -158,6 +209,9 @@ class MngProductController extends Controller
       if(isset($request->categories) && $saved == true){
         $product->categories()->sync($request->categories);
       }
+      if(isset($request->tags) && $saved == true){
+        $product->tags()->sync($request->tags);
+      }
       if($saved === false){ //ERRORS < HERE
         Storage::delete($name);
         
@@ -174,12 +228,13 @@ class MngProductController extends Controller
     }
 
     public function deleteAll(Request $request) {
-      $deleted = Product::whereIn('id',$request->productId)->delete();
+      $productId = explode(',',$request->productId[0]);
+      $deleted = Product::whereIn('id',$productId)->delete();
       if($deleted) {
         return redirect()->back()->with('message', 'Da xoa thanh cong');
       }
       return redirect()->back()->with('message', 'Xoa khong thanh cong');
-   }
+    }
 
 
 }

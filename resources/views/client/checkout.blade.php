@@ -14,7 +14,6 @@
                 <h1 class="Font-white">Checkout</h1>
                 <ul class="breadcrumb-List">
                     <li><a href="{{ route('home',App()->getLocale()) }}"><span>Home</span></a></li>
-                    <li><a href="{{ route('shop',App()->getLocale()) }}"><span>shop</span></a></li>
                     <li><span class="none-color">Checkout</span></li>
                 </ul>
             </div>
@@ -30,13 +29,18 @@
     <!--====================================== Box-Checking ======================================-->
     <div class="container">
         <div class="row">
+          @if(Route::has('login'))
+            @guest
             <div class="col-12 bg-Box border-top-Box box-title">
-                <p><i class="fa fa-window-maximize" aria-hidden="true"></i> Returning customer? <a href=""><span>Click here to login</span></a></p>
+                <p><i class="fa fa-window-maximize" aria-hidden="true"></i> Returning customer? <a href="{{route('login')}}"><span>Click here to login</span></a></p>
             </div>
-
+            @endguest
+          @endif
+          @if(!session()->has('coupon'))
             <div class="col-12 bg-Box border-top-Box box-title">
-                <p><i class="fa fa-window-maximize" aria-hidden="true"></i> Have a coupon? <a href=""><span>Click here to enter your code</span></a></p>
+                <p><i class="fa fa-window-maximize" aria-hidden="true"></i> Have a coupon? <a href="{{route('cart.index')}}"><span>Click here to enter your code</span></a></p>
             </div>
+          @endif
         </div>
     </div>
     <!--====================================== END Box-Checking ======================================-->
@@ -50,37 +54,14 @@
                     <h4 class="mb-3">Billing details</h4>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="firstName">First name</label>
+                            <label for="firstName">Your name</label>
                             <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="firstName" placeholder="" value="" required>
                             <div class="invalid-feedback">
-                            Valid first name is required.
+                                Valid first name is required.
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="lastName">Last name</label>
-                            <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="lastName" placeholder="" value="" required>
-                            <div class="invalid-feedback">
-                            Valid last name is required.
-                            </div>
-                        </div>
+
                     </div>
-
-                    <div class="mb-3">
-                        <label for="Companyname">Company name <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="Companyname" placeholder="">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" id="country" required>
-                        <option>Vietnam</option>
-                        </select>
-                        <div class="invalid-feedback Fix-input-checkout Fix-high-checkout">
-                        Please select a valid country.
-                        </div>
-                    </div>
-
-
                     <div class="mb-3">
                         <label for="Streetaddress">Street address</label>
                             <input type="text" class="form-control Fix-input-checkout" id="Streetaddress" placeholder="" value="" required>
@@ -88,20 +69,6 @@
                             Valid Street address is required.
                         </div>
                     </div>
-
-                    <div class="mb-3">
-                    <label for="Postcode">Postcode / ZIP <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="Postcode" placeholder="">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="TownCity">Town / City</label>
-                            <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="TownCity" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            Valid Town / City is required.
-                        </div>
-                    </div>
-
                     <div class="mb-3">
                         <label for="Phone">Phone</label>
                             <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="Phone" placeholder="" value="" required>
@@ -117,12 +84,6 @@
                             Valid Email address is required.
                         </div>
                     </div>
-
-                    <h4 class="mb-3">Billing details</h4>
-                    <div class="mb-3">
-                        <label for="Companyname">Company name <span class="text-muted">(Optional)</span></label>
-                        <textarea class="form-control Fix-input-checkout" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
                 </div>
 
                 <hr class="mb-4">
@@ -136,17 +97,30 @@
                           </tr>
                         </thead>
                         <tbody>
+                        @foreach(Cart::content() as $item)
                           <tr>
-                            <td colspan="1">Lambert Sweet White - 500ml, 2014  × <span class="font-weight-bold">1</span></td>
-                            <td colspan="2">£150.00</td>
+                            <td colspan="1">{{$item->name}}  × <span class="font-weight-bold">{{$item->qty}}</span></td>
+                            <td colspan="2">{{$item->price(0,",",".")}} vnđ</td>
                           </tr>
+                        @endforeach
+                        @if($discount > 0)
+                          <tr>
+                            <td colspan="1" class="text-uppercase text-right font-weight-bold">DISCOUNT</td>
+                            <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{$discount}} vnđ</span></td>
+                          </tr>
+                        @endif
                           <tr>
                             <td colspan="1" class="text-uppercase text-right font-weight-bold">SUBTOTAL</td>
-                            <td colspan="2" class="text-uppercase">£150.00</td>
+                            <td colspan="2" class="text-uppercase">{{$subtotal}} vnđ</td>
                           </tr>
+
+                        <tr>
+                          <td colspan="1" class="text-uppercase text-right font-weight-bold">TAX</td>
+                          <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{$tax}} vnđ</span></td>
+                        </tr>
                           <tr>
                             <td colspan="1" class="text-uppercase text-right font-weight-bold">TOTAL</td>
-                            <td colspan="2" class="text-uppercase"><span class="font-weight-bold">£150.00</span></td>
+                            <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{$total}} vnđ</span></td>
                           </tr>
                         </tbody>
                     </table>

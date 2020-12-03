@@ -50,9 +50,9 @@
             <div class="card card-border-0 flex-row align-items-center h-100">
                     <a href="" class="text-dark edit-icon mr-auto-moblie-icon" style="padding: 10px 15px;border: 2px solid #bdb68e"><i class="fa fa-phone" aria-hidden="true"></i></a>
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms"><span class="font-weight-bold Font-Blue">{{__('client.Call_us')}}: <a href="tel:123-456-7890" class="Font-Blue">{{$info->phone}}</a></span>
+                    <p class="card-text Re-font-ms"><span class="font-weight-bold Font-Blue">{{__('client.Call_us')}}: <a href="tel:123-456-7890" class="Font-Blue">@if(isset($info)) {{$info->phone}}@endif</a></span>
                     <br>
-                    <a class="Font-Blue" href="mailto:QuanlityWine@gmail.com">{{$info->email}}</a></p>
+                    <a class="Font-Blue" href="mailto:QuanlityWine@gmail.com">@if(isset($info)) {{$info->email}}@endif</a></p>
                 </div>
             </div>
         </div>
@@ -115,7 +115,7 @@
                     <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('contact') }}">{{__('client.CONTACT')}}</a></li>
                     @if(Route::has('login'))
                         @auth
-                <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{route('profile.edit',Auth::user()->id)}}">{{__('profile')}}</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{route('profile.edit')}}">{{__('profile')}}</a></li>
                         @else
                         <li class="nav-item"><a class="nav-link text-uppercase padding-text Font-Size-1vw" href="{{ route('login') }}">{{__('client.LOGIN')}}</a></li>
                             @if (Route::has('register'))
@@ -181,7 +181,7 @@
             <div class="card card-border-0 flex-row align-items-center h-100">
 
                 <div class="card-block px-2">
-                    <p class="card-text Re-font-ms"><span class="Font-dark Font-Size-07vw">{{$info->address}}.</span></p>
+                    <p class="card-text Re-font-ms"><span class="Font-dark Font-Size-07vw">@if(isset($info)) {{$info->address}}@endif</span></p>
                 </div>
             </div>
         </div>
@@ -202,7 +202,7 @@
             </div>
         </div>
         <div class="text-center show-in-moblie" style="display: none;">
-          <p class="card-text Re-font-ms" style="padding-top:30px;"><span class="Font-dark"></span>{{$info->address}}.</p>
+          <p class="card-text Re-font-ms" style="padding-top:30px;"><span class="Font-dark"></span>@if(isset($info)) {{$info->address}}@endif</p>
         </div>
         </div>
     </div>

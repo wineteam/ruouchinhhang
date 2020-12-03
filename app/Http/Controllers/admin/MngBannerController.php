@@ -4,11 +4,12 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MngBannerController extends Controller
 {
     public function index(){
-        $banner = banner::all();
+        $banner = banner::orderBy('created_at','desc')->paginate(12);
         return view('admin.banner.index')->with(["banner"=>$banner]);
     }
     public function orderPro($order)
@@ -28,29 +29,84 @@ class MngBannerController extends Controller
     }
     public function create(banner $id)
     {
-      return view('admin.add_user');
+      return view('admin.banner.create');
     }
 
     public function store(Request $request)
     {
       $request->validate([
-        'thumbnail' => ['jpeg,png,bmp,tiff', 'max:2048'],
+        'thumbnail' => ['mimes:jpeg,png,bmp,tiff', 'max:2048'],
         'name' => ['required', 'string', 'max:255'],
         'description' => ['required', 'string', 'max:255'],
         'link' => ['required', 'string', 'max:255'],
-        'order' => ['required', 'array', 'size:5'],
+        'order' => ['required', 'integer'],
       ]);
-      $data=array(
-          'thumbnail'=>$request->thumbnail,
-          'name'=>$request->name,
-          'description'=>$request->description,
-          'link'=>$request->link,
-          'order'=>$request->order,
-      );
-      banner::create($data);
+      $banner = new banner;
+      $banner->name = $request->name;
+      $banner->description = $request->description;
+      $banner->link = $request->link;
+      $banner->order = $request->order;
+      if( $request->hasFile('thumbnail')){
+        $name = $banner->id.$request->thumbnail->getClientOriginalName();
+        $path = $request->thumbnail->storeAs('banner_images',$name,'public');
+        $banner->thumbnail  = $path;
+      }
+      $saved = $banner->save();
+      if($saved === false){
+        Storage::delete($name);
+      };
       session()->flash('success', 'Thêm Banner thành công');
-      
       return redirect('/dashboard/banner');
+    }
+
+    public function edit(banner $id)
+    {
+      return view('admin.banner.edit')->with(['banner'=>$id]);
+    }
+
+    public function update(Request $request,$id)
+    {
+      $banner = banner::find($id);
+      if(isset($request->name)){
+        $banner->name = $request->name;
+      }
+      if(isset($request->description)){
+        $banner->description = $request->description;
+      }
+      if(isset($request->link)){
+        $banner->link = $request->link;
+      }
+      if(isset($request->order)){
+        $banner->order = $request->order;
+      }
+      if( $request->hasFile('thumbnail')){
+        $name = $banner->id.$request->thumbnail->getClientOriginalName();
+        $path = $request->thumbnail->storeAs('banner_images',$name,'public');
+        $banner->thumbnail  = $path;
+      }
+      $saved = $banner->save();
+      if($saved === false){
+        Storage::delete($name);
+        
+      };
+      session()->flash('message','success');
+      return redirect('/dashboard/banner');
+    }
+
+    public function destroy(banner $id)
+    {
+      $id->delete();
+      session()->flash('message', 'Xóa Người dùng thành công');
+      return redirect()->back();
+    }
+    
+    public function deleteAll(Request $request) {
+      $BannerId = explode(',',$request->BannerId[0]);
+      $deleted = banner::whereIn('id',$BannerId)->delete();
+      if($deleted) {
+        return redirect()->back()->with('message', 'Da xoa thanh cong');
+      }
+      return redirect()->back()->with('message', 'Xoa khong thanh cong');
     }
 
 }

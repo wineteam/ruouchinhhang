@@ -198,7 +198,7 @@
           </p>
           <h5 class="centered">{{Auth::user()->name}}</h5>
           <li class="mt">
-              <a class="EffectActive"  href="{{route ('dashboard.index')}}">
+              <a  href="{{route('dashboard.index')}}">
                 <i class="fa fa-dashboard"></i>
                 <span>{{__('dashboard')}}</span>
               </a>

@@ -13,7 +13,7 @@ return [
     "info_company"=> "We offer a great variety of wines for every price point and any occasion, from rich shardonnay to elegant and creamy brut.",
     "Recommendations"=> "Recommendations",
     "buy_now"=> "Buy Now",
-    "$"=> "$",
+    "$"=> "vnđ",
     "Learn_more"=> "Learn More",
     "Title_posts_especially"=> "Top Posts",
     "get_it_touch"=> "Get in Touch",

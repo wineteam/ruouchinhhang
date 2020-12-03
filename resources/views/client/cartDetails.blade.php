@@ -9,10 +9,10 @@
         <div style="height: 5em"><span></span></div>
 
         <div class="checkout-bg text-center">
-            <h1 class="Font-white">Your Cart</h1>
+            <h1 class="Font-white">{{__('cart.your_cart')}}</h1>
           <ul class="breadcrumb-page">
-            <li><a href="{{ route('home') }}">{{__('HOME')}}</a></li>
-            <li aria-current="page"><a>{{__('cart')}}</a></li>
+            <li><a href="{{ route('home') }}">{{__('client.HOME')}}</a></li>
+            <li aria-current="page"><a>{{__('client.cart')}}</a></li>
           </ul>
         </div>
 
@@ -42,16 +42,16 @@
                     <thead>
                     <tr>
                         <th scope="col" class="border-0 bg-Red-I Font-white">
-                        <div class="p-2 px-3 text-uppercase">Product</div>
+                        <div class="p-2 px-3 text-uppercase">{{__('cart.products')}}</div>
                         </th>
                         <th scope="col" class="border-0 bg-Red-I Font-white">
-                        <div class="py-2 text-uppercase">Price</div>
+                        <div class="py-2 text-uppercase">{{__('cart.price')}}</div>
                         </th>
                         <th scope="col" class="border-0 bg-Red-I Font-white">
-                        <div class="py-2 text-uppercase">Quantity</div>
+                        <div class="py-2 text-uppercase">{{__('cart.quantity')}}</div>
                         </th>
                         <th scope="col" class="border-0 bg-Red-I Font-white">
-                        <div class="py-2 text-uppercase">Remove</div>
+                        <div class="py-2 text-uppercase">{{__('cart.remove')}}</div>
                         </th>
                     </tr>
                     </thead>
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                         </th>
-                        <td class="border-0 align-middle"><strong>{{number_format($item->price)}}</strong></td>
+                        <td class="border-0 align-middle"><strong>{{$item->price(0,",",".")}}</strong></td>
                         <td class="border-0 align-middle"><strong>{{$item->qty}}</strong></td>
                         <td class="border-0 align-middle">
                           <form action="{{route('cart.destroy',$item->rowId)}}" id="delete_item" method="post">
@@ -101,49 +101,52 @@
 
           @if(Cart::count() > 0)
             <div class="col-lg-6">
-              <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">Coupon code</div>
+              <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">{{__('cart.coupon_code')}}</div>
               <div class="p-4">
-                <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
+                <p class="font-italic mb-4">{{__('cart.if_you_have_a_coupon_code,_please_enter_it_in_the_box_below')}}</p>
                 <form action="{{route('coupon.store')}}" method="post">
                   @csrf
                   <div class="input-group mb-4 border rounded-pill p-2">
-                    <input type="text" placeholder="Apply coupon" name="coupon_code" aria-describedby="button-addon3" class="form-control border-0">
+                    <input type="text" placeholder="{{__('cart.apply_coupon_code')}}" name="coupon_code" aria-describedby="button-addon3" class="form-control border-0">
                     <div class="input-group-append border-0">
-                      <button id="button-addon3" type="submit" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+                      <button id="button-addon3" type="submit" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>{{__('cart.apply_coupon_code')}}</button>
                     </div>
                   </div>
                 </form>
               </div>
             </div>
             <div class="col-lg-6">
-              <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">Order summary </div>
+              <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">{{__('cart.order_summary')}}</div>
               <div class="p-4">
-                <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
                 <ul class="list-unstyled mb-4">
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Subtotal </strong><strong>{{number_format(Cart::subtotal())." ".__('$')}}</strong></li>
+                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.subtotal')}} </strong><strong>{{Cart::subtotal(0,",",".")." ".__('$')}}</strong></li>
                   @if(session()->has('coupon'))
                     <li class="d-flex justify-content-between py-3 border-bottom">
-                      <strong class="text-muted">Discount({{session()->get('coupon')['name']}})
+                      <strong class="text-muted">{{__('cart.discount')}}({{session()->get('coupon')['name']}})
                         <form action="{{route('coupon.destroy')}}" method="post">
                           @csrf
                           @method('delete')
-                          <button class="btn-sm btn-danger">Remove</button>
+                          <button class="btn-sm btn-danger">{{__('cart.remove')}}</button>
                         </form>
                       </strong>
-                      <strong>{{number_format(session()->get('coupon')['discount'])." ".__('$')}}</strong>
+                      <strong>{{$discount." ".__('$')}}</strong>
                     </li>
                     <li class="d-flex justify-content-between py-3 border-bottom">
-                      <strong class="text-muted">New subtotal</strong>
-                      <strong> {{number_format($newSubtotal)." ".__('$')}}</strong>
+                      <strong class="text-muted">{{__('cart.new_subtotal')}}</strong>
+                      <strong> {{$newSubtotal." ".__('$')}}</strong>
                     </li>
-                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">New Tax(60%)</strong><strong>{{number_format($newTax)." ".__('$')}}</strong></li>
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.new_tax')}}(60%)</strong><strong>{{$newTax." ".__('$')}}</strong></li>
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.total')}}</strong>
+                      <h5 class="font-weight-bold">{{$newTotal." ".__('$')}}</h5>
+                    </li>
                   @else
-                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax(60%)</strong><strong>{{ Cart::tax()." ".__('$')}}</strong></li>
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.tax')}}(60%)</strong><strong>{{ Cart::tax(0,",",".")." ".__('$')}}</strong></li>
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.total')}}</strong>
+                      <h5 class="font-weight-bold">{{Cart::total(0,",",".")." ".__('$')}}</h5>
+                    </li>
                   @endif
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                    <h5 class="font-weight-bold">{{Cart::total()." ".__('$')}}</h5>
-                  </li>
-                </ul><a href="{{route('checkout.index')}}" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+
+                </ul><a href="{{route('checkout.index')}}" class="btn btn-dark rounded-pill py-2 btn-block">{{__('cart.processed_checkout_amount')}}</a>
               </div>
             </div>
           @endif

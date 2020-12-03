@@ -91,8 +91,23 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/categories_products', [MngCateLogProDuctController::class,'index'])->name('MngCateLogProDuct.index');
 //ADMIN - CATELOG_BLOGS
   Route::get('/dashboard/categories_blogs', [MngCateLogBlogController::class,'index'])->name('MngCateLogBlog.index');
+
+  
 //ADMIN - TAGS
   Route::get('/dashboard/tags', [MngTagsController::class,'index'])->name('MngTags.index');
+  Route::get('/dashboard/tags/search', [MngTagsController::class,'search'])->name('MngTags.search');
+  Route::get('/dashboard/tags/order={order}', [MngTagsController::class,'orderPro'])->name('MngTags.order');
+//ADMIN - TAGS - CREATES
+  Route::get('/dashboard/tags/create', [MngTagsController::class,'create'])->name('MngTags.create');
+  Route::post('/dashboard/tags/store', [MngTagsController::class,'store'])->name('MngTags.store');
+//ADMIN - TAGS - EIDTS
+  Route::get('/dashboard/tags/edit/{id}', [MngTagsController::class,'edit'])->name('MngTags.edit');
+  Route::patch('/dashboard/tags/update/{id}', [MngTagsController::class,'update'])->name('MngTags.update');
+//ADMIN - TAGS - DELETE
+  Route::delete('/dashboard/tags/delete/{id}',[MngTagsController::class,'destroy'])->name('MngTags.destroy');
+  Route::delete('/dashboard/tags/DeleteAll', [MngTagsController::class,'deleteAll'])->name('MngTags.deleteAll');
+
+
 //ADMIN - PRODUCTS
   Route::get('/dashboard/product', [MngProductController::class,'index'])->name('MngProduct.index');
   Route::get('/dashboard/product/search', [MngProductController::class,'search'])->name('MngProduct.search');
@@ -104,7 +119,7 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/product/edit/{id}', [MngProductController::class,'edit'])->name('MngProduct.edit');
   Route::patch('/dashboard/product/update/{id}', [MngProductController::class,'update'])->name('MngProduct.update');
 //ADMIN - PRODUCTS - DELETE
-  Route::delete('/dashboard/product/delete/{id}',[MngProductController::class,'destroy'])->name('MngProduct.destroy');//Xóa người dùng
+  Route::delete('/dashboard/product/delete/{id}',[MngProductController::class,'destroy'])->name('MngProduct.destroy');
   Route::delete('/dashboard/product/DeleteAll', [MngProductController::class,'deleteAll'])->name('MngProduct.deleteAll');
 //ADMIN - BLOGS
   Route::get('/dashboard/blog', [MngBlogController::class,'index'])->name('MngBlog.index');
@@ -120,11 +135,15 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/banner', [MngBannerController::class,'index'])->name('MngBanner.index');
   Route::get('/dashboard/banner/search', [MngBannerController::class,'search'])->name('MngBanner.search');
   Route::get('/dashboard/banner/order={order}', [MngBannerController::class,'orderPro'])->name('MngBanner.order');
-//Xóa All người dùng
-  Route::delete('/dashboard/banner/DeleteAll', [MngBannerController::class,'deleteAll'])->name('MngBanner.deleteAll');
-//ADMIN - USERS - CREATES
+//ADMIN - BANNERS - CREATES
   Route::get('/dashboard/banner/create', [MngBannerController::class,'create'])->name('MngBanner.create');
   Route::post('/dashboard/banner/store', [MngBannerController::class,'store'])->name('MngBanner.store');
+//ADMIN - BANNERS - EIDTS
+  Route::get('/dashboard/banner/edit/{id}', [MngBannerController::class,'edit'])->name('MngBanner.edit');
+  Route::patch('/dashboard/banner/update/{id}', [MngBannerController::class,'update'])->name('MngBanner.update');
+//ADMIN - BANNERS - DELETE
+  Route::delete('/dashboard/banner/delete/{id}',[MngBannerController::class,'destroy'])->name('MngBanner.destroy');
+  Route::delete('/dashboard/banner/DeleteAll', [MngBannerController::class,'deleteAll'])->name('MngBanner.deleteAll');
 //ADMIN - LANGUAGES
   Route::get('/dashboard/language', [MngLanguageController::class,'index'])->name('MngLanguage.index');
 //ADMIN - USERS
@@ -139,7 +158,6 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::patch('/dashboard/user/update/{id}', [MngUserController::class,'update'])->name('MngUser.update');
 //ADMIN - USERS - DELETE
   Route::delete('/dashboard/user/delete/{id}',[MngUserController::class,'destroy'])->name('MngUser.destroy');
-//Xóa All người dùng
   Route::delete('/dashboard/user/DeleteAll', [MngUserController::class,'deleteAll'])->name('MngUser.deleteAll');
 //ADMIN - ORDERS
   Route::get('/dashboard/order', [MngOrderController::class,'index'])->name('MngOrder.index');

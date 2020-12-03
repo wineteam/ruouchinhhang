@@ -26,9 +26,11 @@
                 </div>
 
                 <div class="card-body">
-                  <form  method="POST" id="deleteAllUser" action="{{route('MngBanner.deleteAll')}}">
+                  <form  method="POST" id="deleteAllBanner" action="{{route('MngBanner.deleteAll')}}">
                     @csrf
                     @method('delete')
+                    <input type="hidden" name="BannerId[]">
+                  </form>
                     <table class="table table-bordered mb-0">
                         <thead>
                         <tr>
@@ -47,33 +49,33 @@
                       @foreach ($banner as $banners)
                         <tr>
                           <td><input type="checkbox" class="selectAllchilden"></td>
-                          <td><img src="{{$banners->thumbnail}}" width="100px" alt=""></td>
+                          <td><img src="{{asset('storage/'.$banners->thumbnail) }}" width="100px" alt=""></td>
                           <td><a href="">{{$banners->name}}</a></td>
                           <td>{{$banners->description}}</td>
                           <td>{{$banners->link}}</td>
                           <td>{{$banners->order}}</td>
                           <td>{{\Carbon\Carbon::parse( $banners->created_at)->format('d/m/Y')}}</td>
+                          
                           <td>
-                              <div style="display: flex;justify-content: space-between">
-                                  <a href="" class="btn btn-sm btn-primary">{{__('edit')}}</a>
-                                  <form action="#"  method="post">
-                                          @csrf
-                                          @method('delete')
-                                          <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
-                                        </form>
-                              </div>
+                            <div style="display: flex;justify-content: space-between">
+                              <a href="{{route('MngBanner.edit',$banners->id)}}" class="btn btn-sm btn-primary">{{__('edit')}}</a>
+                              <form action="{{route('MngBanner.destroy',$banners->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
+                              </form>
+                            </div>
                           </td>
                         </tr>
                       @endforeach
                        
                         </tbody>
                     </table>
-                  </form>
-                  <div class="action mt-3">
+                    <div class="action mt-3">
                       <input type="checkbox" id="selectAllRow">
                       <label for="selectAllRow">{{__('selectall')}}</label>
-                      <button style="float: right; display:none" class="btn btn-sm btn-danger sheetDelete" form="deleteAllUser" type="submit">{{__('deleteselec')}}</button>
-                  </div>
+                      <button style="float: right; display:none" class="btn btn-sm btn-danger sheetDelete" onclick="deleteAllBanner()" type="button">{{__('deleteselec')}}</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,17 +85,28 @@
 @endsection
 @section('script')
 <script>
+    let BannerId = [];
+    function deleteAllBanner(){
+      $('input[name^="BannerId"]').each(function() {
+        if($(this).is(':checked')){
+          BannerId.push($(this).val());
+        }
+      });
+      $('input[name^="BannerId"]').val(BannerId)
+      $('#deleteAllBanner').submit();
+    }
     $(document).ready(function(){
       $('.deleteItem').click(function (e) {
-      e.preventDefault();
-      var formname = $(this).parent();
-      const confirmDelete = confirm("Bạn chắc chắn xóa chứ ?");
-      if(confirmDelete == true){
-        formname.submit();
-        return true;
-      }
-      return false;
-    });
+        e.preventDefault();
+        const formName = $(this).parent();
+        console.log(formName);
+        const confirmDelete = confirm("Bạn chắc chắn xóa chứ ?");
+        if(confirmDelete === true){
+          formName.submit();
+          return true;
+        }
+        return false;
+      });
 
       $('#selectAllRow').on('click', function(e) {
         if($(this).is(':checked',true))  
