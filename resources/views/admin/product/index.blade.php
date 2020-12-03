@@ -48,7 +48,7 @@
                             @foreach ($products as $product)
                               <tr>
                                 <td><input type="checkbox" name='productId[]' value="{{$product->id}}" class="selectAllchilden"></td>
-                                <td><img src="{{ $product->thumbnail }}" width="60px" alt=""></td>
+                                <td><img src="{{asset('storage/'.$product->thumbnail) }}" width="60px" alt=""></td>
                                 <td><a href="#">{{ $product->name }}</a></td>
                                 <td>{{ $product->nation }}</td>
                                 <td> @if ($product->especially == 1) Có @else Không @endif</td>
@@ -60,10 +60,10 @@
                                   <div style="display: flex;justify-content: space-between">
                                     <a href="{{route('MngProduct.edit',$product->id)}}" class="btn btn-sm btn-primary">{{__('edit')}}</a>
                                     <a href="{{route('shop.show',$product->slug)}}" class="btn btn-sm btn-warning">{{__('show')}}</a>
-                                    <form action="{{route('MngProduct.destroy',$product->id)}}" id="delete_user_{{$product->id}}"  method="post">
+                                    <form form="deleteProduct" action="{{route('MngProduct.destroy',$product->id)}}" method="post">
                                       @csrf
                                       @method('delete')
-                                      <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
+                                      <button form="deleteProduct" type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
                                     </form>
                                   </div>
                                 </td>
@@ -103,23 +103,23 @@
     });
 
       $('#selectAllRow').on('click', function(e) {
-        if($(this).is(':checked',true))  
+        if($(this).is(':checked',true))
         {
-          $(".selectAllchilden").prop('checked', true);  
+          $(".selectAllchilden").prop('checked', true);
           $(".sheetDelete").css("display", "block");;
-        } else {  
-          $(".selectAllchilden").prop('checked',false);  
+        } else {
+          $(".selectAllchilden").prop('checked',false);
           $(".sheetDelete").css("display", "none");;
-        }  
+        }
       });
 
       $('.selectAllchilden').on('click', function(e) {
-        if($(this).is(':checked',true))  
+        if($(this).is(':checked',true))
         {
           $(".sheetDelete").css("display", "block");;
-        } else {  
+        } else {
           $(".sheetDelete").css("display", "none");;
-        }  
+        }
       });
 
     });

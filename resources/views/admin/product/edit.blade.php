@@ -18,7 +18,7 @@
                     </div>
                 @endif
                 <div class="card-body">
-                <form action="{{route('MngProduct.update',$product->id)}}" method="post">
+                <form action="{{route('MngProduct.update',$product->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="form-group">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <label for="detail">Mô tả</label>
-                        <textarea name="detail" id="detail" value="{{$product->detail}}" class="form-control" rows="2"></textarea>
+                        <textarea name="detail" id="detail" class="form-control" rows="3">{{$product->detail}}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="thumbnail">Hình ảnh sản phẩm</label> <br>
@@ -49,6 +49,9 @@
                         <img src="{{ asset('storage/product_images/'.$product->thumbnail) }}" id="ImagesProduct" class="img-thumbnail" width="250px"> <br><br>
                     @endif
                         <input type='file' name="thumbnail" onchange="readURL_Images(this);"/>
+                    @error('thumbnail')
+                        <br><div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </div>
                     <div class="form-group">
                         <label for="price">Giá *</label>
@@ -80,7 +83,7 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Giới thiệu sản phẩm</label>
-                        <textarea class="form-control" name="description" id="description" value="{{$product->description}}" rows="2"></textarea>
+                        <textarea class="form-control" name="description" id="description" rows="5">{{$product->description}}</textarea>
                     </div>
                       {{-- <div class="form-group">
                         <label>Tags</label>

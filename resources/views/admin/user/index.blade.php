@@ -53,10 +53,10 @@
                                 <td>
                                     <div style="display: flex;justify-content: space-between">
                                         <a href="{{route('MngUser.edit',$user->id)}}" class="btn btn-sm btn-primary">{{__('edit')}}</a>
-                                        <form action="{{route('MngUser.destroy',$user->id)}}" id="delete_user_{{$user->id}}"  method="post">
+                                        <form form="deleteUser" action="{{route('MngUser.destroy',$user->id)}}" method="post">
                                           @csrf
                                           @method('delete')
-                                          <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
+                                          <button form="deleteUser" type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
                                         </form>
                                     </div>
                                 </td>

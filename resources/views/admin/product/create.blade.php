@@ -8,14 +8,23 @@
                 <div class="card-header">
                    <h4>Thêm sản phẩm</h4>                           
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card-body">
-                  <form method="POST" action="{{route('MngProduct.store')}}" enctype="application/multipart">
+                  <form method="POST" action="{{route('MngProduct.store')}}" enctype="multipart/form-data">
                   @csrf
                     <div class="form-group">
                       <label for="name">Tên sản phẩm *</label>
                     <input type="text" class="form-control" name="name" value="{{old('name')}}" id="name" placeholder="Nhập tên sản phẩm">
                       @error('name')
-                          <br><div class="alert alert-danger">{{ $message }}</div>
+                          <br><div class="alert alert-danger">{{ $errors->first('name') }}</div>
                       @enderror
                     </div>
                     <div class="form-group">
@@ -41,7 +50,7 @@
                     </div>
                     <div class="form-group">
                       <label for="detail">Mô tả</label>
-                      <textarea name="detail" id="detail" value="{{old('detail')}}" class="form-control" rows="2"></textarea>
+                      <textarea name="detail" id="detail" class="form-control" rows="3">{{old('detail')}}</textarea>
                       @error('detail')
                           <br><div class="alert alert-danger">{{ $message }}</div>
                       @enderror
@@ -49,10 +58,10 @@
                     <div class="form-group">
                       <label for="thumbnail">Hình ảnh sản phẩm</label> <br>
                     <img src="{{ asset('images/noImg.jpg') }}" id="ImagesProduct" class="img-thumbnail" alt="" width="250px"> <br><br>
-                      <input type='file' id="thumbnail" value="noImg.jpg" name="thumbnail" onchange="readURL_Images(this);"/>
-                      @error('thumbnail')
-                          <br><div class="alert alert-danger">{{ $message }}</div>
-                      @enderror
+                      <input type='file' id="thumbnail" value="" name="thumbnail" onchange="readURL_Images(this);"/>
+                    @if($errors->has('thumbnail'))
+                          <br><div class="alert alert-danger">{!! $errors->first('thumbnail') !!}</div>
+                    @endif
                     </div>
                   
                     <div class="form-group">
@@ -98,7 +107,7 @@
                     </div>
                     <div class="form-group">
                       <label for="description">Giới thiệu sản phẩm</label>
-                      <textarea class="form-control" name="description" id="description" value="{{old('description')}}" rows="2"></textarea>
+                      <textarea class="form-control" name="description" id="description" rows="5">{{old('description')}}</textarea>
                       @error('description')
                         <br><div class="alert alert-danger">{{ $message }}</div>
                       @enderror
@@ -143,6 +152,7 @@
                       @enderror
                     </div>
                     <button class="btn btn-success" type="submit">Thêm</button>
+                    <a href="{{route('MngProduct.index')}}" class="btn btn-secondary"><span style="color: #ffffff">{{__('cancel')}}</span></a>
                   </form>
                 </div>
             </div>
