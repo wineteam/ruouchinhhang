@@ -1,0 +1,151 @@
+@extends('admin.layouts.dashboard')
+@section('contentAdmin')
+<section id="main-content">
+    <section class="wrapper">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                   <h4>Sửa sản phẩm</h4>
+                </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li class="text-center">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    </div>
+                @endif
+                <div class="card-body">
+                <form action="{{route('MngProduct.update',$product->id)}}" method="post">
+                    @csrf
+                    @method('PATCH')
+                    <div class="form-group">
+                      <label for="name">Tên sản phẩm *</label>
+                    <input type="text" class="form-control" name="name" id="name" value="{{$product->name}}" placeholder="Nhập tên sản phẩm">
+                    </div>
+                    <div class="form-group">
+                        <label for="codeProduct">Mã sản phẩm</label>
+                        <input type="text" class="form-control" name="codeProduct" id="codeProduct" value="{{$product->codeProduct}}" placeholder="Nhập Mã sản  phẩm">
+                      </div>
+                    <div class="form-group">
+                        <label for="size">Kích cỡ</label>
+                        <input type="text" class="form-control" name="size" value="{{$product->size}}" id="size" placeholder="Nhập kích cỡ">
+                    </div>
+                    <div class="form-group">
+                        <label for="vintage">Năm sản xuất</label>
+                        <input type="text" class="form-control" name="vintage" value="{{$product->vintage}}" id="vintage" placeholder="Nhập kích cỡ">
+                    </div>
+                    <div class="form-group">
+                        <label for="detail">Mô tả</label>
+                        <textarea name="detail" id="detail" value="{{$product->detail}}" class="form-control" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="thumbnail">Hình ảnh sản phẩm</label> <br>
+                    @if(Auth::user()->avatar == NULL)
+                        <img src="{{ asset('images/noImg.jpg') }}" id="ImagesProduct" class="img-thumbnail" width="250px"> <br><br>
+                    @else
+                        <img src="{{ asset('storage/product_images/'.$product->thumbnail) }}" id="ImagesProduct" class="img-thumbnail" width="250px"> <br><br>
+                    @endif
+                        <input type='file' name="thumbnail" onchange="readURL_Images(this);"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Giá *</label>
+                        <input type="number" name="price" class="form-control" value="{{$product->price}}" id="price" placeholder="Nhập giá sản phẩm">
+                    </div>
+                    <div class="form-group">
+                        <label for="discount">Giá giảm</label>
+                        <input type="number" name="discount" class="form-control" value="{{$product->discount}}" id="discount" placeholder="Nhập giá giảm sản phẩm">
+                    </div>
+                    <div class="form-group">
+                        <label for="nation">Quốc gia *</label>
+                        <input type="text" class="form-control" name="nation" value="{{$product->nation}}" id="nation" placeholder="Nhập quốc gia">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Số lượng *</label>
+                        <input type="number" class="form-control" name="amount" value="{{$product->amount}}" id="amount" placeholder="Nhập số lượng sản phẩm">
+                    </div>
+                    <div class="form-group">
+                        <label for="categories">Chọn danh mục</label>
+                        <br>
+                          @foreach($categories as $category)
+                          <label for="{{$category->id}}">
+                            <input type="checkbox" id="{{$category->id}}" name="categories[]"
+                             @if($category->checked === true) checked @endif
+                              value="{{$category->id}}"> {{$category->name}}
+                          </label>
+                          <br>
+                          @endforeach
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Giới thiệu sản phẩm</label>
+                        <textarea class="form-control" name="description" id="description" value="{{$product->description}}" rows="2"></textarea>
+                    </div>
+                      {{-- <div class="form-group">
+                        <label>Tags</label>
+                        <div class="" id="tags">
+  
+                        </div>
+                      </div> --}}
+                     
+                    <div class="form-group">
+                        <label for="is_public">Hiển thị sản phẩm</label>
+                        <select class="form-control" name="is_published"  id="is_public">
+                            @if ($product->is_published == 1)
+                            <option value="{{$product->is_published}}">Có</option>
+                            <option value="0">Không</option>
+                            @else
+                            <option value="1">Có</option>
+                            <option value="{{$product->is_published}}">Không</option>
+                            @endif
+                        </select>
+                    </div>
+                 
+                    <div class="form-group">
+                        <label for="especial">Đặc biệt</label>
+                        <select class="form-control" name="especially" id="especial">
+                            @if ($product->especially == 1)
+                            <option value="{{$product->especially}}">Có</option>
+                            <option value="0">Không</option>
+                            @else
+                            <option value="1">Có</option>
+                            <option value="{{$product->especially}}">Không</option>
+                            @endif
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Ngôn ngữ</label>
+                        <select class="form-control" name="language_id" id="especial">
+                         @foreach ($languages as $language)
+                          <option value="{{$language->id}}">{{$language->name}}</option>
+                         @endforeach
+                        </select>
+                    </div>
+                    <button class="btn btn-success" type="submit">{{__('editComfin')}}</button>
+                    <a href="{{route('MngProduct.index')}}" class="btn btn-secondary"><span style="color: #ffffff">{{__('cancel')}}</span></a>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+  </section>
+@endsection
+@section('script')
+<script> 
+    function readURL_Images(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#ImagesProduct')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+@endsection
+

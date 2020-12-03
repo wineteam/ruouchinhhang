@@ -155,7 +155,7 @@
 <script>
   $(document).ready(function() {
     $("#categories").select2({
-    placeholder: "elect categories"
+    placeholder: "select categories"
   })
 });
 

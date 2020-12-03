@@ -74,7 +74,7 @@
                         </table>
                     </form>
                     <div class="action mt-3">
-                      <input type="checkbox" id="selectAllRow" class="AcceptBtn">
+                      <input type="checkbox" id="selectAllRow">
                       <label for="selectAllRow">{{__('selectall')}}</label>
                       <button style="float: right; display:none" class="btn btn-sm btn-danger sheetDelete" form="deleteAllProduct" type="submit">{{__('deleteselec')}}</button>
                     </div>

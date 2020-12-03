@@ -97,13 +97,13 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/product', [MngProductController::class,'index'])->name('MngProduct.index');
   Route::get('/dashboard/product/search', [MngProductController::class,'search'])->name('MngProduct.search');
   Route::get('/dashboard/product/order={order}', [MngProductController::class,'orderPro'])->name('MngProduct.order');
-//ADMIN - USERS - CREATES
+//ADMIN - PRODUCTS - CREATES
   Route::get('/dashboard/product/create', [MngProductController::class,'create'])->name('MngProduct.create');
   Route::post('/dashboard/product/store', [MngProductController::class,'store'])->name('MngProduct.store');
-//ADMIN - USERS - EIDTS
+//ADMIN - PRODUCTS - EIDTS
   Route::get('/dashboard/product/edit/{id}', [MngProductController::class,'edit'])->name('MngProduct.edit');
   Route::patch('/dashboard/product/update/{id}', [MngProductController::class,'update'])->name('MngProduct.update');
-//ADMIN - USERS - DELETE
+//ADMIN - PRODUCTS - DELETE
   Route::delete('/dashboard/product/delete/{id}',[MngProductController::class,'destroy'])->name('MngProduct.destroy');//Xóa người dùng
   Route::delete('/dashboard/product/DeleteAll', [MngProductController::class,'deleteAll'])->name('MngProduct.deleteAll');
 //ADMIN - BLOGS
