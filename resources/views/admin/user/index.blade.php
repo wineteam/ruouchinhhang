@@ -8,14 +8,11 @@
                 <div class="card-header">
                     <h4>{{__('listuser')}}</h4>
                 <form class="form-inline float-left" method="GET" action="{{route('MngUser.search')}}">
-
                       <div class="form-group mx-sm-3 mb-2">
-
                         <input type="text" class="form-control" id="SearchRow" name="name" placeholder="...">
                       </div>
                       <button type="submit" class="btn btn-info mb-2">{{__('search')}}</button>
                 </form>
-
                     <a href="{{route('MngUser.create')}}" class="btn btn-sm btn-warning float-right">{{__('addnew')}}</a>
                     <div class="form-group float-right mr-4">
                       <select class="form-control" id="orderItem" onchange="location = this.value;">

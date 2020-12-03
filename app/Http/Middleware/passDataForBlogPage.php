@@ -29,7 +29,9 @@ class passDataForBlogPage
           ->where('language_switches.slug', '=', App()->getLocale());
       })->select('categories.*')->where('is_published','1')->where('type','1')->get();
       $tagPrimaryBLog = DB::table('tags')->where('primary','1')->limit('8')->get();
-        View::share(['categoriesBlog'=>$categorieBlog,'tagPrimaryBLog'=>$tagPrimaryBLog,'blogsRecent'=>$blogsRecent]);
-        return $next($request);
+      if(count($blogsRecent) > 0 || count($categorieBlog) > 0 || $tagPrimaryBLog > 0) {
+        View::share(['categoriesBlog' => $categorieBlog, 'tagPrimaryBLog' => $tagPrimaryBLog, 'blogsRecent' => $blogsRecent]);
+      }
+      return $next($request);
     }
 }

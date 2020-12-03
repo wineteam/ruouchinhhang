@@ -26,9 +26,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $info = infoSite::firstOrFail();
-        Paginator::useBootstrap();
-        View::share('info',$info);
+       if(Schema::hasTable('info_sites')){
+         $info = infoSite::firstOrFail();
+         if($info) {
+           View::share('info', $info);
+         }
+       }
+      Paginator::useBootstrap();
         if(Schema::hasTable('language_switches')) {
           $languages = LanguageSwitch::get();
           view()->share('languages', $languages);

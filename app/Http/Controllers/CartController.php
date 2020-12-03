@@ -16,8 +16,9 @@ class CartController extends Controller
      */
     public function index()
     {
-      $subtotal = Cart::subtotal();
+      $subtotal = Cart::subtotal(0,",",".");
       $discount = session()->get('coupon')['discount'] ?? 0;
+      $discount = number_format($discount,0,",",".");
       $tax = config('cart.tax') /100;
       $newSubtotal = ( $subtotal - $discount);
       $newTax =$newSubtotal * $tax;
@@ -40,12 +41,13 @@ class CartController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
-     */
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param \Illuminate\Http\Request $request
+   * @param int $qty
+   * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+   */
     public function store(Request $request, $qty = 1)
     {
       $products = Product::all();

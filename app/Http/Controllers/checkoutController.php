@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class checkoutController extends Controller
@@ -13,7 +14,23 @@ class checkoutController extends Controller
      */
     public function index()
     {
-        return view('client.checkout');
+      $subtotal = Cart::subtotal(0,",",".");
+      $tax = $subtotal * (config('cart.tax') /100);
+      $total = Cart::total(0,",",".");
+      $discount = session()->get('coupon')['discount'] ?? 0;
+      $discount = number_format($discount,0,",",".");
+      if($discount > 0){
+        $subtotal -= $discount;
+        $tax = $subtotal * (config('cart.tax') /100);
+        $total = $subtotal * (1 +  (config('cart.tax') /100));
+      }
+
+        return view('client.checkout')->with([
+          'discount'=>$discount,
+          'subtotal'=>$subtotal,
+          'tax'=>$tax,
+          'total'=>$total
+        ]);
     }
 
     /**

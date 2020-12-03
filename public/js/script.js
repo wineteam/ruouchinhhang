@@ -68,7 +68,6 @@ function filterSelection(c) {
         FilterRemoveClass(x[i], "show");
       }
       const unique = divVisible.filter((v, i, a) => a.indexOf(v) === i);
-      // console.log(document.getElementsByClassName(unique[0]))
       const even = (x) => FilterAddClass(document.getElementsByClassName(x)[0],'show');
       unique.some(even);
       return ;
