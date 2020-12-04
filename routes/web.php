@@ -86,6 +86,8 @@ Route::middleware('CheckAdminLogin')->group(function(){
 
   Route::get('/admin/dashboard', [DashboardController::class,'index'])->name('dashboard.index');
 
+  //ADMIN - CATELOG_PRODUCTS
+  Route::get('/dashboard/categories', [MngCateLogProDuctController::class,'index'])->name('MngCateLog.index');
 //ADMIN - CATELOG_PRODUCTS
   Route::get('/dashboard/categories_products', [MngCateLogProDuctController::class,'index'])->name('MngCateLogProDuct.index');
   Route::get('/dashboard/categories_products/search', [MngCateLogProDuctController::class,'search'])->name('MngCateLogProDuct.search');
