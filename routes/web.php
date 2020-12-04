@@ -183,9 +183,12 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::delete('/dashboard/user/DeleteAll', [MngUserController::class,'deleteAll'])->name('MngUser.deleteAll');
 //ADMIN - ORDERS
   Route::get('/dashboard/order', [MngOrderController::class,'index'])->name('MngOrder.index');
+  Route::get('/dashboard/order/search', [MngOrderController::class,'search'])->name('MngOrder.search');
+  Route::get('/dashboard/order/order={order}', [MngOrderController::class,'orderPro'])->name('MngOrder.order');
 //ADMIN - ORDERS_DETAILS
   Route::get('/dashboard/orderDetail', [MngOrderDetailController::class,'index'])->name('MngOrderDetail.index');
-
+  Route::get('/dashboard/orderDetail/search', [MngOrderDetailController::class,'search'])->name('MngOrderDetail.search');
+  Route::get('/dashboard/orderDetail/order={order}', [MngOrderDetailController::class,'orderPro'])->name('MngOrderDetail.order');
 
 });
 
