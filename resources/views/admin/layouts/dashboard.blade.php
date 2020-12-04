@@ -209,7 +209,6 @@
               <span>{{__('catelog')}}</span>
               </a>
             <ul class="sub">
-              <li><a href="{{route ('MngCateLog.index')}}">{{__('catelogall')}}</a></li>
               <li><a href="{{route ('MngCateLogProDuct.index')}}">{{__('catelogproduct')}}</a></li>
               <li><a href="{{route ('MngCateLogBlog.index')}}">{{__('catelogblog')}}</a></li>
             </ul>

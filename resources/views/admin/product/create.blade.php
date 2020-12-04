@@ -130,8 +130,8 @@
                     </div> --}}
                    
                     <div class="form-group">
-                      <label for="is_public">Hiển thị sản phẩm</label>
-                      <select class="form-control" name="is_published"  id="is_public">
+                      <label for="is_published">Hiển thị sản phẩm</label>
+                      <select class="form-control" name="is_published"  id="is_published">
                         <option value="1">Có</option>
                         <option value="0">Không</option>
                       </select>
@@ -152,7 +152,7 @@
                     </div>
                     <div class="form-group">
                       <label for="language">Ngôn ngữ</label>
-                      <select class="form-control" name="language_id" id="especial">
+                      <select class="form-control" name="language_id" id="language_id">
                        @foreach ($languages as $language)
                         <option value="{{$language->id}}">{{$language->name}}</option>
                        @endforeach

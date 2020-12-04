@@ -28,10 +28,10 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="primary">Hiển thị Tags</label>
+                      <label for="primary">Hiển thị Primary Tags</label>
                       <select class="form-control" name="primary"  id="primary">
-                        <option @if($tags->primary = 1) selected @endif value="1">Có</option>
-                        <option @if($tags->primary = 0) selected @endif value="0">Không</option>
+                        <option @if($tags->primary === '1') selected @endif value="1">Có</option>
+                        <option @if($tags->primary === '0') selected @endif value="0">Không</option>
                       </select>
                       @error('primary')
                         <br><div class="alert alert-danger">{{ $message }}</div>

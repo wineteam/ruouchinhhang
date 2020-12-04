@@ -35,7 +35,6 @@ class MngBannerController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'thumbnail' => ['mimes:jpeg,png,bmp,tiff', 'max:2048'],
         'name' => ['required', 'string', 'max:255'],
         'description' => ['required', 'string', 'max:255'],
         'link' => ['required', 'string', 'max:255'],

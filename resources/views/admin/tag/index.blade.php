@@ -36,7 +36,7 @@
                       <tr>
                           <th scope="col" width="60">#</th>
                           <th scope="col">{{__('name')}}</th>
-                          <th scope="col">{{__('Status')}}</th>
+                          <th scope="col">{{__('Status')}} Primary</th>
                           <th scope="col" width="200">{{__('Datecreated')}}</th>
                           <th scope="col" width="200">{{__('Language')}}</th>
                           <th scope="col" width="129">{{__('Action')}}</th>

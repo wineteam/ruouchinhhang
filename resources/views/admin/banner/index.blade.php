@@ -80,6 +80,9 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12" style="display: flex">
+      {{$banner->links()}}
+    </div>
   </section>
 </section>
 @endsection

@@ -99,18 +99,18 @@
                     </div>
                      
                     <div class="form-group">
-                        <label for="is_public">Hiển thị sản phẩm</label>
-                        <select class="form-control" name="is_published"  id="is_public">
-                            <option @if($product->is_public = 1) selected @endif value="1">Có</option>
-                            <option @if($product->is_public = 0) selected @endif value="0">Không</option>
+                        <label for="is_published">Hiển thị sản phẩm</label>
+                        <select class="form-control" name="is_published"  id="is_published">
+                            <option @if($product->is_published === '1') selected @endif value="1">Có</option>
+                            <option @if($product->is_published === '0') selected @endif value="0">Không</option>
                         </select>
                     </div>
                  
                     <div class="form-group">
                         <label for="especial">Đặc biệt</label>
                         <select class="form-control" name="especially" id="especial">
-                            <option @if($product->is_public = 1) selected @endif value="1">Có</option>
-                            <option @if($product->is_public = 0) selected @endif value="0">Không</option>
+                            <option @if($product->especially === '1') selected @endif value="1">Có</option>
+                            <option @if($product->especially === '0') selected @endif value="0">Không</option>
                         </select>
                     </div>
                     <div class="form-group">
