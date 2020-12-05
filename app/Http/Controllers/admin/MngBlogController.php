@@ -5,87 +5,194 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\LanguageSwitch;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MngBlogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
     public function index()
     {
-      $blogs = Blog::all();
+      $blogs = Blog::orderBy('created_at','desc')->paginate(12);
       $tags = Tag::select('tags.*')->where('primary', '1')->get();
       $categorys = Category::select('categories.*')->where('is_published','1')->where('type','1')->get();
       return view('admin.post.index')->with(["blogs"=>$blogs,"tags"=>$tags,"categorys"=>$categorys]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
+    public function orderPro($order)
+    {
+      if($order === "old"){
+        $tags = Tag::select('tags.*')->where('primary', '1')->get();
+        $categorys = Category::select('categories.*')->where('is_published','1')->where('type','1')->get();
+        $blogs = Blog::paginate(12);
+        $old = "selected";
+        return view('admin.post.index',compact('blogs','old','tags','categorys'));
+      }
+        $new = "selected";
+        $tags = Tag::select('tags.*')->where('primary', '1')->get();
+        $categorys = Category::select('categories.*')->where('is_published','1')->where('type','1')->get();
+        $blogs = Blog::orderBy('created_at','desc')->paginate(12);
+        return view('admin.post.index',compact('blogs','new','tags','categorys'));
+    }
+    public function search(Request $request){
+        $tags = Tag::select('tags.*')->where('primary', '1')->get();
+        $categorys = Category::select('categories.*')->where('is_published','1')->where('type','1')->get();
+        $blogs = Blog::
+        where('title','like','%'.$request->title.'%')
+        ->paginate(12);
+        return view('admin.post.index')->with(["blogs"=>$blogs,"tags"=>$tags,"categorys"=>$categorys]);
+    }
+
+
     public function create()
     {
-        return view('admin.create-post');
+     
+      $categories = Category::where('type','=','1')->get();
+      $languages = LanguageSwitch::all();
+      $Tag = Tag::select('tags.*')->where('primary', '1')->get();
+      return view('admin.post.create')->with(['categories'=>$categories,'languages'=>$languages,'Tag'=>$Tag]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+          'title' => 'required | string | max:255',
+          'description' => 'required | string',
+          'content' => 'required | string',
+      ],
+      [
+          'title.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+          'description.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+          'content.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+      ]);
+      $user_id = Auth()->user()->id;
+      $blogs = new Blog;
+      $blogs->user_id = $user_id;
+      $blogs->title = $request->title;
+      $blogs->slug = str_slug($request->title);
+      if( $request->hasFile('thumbnail')){
+        $name = $blogs->id.$request->thumbnail->getClientOriginalName();
+        $path = $request->thumbnail->storeAs('blog_images',$name,'public');
+        $blogs->thumbnail  = $path;
+      }
+      $blogs->description = $request->description;
+      $blogs->content = $request->content;
+      $blogs->language_id  = $request->language_id;
+      $blogs->is_published  = $request->is_published;
+      $blogs->especially  = $request->especially;
+      $saved = $blogs->save();
+      if(isset($request->categories) && $saved === true){
+        $blogs->categories->sync($request->categories);
+      }
+      if(isset($request->tags) && $saved == true){
+        //$blogs->tags->sync($request->tags);
+      }
+      if($saved === false){
+        Storage::delete($name);
+        
+      };
+      session()->flash('success', 'Thêm thành công');
+
+      return redirect()->route('MngBlog.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function edit(Blog $id)
     {
-        //
+      $categories = [];
+      $CategoryChecked = $id->categories()->get();
+      $Category = Category::all();
+      foreach ($Category as $Categorys){
+        $Categorys['checked'] = false;
+        foreach ($CategoryChecked as $CategoryCheckeds){
+          if ($Categorys['slug'] === $CategoryCheckeds->slug){
+            $Categorys['checked'] = true;
+          }
+        }
+          $categories[] = $Categorys;
+      }
+      $NTags = [];
+      $TagsChecked = $id->tags()->get();
+      $Tag = Tag::select('tags.*')->where('primary', '1')->get();
+      foreach ($Tag as $Tags){
+        $Tags['checked'] = false;
+        foreach ($TagsChecked as $TagChecked){
+          if ($Tags['slug'] === $TagChecked->slug){
+            $Tags['checked'] = true;
+          }
+        }
+          $NTags[] = $Tags;
+      }
+      return view('admin.post.edit')->with(['blogs'=>$id,'categories'=>$categories,'NTags'=>$NTags]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $request,$id)
     {
-        //
+      $blogs = Blog::find($id);
+      $user_id = Auth()->user()->id;
+      $slug = str_slug($request->title);
+      if(isset($request->user_id)){
+        $blogs->user_id = $request->user_id;
+      }
+      if(isset($request->slug)){
+        $blogs->slug = $request->slug;
+      }
+      if(isset($request->title)){
+        $blogs->title = $request->title;
+      }
+      if( $request->hasFile('thumbnail')){
+        $name = $blogs->id.$request->thumbnail->getClientOriginalName();
+        $path = $request->thumbnail->storeAs('blog_images',$name,'public');
+        $blogs->thumbnail  = $path;
+      }
+      if(isset($request->description)){
+        $blogs->description = $request->description;
+      }
+      if(isset($request->content)){
+        $blogs->content = $request->content;
+      }
+      if(isset($request->is_published)){
+        $blogs->is_published = $request->is_published;
+      }
+      if(isset($request->especially)){
+        $blogs->especially = $request->especially;
+      }
+      if(isset($request->language)){
+        $blogs->language = $request->language;
+      }
+      $saved = $blogs->save();
+      
+      if(isset($request->categories) && $saved == true){
+        $blogs->categories()->sync($request->categories);
+      }
+      if(isset($request->tags) && $saved == true){
+        //$blogs->tags->sync($request->tags);
+      }
+      if($saved === false){
+        Storage::delete($name);
+        
+      };
+      session()->flash('message','success');
+      return redirect('/dashboard/blog');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function destroy(Blog $id)
     {
-        //
+      $id->delete();
+      session()->flash('message', 'Xóa Người dùng thành công');
+      return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function deleteAll(Request $request) {
+      $BlogId = explode(',',$request->BlogId[0]);
+      $deleted = Blog::whereIn('id',$BlogId)->delete();
+      if($deleted) {
+        return redirect()->back()->with('message', 'Da xoa thanh cong');
+      }
+      return redirect()->back()->with('message', 'Xoa khong thanh cong');
     }
 }

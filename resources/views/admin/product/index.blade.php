@@ -49,7 +49,7 @@
             
                             @foreach ($products as $product)
                               <tr>
-                                <td><input type="checkbox" name='productId[]' value="{{$product->id}}" class="selectAllchilden"></td>
+                                <td><input type="checkbox" name='Product_Id[]' value="{{$product->id}}" class="selectAllchilden"></td>
                                 <td><img src="{{asset('storage/'.$product->thumbnail) }}" width="60px" alt=""></td>
                                 <td><a href="#">{{ $product->name }}</a></td>
                                 <td>{{ $product->nation }}</td>
@@ -92,8 +92,8 @@
 @section('script')
 <script>
     let productId = [];
-    function deleteAllProduct(){
-      $('input[name^="ProductId"]').each(function() {
+  function deleteAllProduct(){
+      $('input[name^="Product_Id"]').each(function() {
         if($(this).is(':checked')){
           productId.push($(this).val());
         }
@@ -112,7 +112,8 @@
           return true;
         }
         return false;
-      });
+  });
+    
 
       $('#selectAllRow').on('click', function(e) {
         if($(this).is(':checked',true))

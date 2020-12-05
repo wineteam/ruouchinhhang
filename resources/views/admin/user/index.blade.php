@@ -106,7 +106,7 @@
           return true;
         }
         return false;
-      });
+  });
 
       $('#selectAllRow').on('click', function(e) {
         if($(this).is(':checked',true))

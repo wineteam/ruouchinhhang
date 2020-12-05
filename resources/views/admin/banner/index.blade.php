@@ -48,7 +48,7 @@
                 
                       @foreach ($banner as $banners)
                         <tr>
-                          <td><input type="checkbox" class="selectAllchilden"></td>
+                          <td><input type="checkbox" name='Banner_Id[]' value="{{$banners->id}}" class="selectAllchilden"></td>
                           <td><img src="{{asset('storage/'.$banners->thumbnail) }}" width="100px" alt=""></td>
                           <td><a href="">{{$banners->name}}</a></td>
                           <td>{{$banners->description}}</td>
@@ -90,7 +90,7 @@
 <script>
     let BannerId = [];
     function deleteAllBanner(){
-      $('input[name^="BannerId"]').each(function() {
+      $('input[name^="Banner_Id"]').each(function() {
         if($(this).is(':checked')){
           BannerId.push($(this).val());
         }
