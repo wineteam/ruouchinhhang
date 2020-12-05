@@ -116,6 +116,12 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/coupon', [MngCouponController::class,'index'])->name('MngCoupon.index');
 //ADMIN - COMMENTS
   Route::get('/dashboard/comment', [MngCommentController::class,'index'])->name('MngComment.index');
+// ADMIN - APPROVE -COMMENT
+  Route::patch('/dashboard/comment/{id}/approved', [MngCommentController::class,'approvedComment'])->name('MngComment.approved');
+//  ADMIN - DELETE - COMMENT
+  Route::delete('/dashboard/comment/{comment}/delete', [MngCommentController::class,'destroy'])->name('MngComment.delete');
+  //  ADMIN - DELETEAll - COMMENT
+  Route::delete('/dashboard/comment/deleteAll', [MngCommentController::class,'deleteAll'])->name('MngComment.deleteAll');
 //ADMIN - BANNERS
   Route::get('/dashboard/banner', [MngBannerController::class,'index'])->name('MngBanner.index');
   Route::get('/dashboard/banner/search', [MngBannerController::class,'search'])->name('MngBanner.search');

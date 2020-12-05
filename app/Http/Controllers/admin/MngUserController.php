@@ -110,8 +110,8 @@ class MngUserController extends Controller
     }
 
     public function deleteAll(Request $request) {
-      $user_id = explode(',',$request->user_id[0]);
-      $deleted = User::whereIn('id',$user_id)->delete();
+      $users_id = explode(',',$request->user_id[0]);
+      $deleted = User::whereIn('id',$users_id)->delete();
       if($deleted) {
         return redirect()->back()->with('message', 'Da xoa thanh cong');
       }

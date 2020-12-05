@@ -204,12 +204,11 @@
               </a>
           </li>
           <li class="sub-menu"><!-- CATELOG -->
-            <a href="javascript:;" class="EffectActive">
+            <a href="javascript:" class="EffectActive">
              <i class="fas fa-book-open"></i>
               <span>{{__('catelog')}}</span>
               </a>
             <ul class="sub">
-              <li><a href="{{route ('MngCateLog.index')}}">{{__('catelogall')}}</a></li>
               <li><a href="{{route ('MngCateLogProDuct.index')}}">{{__('catelogproduct')}}</a></li>
               <li><a href="{{route ('MngCateLogBlog.index')}}">{{__('catelogblog')}}</a></li>
             </ul>

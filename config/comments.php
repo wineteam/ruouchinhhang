@@ -34,7 +34,7 @@ return [
      * own routes and controller for comments.
      */
     'routes' => true,
-
+//
     /**
      * By default comments posted are marked as approved. If you want
      * to change this, set this option to true. Then, all comments
@@ -49,7 +49,7 @@ return [
      *     ])
      *
      */
-    'approval_required' => false,
+    'approval_required' => true,
 
     /**
      * Set this option to `true` to enable guest commenting.
@@ -70,6 +70,6 @@ return [
      * Enable/disable the package provider to load migrations.
      * This option might be useful if you use multiple database connections.
      */
-    'load_migrations' => true,
+    'load_migrations' => false,
 
 ];

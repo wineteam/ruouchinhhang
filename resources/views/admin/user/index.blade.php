@@ -45,7 +45,11 @@
                         </form>
                             @foreach ($users as $user)
                               <tr>
-                              <td><input type="checkbox" name='userId[]' value="{{$user->id}}" class="selectAllchilden"></td>
+                              <td>
+                                <label>
+                                  <input type="checkbox" name='userId[]' value="{{$user->id}}" class="selectAllChildren">
+                                </label>
+                              </td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->phone}}</td>
@@ -111,15 +115,15 @@
       $('#selectAllRow').on('click', function(e) {
         if($(this).is(':checked',true))
         {
-          $(".selectAllchilden").prop('checked', true);
+          $(".selectAllChildren").prop('checked', true);
           $(".sheetDelete").css("display", "block");
         } else {
-          $(".selectAllchilden").prop('checked',false);
+          $(".selectAllChildren").prop('checked',false);
           $(".sheetDelete").css("display", "none");
         }
       });
 
-      $('.selectAllchilden').on('click', function(e) {
+      $('.selectAllChildren').on('click', function(e) {
         if($(this).is(':checked',true))
         {
           $(".sheetDelete").css("display", "block");

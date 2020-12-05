@@ -7,22 +7,7 @@
               <div class="card">
                   <div class="card-header">
                       <h4>{{__('articlecomment')}}</h4>
-                      <form class="form-inline float-left" >
 
-                        <div class="form-group mx-sm-3 mb-2">
-
-                          <input type="text" class="form-control" id="SearchRow" placeholder="...">
-                        </div>
-                        <button type="submit" class="btn btn-info mb-2">{{__('search')}}</button>
-                      </form>
-
-                      <a href="#" class="btn btn-sm btn-warning float-right">{{__('addnew')}}</a>
-                      <div class="form-group float-right mr-4">
-                        <select class="form-control" id="orderItem">
-                          <option>Mới nhất</option>
-                          <option>Cũ nhất</option>
-                        </select>
-                      </div>
                   </div>
 
                   <div class="card-body">
@@ -39,24 +24,42 @@
                           </tr>
                           </thead>
                           <tbody>
-                              <tr>
-                                  <td><input type="checkbox"></td>
-                                  <td><a href="">Hoaianh@gmail.com</a></td>
-                                  <td>
-                                     sản phẩm ngon
-                                  </td>
-                                  <td>White wine</td>
-                                  <td>16/10/2020</td>
-                                  <td><input type="checkbox"></td>
-                                  <td style="display: flex;justify-content: space-between">
-                                     <form action="#"  method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
-                                      </form>
-                                  </td>
-                              </tr>
-
+                          <form method="POST" id="deleteAllComment" action="{{route('MngComment.deleteAll')}}">
+                            @csrf
+                            @method('delete')
+                            <input type="hidden" name="comment_id[]">
+                          </form>
+                          @foreach($comments as $comment)
+                            <tr>
+                              <td>
+                                  <label>
+                                    <input type="checkbox" name='commentId[]' value="{{$comment->id}}" class="selectAllChildren">
+                                  </label>
+                              </td>
+                              <td>{{$comment->commenter->email}}</td>
+                              <td>
+                                  {{$comment->comment}}
+                              </td>
+                              <td>{{$comment->commentable->name}}</td>
+                              <td>{{\Carbon\Carbon::parse($comment->created_at)->format('H:i:s d/m/Y')}}</td>
+                              <td>
+                                <form action="{{route('MngComment.approved',$comment->id)}}" method="post">
+                                  @method('patch')
+                                  @csrf
+                                  <label>
+                                    <input @if($comment->approved === true) checked @endif  onchange="this.form.submit()" type="checkbox">
+                                  </label>
+                                </form>
+                              </td>
+                              <td style="display: flex;justify-content: space-between">
+                                 <form action="{{route('MngComment.delete',$comment->id)}}"  method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
+                                  </form>
+                              </td>
+                            </tr>
+                          @endforeach
                           </tbody>
                       </table>
                       <div class="action mt-3">
@@ -65,7 +68,7 @@
 
                         <form class="float-right" action="">
                           <input type="hidden">
-                          <button class="btn btn-sm btn-danger" type="submit">{{__('deleteselec')}}</button>
+                          <button class="btn btn-sm btn-danger" onclick="deleteAllComment()" type="button">{{__('deleteselec')}}</button>
                         </form>
                       </div>
                   </div>
@@ -77,13 +80,23 @@
 @endsection
 @section('script')
 <script>
+  let user_id = [];
+  function deleteAllComment(){
+      $('input[name^="commentId"]').each(function() {
+        if($(this).is(':checked')){
+          user_id.push($(this).val());
+        }
+      });
+      $('input[name^="comment_id"]').val(user_id)
+      $('#deleteAllComment').submit();
+    }
     $(document).ready(function(){
       $('.deleteItem').click(function (e) {
       e.preventDefault();
-      var formname = $(this).parent();
+      let formName = $(this).parent();
       const confirmDelete = confirm("Bạn chắc chắn xóa chứ ?");
-      if(confirmDelete == true){
-        formname.submit();
+      if(confirmDelete === true){
+        formName.submit();
         return true;
       }
       return false;
@@ -92,20 +105,20 @@
       $('#selectAllRow').on('click', function(e) {
         if($(this).is(':checked',true))
         {
-          $(".selectAllchilden").prop('checked', true);
-          $(".sheetDelete").css("display", "block");;
+          $(".selectAllChildren").prop('checked', true);
+          $(".sheetDelete").css("display", "block");
         } else {
-          $(".selectAllchilden").prop('checked',false);
-          $(".sheetDelete").css("display", "none");;
+          $(".selectAllChildren").prop('checked',false);
+          $(".sheetDelete").css("display", "none");
         }
       });
 
-      $('.selectAllchilden').on('click', function(e) {
+      $('.selectAllChildren').on('click', function(e) {
         if($(this).is(':checked',true))
         {
-          $(".sheetDelete").css("display", "block");;
+          $(".sheetDelete").css("display", "block");
         } else {
-          $(".sheetDelete").css("display", "none");;
+          $(".sheetDelete").css("display", "none");
         }
       });
 

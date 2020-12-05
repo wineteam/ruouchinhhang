@@ -15,11 +15,13 @@ class Blog extends Model
         return $this->belongsTo(User::class)->first();
     }
 
-    public function tags(){
+    public function tags(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
         return $this->hasMany(Tag::class);
     }
 
-    public function categories(){
+    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
         return $this->belongsToMany(Category::class,'category_blogs');
     }
 }

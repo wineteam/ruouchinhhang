@@ -2,36 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\Tag;
-use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use mysql_xdevapi\Table;
 
-class DatabaseSeeder extends Seeder
+class CategoriesSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-      \App\Models\User::factory(20)->create();
-      DB::table('language_switches')->insert([
-             [
-                 'name'=>'Việt Nam',
-                 'slug'=>'vn',
-                 'created_at'=>now(),
-                 'updated_at'=>now()
-             ],
-             [
-                 'name'=>'English',
-                 'slug'=>'en',
-                 'created_at'=>now(),
-                 'updated_at'=>now()
-             ],
-         ]);
       DB::table('categories')->insert([
         [
           'user_id'=>20,
@@ -188,61 +171,5 @@ class DatabaseSeeder extends Seeder
           'updated_at'=>Carbon::now()
         ],
       ]);
-      DB::table('info_sites')->insert([
-        'fan_page'=>null,
-        'email'=>'wineteam@gmail.com',
-        'phone'=>'0983454248',
-        'address'=>'Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh, Việt Nam',
-        'created_at'=>now(),
-        'updated_at'=>now()
-      ]);
-      DB::table('roles')->insert([
-        [
-          'name'=>'Manager all',
-          'slug'=>'manager_all',
-          'created_at'=>now(),
-          'updated_at'=>now()
-        ],
-        [
-          'name'=>'Manager categories',
-          'slug'=>'manager_categories',
-          'created_at'=>now(),
-          'updated_at'=>now()
-        ],
-        [
-          'name'=>'Manager Users',
-          'slug'=>'manager_users',
-          'created_at'=>now(),
-          'updated_at'=>now()
-        ],
-        [
-          'name'=>'Manager products',
-          'slug'=>'manager_products',
-          'created_at'=>now(),
-          'updated_at'=>now()
-        ],
-        [
-          'name'=>'Manager coupons',
-          'slug'=>'manager_coupons',
-          'created_at'=>now(),
-          'updated_at'=>now()
-        ],
-        [
-          'name'=>'Manager blogs',
-          'slug'=>'manager_blogs',
-          'created_at'=>now(),
-          'updated_at'=>now()
-        ],
-        [
-          'name'=>'Manager orders',
-          'slug'=>'manager_orders',
-          'created_at'=>now(),
-          'updated_at'=>now()
-        ],
-
-      ]);
-      \App\Models\Product::factory(20)->create();
-      \App\Models\Blog::factory(20)->create();
-      \App\Models\Tag::factory(150)->create();
     }
 }

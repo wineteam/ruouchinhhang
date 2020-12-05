@@ -35,7 +35,7 @@
           @empty
             <a href="#">Không phân loại</a>
           @endforelse
-          <h4><a class="text-danger" href="{{route('shop.show',$product->slug)}}">{{\Illuminate\Support\Str::limit($product->name,14)}}</a></h4>
+          <h4><a class="text-danger" href="{{route('shop.show',$product->slug)}}">{{$product->id}}{{\Illuminate\Support\Str::limit($product->name,14)}}</a></h4>
           <p>
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
