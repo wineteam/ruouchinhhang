@@ -70,28 +70,11 @@
                         <input type="number" class="form-control" name="amount" value="{{$product->amount}}" id="amount" placeholder="Nhập số lượng sản phẩm">
                     </div>
                     <div class="form-group Limit-hetght">
-                        <label for="categories">Chọn danh mục</label>
-                        <br>
-                          @foreach($categories as $category)
-                          <label for="{{$category->id}}">
-                            <input type="checkbox" id="{{$category->id}}" name="categories[]"
-                             @if($category->checked === true) checked @endif
-                              value="{{$category->id}}"> {{$category->name}}
-                          </label>
-                          <br>
-                          @endforeach
-                    </div>
-                    <div class="form-group Limit-hetght">
-                        <label for="NTags">Chọn Tags</label>
-                        <br>
-                          @foreach($NTags as $Tags)
-                          <label for="{{$Tags->id}}">
-                            <input type="checkbox" id="{{$Tags->id}}" name="NTags[]"
-                             @if($Tags->checked === true) checked @endif
-                              value="{{$Tags->id}}"> {{$Tags->name}}
-                          </label>
-                          <br>
-                          @endforeach
+                       <select name="categories[]" id="categories" multiple class="form-control">
+                           @foreach ($categories as $category)                            
+                                <option  @if($category->checked === true) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                           @endforeach
+                       </select>
                     </div>
                     <div class="form-group">
                         <label for="description">Giới thiệu sản phẩm</label>
@@ -117,7 +100,7 @@
                         <label for="language">Ngôn ngữ</label>
                         <select class="form-control" name="language_id" id="especial">
                          @foreach ($languages as $language)
-                          <option value="{{$language->id}}">{{$language->name}}</option>
+                          <option @if($product->language_id == $language->id) selected @endif value="{{$language->id}}">{{$language->name}}</option>
                          @endforeach
                         </select>
                     </div>
@@ -133,6 +116,14 @@
 @endsection
 @section('script')
 <script> 
+  $(document).ready(function() {
+    $("#categories").select2({
+    placeholder: "select categories"
+  })
+  $("#Tags").select2({
+    placeholder: "select Tags"
+  })
+});
     function readURL_Images(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

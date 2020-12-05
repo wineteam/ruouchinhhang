@@ -104,17 +104,6 @@
                         @enderror
                       </select>
                     </div>
-                    <div class="form-group Limit-hetght">
-                      <label for="Tags">Chọn Tags *</label>
-                      <select id="Tags" name="Tag[]"  class="form-control" multiple="multiple">
-                        @foreach ($Tag as $Tags)
-                          <option value="{{$Tags->slug}}">{{$Tags->name}}</option>
-                        @endforeach
-                        @error('Tag')
-                          <br><div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                      </select>
-                    </div>
                     <div class="form-group">
                       <label for="description">Giới thiệu sản phẩm</label>
                       <textarea class="form-control" name="description" id="description" rows="5">{{old('description')}}</textarea>

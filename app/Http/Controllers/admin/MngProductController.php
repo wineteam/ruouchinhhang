@@ -105,12 +105,11 @@ class MngProductController extends Controller
       $product->especially  = $request->especially;
       $product->amount = $request->amount;
       $saved = $product->save();
+      /* Lỗi ở đây */
       if(isset($request->categories) && $saved === true){
-        $product->categories->sync($request->categories);
+        $product->categories()->sync($request->categories);
       }
-      if(isset($request->tags) && $saved == true){
-        // $product->tags()->sync($request->tags);
-      }
+      /* END Lỗi ở đây */
       if($saved === false){ //ERRORS < HERE
         Storage::delete($name);
         
@@ -123,45 +122,30 @@ class MngProductController extends Controller
     public function edit(Product $id)
     {
       $categories = [];
-      $CategoryChecked = $id->categories()->get();
-      $Category = Category::all();
-      foreach ($Category as $Categorys){
-        $Categorys['checked'] = false;
-        foreach ($CategoryChecked as $CategoryCheckeds){
-          if ($Categorys['slug'] === $CategoryCheckeds->slug){
-            $Categorys['checked'] = true;
+      $CategoryCheckeds = $id->categories()->get();
+      $AllCategory = Category::where('type','0')->get();
+      foreach ($AllCategory as $Category){
+        $Category['checked'] = false;
+        foreach ($CategoryCheckeds as $CategoryChecked){
+          if ($Category['slug'] === $CategoryChecked->slug){
+            $Category['checked'] = true;
           }
         }
-          $categories[] = $Categorys;
+          $categories[] = $Category;
       }
-      $NTags = [];
-      $TagsChecked = $id->tags()->get();
-      $Tag = Tag::select('tags.*')->where('primary', '1')->get();
-      foreach ($Tag as $Tags){
-        $Tags['checked'] = false;
-        foreach ($TagsChecked as $TagChecked){
-          if ($Tags['slug'] === $TagChecked->slug){
-            $Tags['checked'] = true;
-          }
-        }
-          $NTags[] = $Tags;
-      }
-      return view('admin.product.edit')->with(['product'=>$id,'categories'=>$categories,'NTags'=>$NTags]);
+      return view('admin.product.edit')->with(['product'=>$id,'categories'=>$categories]);
     }
 
     public function update(Request $request,$id)
     {
       $product = Product::find($id);
       $user_id = Auth()->user()->id;
-      $slug = str_slug($request->name);
-      if(isset($request->user_id)){
-        $product->user_id = $request->user_id;
-      }
-      if(isset($request->slug)){
-        $product->slug = $request->slug;
+      if($user_id != false){
+        $product->user_id = $user_id;
       }
       if(isset($request->name)){
         $product->name = $request->name;
+        $product->slug = str_slug($request->name);
       }
       if(isset($request->codeProduct)){
         $product->codeProduct = $request->codeProduct;
@@ -186,14 +170,14 @@ class MngProductController extends Controller
       if(isset($request->discount)){
         $product->discount = $request->discount;
       }
+      if(isset($request->description)){
+        $product->description = $request->description;
+      }
       if(isset($request->nation)){
         $product->nation = $request->nation;
       }
       if(isset($request->amount)){
         $product->amount = $request->amount;
-      }
-      if(isset($request->roles)){
-        $product->roles = $request->roles;
       }
       if(isset($request->is_published)){
         $product->is_published = $request->is_published;
@@ -201,23 +185,22 @@ class MngProductController extends Controller
       if(isset($request->especially)){
         $product->especially = $request->especially;
       }
-      if(isset($request->language)){
-        $product->language = $request->language;
+      if(isset($request->language_id)){
+        $product->language_id = $request->language_id;
       }
       $saved = $product->save();
-      
+      /* Lỗi ở đây */
       if(isset($request->categories) && $saved == true){
         $product->categories()->sync($request->categories);
       }
-      if(isset($request->tags) && $saved == true){
-       // $product->tags()->sync($request->tags);
-      }
-      if($saved === false){ //ERRORS < HERE
+
+      /* END Lỗi ở đây */
+      if($saved === false){
         Storage::delete($name);
         
       };
       session()->flash('message','success');
-      return redirect('/dashboard/product');
+      return redirect()->back();
     }
 
     public function destroy(Product $id)
