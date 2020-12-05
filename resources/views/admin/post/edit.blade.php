@@ -38,7 +38,13 @@
                           <br><div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>
-
+                    <div class="form-group">
+                      <select name="categories[]" id="categories" multiple class="form-control">
+                          @foreach ($categories as $category)                            
+                               <option  @if($category->checked === true) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                          @endforeach
+                      </select>
+                   </div>
                     <div class="form-group">
                       <label for="description">Mô tả ngắn</label>
                       <textarea class="form-control" value="{{$blogs->description}}" name="description" rows="3" id="description">{{$blogs->description}}</textarea>
@@ -89,6 +95,14 @@
 @endsection
 @section('script')
 <script> 
+  $(document).ready(function() {
+    $("#categories").select2({
+    placeholder: "select categories"
+  })
+  $("#Tags").select2({
+    placeholder: "select Tags"
+  })
+});
     function readURL_Images(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

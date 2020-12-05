@@ -69,7 +69,7 @@
                         <label for="amount">Số lượng *</label>
                         <input type="number" class="form-control" name="amount" value="{{$product->amount}}" id="amount" placeholder="Nhập số lượng sản phẩm">
                     </div>
-                    <div class="form-group Limit-hetght">
+                    <div class="form-group">
                        <select name="categories[]" id="categories" multiple class="form-control">
                            @foreach ($categories as $category)                            
                                 <option  @if($category->checked === true) selected @endif value="{{$category->id}}">{{$category->name}}</option>

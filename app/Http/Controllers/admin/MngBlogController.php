@@ -84,14 +84,9 @@ class MngBlogController extends Controller
       $blogs->is_published  = $request->is_published;
       $blogs->especially  = $request->especially;
       $saved = $blogs->save();
-      /* Lỗi ở đây */
       if(isset($request->categories) && $saved === true){
-        $blogs->categories->sync($request->categories);
+        $blogs->categories()->sync($request->categories);
       }
-      if(isset($request->tags) && $saved == true){
-        //$blogs->tags->sync($request->tags);
-      }
-      /* END Lỗi ở đây */
       if($saved === false){
         Storage::delete($name);
         
@@ -105,30 +100,18 @@ class MngBlogController extends Controller
     public function edit(Blog $id)
     {
       $categories = [];
-      $CategoryChecked = $id->categories()->get();
-      $Category = Category::all();
-      foreach ($Category as $Categorys){
-        $Categorys['checked'] = false;
-        foreach ($CategoryChecked as $CategoryCheckeds){
-          if ($Categorys['slug'] === $CategoryCheckeds->slug){
-            $Categorys['checked'] = true;
+      $CategoryCheckeds = $id->categories()->get();
+      $AllCategory = Category::where('type','1')->get();
+      foreach ($AllCategory as $Category){
+        $Category['checked'] = false;
+        foreach ($CategoryCheckeds as $CategoryChecked){
+          if ($Category['slug'] === $CategoryChecked->slug){
+            $Category['checked'] = true;
           }
         }
-          $categories[] = $Categorys;
+          $categories[] = $Category;
       }
-      $NTags = [];
-      $TagsChecked = $id->tags()->get();
-      $Tag = Tag::select('tags.*')->where('primary', '1')->get();
-      foreach ($Tag as $Tags){
-        $Tags['checked'] = false;
-        foreach ($TagsChecked as $TagChecked){
-          if ($Tags['slug'] === $TagChecked->slug){
-            $Tags['checked'] = true;
-          }
-        }
-          $NTags[] = $Tags;
-      }
-      return view('admin.post.edit')->with(['blogs'=>$id,'categories'=>$categories,'NTags'=>$NTags]);
+      return view('admin.post.edit')->with(['blogs'=>$id,'categories'=>$categories]);
     }
 
     public function update(Request $request,$id)
@@ -166,14 +149,9 @@ class MngBlogController extends Controller
         $blogs->language = $request->language;
       }
       $saved = $blogs->save();
-      /* Lỗi ở đây */
-      if(isset($request->categories) && $saved == true){
+      if(isset($request->categories) && $saved === true){
         $blogs->categories()->sync($request->categories);
       }
-      if(isset($request->tags) && $saved == true){
-        //$blogs->tags->sync($request->tags);
-      }
-      /* END Lỗi ở đây */
       if($saved === false){
         Storage::delete($name);
         

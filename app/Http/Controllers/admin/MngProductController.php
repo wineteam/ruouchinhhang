@@ -105,11 +105,9 @@ class MngProductController extends Controller
       $product->especially  = $request->especially;
       $product->amount = $request->amount;
       $saved = $product->save();
-      /* Lỗi ở đây */
       if(isset($request->categories) && $saved === true){
         $product->categories()->sync($request->categories);
       }
-      /* END Lỗi ở đây */
       if($saved === false){ //ERRORS < HERE
         Storage::delete($name);
         
@@ -190,7 +188,7 @@ class MngProductController extends Controller
       }
       $saved = $product->save();
       /* Lỗi ở đây */
-      if(isset($request->categories) && $saved == true){
+      if(isset($request->categories) && $saved === true){
         $product->categories()->sync($request->categories);
       }
 
