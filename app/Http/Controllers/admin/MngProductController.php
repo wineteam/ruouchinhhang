@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\LanguageSwitch;
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -22,15 +23,17 @@ class MngProductController extends Controller
       if($order === "old"){
         $products = Product::paginate(12);
         $old = "selected";
-        return view('admin.product',compact('products','old'));
+        return view('admin.product.index',compact('products','old'));
       }
         $new = "selected";
         $products = Product::orderBy('created_at','desc')->paginate(12);
         return view('admin.product.index',compact('products','new'));
     }
     public function search(Request $request){
-      $products = Product::where('name','like','%'.$request->name.'%')->paginate(12);
-      return view('admin.product')->with(["products"=>$products]);
+      $products = Product::
+      where('name','like','%'.$request->name.'%')
+      ->paginate(12);
+      return view('admin.product.index')->with(["products"=>$products]);
     }
 
     public function create()
@@ -38,57 +41,58 @@ class MngProductController extends Controller
      
       $categories = Category::all();
       $languages = LanguageSwitch::all();
-      return view('admin.product.create')->with(['categories'=>$categories,'languages'=>$languages]);
+      $Tag = Tag::all();
+      return view('admin.product.create')->with(['categories'=>$categories,'languages'=>$languages,'Tag'=>$Tag]);
     }
 
     public function store(Request $request)
     {
-      $this->validate($request,[
-        'name' => 'required | string | max:255',
-        'codePro' => 'required | string',
-        'price' => 'required | integer',
-        'size' => 'required | string | max:255',
-        'vintage' => 'required | string | max:255',
-        'detail' => 'max:255',
-        'discount' => 'required | integer',
-        'nation' => 'required | string | max:255',
-        'amount' => 'required | integer',
-        //'thumbnail' => 'mimes:jpeg,png,bmp,tiff | max:2048',
+      $request->validate([
+          'name' => 'required | string | max:255',
+          'codePro' => 'required | string',
+          'price' => 'required | integer',
+          'size' => 'required | string | max:255',
+          'vintage' => 'required | string | max:255',
+          'detail' => 'max:255',
+          'discount' => 'required | integer',
+          'nation' => 'required | string | max:255',
+          'amount' => 'required | integer',
       ],
-      $messages = [
-        'name.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+      [
+          'name.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
-        'codePro.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'codePro.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
-        'price.required' => 'Mảng :attribute yêu cầu bắt buộc.',
-        'price.integer' => 'Mảng :attribute yêu câu số nguyên.',
+          'price.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'price.integer' => 'Mảng :attribute yêu câu số nguyên.',
 
-        'size.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'size.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
-        'vintage.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'vintage.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
-        'detail.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'detail.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
-        'discount.required' => 'Mảng :attribute yêu cầu bắt buộc.',
-        'discount.integer' => 'Mảng :attribute yêu câu số nguyên.',
+          'discount.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'discount.integer' => 'Mảng :attribute yêu câu số nguyên.',
 
-        'nation.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'nation.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
-        'description.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'description.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
-        'amount.required' => 'Mảng :attribute yêu cầu bắt buộc.',
-        'amount.integer' => 'Mảng :attribute yêu câu số nguyên.',
-
-        'thumbnail.mimes' => 'Hình ảnh không hợp lệ.',
+          'amount.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'amount.integer' => 'Mảng :attribute yêu câu số nguyên.',
       ]);
-
       $user_id = Auth()->user()->id;
       $product = new Product;
       $product->user_id = $user_id;
       $product->codeProduct = $request->codePro;
       $product->name = $request->name;
       $product->slug = str_slug($request->name);
-      $product->thumbnail  = $request->thumbnail;
+      if( $request->hasFile('thumbnail')){
+        $name = $product->id.$request->thumbnail->getClientOriginalName();
+        $path = $request->thumbnail->storeAs('product_images',$name,'public');
+        $product->thumbnail  = $path;
+      }
       $product->price = $request->price;
       $product->size = $request->size;
       $product->vintage = $request->vintage;
@@ -101,14 +105,19 @@ class MngProductController extends Controller
       $product->especially  = $request->especially;
       $product->amount = $request->amount;
       $saved = $product->save();
-      if($saved === true && $request->hasFile('thumbnail')){
-        $path = $product->id.$request->image->getClientOriginalName();
-        $product->avatar = $path;
-        $request->thumbnail->storeAs('product_images',$path,'public');
+      if(isset($request->categories) && $saved === true){
+        $product->categories->sync($request->categories);
+      }
+      if(isset($request->tags) && $saved == true){
+        $product->tags->sync($request->tags);
+      }
+      if($saved === false){ //ERRORS < HERE
+        Storage::delete($name);
+        
       };
       session()->flash('success', 'Thêm thành công');
 
-      return redirect()->back()->with($messages);
+      return redirect()->route('MngProduct.index');
     }
 
     public function edit(Product $id)
@@ -125,12 +134,23 @@ class MngProductController extends Controller
         }
           $categories[] = $Categorys;
       }
-      return view('admin.product.edit')->with(['product'=>$id,'categories'=>$categories]);
+      $NTags = [];
+      $TagsChecked = $id->tags()->get();
+      $Tag = Tag::all();
+      foreach ($Tag as $Tags){
+        $Tags['checked'] = false;
+        foreach ($TagsChecked as $TagChecked){
+          if ($Tags['slug'] === $TagChecked->slug){
+            $Tags['checked'] = true;
+          }
+        }
+          $NTags[] = $Tags;
+      }
+      return view('admin.product.edit')->with(['product'=>$id,'categories'=>$categories,'NTags'=>$NTags]);
     }
 
     public function update(Request $request,$id)
     {
-
       $product = Product::find($id);
       $user_id = Auth()->user()->id;
       $slug = str_slug($request->name);
@@ -155,10 +175,10 @@ class MngProductController extends Controller
       if(isset($request->detail)){
         $product->detail = $request->detail;
       }
-      if($request->hasFile('thumbnail')){
-        $path = $product->id.$request->thumbnail->getClientOriginalName();
-        $product->thumbnail = $path;
-        $request->thumbnail->storeAs('product_images',$path,'public');
+      if( $request->hasFile('thumbnail')){
+        $name = $product->id.$request->thumbnail->getClientOriginalName();
+        $path = $request->thumbnail->storeAs('product_images',$name,'public');
+        $product->thumbnail  = $path;
       }
       if(isset($request->price)){
         $product->price = $request->price;
@@ -184,11 +204,18 @@ class MngProductController extends Controller
       if(isset($request->language)){
         $product->language = $request->language;
       }
-      $updated = $product->save();
+      $saved = $product->save();
       
-      if(isset($request->categories) && $updated == true){
+      if(isset($request->categories) && $saved == true){
         $product->categories()->sync($request->categories);
       }
+      if(isset($request->tags) && $saved == true){
+        $product->tags()->sync($request->tags);
+      }
+      if($saved === false){ //ERRORS < HERE
+        Storage::delete($name);
+        
+      };
       session()->flash('message','success');
       return redirect('/dashboard/product');
     }
@@ -201,12 +228,13 @@ class MngProductController extends Controller
     }
 
     public function deleteAll(Request $request) {
-      $deleted = Product::whereIn('id',$request->productId)->delete();
+      $productId = explode(',',$request->productId[0]);
+      $deleted = Product::whereIn('id',$productId)->delete();
       if($deleted) {
         return redirect()->back()->with('message', 'Da xoa thanh cong');
       }
       return redirect()->back()->with('message', 'Xoa khong thanh cong');
-   }
+    }
 
 
 }

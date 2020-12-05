@@ -116,5 +116,5 @@ class MngUserController extends Controller
         return redirect()->back()->with('message', 'Da xoa thanh cong');
       }
       return redirect()->back()->with('message', 'Xoa khong thanh cong');
-   }
+    }
 }

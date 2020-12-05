@@ -18,7 +18,7 @@
                     </div>
                 @endif
                 <div class="card-body">
-                <form action="{{route('MngProduct.update',$product->id)}}" method="post">
+                <form action="{{route('MngProduct.update',$product->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="form-group">
@@ -39,16 +39,19 @@
                     </div>
                     <div class="form-group">
                         <label for="detail">Mô tả</label>
-                        <textarea name="detail" id="detail" value="{{$product->detail}}" class="form-control" rows="2"></textarea>
+                        <textarea name="detail" id="detail" class="form-control" rows="3">{{$product->detail}}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="thumbnail">Hình ảnh sản phẩm</label> <br>
-                    @if(Auth::user()->avatar == NULL)
+                    @if($product->thumbnail == NULL)
                         <img src="{{ asset('images/noImg.jpg') }}" id="ImagesProduct" class="img-thumbnail" width="250px"> <br><br>
                     @else
-                        <img src="{{ asset('storage/product_images/'.$product->thumbnail) }}" id="ImagesProduct" class="img-thumbnail" width="250px"> <br><br>
+                        <img src="{{asset('storage/'.$product->thumbnail) }}" id="ImagesProduct" class="img-thumbnail" width="250px"> <br><br>
                     @endif
                         <input type='file' name="thumbnail" onchange="readURL_Images(this);"/>
+                    @error('thumbnail')
+                        <br><div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </div>
                     <div class="form-group">
                         <label for="price">Giá *</label>
@@ -66,7 +69,7 @@
                         <label for="amount">Số lượng *</label>
                         <input type="number" class="form-control" name="amount" value="{{$product->amount}}" id="amount" placeholder="Nhập số lượng sản phẩm">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group Limit-hetght">
                         <label for="categories">Chọn danh mục</label>
                         <br>
                           @foreach($categories as $category)
@@ -78,40 +81,36 @@
                           <br>
                           @endforeach
                     </div>
+                    <div class="form-group Limit-hetght">
+                        <label for="NTags">Chọn Tags</label>
+                        <br>
+                          @foreach($NTags as $Tags)
+                          <label for="{{$Tags->id}}">
+                            <input type="checkbox" id="{{$Tags->id}}" name="NTags[]"
+                             @if($Tags->checked === true) checked @endif
+                              value="{{$Tags->id}}"> {{$Tags->name}}
+                          </label>
+                          <br>
+                          @endforeach
+                    </div>
                     <div class="form-group">
                         <label for="description">Giới thiệu sản phẩm</label>
-                        <textarea class="form-control" name="description" id="description" value="{{$product->description}}" rows="2"></textarea>
+                        <textarea class="form-control" name="description" id="description" rows="5">{{$product->description}}</textarea>
                     </div>
-                      {{-- <div class="form-group">
-                        <label>Tags</label>
-                        <div class="" id="tags">
-  
-                        </div>
-                      </div> --}}
                      
                     <div class="form-group">
-                        <label for="is_public">Hiển thị sản phẩm</label>
-                        <select class="form-control" name="is_published"  id="is_public">
-                            @if ($product->is_published == 1)
-                            <option value="{{$product->is_published}}">Có</option>
-                            <option value="0">Không</option>
-                            @else
-                            <option value="1">Có</option>
-                            <option value="{{$product->is_published}}">Không</option>
-                            @endif
+                        <label for="is_published">Hiển thị sản phẩm</label>
+                        <select class="form-control" name="is_published"  id="is_published">
+                            <option @if($product->is_published === '1') selected @endif value="1">Có</option>
+                            <option @if($product->is_published === '0') selected @endif value="0">Không</option>
                         </select>
                     </div>
                  
                     <div class="form-group">
                         <label for="especial">Đặc biệt</label>
                         <select class="form-control" name="especially" id="especial">
-                            @if ($product->especially == 1)
-                            <option value="{{$product->especially}}">Có</option>
-                            <option value="0">Không</option>
-                            @else
-                            <option value="1">Có</option>
-                            <option value="{{$product->especially}}">Không</option>
-                            @endif
+                            <option @if($product->especially === '1') selected @endif value="1">Có</option>
+                            <option @if($product->especially === '0') selected @endif value="0">Không</option>
                         </select>
                     </div>
                     <div class="form-group">

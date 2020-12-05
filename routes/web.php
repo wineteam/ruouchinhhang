@@ -85,14 +85,51 @@ Route::middleware('auth')->group(function(){
 Route::middleware('CheckAdminLogin')->group(function(){
 
   Route::get('/admin/dashboard', [DashboardController::class,'index'])->name('dashboard.index');
-//ADMIN - CATELOG
-  Route::get('/admin/categories', [MngCateLogController::class,'index'])->name('MngCateLog.index');
+
+  //ADMIN - CATELOG_PRODUCTS
+  Route::get('/dashboard/categories', [MngCateLogProDuctController::class,'index'])->name('MngCateLog.index');
 //ADMIN - CATELOG_PRODUCTS
   Route::get('/dashboard/categories_products', [MngCateLogProDuctController::class,'index'])->name('MngCateLogProDuct.index');
+  Route::get('/dashboard/categories_products/search', [MngCateLogProDuctController::class,'search'])->name('MngCateLogProDuct.search');
+  Route::get('/dashboard/categories_products/order={order}', [MngCateLogProDuctController::class,'orderPro'])->name('MngCateLogProDuct.order');
+//ADMIN - CATELOG_PRODUCTS - CREATES
+  Route::get('/dashboard/categories_products/create', [MngCateLogProDuctController::class,'create'])->name('MngCateLogProDuct.create');
+  Route::post('/dashboard/categories_products/store', [MngCateLogProDuctController::class,'store'])->name('MngCateLogProDuct.store');
+//ADMIN - CATELOG_PRODUCTS - EIDTS
+  Route::get('/dashboard/categories_products/edit/{id}', [MngCateLogProDuctController::class,'edit'])->name('MngCateLogProDuct.edit');
+  Route::patch('/dashboard/categories_products/update/{id}', [MngCateLogProDuctController::class,'update'])->name('MngCateLogProDuct.update');
+//ADMIN - CATELOG_PRODUCTS - DELETE
+  Route::delete('/dashboard/categories_products/delete/{id}',[MngCateLogProDuctController::class,'destroy'])->name('MngCateLogProDuct.destroy');
+  Route::delete('/dashboard/categories_products/DeleteAll', [MngCateLogProDuctController::class,'deleteAll'])->name('MngCateLogProDuct.deleteAll');
 //ADMIN - CATELOG_BLOGS
   Route::get('/dashboard/categories_blogs', [MngCateLogBlogController::class,'index'])->name('MngCateLogBlog.index');
+  Route::get('/dashboard/categories_blogs/search', [MngCateLogBlogController::class,'search'])->name('MngCateLogBlog.search');
+  Route::get('/dashboard/categories_blogs/order={order}', [MngCateLogBlogController::class,'orderPro'])->name('MngCateLogBlog.order');
+//ADMIN - CATELOG_BLOGS - CREATES
+  Route::get('/dashboard/categories_blogs/create', [MngCateLogBlogController::class,'create'])->name('MngCateLogBlog.create');
+  Route::post('/dashboard/categories_blogs/store', [MngCateLogBlogController::class,'store'])->name('MngCateLogBlog.store');
+//ADMIN - CATELOG_BLOGS - EIDTS
+  Route::get('/dashboard/categories_blogs/edit/{id}', [MngCateLogBlogController::class,'edit'])->name('MngCateLogBlog.edit');
+  Route::patch('/dashboard/categories_blogs/update/{id}', [MngCateLogBlogController::class,'update'])->name('MngCateLogBlog.update');
+//ADMIN - CATELOG_BLOGS - DELETE
+  Route::delete('/dashboard/categories_blogs/delete/{id}',[MngCateLogBlogController::class,'destroy'])->name('MngCateLogBlog.destroy');
+  Route::delete('/dashboard/categories_blogs/DeleteAll', [MngCateLogBlogController::class,'deleteAll'])->name('MngCateLogBlog.deleteAll');
+  
 //ADMIN - TAGS
   Route::get('/dashboard/tags', [MngTagsController::class,'index'])->name('MngTags.index');
+  Route::get('/dashboard/tags/search', [MngTagsController::class,'search'])->name('MngTags.search');
+  Route::get('/dashboard/tags/order={order}', [MngTagsController::class,'orderPro'])->name('MngTags.order');
+//ADMIN - TAGS - CREATES
+  Route::get('/dashboard/tags/create', [MngTagsController::class,'create'])->name('MngTags.create');
+  Route::post('/dashboard/tags/store', [MngTagsController::class,'store'])->name('MngTags.store');
+//ADMIN - TAGS - EIDTS
+  Route::get('/dashboard/tags/edit/{id}', [MngTagsController::class,'edit'])->name('MngTags.edit');
+  Route::patch('/dashboard/tags/update/{id}', [MngTagsController::class,'update'])->name('MngTags.update');
+//ADMIN - TAGS - DELETE
+  Route::delete('/dashboard/tags/delete/{id}',[MngTagsController::class,'destroy'])->name('MngTags.destroy');
+  Route::delete('/dashboard/tags/DeleteAll', [MngTagsController::class,'deleteAll'])->name('MngTags.deleteAll');
+
+
 //ADMIN - PRODUCTS
   Route::get('/dashboard/product', [MngProductController::class,'index'])->name('MngProduct.index');
   Route::get('/dashboard/product/search', [MngProductController::class,'search'])->name('MngProduct.search');
@@ -104,7 +141,7 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/product/edit/{id}', [MngProductController::class,'edit'])->name('MngProduct.edit');
   Route::patch('/dashboard/product/update/{id}', [MngProductController::class,'update'])->name('MngProduct.update');
 //ADMIN - PRODUCTS - DELETE
-  Route::delete('/dashboard/product/delete/{id}',[MngProductController::class,'destroy'])->name('MngProduct.destroy');//Xóa người dùng
+  Route::delete('/dashboard/product/delete/{id}',[MngProductController::class,'destroy'])->name('MngProduct.destroy');
   Route::delete('/dashboard/product/DeleteAll', [MngProductController::class,'deleteAll'])->name('MngProduct.deleteAll');
 //ADMIN - BLOGS
   Route::get('/dashboard/blog', [MngBlogController::class,'index'])->name('MngBlog.index');
@@ -126,11 +163,15 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/banner', [MngBannerController::class,'index'])->name('MngBanner.index');
   Route::get('/dashboard/banner/search', [MngBannerController::class,'search'])->name('MngBanner.search');
   Route::get('/dashboard/banner/order={order}', [MngBannerController::class,'orderPro'])->name('MngBanner.order');
-//Xóa All người dùng
-  Route::delete('/dashboard/banner/DeleteAll', [MngBannerController::class,'deleteAll'])->name('MngBanner.deleteAll');
-//ADMIN - USERS - CREATES
+//ADMIN - BANNERS - CREATES
   Route::get('/dashboard/banner/create', [MngBannerController::class,'create'])->name('MngBanner.create');
   Route::post('/dashboard/banner/store', [MngBannerController::class,'store'])->name('MngBanner.store');
+//ADMIN - BANNERS - EIDTS
+  Route::get('/dashboard/banner/edit/{id}', [MngBannerController::class,'edit'])->name('MngBanner.edit');
+  Route::patch('/dashboard/banner/update/{id}', [MngBannerController::class,'update'])->name('MngBanner.update');
+//ADMIN - BANNERS - DELETE
+  Route::delete('/dashboard/banner/delete/{id}',[MngBannerController::class,'destroy'])->name('MngBanner.destroy');
+  Route::delete('/dashboard/banner/DeleteAll', [MngBannerController::class,'deleteAll'])->name('MngBanner.deleteAll');
 //ADMIN - LANGUAGES
   Route::get('/dashboard/language', [MngLanguageController::class,'index'])->name('MngLanguage.index');
 //ADMIN - USERS
@@ -145,13 +186,15 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::patch('/dashboard/user/update/{id}', [MngUserController::class,'update'])->name('MngUser.update');
 //ADMIN - USERS - DELETE
   Route::delete('/dashboard/user/delete/{id}',[MngUserController::class,'destroy'])->name('MngUser.destroy');
-//Xóa All người dùng
   Route::delete('/dashboard/user/DeleteAll', [MngUserController::class,'deleteAll'])->name('MngUser.deleteAll');
 //ADMIN - ORDERS
   Route::get('/dashboard/order', [MngOrderController::class,'index'])->name('MngOrder.index');
+  Route::get('/dashboard/order/search', [MngOrderController::class,'search'])->name('MngOrder.search');
+  Route::get('/dashboard/order/order={order}', [MngOrderController::class,'orderPro'])->name('MngOrder.order');
 //ADMIN - ORDERS_DETAILS
   Route::get('/dashboard/orderDetail', [MngOrderDetailController::class,'index'])->name('MngOrderDetail.index');
-
+  Route::get('/dashboard/orderDetail/search', [MngOrderDetailController::class,'search'])->name('MngOrderDetail.search');
+  Route::get('/dashboard/orderDetail/order={order}', [MngOrderDetailController::class,'orderPro'])->name('MngOrderDetail.order');
 
 });
 

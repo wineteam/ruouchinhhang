@@ -29,6 +29,8 @@
                     <form  method="POST" id="deleteAllProduct" action="{{route('MngProduct.deleteAll')}}">
                       @csrf
                       @method('delete')
+                      <input type="hidden" name="productId[]">
+                    </form>
                         <table class="table table-bordered mb-0">
                         <thead>
                             <tr>
@@ -48,11 +50,11 @@
                             @foreach ($products as $product)
                               <tr>
                                 <td><input type="checkbox" name='productId[]' value="{{$product->id}}" class="selectAllchilden"></td>
-                                <td><img src="{{ $product->thumbnail }}" width="60px" alt=""></td>
+                                <td><img src="{{asset('storage/'.$product->thumbnail) }}" width="60px" alt=""></td>
                                 <td><a href="#">{{ $product->name }}</a></td>
                                 <td>{{ $product->nation }}</td>
                                 <td> @if ($product->especially == 1) Có @else Không @endif</td>
-                                <td>  @if ($product->is_published == 1) Đang hiển thị @else KHông hiển thị @endif </td>
+                                <td>  @if ($product->is_published == 1) Đang hiển thị @else Không hiển thị @endif </td>
                                 <td>{{\Carbon\Carbon::parse( $product->created_at)->format('d/m/Y')}}</td>
                                 <td> @if ($product->language_id == 1) Tiếng việt @else Tiếng anh @endif</td>
 
@@ -60,7 +62,7 @@
                                   <div style="display: flex;justify-content: space-between">
                                     <a href="{{route('MngProduct.edit',$product->id)}}" class="btn btn-sm btn-primary">{{__('edit')}}</a>
                                     <a href="{{route('shop.show',$product->slug)}}" class="btn btn-sm btn-warning">{{__('show')}}</a>
-                                    <form action="{{route('MngProduct.destroy',$product->id)}}" id="delete_user_{{$product->id}}"  method="post">
+                                    <form action="{{route('MngProduct.destroy',$product->id)}}" method="post">
                                       @csrf
                                       @method('delete')
                                       <button type="button" class="btn btn-sm btn-danger deleteItem">{{__('delete')}}</button>
@@ -72,11 +74,10 @@
                           
                         </tbody>
                         </table>
-                    </form>
                     <div class="action mt-3">
                       <input type="checkbox" id="selectAllRow">
                       <label for="selectAllRow">{{__('selectall')}}</label>
-                      <button style="float: right; display:none" class="btn btn-sm btn-danger sheetDelete" form="deleteAllProduct" type="submit">{{__('deleteselec')}}</button>
+                      <button style="float: right; display:none" class="btn btn-sm btn-danger sheetDelete" onclick="deleteAllProduct()" type="button">{{__('deleteselec')}}</button>
                     </div>
                 </div>
             </div>
@@ -90,36 +91,47 @@
 @endsection
 @section('script')
 <script>
+    let productId = [];
+    function deleteAllProduct(){
+      $('input[name^="ProductId"]').each(function() {
+        if($(this).is(':checked')){
+          productId.push($(this).val());
+        }
+      });
+      $('input[name^="productId"]').val(productId)
+      $('#deleteAllProduct').submit();
+    }
     $(document).ready(function(){
       $('.deleteItem').click(function (e) {
-      e.preventDefault();
-      var formname = $(this).parent();
-      const confirmDelete = confirm("Bạn chắc chắn xóa chứ ?");
-      if(confirmDelete == true){
-        formname.submit();
-        return true;
-      }
-      return false;
-    });
+        e.preventDefault();
+        const formName = $(this).parent();
+        console.log(formName);
+        const confirmDelete = confirm("Bạn chắc chắn xóa chứ ?");
+        if(confirmDelete === true){
+          formName.submit();
+          return true;
+        }
+        return false;
+      });
 
       $('#selectAllRow').on('click', function(e) {
-        if($(this).is(':checked',true))  
+        if($(this).is(':checked',true))
         {
-          $(".selectAllchilden").prop('checked', true);  
+          $(".selectAllchilden").prop('checked', true);
           $(".sheetDelete").css("display", "block");;
-        } else {  
-          $(".selectAllchilden").prop('checked',false);  
+        } else {
+          $(".selectAllchilden").prop('checked',false);
           $(".sheetDelete").css("display", "none");;
-        }  
+        }
       });
 
       $('.selectAllchilden').on('click', function(e) {
-        if($(this).is(':checked',true))  
+        if($(this).is(':checked',true))
         {
           $(".sheetDelete").css("display", "block");;
-        } else {  
+        } else {
           $(".sheetDelete").css("display", "none");;
-        }  
+        }
       });
 
     });
