@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group">
                       <label for="thumbnail">Hình ảnh sản phẩm</label> <br>
-                    <img src="{{ asset('images/noImg.jpg') }}" id="ImagesProduct" class="img-thumbnail" alt="" width="250px"> <br><br>
+                    <img src="{{ asset('storage/product_images/noImg.jpg') }}" id="ImagesProduct" class="img-thumbnail" alt="" width="250px"> <br><br>
                       <input type='file' id="thumbnail" value="" name="thumbnail" onchange="readURL_Images(this);"/>
                     @if($errors->has('thumbnail'))
                           <br><div class="alert alert-danger">{!! $errors->first('thumbnail') !!}</div>
@@ -121,14 +121,7 @@
                       @error('description')
                         <br><div class="alert alert-danger">{{ $message }}</div>
                       @enderror
-                    </div>
-                    {{-- <div class="form-group">
-                      <label>Tags</label>
-                      <div class="" id="tags">
-
-                      </div>
-                    </div> --}}
-                   
+                    </div>                 
                     <div class="form-group">
                       <label for="is_published">Hiển thị sản phẩm</label>
                       <select class="form-control" name="is_published"  id="is_published">

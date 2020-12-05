@@ -39,9 +39,9 @@ class MngProductController extends Controller
     public function create()
     {
      
-      $categories = Category::all();
+      $categories = Category::where('type','=','0')->get();
       $languages = LanguageSwitch::all();
-      $Tag = Tag::all();
+      $Tag = Tag::select('tags.*')->where('primary', '1')->get();
       return view('admin.product.create')->with(['categories'=>$categories,'languages'=>$languages,'Tag'=>$Tag]);
     }
 
@@ -109,7 +109,7 @@ class MngProductController extends Controller
         $product->categories->sync($request->categories);
       }
       if(isset($request->tags) && $saved == true){
-        $product->tags->sync($request->tags);
+        // $product->tags()->sync($request->tags);
       }
       if($saved === false){ //ERRORS < HERE
         Storage::delete($name);
@@ -136,7 +136,7 @@ class MngProductController extends Controller
       }
       $NTags = [];
       $TagsChecked = $id->tags()->get();
-      $Tag = Tag::all();
+      $Tag = Tag::select('tags.*')->where('primary', '1')->get();
       foreach ($Tag as $Tags){
         $Tags['checked'] = false;
         foreach ($TagsChecked as $TagChecked){
@@ -210,7 +210,7 @@ class MngProductController extends Controller
         $product->categories()->sync($request->categories);
       }
       if(isset($request->tags) && $saved == true){
-        $product->tags()->sync($request->tags);
+       // $product->tags()->sync($request->tags);
       }
       if($saved === false){ //ERRORS < HERE
         Storage::delete($name);

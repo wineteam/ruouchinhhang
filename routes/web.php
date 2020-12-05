@@ -140,12 +140,23 @@ Route::middleware('CheckAdminLogin')->group(function(){
 //ADMIN - PRODUCTS - DELETE
   Route::delete('/dashboard/product/delete/{id}',[MngProductController::class,'destroy'])->name('MngProduct.destroy');
   Route::delete('/dashboard/product/DeleteAll', [MngProductController::class,'deleteAll'])->name('MngProduct.deleteAll');
+
+
 //ADMIN - BLOGS
   Route::get('/dashboard/blog', [MngBlogController::class,'index'])->name('MngBlog.index');
-//ADMIN - BLOGS - create
+  Route::get('/dashboard/blog/search', [MngBlogController::class,'search'])->name('MngBlog.search');
+  Route::get('/dashboard/blog/order={order}', [MngBlogController::class,'orderPro'])->name('MngBlog.order');
+//ADMIN - BLOGS - CREATES
   Route::get('/dashboard/blog/create', [MngBlogController::class,'create'])->name('MngBlog.create');
+  Route::post('/dashboard/blog/store', [MngBlogController::class,'store'])->name('MngBlog.store');
+//ADMIN - BLOGS - EIDTS
+  Route::get('/dashboard/blog/edit/{id}', [MngBlogController::class,'edit'])->name('MngBlog.edit');
+  Route::patch('/dashboard/blog/update/{id}', [MngBlogController::class,'update'])->name('MngBlog.update');
 //ADMIN - BLOGS - DELETE
-  Route::delete('/dashboard/blog/delete/{id}',[MngBlogController::class,'destroy'])->name('MngBlog.destroy');//Xóa bài viết
+  Route::delete('/dashboard/blog/delete/{id}',[MngBlogController::class,'destroy'])->name('MngBlog.destroy');
+  Route::delete('/dashboard/blog/DeleteAll', [MngBlogController::class,'deleteAll'])->name('MngBlog.deleteAll');
+
+  
 //ADMIN - COUPONS
   Route::get('/dashboard/coupon', [MngCouponController::class,'index'])->name('MngCoupon.index');
 //ADMIN - COUPONS - EDIT
