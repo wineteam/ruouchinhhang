@@ -20,17 +20,17 @@ class checkoutController extends Controller
       $discount = session()->get('coupon')['discount'] ?? 0;
       $discount = number_format($discount,0,",",".");
       if($discount > 0){
-        $subtotal -= $discount;
-        $tax = $subtotal * (config('cart.tax') /100);
-        $total = $subtotal * (1 +  (config('cart.tax') /100));
+        $total = $subtotal * (1 +  (config('cart.tax') /100)) - $discount;
       }
-
-        return view('client.checkout')->with([
-          'discount'=>$discount,
-          'subtotal'=>$subtotal,
-          'tax'=>$tax,
-          'total'=>$total
-        ]);
+      if ($total < 0){
+        $total = 0;
+      }
+      return view('client.checkout')->with([
+        'discount'=>$discount,
+        'subtotal'=>$subtotal,
+        'tax'=>$tax,
+        'total'=>$total
+      ]);
     }
 
     /**

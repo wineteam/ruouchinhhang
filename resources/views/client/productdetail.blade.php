@@ -207,63 +207,7 @@
     </div>
 </div>
 
-  <div class="col-xl-3 col-md-12 col-sm-12 px-3">
-    <div class="row productCategories">
-      <div class="col-xl-12 col-md-6 col-sm-12">
-        <div class="search" style="margin-bottom: 50px;">
-          <h5 style="margin-bottom: 40px;">{{__('client.search')}}</h5>
-          <form method="GET" action="{{route('shop.searchByName')}}" class="form-search">
-            <input type="text" name="name" placeholder="Search...">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
-        <h4 class="pt-4 pb-3 text-capitalize">{{__('client.product_categories')}}</h4>
-        <div class="productCategories__list pl-2 mb-5">
-          @foreach($categories as $category)
-            <a href="{{route('getProByCat',$category->slug)}}" class="text-capitalize"><i class="fa fa-angle-right text-capitalize"></i>  {{$category->name}}</a>
-          @endforeach
-        </div>
-      </div>
-        @include('include.boxRightShop')
-      <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3 mt-5 text-capitalize">{{__('client.top_products')}}</h4>
-        <div class="productList p-3">
-          @foreach($proOrderBought as $product)
-            <div class="row">
-              <div class="col-4 text-center productList__item">
-                <a href="{{route('shop.show',$product->slug)}}"><img src="{{$product->thumbnail }}" alt="" ></a>
-              </div>
-              <div class="col-8">
-                <h6 class="mb-3" style="font-size: 14px;"><a href="{{route('shop.show',$product->slug)}}">{{ \Illuminate\Support\Str::limit($product->name,40)}}</a></h6>
-                @if($product->discount <= 0 || $product->discount == null)
-                  <h6 class="pb-3 Font-Red price-product">
-                    {{__('client.price')}}:
-                    {{$product->pricePresent('price')}}
-                    {{__("$")}}
-                  </h6>
-                @else
-                  <h6 class="pb-3 Font-Red price-product">
-                    {{__('client.price')}}:
-                    {{$product->pricePresent('discount')}}
-                    {{__("$")}}
-                  </h6>
-                @endif
-              </div>
-            </div>
-            <hr>
-          @endforeach
-        </div>
-      </div>
-      <div class="col-xl-12 col-md-6 col-sm-12">
-        <h4 class="pt-4 pb-3 mt-5">Tags</h4>
-        <div class="tagList">
-          @foreach($tagPrimary as $tag)
-          <a href="{{route('shop.search.tag',$tag->slug)}}" style="padding: 8px 15px;border: 1px solid #485460;color: #000000;display: inline-block;margin: 5px">{{$tag->name}}</a>
-          @endforeach
-        </div>
-      </div>
-    </div>
-  </div>
+ @include('include.boxRightShop')
 </div>
 </div>
 </div>

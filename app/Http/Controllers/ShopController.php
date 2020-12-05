@@ -64,15 +64,15 @@ class ShopController extends Controller
   public function searchByName(Request $request)
   {
     $products = [];
-    if ($request->filled('name')){
+    if ($request->filled('searching')){
       $products = Product::join('language_switches', function ($join) {
         $join->on('language_id', '=', 'language_switches.id')
           ->where('language_switches.slug', '=', App()->getLocale());
-      })->where('products.name','like','%'.$request->name.'%')->where('is_published','1')->select('products.*')->paginate(12);
+      })->where('products.name','like','%'.$request->searching.'%')->where('is_published','1')->select('products.*')->paginate(12);
 
     }
     return view('client.shop')
-      ->with(['products'=>$products,'message'=>'Tìm kiếm : '.$request->name]);
+      ->with(['products'=>$products,'message'=>'Tìm kiếm : '.$request->searching]);
   }
       public function filterProducts(Request $request)
       {

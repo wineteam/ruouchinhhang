@@ -36,13 +36,19 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        $coupon = Coupon::where('code',$request->coupon_code)->first();
+      $coupon = Coupon::where('code',$request->coupon_code)->first();
+      $timeCurrent = time();
+      $expiry = strtotime($coupon->expiry);
+
         if (!$coupon){
-          return redirect()->route('cart.index')->withError('Ma giam gia khong chinh xac');
+          return redirect()->route('cart.index')->withError('Mã giảm giá không chính xác');
+        }
+        if(($expiry - $timeCurrent) < 0){
+          return redirect()->route('cart.index')->withError('Mã giảm giá đã hết hạn');
         }
         session()->put('coupon',[
           'name'=>$coupon->code,
-          'discount'=>$coupon->discount(Cart::subtotal())
+          'discount'=>$coupon->value,
         ]);
         return redirect()->route('cart.index')->with('message-coupon','Su dung ma giam gia thanh cong');
     }

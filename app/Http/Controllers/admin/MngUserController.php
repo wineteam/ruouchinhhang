@@ -113,8 +113,8 @@ class MngUserController extends Controller
       $users_id = explode(',',$request->user_id[0]);
       $deleted = User::whereIn('id',$users_id)->delete();
       if($deleted) {
-        return redirect()->back()->with('message', 'Da xoa thanh cong');
+        return redirect()->back();
       }
-      return redirect()->back()->with('message', 'Xoa khong thanh cong');
+      return redirect()->back();
     }
 }

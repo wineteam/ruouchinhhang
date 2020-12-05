@@ -13,7 +13,7 @@
 
                         <input type="text" class="form-control" id="SearchRow" name="product_name" placeholder="...">
                       </div>
-                      <button type="submit" class="btn btn-info mb-2">{{__('search')}}</button>
+                      <button type="submit" class="btn btn-info mb-2">Tìm kiếm</button>
                     </form>
                     <div class="form-group float-right mr-4">
                       <select class="form-control" id="orderItem" onchange="location = this.value;">
@@ -39,7 +39,7 @@
                         <tbody>
                           @foreach ($orderdetails as $orderdetail)
                             <tr>
-                              <td>{{$orderNumber++}}</td>   
+                              <td>{{$orderNumber++}}</td>
                               <td>{{$orderdetail->product_code}}</td>
                               <td>{{$orderdetail->product_name}}</td>
                               <td>{{$orderdetail->price}}</td>

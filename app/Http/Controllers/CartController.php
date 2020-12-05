@@ -21,7 +21,10 @@ class CartController extends Controller
       $discount = number_format($discount,0,",",".");
       $tax = config('cart.tax') /100;
       $newSubtotal = ( $subtotal - $discount);
-      $newTax =$newSubtotal * $tax;
+      if ($subtotal < $discount){
+        $newSubtotal = 0;
+      }
+      $newTax =$subtotal * $tax;
       $newTotal = $newSubtotal * (1+ $tax);
         return view('client.cartDetails')->with([
           'discount'=>$discount,

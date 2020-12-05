@@ -17,11 +17,9 @@ class CreateCouponsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('code')->unique();
-            $table->string('type');
             $table->integer('value')->nullable();
-            $table->integer('percent_off')->nullable();
             $table->date('expiry');
-
+            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

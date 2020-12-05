@@ -31,7 +31,7 @@
                             </div>
                             <div class="detail-blogger">
                                 <p>{{\Carbon\Carbon::parse( $myblogs->day_up)->format('d/m/Y')}} <span>september</span></p>
-                                <h1  class="title-blog"><a href="{{route('blog.show',$myblogs->slug)}}">{{$myblogs->id}}{{\Illuminate\Support\Str::limit($myblogs->title,100  )}}</a></h1>
+                                <h1  class="title-blog"><a href="{{route('blog.show',$myblogs->slug)}}">{{\Illuminate\Support\Str::limit($myblogs->title,100  )}}</a></h1>
                                 <a href="{{route('blog.show',$myblogs->slug)}}" class="learn-more">Learn more</a>
                             </div>
                         </div>

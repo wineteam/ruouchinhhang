@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\admin\MngCateLogController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\CouponController;
@@ -13,7 +12,6 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\admin\MngAdminUserController;
 use App\Http\Controllers\admin\MngBannerController;
 use App\Http\Controllers\admin\MngBlogController;
 use App\Http\Controllers\admin\MngCateLogBlogController;
@@ -23,7 +21,6 @@ use App\Http\Controllers\admin\MngCouponController;
 use App\Http\Controllers\admin\MngLanguageController;
 use App\Http\Controllers\admin\MngOrderController;
 use App\Http\Controllers\admin\MngOrderDetailController;
-use App\Http\Controllers\admin\MngPassResetController;
 use App\Http\Controllers\admin\MngProductController;
 use App\Http\Controllers\admin\MngTagsController;
 use App\Http\Controllers\ProfileController;
@@ -114,7 +111,7 @@ Route::middleware('CheckAdminLogin')->group(function(){
 //ADMIN - CATELOG_BLOGS - DELETE
   Route::delete('/dashboard/categories_blogs/delete/{id}',[MngCateLogBlogController::class,'destroy'])->name('MngCateLogBlog.destroy');
   Route::delete('/dashboard/categories_blogs/DeleteAll', [MngCateLogBlogController::class,'deleteAll'])->name('MngCateLogBlog.deleteAll');
-  
+
 //ADMIN - TAGS
   Route::get('/dashboard/tags', [MngTagsController::class,'index'])->name('MngTags.index');
   Route::get('/dashboard/tags/search', [MngTagsController::class,'search'])->name('MngTags.search');
@@ -151,6 +148,21 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::delete('/dashboard/blog/delete/{id}',[MngBlogController::class,'destroy'])->name('MngBlog.destroy');//Xóa bài viết
 //ADMIN - COUPONS
   Route::get('/dashboard/coupon', [MngCouponController::class,'index'])->name('MngCoupon.index');
+//ADMIN - COUPONS - EDIT
+  Route::get('/dashboard/coupon/{id}/edit', [MngCouponController::class,'edit'])->name('MngCoupon.edit');
+//ADMIN - COUPONS - CREATE
+  Route::get('/dashboard/coupon/create', [MngCouponController::class,'create'])->name('MngCoupon.create');
+  //ADMIN - COUPONS - STORE
+  Route::post('/dashboard/coupon/store', [MngCouponController::class,'store'])->name('MngCoupon.store');
+//ADMIN - COUPONS - UPDATE
+  Route::patch('/dashboard/coupon/{id}/update', [MngCouponController::class,'update'])->name('MngCoupon.update');
+//ADMIN - COUPONS - DELETE
+  Route::delete('/dashboard/coupon/{id}/destroy', [MngCouponController::class,'destroy'])->name('MngCoupon.destroy');
+//ADMIN - COUPONS -DELETEALL
+  Route::delete('/dashboard/coupon/deleteAll', [MngCouponController::class,'deleteAll'])->name('MngCoupon.deleteAll');
+
+
+
 //ADMIN - COMMENTS
   Route::get('/dashboard/comment', [MngCommentController::class,'index'])->name('MngComment.index');
 // ADMIN - APPROVE -COMMENT

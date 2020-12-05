@@ -13,7 +13,7 @@
 
                         <input type="text" class="form-control" id="SearchRow" name="user_name" placeholder="...">
                       </div>
-                      <button type="submit" class="btn btn-info mb-2">{{__('search')}}</button>
+                      <button type="submit" class="btn btn-info mb-2">Tìm kiếm</button>
                     </form>
                     <div class="form-group float-right mr-4">
                       <select class="form-control" id="orderItem" onchange="location = this.value;">
@@ -43,7 +43,7 @@
                         <tbody>
                           @foreach ($orders as $order)
                             <tr>
-                              <td>{{$orderNumber++}}</td>  
+                              <td>{{$orderNumber++}}</td>
                               <td><p>{{$order->user_name}}</p></td>
                               <td><p>{{$order->ship_address}}</p></td>
                               <td>{{$order->ship_mail}}</td>
@@ -55,7 +55,7 @@
                               <td>{{$order->total}}</td>
                               <td>{{\Carbon\Carbon::parse( $order->created_at)->format('d/m/Y')}}</td>
                             </tr>
-                          @endforeach         
+                          @endforeach
                         </tbody>
                     </table>
                 </div>

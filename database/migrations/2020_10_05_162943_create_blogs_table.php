@@ -22,7 +22,6 @@ class CreateBlogsTable extends Migration
             $table->string('thumbnail')->nullable();
             $table->text('content');
             $table->integer('view')->default(0);
-            $table->string('day_up');
             $table->enum('is_published',['0','1']);
             $table->enum('especially',['0','1']);
             $table->unsignedBigInteger('language_id')->nullable();

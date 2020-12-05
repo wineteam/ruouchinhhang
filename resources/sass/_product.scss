@@ -18,13 +18,13 @@
       padding: 10px 16px;
       list-style: none;
     }
-    
+
     /* Display list items side by side */
     ul.breadcrumb-page li {
       display: inline;
       font-size: 18px;
     }
-    
+
     /* Add a slash symbol (/) before/behind each list item */
     ul.breadcrumb-page li+li:before {
       padding: 8px;
@@ -100,6 +100,53 @@
 .tagList span {
   border: 1px solid #bdb68e;
   padding: 10px 10px;
+}
+.tagclound a{
+  padding: 3px 8px;
+  border: 1px solid #CBA476;
+  background: #ffffff;
+  display: inline-block;
+  margin: 2px 1px;
+  color: #000000;
+  font-size: 12px;
+  transition: all ease 0.3s;
+}
+  .form-search{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    transition: 0.5s;
+  }
+  input[name="searching"]{
+    padding: 6px 8px;
+    border: 1px solid #BDB68E;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    transition: 0.5s;
+  }
+  .form-search button[type="submit"]{
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    border: none;
+    background: transparent;
+    margin-top: -0.5em;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    z-index: 0;
+    /* pointer-events: none; */
+    cursor: pointer;
+  }
+  .form-search input[name="searching"]:focus{
+    background: #FCFAF8;
+    border: 1px solid transparent;
+  }
+
+.tagclound a:hover{
+  background: #e74c3c;
+  color: white;
 }
 .List-editor{
   margin-top: 20px;

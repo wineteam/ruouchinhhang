@@ -8,7 +8,7 @@ use App\Models\Category;
 class Blog extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','title','slug','description','thumbnail','content','view','day_up','is_published','especially','language'];
+    protected $fillable = ['user_id','title','slug','description','thumbnail','content','view','is_published','especially','language'];
 
 
     public function user(){
