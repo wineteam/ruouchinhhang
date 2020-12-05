@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MngTagsController extends Controller
 {
     public function index(){
-        $tags = Tag::orderBy('created_at','desc')->paginate(12);
+        $tags = Tag::orderBy('created_at','desc')->where('primary','1')->paginate(12);
         return view('admin.tag.index')->with(["tags"=>$tags]);
     }
     public function orderPro($order)

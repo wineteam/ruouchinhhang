@@ -84,12 +84,14 @@ class MngBlogController extends Controller
       $blogs->is_published  = $request->is_published;
       $blogs->especially  = $request->especially;
       $saved = $blogs->save();
+      /* Lỗi ở đây */
       if(isset($request->categories) && $saved === true){
         $blogs->categories->sync($request->categories);
       }
       if(isset($request->tags) && $saved == true){
         //$blogs->tags->sync($request->tags);
       }
+      /* END Lỗi ở đây */
       if($saved === false){
         Storage::delete($name);
         
@@ -164,13 +166,14 @@ class MngBlogController extends Controller
         $blogs->language = $request->language;
       }
       $saved = $blogs->save();
-      
+      /* Lỗi ở đây */
       if(isset($request->categories) && $saved == true){
         $blogs->categories()->sync($request->categories);
       }
       if(isset($request->tags) && $saved == true){
         //$blogs->tags->sync($request->tags);
       }
+      /* END Lỗi ở đây */
       if($saved === false){
         Storage::delete($name);
         
