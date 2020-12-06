@@ -24,6 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8476c215-00c3-495a-85b1-5bb1ee93b73e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +116,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
-      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
@@ -167,12 +167,13 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/hardevine/shoppingcart" />
       <path value="$PROJECT_DIR$/vendor/laravelista/comments" />
-      <path value="$PROJECT_DIR$/vendor/actuallymab/laravel-comment" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-honeypot" />
       <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/actuallymab/laravel-comment" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iSy9c3A34gTF0oXoKs3zwvKfMI" />
@@ -203,11 +204,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ruouchinhhang" />
       <recent name="C:\xampp\htdocs\ruuchinhhang\resources\views\admin\coupon" />
       <recent name="C:\xampp\htdocs\ruuchinhhang\resources\lang\vn" />
       <recent name="C:\xampp\htdocs\ruu-3\app\Http\Middleware" />
       <recent name="C:\xampp\htdocs\duancuoi\public\js" />
-      <recent name="C:\xampp\htdocs\duancuoi\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\ruuchinhhang\public\css" />
@@ -335,6 +336,8 @@
       <workItem from="1607241437075" duration="1904000" />
       <workItem from="1607243427663" duration="562000" />
       <workItem from="1607245002191" duration="2598000" />
+      <workItem from="1607256027156" duration="778000" />
+      <workItem from="1607260607807" duration="4677000" />
     </task>
     <servers />
   </component>
@@ -346,7 +349,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
