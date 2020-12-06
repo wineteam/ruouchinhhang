@@ -1166,11 +1166,17 @@
                 "framework",
                 "laravel"
             ],
+<<<<<<< .mine
+            "time": "2020-12-03T13:47:59+00:00"
+||||||| .r79
+            "time": "2020-11-17T14:53:20+00:00"
+=======
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2020-12-03T13:47:59+00:00"
+>>>>>>> .r80
         },
         {
             "name": "laravel/helpers",
@@ -1909,11 +1915,17 @@
                 "parser",
                 "php"
             ],
+<<<<<<< .mine
+            "time": "2020-12-03T17:45:45+00:00"
+||||||| .r79
+            "time": "2020-09-26T10:30:38+00:00"
+=======
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.3"
             },
             "time": "2020-12-03T17:45:45+00:00"
+>>>>>>> .r80
         },
         {
             "name": "opis/closure",
@@ -2428,11 +2440,17 @@
                 "interactive",
                 "shell"
             ],
+<<<<<<< .mine
+            "time": "2020-12-04T02:51:30+00:00"
+||||||| .r79
+            "time": "2020-05-03T19:32:03+00:00"
+=======
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
                 "source": "https://github.com/bobthecow/psysh/tree/v0.10.5"
             },
             "time": "2020-12-04T02:51:30+00:00"
+>>>>>>> .r80
         },
         {
             "name": "ralouphie/getallheaders",
@@ -2853,6 +2871,15 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
+<<<<<<< .mine
+            "keywords": [
+                "cli",
+                "command line",
+                "console",
+                "terminal"
+            ],
+||||||| .r79
+=======
             "keywords": [
                 "cli",
                 "command line",
@@ -2862,6 +2889,7 @@
             "support": {
                 "source": "https://github.com/symfony/console/tree/v5.2.0"
             },
+>>>>>>> .r80
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -5204,6 +5232,15 @@
                 "check",
                 "validate"
             ],
+<<<<<<< .mine
+            "time": "2020-07-08T17:02:28+00:00"
+        }
+    ],
+    "packages-dev": [
+||||||| .r79
+            "time": "2020-09-26T16:55:38+00:00"
+        },
+=======
             "support": {
                 "issues": "https://github.com/webmozart/assert/issues",
                 "source": "https://github.com/webmozart/assert/tree/master"
@@ -5212,6 +5249,7 @@
         }
     ],
     "packages-dev": [
+>>>>>>> .r80
         {
             "name": "barryvdh/laravel-debugbar",
             "version": "v3.5.1",
@@ -6115,11 +6153,17 @@
                 }
             ],
             "description": "Library for handling version information and constraints",
+<<<<<<< .mine
+            "time": "2020-11-30T09:21:21+00:00"
+||||||| .r79
+            "time": "2020-06-27T14:39:04+00:00"
+=======
             "support": {
                 "issues": "https://github.com/phar-io/version/issues",
                 "source": "https://github.com/phar-io/version/tree/3.0.3"
             },
             "time": "2020-11-30T09:21:21+00:00"
+>>>>>>> .r80
         },
         {
             "name": "phpdocumentor/reflection-common",
