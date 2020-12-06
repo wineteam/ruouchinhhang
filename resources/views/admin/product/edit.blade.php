@@ -72,7 +72,7 @@
                     <div class="form-group">
                        <select name="categories[]" id="categories" multiple class="form-control">
                            @foreach ($categories as $category)
-                                <option  @if($category->checked === true) selected @endif value="{{$category->slug}}">{{$category->name}}</option>
+                                <option  @if($category->checked === true) selected @endif value="{{$category->id}}">{{$category->name}}</option>
                            @endforeach
                        </select>
                     </div>
