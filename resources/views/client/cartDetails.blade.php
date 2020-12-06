@@ -120,6 +120,7 @@
               <div class="p-4">
                 <ul class="list-unstyled mb-4">
                   <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.subtotal')}} </strong><strong>{{Cart::subTotal(0,',','.')." ".__('$')}}</strong></li>
+                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.tax')}}(60%)</strong><strong>{{ number_format(Cart::tax(),0,',','.')." ".__('$')}}</strong></li>
                   @if(session()->has('coupon'))
                     <li class="d-flex justify-content-between py-3 border-bottom">
                       <strong class="text-muted">{{__('cart.discount')}}({{session()->get('coupon')['name']}})
@@ -131,16 +132,11 @@
                       </strong>
                       <strong>{{number_format($discount,0,',','.')." ".__('$')}}</strong>
                     </li>
-                    <li class="d-flex justify-content-between py-3 border-bottom">
-                      <strong class="text-muted">{{__('cart.new_subtotal')}}</strong>
-                      <strong> {{number_format($newSubtotal,0,',','.')." ".__('$')}}</strong>
-                    </li>
-                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.new_tax')}}(60%)</strong><strong>{{number_format($newTax,0,',','.')." ".__('$')}}</strong></li>
                     <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.total')}}</strong>
-                      <h5 class="font-weight-bold">{{number_format($newTotal,0,',','.')." ".__('$')}}</h5>
+                      <h5 class="font-weight-bold">{{number_format($total,0,',','.')." ".__('$')}}</h5>
                     </li>
                   @else
-                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.tax')}}(60%)</strong><strong>{{ number_format(Cart::tax(),0,',','.')." ".__('$')}}</strong></li>
+
                     <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.total')}}</strong>
                       <h5 class="font-weight-bold">{{Cart::total(0,',','.')." ".__('$')}}</h5>
                     </li>

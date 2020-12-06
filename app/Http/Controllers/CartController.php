@@ -18,19 +18,14 @@ class CartController extends Controller
 
       $subtotal = $this->parseMoney(Cart::subtotal());
       $discount = session()->get('coupon')['discount'] ?? 0;
-      $tax = config('cart.tax') /100;
-      $newSubtotal =  $subtotal -  $discount;
-      if ($subtotal < $discount){
-        $newSubtotal = 0;
+      $total = ($subtotal + Cart::tax()) - $discount;
+      if($total < 0){
+        $total = 0;
       }
-      $newTax =$newSubtotal * $tax;
-      $newTotal = $newSubtotal * (1+ $tax);
-        return view('client.cartDetails')->with([
-          'discount'=>$discount,
-          'newSubtotal'=>$newSubtotal,
-          'newTax'=>$newTax,
-          'newTotal'=>$newTotal
-        ]);
+      return view('client.cartDetails')->with([
+        'discount'=>$discount,
+        'total'=>$total
+      ]);
     }
     public function parseMoney($money){
       return (float)preg_replace('/[^\d.]/', '',$money);
