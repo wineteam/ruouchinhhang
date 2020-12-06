@@ -10,7 +10,7 @@
     <li class="carousel-items" data-target="#carouselIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-        
+
         @foreach ($banner as $banners)
             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                 <a href="{{$banners->link}}">
@@ -20,9 +20,9 @@
                         <p class="Font-dark text-left Edit-Font-Size-SlideShow">{{$banners->description}}</p>
                     </div>
                 </a>
-            </div>    
+            </div>
         @endforeach
-    
+
     </div>
 </div>
 <!--====================================== END SLIDE SHOW ======================================-->
@@ -60,7 +60,7 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a href="{{route('shop.show',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ $product->thumbnail}} }}" alt=""></a>
+                    <a href="{{route('shop.show',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail)}}" alt=""></a>
                     @forelse($product->categories as $category)
                     <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
                         @if(!$loop->last)
@@ -151,7 +151,7 @@
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </div>
                             </a>
-                            <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{ $product->thumbnail }}" alt="">
+                            <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail)}}" alt="">
 
                             @forelse($product->categories as $category)
                                 <span class="text-center Font-Size-07vw">
@@ -216,7 +216,7 @@
                         <div class="blogger_padding_text blogger_classic">
                             <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
                             <div id="" class="">
-                              <a href="{{route('blog.show',$blog->slug)}}"><img src="{{$blog->thumbnail}}" width="100%" alt=""></a>
+                              <a href="{{route('blog.show',$blog->slug)}}"><img src="{{asset('storage/'.$product->thumbnail)}}" width="100%" alt=""></a>
                                 <a href="#">
                                     <span class="day">{{\Carbon\Carbon::parse($blog->created_at)->format('d')}}</span> <span class="Font-dark">{{\Carbon\Carbon::parse($blog->created_at)->format('M')}}</span>
                                 </a>

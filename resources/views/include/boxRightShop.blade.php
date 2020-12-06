@@ -78,7 +78,7 @@
         @foreach($proOrderBought as $product)
           <div class="row">
             <div class="col-4 text-center productList__item p-0">
-              <a href="{{route('shop.show',$product->slug)}}"><img src="{{ $product->thumbnail }}" width="100%" alt="" ></a>
+              <a href="{{route('shop.show',$product->slug)}}"><img src="{{asset('storage/'.$product->thumbnail)}}" width="100%" alt="" ></a>
             </div>
             <div class="col-8">
               <h4 class="mb-3" style=";"><a style="font-size:16px;" href="{{route('shop.show',$product->slug)}}">{{ \Illuminate\Support\Str::limit($product->name,40)}}</a></h4>
