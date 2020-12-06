@@ -37,7 +37,9 @@
                                 <th scope="col" width="60">#</th>
                                 <th scope="col" width="60">{{__('image')}}</th>
                                 <th scope="col" width="60">{{__('name')}}</th>
-                                <th scope="col" width="200">{{__('nation')}}</th>
+                                <th scope="col" width="60">Giá</th>
+                                <th scope="col" width="60">Giá giảm</th>
+                               <th scope="col" width="200">{{__('nation')}}</th>
                                 <th scope="col" width="200">{{__('Especially')}}</th>
                                 <th scope="col" width="200">{{__('Status')}}</th>
                                 <th scope="col" width="200">{{__('Datecreated')}}</th>
@@ -46,12 +48,14 @@
                             </tr>
                         </thead>
                         <tbody>
-            
+
                             @foreach ($products as $product)
                               <tr>
                                 <td><input type="checkbox" name='Product_Id[]' value="{{$product->id}}" class="selectAllchilden"></td>
                                 <td><img src="{{asset('storage/'.$product->thumbnail) }}" width="60px" alt=""></td>
                                 <td><a href="{{route('shop.show',$product->slug)}}">{{ $product->name }}</a></td>
+                                <td>{{number_format($product->price,0,',','.')}}</td>
+                                <td>{{number_format($product->discount,0,',','.')}}</td>
                                 <td>{{ $product->nation }}</td>
                                 <td> @if ($product->especially == 1) Có @else Không @endif</td>
                                 <td>  @if ($product->is_published == 1) Đang hiển thị @else Không hiển thị @endif </td>
@@ -69,9 +73,9 @@
                                     </form>
                                   </div>
                                 </td>
-                            </tr>  
+                            </tr>
                             @endforeach
-                          
+
                         </tbody>
                         </table>
                     <div class="action mt-3">
@@ -113,7 +117,7 @@
         }
         return false;
   });
-    
+
 
       $('#selectAllRow').on('click', function(e) {
         if($(this).is(':checked',true))

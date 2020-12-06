@@ -48,8 +48,8 @@ class MngProductController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-          'name' => 'required | string | max:255',
-          'codePro' => 'required | string',
+          'name' => 'required | unique:products | string | max:255',
+          'codePro' => 'required| unique:products | string',
           'price' => 'required | integer',
           'size' => 'required | string | max:255',
           'vintage' => 'required | string | max:255',
@@ -60,9 +60,9 @@ class MngProductController extends Controller
       ],
       [
           'name.required' => 'Mảng :attribute yêu cầu bắt buộc.',
-
+          'name.unique'=>'Tên sản phẩm đã tồn tại',
           'codePro.required' => 'Mảng :attribute yêu cầu bắt buộc.',
-
+          'codePro.unique'=>'Mã sản phẩm bị trùng',
           'price.required' => 'Mảng :attribute yêu cầu bắt buộc.',
           'price.integer' => 'Mảng :attribute yêu câu số nguyên.',
 

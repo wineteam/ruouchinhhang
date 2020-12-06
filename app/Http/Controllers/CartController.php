@@ -18,7 +18,7 @@ class CartController extends Controller
 
       $subtotal = $this->parseMoney(Cart::subtotal());
       $discount = session()->get('coupon')['discount'] ?? 0;
-      $total = ($subtotal + $this->parseMoney(Cart::tax())) - $discount;
+      $total = ($subtotal + $this ->parseMoney(Cart::tax())) - $discount;
       if($total < 0){
         $total = 0;
       }
