@@ -56,6 +56,17 @@
                             <br><div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group">
+                      <label for="language">Ngôn ngữ</label>
+                      <select class="form-control" name="language_id" id="language_id">
+                       @foreach ($languages as $language)
+                        <option value="{{$language->id}}">{{$language->name}}</option>
+                       @endforeach
+                      </select>
+                      @error('language_id')
+                        <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
+                    </div>
                     <button class="btn btn-success" type="submit">Thêm</button>
                     <a href="{{route('MngBanner.index')}}" class="btn btn-secondary"><span style="color: #ffffff">{{__('cancel')}}</span></a>
                   </form>

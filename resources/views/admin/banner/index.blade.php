@@ -40,6 +40,7 @@
                             <th scope="col">{{__('title')}}</th>
                             <th scope="col">{{__('link')}}</th>
                             <th scope="col">{{__('location')}}</th>
+                            <th scope="col">{{__('Language')}}</th>
                             <th scope="col" width="200">{{__('Datecreated')}}</th>
                             <th scope="col" width="129">{{__('Action')}}</th>
                         </tr>
@@ -54,6 +55,7 @@
                           <td>{{$banners->description}}</td>
                           <td>{{$banners->link}}</td>
                           <td>{{$banners->order}}</td>
+                          <td> @if ($banners->language_id == 1) Tiếng việt @else Tiếng anh @endif</td>
                           <td>{{\Carbon\Carbon::parse( $banners->created_at)->format('d/m/Y')}}</td>
                           
                           <td>

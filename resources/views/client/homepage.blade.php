@@ -10,36 +10,19 @@
     <li class="carousel-items" data-target="#carouselIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-    <div class="carousel-item active">
-        <a href="">
-            <img class="d-block w-100" src="{{ asset('images/slider_bg_1_1.jpg') }}" alt="First slide">
-            <div class="carousel-caption d-none d-md-block FIX-Carousel-Caption">
-                <h1 style="padding-bottom: 10px;" class="Font-Yellow text-left carousel-SlideShow Forum">New Luxury Wine<br>from France</h1>
-                <p class="Font-dark text-left Edit-Font-Size-SlideShow">Our friendly wine experts have put their experience and knowledge to good use building our collection of balanced and available wines. </p>
-                <a href="" class="btn-subtitle btn-subtitle-Sildeshow Display-noneX" style="float: left;">Learn More</a>
-            </div>
-        </a>
-    </div>
-    <div class="carousel-item">
-        <a href="">
-            <img class="d-block w-100" src="{{ asset('images/slide_1_2.jpg') }}" alt="Second slide">
-            <div class="carousel-caption d-none d-md-block FIX-Carousel-Caption">
-                <h1 style="padding-bottom: 10px;" class="Font-Yellow text-left carousel-SlideShow Forum">Season of tasting<br>on Luxury Wine</h1>
-                <p class="Font-dark text-left Edit-Font-Size-SlideShow">We offer a great variety of wines for every price point and any occasion, from rich and lemony Chardonnay to elegant and creamy brut.  </p>
-                <a href="" class="btn-subtitle btn-subtitle-Sildeshow Display-noneX" style="float: left;">Learn More</a>
-            </div>
-        </a>
-    </div>
-    <div class="carousel-item">
-        <a href="">
-            <img class="d-block w-100" src="{{ asset('images/slide_1_3.jpg') }}" alt="Third slide">
-            <div class="carousel-caption d-none d-md-block FIX-Carousel-Caption">
-                <h1 style="padding-bottom: 10px;" class="Font-Yellow text-left carousel-SlideShow Forum">Market<br>Seasonal Discounts  </h1>
-                <p class="Font-dark text-left Edit-Font-Size-SlideShow">We are extremely proud to introduce 2012 Duckhorn Vineyards Napa Valley Chardonnay. Purchase 10 bottles of this wine and get 20% off!</p>
-                <a href="" class="btn-subtitle btn-subtitle-Sildeshow Display-noneX" style="float: left;">Learn More</a>
-            </div>
-        </a>
-    </div>
+        
+        @foreach ($banner as $banners)
+            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                <a href="{{$banners->link}}">
+                    <img class="d-block w-100" src="{{asset('storage/'.$banners->thumbnail) }}" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block FIX-Carousel-Caption">
+                        <h1 style="padding-bottom: 10px;" class="Font-Yellow text-left carousel-SlideShow Forum">{{$banners->name}}</h1>
+                        <p class="Font-dark text-left Edit-Font-Size-SlideShow">{{$banners->description}}</p>
+                    </div>
+                </a>
+            </div>    
+        @endforeach
+    
     </div>
 </div>
 <!--====================================== END SLIDE SHOW ======================================-->
