@@ -47,7 +47,7 @@ class MngBlogController extends Controller
 
     public function create()
     {
-     
+
       $categories = Category::where('type','=','1')->get();
       $languages = LanguageSwitch::all();
       $Tag = Tag::select('tags.*')->where('primary', '1')->get();
@@ -56,17 +56,18 @@ class MngBlogController extends Controller
 
     public function store(Request $request)
     {
+
       $request->validate([
           'title' => 'required | string | max:255',
           'description' => 'required | string',
-          'content' => 'required | string',
+          'contentProduct' => 'required | string',
       ],
       [
           'title.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
           'description.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
-          'content.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+          'contentProduct.required' => 'Mảng :attribute yêu cầu bắt buộc.',
       ]);
       $user_id = Auth()->user()->id;
       $blogs = new Blog;
@@ -79,22 +80,19 @@ class MngBlogController extends Controller
         $blogs->thumbnail  = $path;
       }
       $blogs->description = $request->description;
-      $blogs->content = $request->content;
+      $blogs->content = $request->contentProduct;
       $blogs->language_id  = $request->language_id;
       $blogs->is_published  = $request->is_published;
       $blogs->especially  = $request->especially;
       $saved = $blogs->save();
       /* Lỗi ở đây */
       if(isset($request->categories) && $saved === true){
-        $blogs->categories->sync($request->categories);
-      }
-      if(isset($request->tags) && $saved == true){
-        //$blogs->tags->sync($request->tags);
+        $blogs->categories()->sync($request->categories);
       }
       /* END Lỗi ở đây */
       if($saved === false){
         Storage::delete($name);
-        
+
       };
       session()->flash('success', 'Thêm thành công');
 
@@ -153,8 +151,8 @@ class MngBlogController extends Controller
       if(isset($request->description)){
         $blogs->description = $request->description;
       }
-      if(isset($request->content)){
-        $blogs->content = $request->content;
+      if(isset($request->contentProduct)){
+        $blogs->content = $request->contentProduct;
       }
       if(isset($request->is_published)){
         $blogs->is_published = $request->is_published;
@@ -167,19 +165,18 @@ class MngBlogController extends Controller
       }
       $saved = $blogs->save();
       /* Lỗi ở đây */
+
       if(isset($request->categories) && $saved == true){
         $blogs->categories()->sync($request->categories);
       }
-      if(isset($request->tags) && $saved == true){
-        //$blogs->tags->sync($request->tags);
-      }
+
       /* END Lỗi ở đây */
       if($saved === false){
         Storage::delete($name);
-        
+
       };
       session()->flash('message','success');
-      return redirect('/dashboard/blog');
+      return redirect()->back();
     }
 
 

@@ -106,21 +106,21 @@
                         @if($discount > 0)
                           <tr>
                             <td colspan="1" class="text-uppercase text-right font-weight-bold">DISCOUNT</td>
-                            <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{$discount}} vnđ</span></td>
+                            <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{number_format($discount,0,',','.')}} vnđ</span></td>
                           </tr>
                         @endif
                           <tr>
                             <td colspan="1" class="text-uppercase text-right font-weight-bold">SUBTOTAL</td>
-                            <td colspan="2" class="text-uppercase">{{$subtotal}} vnđ</td>
+                            <td colspan="2" class="text-uppercase">{{number_format($subtotal,0,',','.')}} vnđ</td>
                           </tr>
 
                         <tr>
                           <td colspan="1" class="text-uppercase text-right font-weight-bold">TAX</td>
-                          <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{$tax}} vnđ</span></td>
+                          <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{number_format($tax,0,',','.')}} vnđ</span></td>
                         </tr>
                           <tr>
                             <td colspan="1" class="text-uppercase text-right font-weight-bold">TOTAL</td>
-                            <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{$total}} vnđ</span></td>
+                            <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{number_format($total,0,',','.')}} vnđ</span></td>
                           </tr>
                         </tbody>
                     </table>

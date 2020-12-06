@@ -47,8 +47,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                
-                        
+
+
                       @foreach ($blogs as $blog)
                         <tr>
                           <td><input type="checkbox" name="Blog_Id[]" value="{{$blog->id}}" class="selectAllchilden"></td>
@@ -61,9 +61,10 @@
                             @endforeach
                           </td>
                           <td>
-                            @foreach ($tags as $tag)
+                            @foreach ($blog->tags as $tag)
                               {{$tag->name}} @if (!$loop->last) , @endif
                             @endforeach
+                            ...
                           </td>
                           <td>{{$blog->view}}</td>
                           <td>
@@ -81,9 +82,9 @@
                           </td>
                         </tr>
                       @endforeach
-                    
-                        
-                           
+
+
+
                         </tbody>
                     </table>
                     <div class="action mt-3">
@@ -128,23 +129,23 @@
     });
 
       $('#selectAllRow').on('click', function(e) {
-        if($(this).is(':checked',true))  
+        if($(this).is(':checked',true))
         {
-          $(".selectAllchilden").prop('checked', true);  
+          $(".selectAllchilden").prop('checked', true);
           $(".sheetDelete").css("display", "block");;
-        } else {  
-          $(".selectAllchilden").prop('checked',false);  
+        } else {
+          $(".selectAllchilden").prop('checked',false);
           $(".sheetDelete").css("display", "none");;
-        }  
+        }
       });
 
       $('.selectAllchilden').on('click', function(e) {
-        if($(this).is(':checked',true))  
+        if($(this).is(':checked',true))
         {
           $(".sheetDelete").css("display", "block");;
-        } else {  
+        } else {
           $(".sheetDelete").css("display", "none");;
-        }  
+        }
       });
 
     });

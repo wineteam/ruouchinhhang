@@ -71,16 +71,16 @@
                     </div>
                     <div class="form-group Limit-hetght">
                        <select name="categories[]" id="categories" multiple class="form-control">
-                           @foreach ($categories as $category)                            
+                           @foreach ($categories as $category)
                                 <option  @if($category->checked === true) selected @endif value="{{$category->id}}">{{$category->name}}</option>
                            @endforeach
                        </select>
                     </div>
                     <div class="form-group">
                         <label for="description">Giới thiệu sản phẩm</label>
-                        <textarea class="form-control" name="description" id="description" rows="5">{{$product->description}}</textarea>
+                        <textarea rows="40" class="form-control" name="description" id="description" rows="5">{{$product->description}}</textarea>
                     </div>
-                     
+
                     <div class="form-group">
                         <label for="is_published">Hiển thị sản phẩm</label>
                         <select class="form-control" name="is_published"  id="is_published">
@@ -88,7 +88,7 @@
                             <option @if($product->is_published === '0') selected @endif value="0">Không</option>
                         </select>
                     </div>
-                 
+
                     <div class="form-group">
                         <label for="especial">Đặc biệt</label>
                         <select class="form-control" name="especially" id="especial">
@@ -115,14 +115,15 @@
   </section>
 @endsection
 @section('script')
-<script> 
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script>
+
   $(document).ready(function() {
+    CKEDITOR.replace('description');
     $("#categories").select2({
     placeholder: "select categories"
   })
-  $("#Tags").select2({
-    placeholder: "select Tags"
-  })
+
 });
     function readURL_Images(input) {
         if (input.files && input.files[0]) {

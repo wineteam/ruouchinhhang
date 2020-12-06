@@ -14,13 +14,14 @@ class checkoutController extends Controller
      */
     public function index()
     {
-      $subtotal = Cart::subtotal(0,",",".");
+      $subtotal = Cart::subtotal();
       $tax = $subtotal * (config('cart.tax') /100);
-      $total = Cart::total(0,",",".");
+      $total = Cart::total();
       $discount = session()->get('coupon')['discount'] ?? 0;
-      $discount = number_format($discount,0,",",".");
+
       if($discount > 0){
-        $total = $subtotal * (1 +  (config('cart.tax') /100)) - $discount;
+        $subtotal -= $discount;
+        $total = $subtotal * (1 +  (config('cart.tax') /100));
       }
       if ($total < 0){
         $total = 0;

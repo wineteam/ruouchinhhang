@@ -144,7 +144,9 @@ p a:hover {
   vertical-align: middle;
   line-height: 2.5;
   width: 100%;
-  margin: 0;
+  margin: 0 0 20px 0;
+  border: 1px solid #cccccc;
+
 }
 
 .taggle_input {

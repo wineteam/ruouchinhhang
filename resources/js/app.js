@@ -1,3 +1,4 @@
+require('jquery');
 require('./bootstrap');
 require('sweetalert');
-require('jquery');
+require('taggle');

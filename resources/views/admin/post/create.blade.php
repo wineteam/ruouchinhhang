@@ -6,7 +6,7 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                 <h4>Thêm bài viết</h4>                     
+                 <h4>Thêm bài viết</h4>
               </div>
               @if ($errors->any())
                 <div class="alert alert-danger">
@@ -27,7 +27,7 @@
                       <br><div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                   </div>
-                 
+
                   <div class="form-group">
                     <label for="thumbnail">Hình ảnh sản phẩm</label> <br>
                     <img src="{{ asset('storage/blog_images/noBlog.jpg') }}" id="ImagesBlog" class="img-thumbnail" alt="" width="250px"> <br><br>
@@ -44,8 +44,8 @@
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="content">Nội dung</label>
-                    <textarea class="form-control" name="content" id="content" rows="3">{{old('content')}}</textarea>
+                    <label for="contentProduct">Nội dung</label>
+                    <textarea class="form-control" name="contentProduct" id="contentProduct" rows="3">{{old('contentProduct')}}</textarea>
                     @error('content')
                       <br><div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -55,20 +55,9 @@
 
                     <select id="categories" name="categories[]"  class="form-control" multiple="multiple">
                       @foreach ($categories as $category)
-                        <option value="{{$category->slug}}">{{$category->name}}</option>
+                        <option value="{{$category->id}}">{{$category->name}}</option>
                       @endforeach
                       @error('categories')
-                        <br><div class="alert alert-danger">{{ $message }}</div>
-                      @enderror
-                    </select>
-                  </div>
-                  <div class="form-group Limit-hetght">
-                    <label for="Tags">Chọn Tags *</label>
-                    <select id="Tags" name="Tag[]"  class="form-control" multiple="multiple">
-                      @foreach ($Tag as $Tags)
-                        <option value="{{$Tags->slug}}">{{$Tags->name}}</option>
-                      @endforeach
-                      @error('Tag')
                         <br><div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </select>
@@ -104,6 +93,9 @@
                       <br><div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                   </div>
+                  <div id="tags">
+
+                  </div>
                   <button class="btn btn-success" type="submit">Thêm</button>
                   <a href="{{route('MngBlog.index')}}" class="btn btn-secondary"><span style="color: #ffffff">{{__('cancel')}}</span></a>
                 </form>
@@ -115,8 +107,10 @@
 </section>
 @endsection
 @section('script')
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 <script>
   $(document).ready(function() {
+    CKEDITOR.replace('contentProduct');
     $("#categories").select2({
     placeholder: "select categories"
   })

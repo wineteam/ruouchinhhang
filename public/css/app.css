@@ -12577,6 +12577,38 @@ input[name=searching] {
   }
 }
 
+.cart-page {
+  /* Style the list */
+  /* Display list items side by side */
+  /* Add a slash symbol (/) before/behind each list item */
+  /* Add a color to all links inside the list */
+}
+
+.cart-page ul.breadcrumb-page {
+  padding: 10px 16px;
+  list-style: none;
+}
+
+.cart-page ul.breadcrumb-page li {
+  display: inline;
+  font-size: 18px;
+}
+
+.cart-page ul.breadcrumb-page li + li:before {
+  padding: 8px;
+  color: #787567;
+  content: "/\A0";
+}
+
+.cart-page ul.breadcrumb-page li[aria-current=page] {
+  color: #787567;
+}
+
+.cart-page ul.breadcrumb-page li a {
+  color: #CBA476;
+  text-decoration: none;
+}
+
 .contact-page {
   /* contact */
   /* END contact */

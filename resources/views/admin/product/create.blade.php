@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                   <h4>Thêm sản phẩm</h4>                           
+                   <h4>Thêm sản phẩm</h4>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group">
                       <label for="detail">Mô tả</label>
-                      <textarea name="detail" id="detail" class="form-control" rows="3">{{old('detail')}}</textarea>
+                      <textarea name="detail" id="details" class="form-control" rows="3">{{old('detail')}}</textarea>
                       @error('detail')
                           <br><div class="alert alert-danger">{{ $message }}</div>
                       @enderror
@@ -63,7 +63,7 @@
                           <br><div class="alert alert-danger">{!! $errors->first('thumbnail') !!}</div>
                     @endif
                     </div>
-                  
+
                     <div class="form-group">
                       <label for="price">Giá *</label>
                       <input type="number" name="price" class="form-control" value="{{old('price')}}" id="price" placeholder="Nhập giá sản phẩm">
@@ -110,7 +110,7 @@
                       @error('description')
                         <br><div class="alert alert-danger">{{ $message }}</div>
                       @enderror
-                    </div>                 
+                    </div>
                     <div class="form-group">
                       <label for="is_published">Hiển thị sản phẩm</label>
                       <select class="form-control" name="is_published"  id="is_published">
@@ -121,7 +121,7 @@
                         <br><div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>
-                    
+
                     <div class="form-group">
                       <label for="especial">Đặc biệt</label>
                       <select class="form-control" name="especially" id="especial">
@@ -154,8 +154,11 @@
   </section>
 @endsection
 @section('script')
-<script>
+  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
+  <script>
   $(document).ready(function() {
+    CKEDITOR.replace('description');
     $("#categories").select2({
     placeholder: "select categories"
   })

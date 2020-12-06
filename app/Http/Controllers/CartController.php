@@ -16,15 +16,14 @@ class CartController extends Controller
      */
     public function index()
     {
-      $subtotal = Cart::subtotal(0,",",".");
+      $subtotal = Cart::subtotal();
       $discount = session()->get('coupon')['discount'] ?? 0;
-      $discount = number_format($discount,0,",",".");
       $tax = config('cart.tax') /100;
-      $newSubtotal = ( $subtotal - $discount);
+      $newSubtotal =  $subtotal - $discount;
       if ($subtotal < $discount){
         $newSubtotal = 0;
       }
-      $newTax =$subtotal * $tax;
+      $newTax =$newSubtotal * $tax;
       $newTotal = $newSubtotal * (1+ $tax);
         return view('client.cartDetails')->with([
           'discount'=>$discount,

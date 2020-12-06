@@ -9,16 +9,6 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name', 'Quanlity Wine') }}</title>
   <link rel="icon" href="{{ asset('images/icon-website.png') }}">
-  <script type="application/x-javascript">
-    addEventListener("load", function() {
-      setTimeout(hideURLbar, 0);
-    }, false);
-
-    function hideURLbar() {
-      window.scrollTo(0, 1);
-    }
-  </script>
-
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -28,13 +18,13 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <script src="https://kit.fontawesome.com/7da7bccd11.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/zabuto_calendar.css')}}">
+
   <!-- Custom styles for this template -->
   <link href="{{ asset('css/styleADmin.css')}}" rel="stylesheet">
   <link href="{{ asset('css/style-responsive.css')}}" rel="stylesheet">
-  <script src="{{ asset('lib/chart-master/Chart.js')}}"></script>
 
-  <script src="{{ mix('js/app.js') }}"></script>
+
+
 
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
 
@@ -291,9 +281,9 @@
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
-  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="{{ mix('js/app.js') }}"></script>
 
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
@@ -304,7 +294,18 @@
   <!--script for this page-->
   <script src="lib/sparkline-chart.js"></script>
   <script src="lib/zabuto_calendar.js"></script>
+  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+  <script type="application/x-javascript">
+    addEventListener("load", function() {
+      setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+      window.scrollTo(0, 1);
+    }
+  </script>
   <script type="application/javascript">
     $(document).ready(function() {
       $("#date-popover").popover({

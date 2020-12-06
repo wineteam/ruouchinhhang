@@ -38,7 +38,7 @@ class MngProductController extends Controller
 
     public function create()
     {
-     
+
       $categories = Category::where('type','=','0')->get();
       $languages = LanguageSwitch::all();
       $Tag = Tag::select('tags.*')->where('primary', '1')->get();
@@ -112,7 +112,7 @@ class MngProductController extends Controller
       /* END Lỗi ở đây */
       if($saved === false){ //ERRORS < HERE
         Storage::delete($name);
-        
+
       };
       session()->flash('success', 'Thêm thành công');
 
@@ -197,7 +197,7 @@ class MngProductController extends Controller
       /* END Lỗi ở đây */
       if($saved === false){
         Storage::delete($name);
-        
+
       };
       session()->flash('message','success');
       return redirect()->back();

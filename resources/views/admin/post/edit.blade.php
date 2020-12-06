@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                   <h4>Sửa Danh mục Tin tức</h4>                           
+                   <h4>Sửa Danh mục Tin tức</h4>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -47,13 +47,20 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="content">Nội dung</label>
-                      <textarea class="form-control" value="{{$blogs->content}}" name="content" id="content" rows="3">{{$blogs->content}}</textarea>
+                      <label for="contentProduct">Nội dung</label>
+                      <textarea class="form-control" value="{{$blogs->content}}" name="contentProduct" id="contentProduct" rows="3">{{$blogs->content}}</textarea>
                       @error('content')
                         <br><div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>
-
+                    <div class="form-group Limit-hetght">
+                      <label for="categories">Chọn danh mục</label>
+                      <select name="categories[]" id="categories" multiple class="form-control">
+                        @foreach ($categories as $category)
+                          <option  @if($category->checked === true) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
                     <div class="form-group">
                       <label for="is_published">Hiển thị sản phẩm</label>
                       <select class="form-control" name="is_published"  id="is_published">
@@ -61,7 +68,7 @@
                           <option @if($blogs->is_published === '0') selected @endif value="0">Không</option>
                       </select>
                     </div>
-                
+
                     <div class="form-group">
                         <label for="especial">Đặc biệt</label>
                         <select class="form-control" name="especially" id="especial">
@@ -71,11 +78,14 @@
                     </div>
                     <div class="form-group">
                         <label for="language">Ngôn ngữ</label>
-                        <select class="form-control" name="language_id" id="especial">
+                        <select class="form-control" name="language_id" id="language">
                         @foreach ($languages as $language)
                           <option value="{{$language->id}}">{{$language->name}}</option>
                         @endforeach
                         </select>
+                    </div>
+                    <div id="tags">
+
                     </div>
                     <button class="btn btn-success" type="submit">{{__('editComfin')}}</button>
                     <a href="{{route('MngBlog.index')}}" class="btn btn-secondary"><span style="color: #ffffff">{{__('cancel')}}</span></a>
@@ -87,19 +97,33 @@
     </section>
   </section>
 @endsection
+
 @section('script')
-<script> 
+  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+  <script>
+    $(document).ready(function() {
+
+      CKEDITOR.replace('contentProduct');
+      $("#categories").select2({
+        placeholder: "select categories"
+      })
+      $("#Tags").select2({
+        placeholder: "select Tags"
+      })
+    });
+
     function readURL_Images(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#ImagesBlog')
-                    .attr('src', e.target.result);
-            };
+        reader.onload = function (e) {
+          $('#ImagesBlog')
+            .attr('src', e.target.result);
+        };
 
-            reader.readAsDataURL(input.files[0]);
-        }
+        reader.readAsDataURL(input.files[0]);
+      }
     }
-</script>
+
+  </script>
 @endsection
