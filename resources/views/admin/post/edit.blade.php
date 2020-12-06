@@ -39,13 +39,6 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                      <select name="categories[]" id="categories" multiple class="form-control">
-                          @foreach ($categories as $category)                            
-                               <option  @if($category->checked === true) selected @endif value="{{$category->id}}">{{$category->name}}</option>
-                          @endforeach
-                      </select>
-                   </div>
-                    <div class="form-group">
                       <label for="description">Mô tả ngắn</label>
                       <textarea class="form-control" value="{{$blogs->description}}" name="description" rows="3" id="description">{{$blogs->description}}</textarea>
                       @error('description')
@@ -86,12 +79,9 @@
                         <label for="language">Ngôn ngữ</label>
                         <select class="form-control" name="language_id" id="language">
                         @foreach ($languages as $language)
-                          <option value="{{$language->id}}">{{$language->name}}</option>
+                            <option @if($blogs->language_id == $language->id) selected @endif value="{{$language->id}}">{{$language->name}}</option>
                         @endforeach
                         </select>
-                    </div>
-                    <div id="tags">
-
                     </div>
                     <button class="btn btn-success" type="submit">{{__('editComfin')}}</button>
                     <a href="{{route('MngBlog.index')}}" class="btn btn-secondary"><span style="color: #ffffff">{{__('cancel')}}</span></a>
@@ -105,31 +95,14 @@
 @endsection
 
 @section('script')
-<<<<<<< HEAD
   <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-  <script>
-    $(document).ready(function() {
-
-      CKEDITOR.replace('contentProduct');
-      $("#categories").select2({
-        placeholder: "select categories"
-      })
-      $("#Tags").select2({
-        placeholder: "select Tags"
-      })
-    });
-
-=======
-<script> 
+<script>
   $(document).ready(function() {
+    CKEDITOR.replace('contentProduct');
     $("#categories").select2({
     placeholder: "select categories"
   })
-  $("#Tags").select2({
-    placeholder: "select Tags"
-  })
 });
->>>>>>> d2b0b5475479e869557168682b65ca15aba4e0b4
     function readURL_Images(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();

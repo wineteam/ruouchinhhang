@@ -146,8 +146,8 @@ class MngBlogController extends Controller
       if(isset($request->especially)){
         $blogs->especially = $request->especially;
       }
-      if(isset($request->language)){
-        $blogs->language = $request->language;
+      if(isset($request->language_id)){
+        $blogs->language_id = $request->language_id;
       }
       $saved = $blogs->save();
       if(isset($request->categories) && $saved === true){

@@ -40,7 +40,7 @@
                               <td>
                                   {{$comment->comment}}
                               </td>
-                              <td>{{$comment->commentable->name}}</td>
+                              <td><a href="{{route('shop.show',$comment->commentable->slug)}}">{{$comment->commentable->name}}</a></td>
                               <td>{{\Carbon\Carbon::parse($comment->created_at)->format('H:i:s d/m/Y')}}</td>
                               <td>
                                 <form action="{{route('MngComment.approved',$comment->id)}}" method="post">
