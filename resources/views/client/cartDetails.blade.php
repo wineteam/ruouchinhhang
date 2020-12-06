@@ -120,7 +120,7 @@
               <div class="p-4">
                 <ul class="list-unstyled mb-4">
                   <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.subtotal')}} </strong><strong>{{Cart::subTotal(0,',','.')." ".__('$')}}</strong></li>
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.tax')}}(60%)</strong><strong>{{ number_format(Cart::tax(),0,',','.')." ".__('$')}}</strong></li>
+                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.tax')}}(60%)</strong><strong>{{ Cart::tax(0,',','.')." ".__('$')}}</strong></li>
                   @if(session()->has('coupon'))
                     <li class="d-flex justify-content-between py-3 border-bottom">
                       <strong class="text-muted">{{__('cart.discount')}}({{session()->get('coupon')['name']}})
