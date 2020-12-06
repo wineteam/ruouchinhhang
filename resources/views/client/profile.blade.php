@@ -30,14 +30,16 @@
               </div></hr><br>
               <script src="{{ asset('js/imagesShow.js') }}"></script>
 
-              <ul class="list-group">
-                <li class="list-group-item text-muted">{{__('Menu_profile')}}</li>
-                <li class="list-group-item text-left"><a href="{{ route('home') }}" class="text-success">{{__('HOME')}}</a></li>
-                @if (count($roles) >= 1)
-                <li class="list-group-item text-left"><a href="{{ route('dashboard.index') }}" class="Font-Red">{{__('Dashboard')}}</a></li>
-                @endif
-                <li  class="list-group-item text-left"><a class="Font-Red pull-left" href="{{ route('Logout') }}">{{__('Logout')}}</a></li>
-              </ul>
+              <table>
+                <ul class="list-group">
+                  <li class="list-group-item text-muted">{{__('Menu_profile')}}</li>
+                  <li class="list-group-item text-left"><a href="{{ route('home') }}" class="text-success">{{__('HOME')}}</a></li>
+                  @if (count($roles) >= 1)
+                  <li class="list-group-item text-left"><a href="{{ route('dashboard.index') }}" class="Font-Red">{{__('Dashboard')}}</a></li>
+                  @endif
+                  <li  class="list-group-item text-left"><a class="Font-Red pull-left" href="{{ route('Logout') }}">{{__('Logout')}}</a></li>
+                </ul>
+              </table>
               <div class="vc_empty_space" style="height: 3.5em"><span class="vc_empty_space_inner"></span></div>
           </div>
 

@@ -105,7 +105,6 @@
 @endsection
 
 @section('script')
-<<<<<<< HEAD
   <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
   <script>
     $(document).ready(function() {
@@ -119,17 +118,6 @@
       })
     });
 
-=======
-<script> 
-  $(document).ready(function() {
-    $("#categories").select2({
-    placeholder: "select categories"
-  })
-  $("#Tags").select2({
-    placeholder: "select Tags"
-  })
-});
->>>>>>> d2b0b5475479e869557168682b65ca15aba4e0b4
     function readURL_Images(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();

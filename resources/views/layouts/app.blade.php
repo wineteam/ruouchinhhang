@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Quanlity Wine') }}</title>
     <link rel="icon" href="{{ asset('images/icon-website.png') }}">
+    
   <script type="application/x-javascript">
     addEventListener("load", function() {
       setTimeout(hideURLbar, 0);
@@ -143,20 +144,27 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <div class="nav-link">
-                    <i class="fa fa-times btn icon-close-menu" style="font-size: 30px;" id="btnCloseMenu" aria-hidden="true"></i>
+                    <i class="fa fa-window-close btn icon-close-menu" style="font-size: 30px;" id="btnCloseMenu" aria-hidden="true">X</i>
                 </div>
+                @if(Route::has('login'))
+                @auth
+                <li class="nav-item"><a class="nav-link padding-text Font-white" style="margin-bottom: -15px" href="{{route('profile.edit')}}">{{__('profile')}}</li>
+                @else
+                <li class="nav-item"><a class="nav-link padding-text Font-white" href="{{ route('login') }}">{{__('client.LOGIN')}}</a></li>
+                @if (Route::has('register'))
+                <li class="nav-item"><a class="nav-link padding-text Font-white" href="{{ route('register') }}">{{__('client.REGISTER')}}</a>
+                @endif
+                @endif
+                @endif
             </li>
         </ul>
         <div class="box-menu-scroll">
             <div id="scrollMenu">
                 <ul class="nav navbar-nav navbar-logo mx-auto Moblie-Fonts-Menu position-Re">
-                    <li class="nav-item"><a class="nav-link padding-text" href="#">Home</a> </li>
-                    <li class="nav-item"><a class="nav-link padding-text" href="#">Features</a></li>
-                    <li class="nav-item"><a class="nav-link padding-text" href="#">Store</a></li>
-                    <li class="nav-item"><a class="nav-link padding-text" href="#">Wine</a></li>
-                    <li class="nav-item"><a class="nav-link padding-text" href="#">List</a></li>
-                    <li class="nav-item"><a class="nav-link padding-text" href="#">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link padding-text" href="#">Contacts</a></li>
+                    <li class="nav-item"><a class="nav-link padding-text" href="{{ route('home') }}">{{__('client.HOME')}}</a> </li>
+                    <li class="nav-item"><a class="nav-link padding-text" href="{{ route('shop') }}">{{__('client.STORE')}}</a></li>
+                    <li class="nav-item"><a class="nav-link padding-text" href="{{ route('blog.index') }}">{{__('client.BLOG')}}</a></li>
+                    <li class="nav-item"><a class="nav-link padding-text" href="{{ route('contact') }}">{{__('client.CONTACT')}}</a></li>
                 </ul>
             </div>
         </div>
@@ -228,7 +236,6 @@
 
     });
 </script>
-<script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/Scrollstop.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
 @yield('script')
