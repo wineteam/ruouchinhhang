@@ -60,7 +60,7 @@
                     <tr>
                         <th scope="row" class="border-0">
                         <div class="p-2">
-                            <img src="{{ $item->model->thumbnail }}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                            <img src="{{asset('storage/'.$item->model->thumbnail) }}" alt="" width="70" class="img-fluid rounded shadow-sm">
                             <div class="ml-3 d-inline-block align-middle">
                             <h5 class="mb-0"> <a href="{{route('shop.show',$item->model->slug)}}" class="text-dark d-inline-block align-middle">{{\Illuminate\Support\Str::limit($item->name,30)}}</a></h5>
                             </div>

@@ -96,6 +96,17 @@
                 <a href="{{ route('checkout.index') }}" class="btn-subtitle-cart" style="margin-left: 2%;"><span class="">Checkout</span></a>
                 </div>
             </div>
+            <script>
+                /*CART*/
+                $(document).ready(function(){
+            
+                $(".cart-open").click(function(){
+                $(".Cart-list").toggleClass("active").focus();
+                });
+            
+                });
+                /* END CART*/
+            </script>
         </div>
         </div>
     </div>
@@ -216,17 +227,7 @@
     </div>
 </footer>
 <!--====================================== END FOOTER ======================================-->
-<script>
-    /*CART*/
-    $(document).ready(function(){
 
-    $(".cart-open").click(function(){
-    $(".Cart-list").toggleClass("active").focus();
-    });
-
-    });
-    /* END CART*/
-</script>
 <script>
     $(document).ready(function (){
         $('#select_language').change(function (){

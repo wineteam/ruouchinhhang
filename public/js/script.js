@@ -42,15 +42,6 @@ $(document).ready(function(){
   });
 });
 /* END MENU DROPDOWN */
-/*CART*/
-$(document).ready(function(){
-
-  $(".cart-open").click(function(){
-    $(".Cart-list").toggleClass("active").focus();
-  });
-
-});
-/* END CART*/
 
 
 /* CATALOG FILTER */
