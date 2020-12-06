@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\banner;
+use App\Models\LanguageSwitch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class MngBannerController extends Controller
 {
     public function index(){
-        $banner = banner::orderBy('created_at','desc')->paginate(12);
+        $banner = banner::orderBy('order','desc')->paginate(12);
         return view('admin.banner.index')->with(["banner"=>$banner]);
     }
     public function orderPro($order)
@@ -29,14 +30,13 @@ class MngBannerController extends Controller
     }
     public function create(banner $id)
     {
-      return view('admin.banner.create');
+      $languages = LanguageSwitch::all();
+      return view('admin.banner.create')->with(['languages'=>$languages]);
     }
 
     public function store(Request $request)
     {
       $request->validate([
-        'name' => ['required', 'string', 'max:255'],
-        'description' => ['required', 'string', 'max:255'],
         'link' => ['required', 'string', 'max:255'],
         'order' => ['required', 'integer'],
       ]);
@@ -45,6 +45,7 @@ class MngBannerController extends Controller
       $banner->description = $request->description;
       $banner->link = $request->link;
       $banner->order = $request->order;
+      $banner->language_id  = $request->language_id;
       if( $request->hasFile('thumbnail')){
         $name = $banner->id.$request->thumbnail->getClientOriginalName();
         $path = $request->thumbnail->storeAs('banner_images',$name,'public');
@@ -77,6 +78,9 @@ class MngBannerController extends Controller
       }
       if(isset($request->order)){
         $banner->order = $request->order;
+      }
+      if(isset($request->language_id)){
+        $banner->language_id = $request->language_id;
       }
       if( $request->hasFile('thumbnail')){
         $name = $banner->id.$request->thumbnail->getClientOriginalName();

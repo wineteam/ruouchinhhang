@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label for="thumbnail">Hình ảnh Banner</label> <br>
-                        <img src="{{ asset('images/noBanner.jpg') }}" id="ImagesProduct" class="img-thumbnail" alt="" width="450px"> <br><br>
+                        <img src="{{asset('storage/'.$banner->thumbnail) }}" id="ImagesProduct" class="img-thumbnail" alt="" width="450px"> <br><br>
                         <input type='file' id="thumbnail" value="" name="thumbnail" onchange="readURL_Images(this);"/>
                     </div>
                     <div class="form-group">
@@ -41,6 +41,17 @@
                     <div class="form-group">
                         <label for="order">Vị trí</label>
                       <input type="number" class="form-control" name="order" value="{{$banner->order}}" id="order" placeholder="Nhập vị trí Banner">
+                    </div>
+                    <div class="form-group">
+                      <label for="language">Ngôn ngữ</label>
+                      <select class="form-control" name="language_id" id="language_id">
+                       @foreach ($languages as $language)
+                          <option  @if($language->id === 1) selected @endif value="{{$language->id}}">{{$language->name}}</option>
+                       @endforeach
+                      </select>
+                      @error('language_id')
+                        <br><div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                     </div>
                     <button class="btn btn-success" type="submit">{{__('editComfin')}}</button>
                     <a href="{{route('MngBanner.index')}}" class="btn btn-secondary"><span style="color: #ffffff">{{__('cancel')}}</span></a>

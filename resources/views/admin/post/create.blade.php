@@ -50,7 +50,7 @@
                       <br><div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                   </div>
-                  <div class="form-group Limit-hetght">
+                  <div class="form-group">
                     <label for="categories">Chọn danh mục *</label>
 
                     <select id="categories" name="categories[]"  class="form-control" multiple="multiple">

@@ -20,6 +20,7 @@ class CreateBannersTable extends Migration
             $table->string('thumbnail');
             $table->string('link');
             $table->integer('order');
+            $table->unsignedBigInteger('language_id');
             $table->timestamps();
         });
     }
