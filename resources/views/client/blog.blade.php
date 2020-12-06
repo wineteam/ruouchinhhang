@@ -21,7 +21,7 @@
                         <!-- block blog -->
                         <div class="blog-block Blogs-Limit" style="display: none">
                             <div class="thumbnail-blogger">
-                                <img src="{{$myblogs->thumbnail}}" alt="">
+                                <img src="{{asset('storage/'.$myblogs->thumbnail) }}" alt="">
                                 <div class="mark"></div>
                                 <a href="{{route('blog.show',$myblogs->slug)}}" aria-hidden="true" class="icons">
                                     <span></span>
