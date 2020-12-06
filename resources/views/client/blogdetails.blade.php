@@ -35,7 +35,7 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-fluid mx-auto d-block" width="100%" height="auto" src="{{$blog->thumbnail}}" alt="">
+                <img class="img-fluid mx-auto d-block" width="100%" height="auto" src="{{asset('storage/'.$blog->thumbnail) }}" alt="">
 
                 <hr>
 
