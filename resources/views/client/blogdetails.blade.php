@@ -42,7 +42,7 @@
                 <!-- Post Content -->
                 <p class="lead">{{$blog->description}}</p>
 
-                <p>{{$blog->content}}</p>
+                <p>{!! $blog->content !!}</p>
 
                 <hr>
 
