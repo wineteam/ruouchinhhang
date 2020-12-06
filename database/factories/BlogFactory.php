@@ -33,7 +33,6 @@ class BlogFactory extends Factory
             'thumbnail'=>$this->faker->imageUrl(),
             'content'=>$this->faker->paragraph($maxNbChars = 150),
             'view'=> rand(0,1000),
-            'day_up'=>Carbon::now(),
             'is_published'=> $enum[rand(0,1)],
             'especially'=> $enum[rand(0,1)],
             'language_id'=>rand(1,2),
