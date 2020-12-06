@@ -60,7 +60,11 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a href="{{route('shop.show',$product->slug)}}"><img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail) }}" alt=""></a>
+                    <a href="{{route('shop.show',$product->slug)}}">
+                        <div style="max-height: 250px;overflow:auto" class="No-scroll-overflow">
+                            <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
+                        </div>
+                    </a>
                     @forelse($product->categories as $category)
                     <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
                         @if(!$loop->last)
@@ -121,59 +125,35 @@
 <!--====================================== Empty Space ======================================-->
 <div class="vc_empty_space" style="height: 3.5em"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END Empty Space ======================================-->
-<!--====================================== CATALOG FILTER ======================================-->
-    <div class="container">
-        <div class="row align-items-center h-100" style="margin-bottom: 65px; text-align: center; z-index: 70;">
-            <div class="col-6 col-10 mx-auto">
-                <div id="myBtnContainer" class="text-center">
-                    <button class="btnfilter nobtnshow" onclick="filterSelection('all')">
-                        <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="{{asset('images/wine-glass.png')}}" alt="">
-                        <span class="text-center Font-Size-1vw">Filter - All</span>
-                    </button>
-                  @foreach($categories as $category)
-                    <button class="btnfilter nobtnshow" onclick="filterSelection('{{$category->slug}}')">
-                        <img class="rounded mx-auto d-block" style="margin-bottom: 0.3rem;" width="40" height="auto" src="{{asset('images/wine-glass.png')}}" alt="">
-                        <span class="text-center Font-Size-1vw text-capitalize">{{$category->name}}</span>
-                    </button>
-                  @endforeach
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            @forelse($productsRec as $product)
-              @foreach($product->categories()->get() as $category)
-                <div class="product-{{$product->id}} col-xl-3 col-md-4 col-sm-6 filterDiv padding-less  {{$category->slug}} show">
-                    <div>
-                        <div class="bg-white" style="position: relative; margin-top: 1rem;">
-                            <a href="{{route('shop.show',$product->slug)}}">
-                                <div class="circle-box text-center">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </div>
-                            </a>
-<<<<<<< HEAD
-                            <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail)}}" alt="">
-=======
-                            <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
->>>>>>> 148cf504b3e730d8f6156a1b98e5afa15a4d45c8
-
-                            @forelse($product->categories as $category)
-                                <span class="text-center Font-Size-07vw">
-                                    <a href="{{route('getProByCat',$category->slug)}}" class="text-capitalize">{{$category->name}}</a>
-                                </span>
-                                @if(!$loop->last)
-                                    ,
-                                @endif
-                                @empty
-                                    <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
-                            @endforelse
-
+<!--====================================== Product preferred list 2 ======================================-->
+<div class="container bg-white">
+    <div class="row">
+        <div class="MultiCarousel" data-items="1,2,3,4" data-slide="1" id="MultiCarousel"  data-interval="1000">
+            <div class="MultiCarousel-inner">
+                @forelse($productsRec as $product)
+                <div class="item">
+                    <div class="bg-white" style="position: relative;">
+                        <a href="">
+                            <div class="circle-box text-center">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                        <a href="{{route('shop.show',$product->slug)}}">
+                            <div style="max-height: 250px;overflow:auto" class="No-scroll-overflow">
+                                <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
+                            </div>
+                        </a>
+                        @forelse($product->categories as $category)
+                        <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
+                            @if(!$loop->last)
+                                ,
+                            @endif
+                        @empty
+                            <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
+                        @endforelse
                             <div class="col-12 mx-auto" style="padding: 20px;">
-                                <a class="Hover-Red" href="{{route('shop.show',$product->slug)}}">
-                                    <h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">
-                                      {{\Illuminate\Support\Str::limit($product->name,15  )}}
-                                    </h5>
-                                </a>
+                            <a class="Hover-Red" href="{{route('shop.show',$product->slug)}}"><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{\Illuminate\Support\Str::limit($product->name,15  )}}</h5></a>
                               @if($product->discount <= 0 || $product->discount == null)
                                 <h5 class="p-3 Font-Red">
                                   {{__('client.price')}}:
@@ -188,23 +168,30 @@
                                   {{__("$")}}
                                 </h5>
                               @endif
-
-                            </div>
                         </div>
                     </div>
                 </div>
-              @endforeach
-            @empty
-            <h5>Thêm sản phẩm để hiển thị ở đây</h5>
-            @endforelse
+                @empty
+                <h5>Thêm sản phẩm để hiển thị ở đây</h5>
+                @endforelse
+    
+    
+            </div>
+            <div class="btn btn-white-Op-50 leftLst"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+            <div class="btn btn-white-Op-50 rightLst"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
         </div>
     </div>
-</div>
-<!--====================================== Empty Space ======================================-->
-<div class="vc_empty_space" style="height: 3.5em"><span class="vc_empty_space_inner"></span></div>
-<!--====================================== END Empty Space ======================================-->
-<!--====================================== END CATALOG FILTER ======================================-->
-</div> <!-- Dang Lam Viec -->
+    
+    </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <br/><br/><br/>
+                <hr/>
+            </div>
+        </div>
+    <script src="{{ asset('js/Multi-Item-Carousel.js') }}"></script>
+    <!--====================================== END CATALOG LIST ======================================-->
+
 <!--====================================== Empty Space ======================================-->
 <div class="vc_empty_space" style="height: 10.34em"><span class="vc_empty_space_inner"></span></div>
 <!--====================================== END Empty Space ======================================-->
@@ -220,7 +207,11 @@
                         <div class="blogger_padding_text blogger_classic">
                             <div class="vc_empty_space" style="height: 2.8em"><span class="vc_empty_space_inner"></span></div>
                             <div id="" class="">
-                              <a href="{{route('blog.show',$blog->slug)}}"><img src="{{asset('storage/'.$blog->thumbnail) }}" width="100%" alt=""></a>
+                                <a href="{{route('blog.show',$blog->slug)}}">
+                                    <div style="max-height: 220px;overflow:auto" class="No-scroll-overflow">
+                                        <img src="{{asset('storage/'.$blog->thumbnail) }}" width="100%" height="auto"  alt="">
+                                    </div>
+                                </a>
                                 <a href="#">
                                     <span class="day">{{\Carbon\Carbon::parse($blog->created_at)->format('d')}}</span> <span class="Font-dark">{{\Carbon\Carbon::parse($blog->created_at)->format('M')}}</span>
                                 </a>

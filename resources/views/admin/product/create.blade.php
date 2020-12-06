@@ -97,7 +97,7 @@
 
                       <select id="categories" name="categories[]"  class="form-control" multiple="multiple">
                         @foreach ($categories as $category)
-                          <option value="{{$category->slug}}">{{$category->name}}</option>
+                          <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                         @error('categories')
                           <br><div class="alert alert-danger">{{ $message }}</div>

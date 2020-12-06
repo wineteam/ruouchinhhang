@@ -5,6 +5,7 @@ body {
   border: 1px solid #bdb68e;
   font-size: 12px;
 }
+#hiddenScroll::-webkit-scrollbar {display: none;}
 .boxSelect option {
   font-size: 12px;
 }
@@ -39,8 +40,9 @@ body {
   font-size: 17px !important;
   color: #da3f19;
 }
+.No-scroll-overflow::-webkit-scrollbar {display: none;}
 .productList__item {
-  background-image: url(../images/audio_bg.jpg);
+background-color: white;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

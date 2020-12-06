@@ -14,7 +14,9 @@
         <div class="block-recent-post">
             <div class="recent-post-thumb">
                 <a href="{{route('blog.show',$myblogs->slug)}}">
-                    <img src="{{$myblogs->thumbnail}}" width="100%" height="auto"  alt="">
+                    <div style="max-height: 80px;overflow:auto" class="No-scroll-overflow">
+                        <img src="{{asset('storage/'.$myblogs->thumbnail) }}" width="100%" height="auto"  alt="">
+                    </div>
                 </a>
             </div>
             <div class="recent-post-content px-3">

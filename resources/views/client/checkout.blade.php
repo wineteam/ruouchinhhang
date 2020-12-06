@@ -48,14 +48,32 @@
     <div class="container">
     <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12 no-pdd-buyed">
-            <form class="needs-validation" novalidate>
-
+            <form action="">
                 <div class="col-xl-12 col-md-12 col-sm-12 no-pdd-buyed">
-                    <h4 class="mb-3">Billing details</h4>
+                    <h4 class="mb-3">{{__('checkout.payment')}}</h4>
                     <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="firstName">Your name</label>
-                            <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="firstName" placeholder="" value="" required>
+                        <div class="col-md-12 mb-3">
+                            <label for="firstName">{{__('checkout.methods')}}</label>
+                            <select class="form-control" name="payment_method" id="payment_method" onchange="get_bank()">
+                              <option value="ATM_ONLINE">Thanh toán bằng thẻ ATM</option>
+                              <option value="IB_ONLINE">Thanh toán bằng tài khoản ngân hàng/Internet Banking</option>
+                              <option value="QRCODE">Thanh toán bằng QRCODE</option>
+                              <option value="CASH_IN_SHOP">Thanh toán tiền mặt tại quầy</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                          <label for="firstName">{{__('checkout.bank')}}</label>
+                          <select class="form-control" name="bank_code" id="bank_code">
+                          </select>
+                      </div>
+
+                    </div>
+                    <h4 class="mb-3">{{__('checkout.Bill')}}</h4>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="firstName">{{__('checkout.name')}}</label>
+                            <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" 
+                            name="buyer_fullname" id="buyer_fullname" placeholder="{{__('checkout.name')}}" value=" @if (Auth::check()) {{Auth::user()->name}} @endif " required>
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
@@ -63,44 +81,31 @@
 
                     </div>
                     <div class="mb-3">
-                        <label for="Streetaddress">Street address</label>
-                            <input type="text" class="form-control Fix-input-checkout" id="Streetaddress" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            Valid Street address is required.
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Phone">Phone</label>
-                            <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="Phone" placeholder="" value="" required>
+                        <label for="Phone">{{__('checkout.address')}}</label>
+                            <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" 
+                            name="buyer_address" id="buyer_address" placeholder="{{__('checkout.address')}}" value="@if (Auth::check()) {{Auth::user()->address}} @endif" required>
                         <div class="invalid-feedback">
                             Valid Phone is required.
                         </div>
                     </div>
-
                     <div class="mb-3">
-                        <label for="Emailaddress">Email address</label>
-                            <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" id="Emailaddress" placeholder="" value="" required>
+                      <label for="Phone">{{__('checkout.phone')}}</label>
+                          <input type="number" class="form-control Fix-input-checkout Fix-high-checkout" 
+                          name="buyer_mobile" id="buyer_mobile" placeholder="{{__('checkout.phone')}}" value="@if (Auth::check()) {{Auth::user()->phone}} @endif" required>
+                      <div class="invalid-feedback">
+                          Valid Phone is required.
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Emailaddress">{{__('checkout.email')}}</label>
+                            <input type="email" class="form-control Fix-input-checkout Fix-high-checkout" 
+                            name="buyer_email" id="buyer_email" placeholder="{{__('checkout.email')}}" value="" required>
                         <div class="invalid-feedback">
                             Valid Email address is required.
                         </div>
                     </div>
                 </div>
-
-                <hr class="mb-4">
-
-
-
-    <hr class="mb-4">
-    <!--====================================== Box-Checking-ERROR ======================================-->
-    <div class="container">
-        <div class="row">
-            <hr>
-            <div class="col-12 bg-Box border-top-Box box-title">
-                <p><i class="fa fa-window-maximize" aria-hidden="true"></i> Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.</p>
-            </div>
-            <hr>
-        </div>
-    </div>
+            </form>
     <!--====================================== END Box-Checking-ERROR ======================================-->
     <hr class="mb-4">
         <p class="Edit-privacy-policy">Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href=""><span>privacy policy</span></a>.</p>
@@ -117,5 +122,11 @@
 <!--BG-WHITE-->
 </div>
 <!--BG-WHITE-->
-
+<script src="https://www.nganluong.vn/webskins/javascripts/jquery_min.js" type="text/javascript"></script>		
+<script language="javascript">
+    $('input[name="option_payment"]').bind('click', function () {
+        $('.list-content li').removeClass('active');
+        $(this).parent().parent('li').addClass('active');
+    });		
+</script> 
 @endsection

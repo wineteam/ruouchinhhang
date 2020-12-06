@@ -6,7 +6,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-
+ .No-scroll-overflow::-webkit-scrollbar {display: none;}
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
@@ -12063,7 +12063,8 @@ button:focus {
 .product-page .productItem__content {
   width: auto;
   padding: 50px 10px;
-  background-image: url(/images/audio_bg.jpg?e0a7a3981522b2b610e09f815c222e31);
+  background-color: white;
+  border: 2px rgb(255, 182, 73) solid;
 }
 
 .product-page .productItem__content p:nth-child(2) {
@@ -12112,7 +12113,7 @@ button:focus {
 }
 
 .product-page .productList__item {
-  background-image: url(/images/audio_bg.jpg?e0a7a3981522b2b610e09f815c222e31);
+  background-color: white;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

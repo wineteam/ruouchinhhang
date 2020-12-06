@@ -971,3 +971,46 @@ input[name=file-images]{
   max-height: 600px;
   overflow: auto;
 }
+
+
+/* this rule styles <h1> and <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0px;
+}
+
+
+	
+	ul.bankList {
+		clear: both;
+		height: 202px;
+		width: 636px;
+	}
+	ul.bankList li {
+		list-style-position: outside;
+		list-style-type: none;
+		cursor: pointer;
+		float: left;
+		margin-right: 0;
+		padding: 5px 2px;
+		text-align: center;
+		width: 90px;
+	}
+	.list-content li {
+		list-style: none outside none;
+		margin: 0 0 10px;
+	}
+	
+	.list-content li .boxContent {
+		display: none;
+		width: 636px;
+		border:1px solid #cccccc;
+		padding:10px; 
+	}
+	.list-content li.active .boxContent {
+		display: block;
+	}
+	.list-content li .boxContent ul {
+    height:280px;
+	}

@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+<style>
+  #Fix-BLogs img{
+    width: 100% !important;
+    height: auto !important;
+  }
+</style>
     <div class="blog-page">
         <!-- Breadcrumb -->
         <div class="banner-page col-lg-12">
@@ -42,7 +48,7 @@
                 <!-- Post Content -->
                 <p class="lead">{{$blog->description}}</p>
 
-                <p>{!! $blog->content !!}</p>
+                <div id="Fix-BLogs">{!! $blog->content !!}</div>
 
                 <hr>
 
