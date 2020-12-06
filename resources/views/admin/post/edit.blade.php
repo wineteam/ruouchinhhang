@@ -106,7 +106,6 @@
     function readURL_Images(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
-
         reader.onload = function (e) {
           $('#ImagesBlog')
             .attr('src', e.target.result);

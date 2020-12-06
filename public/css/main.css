@@ -59,6 +59,9 @@ input:focus, textarea:focus, select:focus,button:focus{outline: none;}
   width: 30%;
   padding-bottom: 30px;
 }
+.mySidenavNONE *{
+  display: none ;
+}
 .padding-less{padding-left: 0.55rem !important; padding-right: 0.55rem !important;}
 .nobtnshow{background-color: #ffffff00 !important;border: none !important;padding: 1rem;}
 .color_subtitle{color: #d03e3b;}
@@ -556,6 +559,9 @@ li .dropdown-item:hover span{color: #b9b391;transition: 0.2s;}
   }
   .show-in-moblie{
     display: block !important;
+  }
+  li .FIXS > *{
+    display: none;
   }
 }
 @media screen and (max-width: 750px){
