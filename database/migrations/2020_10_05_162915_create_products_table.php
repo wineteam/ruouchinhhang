@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('codeProduct')->unique();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->string('thumbnail')->nullable();
+            $table->string('thumbnail')->default('product_images/noImg.jpg');
             $table->integer('price');
             $table->string('size');
             $table->string('vintage');
