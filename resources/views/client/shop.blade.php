@@ -26,7 +26,7 @@
     @foreach($products  as $product)
       <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
         <div class="productItem__content" style="height: 100%">
-          <a href="{{route('shop.show',$product->slug)}}"> <img  style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail)}}" alt=""></a>
+          <a href="{{route('shop.show',$product->slug)}}"> <img c style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail) }}" alt=""></a>
           @forelse($product->categories as $category)
             <a href="{{route('getProByCat',$category->slug)}}" class="text-capitalize">{{$category->name}}</a>
             @if(!$loop->last)

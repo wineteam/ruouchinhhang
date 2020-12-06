@@ -53,7 +53,7 @@
                         <tr>
                           <td><input type="checkbox" name="Blog_Id[]" value="{{$blog->id}}" class="selectAllchilden"></td>
                           <td><img src="{{asset('storage/'.$blog->thumbnail) }}" width="100px" alt=""></td>
-                          <td><a href="">{{$blog->title}}</a></td>
+                          <td><a href="{{route('blog.show',$blog->slug)}}">{{$blog->title}}</a></td>
                           <td>{{$blog->user()->name}}</td>
                           <td>
                             @foreach ($categorys as $category)
@@ -73,6 +73,7 @@
                           <td>
                             <div style="display: flex;justify-content: space-between">
                               <a href="{{route('MngBlog.edit',$blog->id)}}" class="btn btn-sm btn-primary">{{__('edit')}}</a>
+                              <a href="{{route('blog.show',$blog->slug)}}" class="btn btn-sm btn-warning">{{__('show')}}</a>
                               <form action="{{route('MngBlog.destroy',$blog->id)}}" method="post">
                                 @csrf
                                 @method('delete')

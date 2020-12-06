@@ -35,14 +35,14 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-fluid mx-auto d-block" width="100%" height="auto" src="{{$blog->thumbnail}}" alt="">
+                <img class="img-fluid mx-auto d-block" width="100%" height="auto" src="{{asset('storage/'.$blog->thumbnail) }}" alt="">
 
                 <hr>
 
                 <!-- Post Content -->
                 <p class="lead">{{$blog->description}}</p>
 
-                <p>{{$blog->content}}</p>
+                <p>{!! $blog->content !!}</p>
 
                 <hr>
 

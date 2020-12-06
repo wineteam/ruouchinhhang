@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use MongoDB\Driver\Session;
 
 class CartController extends Controller
 {
@@ -16,10 +15,11 @@ class CartController extends Controller
      */
     public function index()
     {
-      $subtotal = Cart::subtotal();
+
+      $subtotal = $this->parseMoney(Cart::subtotal());
       $discount = session()->get('coupon')['discount'] ?? 0;
       $tax = config('cart.tax') /100;
-      $newSubtotal =  $subtotal - $discount;
+      $newSubtotal =  $subtotal -  $discount;
       if ($subtotal < $discount){
         $newSubtotal = 0;
       }
@@ -32,7 +32,9 @@ class CartController extends Controller
           'newTotal'=>$newTotal
         ]);
     }
-
+    public function parseMoney($money){
+      return (float)preg_replace('/[^\d.]/', '',$money);
+    }
     /**
      * Show the form for creating a new resource.
      *

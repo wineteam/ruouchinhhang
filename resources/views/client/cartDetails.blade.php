@@ -60,7 +60,7 @@
                     <tr>
                         <th scope="row" class="border-0">
                         <div class="p-2">
-                            <img src="{{ $item->model->thumbnail }}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                            <img src="{{asset('storage/'.$item->model->thumbnail) }}" alt="" width="70" class="img-fluid rounded shadow-sm">
                             <div class="ml-3 d-inline-block align-middle">
                             <h5 class="mb-0"> <a href="{{route('shop.show',$item->model->slug)}}" class="text-dark d-inline-block align-middle">{{\Illuminate\Support\Str::limit($item->name,30)}}</a></h5>
                             </div>
@@ -119,7 +119,7 @@
               <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold bg-Red-I Font-white">{{__('cart.order_summary')}}</div>
               <div class="p-4">
                 <ul class="list-unstyled mb-4">
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.subtotal')}} </strong><strong>{{number_format(Cart::subTotal(),0,',','.')." ".__('$')}}</strong></li>
+                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.subtotal')}} </strong><strong>{{Cart::subTotal(0,',','.')." ".__('$')}}</strong></li>
                   @if(session()->has('coupon'))
                     <li class="d-flex justify-content-between py-3 border-bottom">
                       <strong class="text-muted">{{__('cart.discount')}}({{session()->get('coupon')['name']}})
@@ -142,7 +142,7 @@
                   @else
                     <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.tax')}}(60%)</strong><strong>{{ number_format(Cart::tax(),0,',','.')." ".__('$')}}</strong></li>
                     <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">{{__('cart.total')}}</strong>
-                      <h5 class="font-weight-bold">{{number_format(Cart::total(),0,',','.')." ".__('$')}}</h5>
+                      <h5 class="font-weight-bold">{{Cart::total(0,',','.')." ".__('$')}}</h5>
                     </li>
                   @endif
 

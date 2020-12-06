@@ -19,7 +19,7 @@ class CreateBlogsTable extends Migration
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->string('description')->nullable();
-            $table->string('thumbnail')->nullable();
+            $table->string('thumbnail')->default('blog_images/noBlog.jpg');
             $table->text('content');
             $table->integer('view')->default(0);
             $table->enum('is_published',['0','1']);

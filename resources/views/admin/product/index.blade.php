@@ -51,7 +51,7 @@
                               <tr>
                                 <td><input type="checkbox" name='Product_Id[]' value="{{$product->id}}" class="selectAllchilden"></td>
                                 <td><img src="{{asset('storage/'.$product->thumbnail) }}" width="60px" alt=""></td>
-                                <td><a href="#">{{ $product->name }}</a></td>
+                                <td><a href="{{route('shop.show',$product->slug)}}">{{ $product->name }}</a></td>
                                 <td>{{ $product->nation }}</td>
                                 <td> @if ($product->especially == 1) Có @else Không @endif</td>
                                 <td>  @if ($product->is_published == 1) Đang hiển thị @else Không hiển thị @endif </td>
