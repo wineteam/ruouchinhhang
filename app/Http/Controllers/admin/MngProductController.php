@@ -48,8 +48,8 @@ class MngProductController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-          'name' => 'required | unique:products | string | max:255',
-          'codePro' => 'required| unique:products | string',
+          'name' => 'required | string | max:255',
+          'codePro' => 'required| string',
           'price' => 'required | integer',
           'size' => 'required | string | max:255',
           'vintage' => 'required | string | max:255',

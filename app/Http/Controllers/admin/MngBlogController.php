@@ -150,6 +150,7 @@ class MngBlogController extends Controller
         $blogs->language_id = $request->language_id;
       }
       $saved = $blogs->save();
+      /* Lỗi ở đây */
       if(isset($request->categories) && $saved === true){
         $blogs->categories()->sync($request->categories);
       }

@@ -182,6 +182,18 @@
 
     </div>
     <div class="vc_empty_space bg-white" style="padding: 0 0 4.1em;"><span class="vc_empty_space_inner"></span></div>
+<script>
+$(document).ready(function(){
+  $("#btnMenuDropdown").click(function(){
+    $(".sidenav-Moblie").toggleClass("active");
+    $(".sidenav-Moblie").removeClass("icon-close-menu");
+  });
+  $("#btnCloseMenu").click(function(){
+    $(".sidenav-Moblie").removeClass("active");
+    $(".sidenav-Moblie").addClass("icon-close-menu");
+  });
+});
+</script>
 <!--====================================== END MENU ======================================-->
 
 <!--====================================== MAIN ======================================-->

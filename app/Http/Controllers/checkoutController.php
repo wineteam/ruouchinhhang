@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-
+use App\Models\NL_Checkout;
 class checkoutController extends Controller
 {
     /**
@@ -16,4 +16,5 @@ class checkoutController extends Controller
     {
       return view('client.checkout');
     }
+    
 }
