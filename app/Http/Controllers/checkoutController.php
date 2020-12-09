@@ -14,9 +14,22 @@ class checkoutController extends Controller
      */
     public function index()
     {
-      return view('client.checkout');
-    }
 
+      $subtotal = $this->parseMoney(Cart::subtotal());
+      $discount = session()->get('coupon')['discount'] ?? 0;
+      $total = ($subtotal + $this ->parseMoney(Cart::tax())) - $discount;
+      if($total < 0){
+        $total = 0;
+      }
+      return view('client.checkout')->with([
+        'discount'=>$discount,
+        'total'=>$total,
+      ]);
+    }
+     public function parseMoney($money)
+     {
+       return (float)preg_replace('/[^\d.]/', '', $money);
+     }
     /**
      * Show the form for creating a new resource.
      *

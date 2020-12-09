@@ -87,7 +87,42 @@
                 </div>
 
                 <hr class="mb-4">
+              <h4 class="mb-3">Your order</h4>
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th scope="col" class="font-weight-bold">PRODUCT</th>
+                  <th scope="col" class="font-weight-bold">TOTAL</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach(Cart::content() as $item)
+                  <tr>
+                    <td colspan="1">{{$item->name}}  × <span class="font-weight-bold">{{$item->qty}}</span></td>
+                    <td colspan="2">{{$item->price(0,",",".")}} vnđ</td>
+                  </tr>
+                @endforeach
+                @if($discount > 0)
+                  <tr>
+                    <td colspan="1" class="text-uppercase text-right font-weight-bold">DISCOUNT</td>
+                    <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{number_format($discount,0,',','.')}} vnđ</span></td>
+                  </tr>
+                @endif
+                <tr>
+                  <td colspan="1" class="text-uppercase text-right font-weight-bold">SUBTOTAL</td>
+                  <td colspan="2" class="text-uppercase">{{Cart::subtotal(0,',','.')}} vnđ</td>
+                </tr>
 
+                <tr>
+                  <td colspan="1" class="text-uppercase text-right font-weight-bold">TAX</td>
+                  <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{Cart::tax(0,',','.')}} vnđ</span></td>
+                </tr>
+                <tr>
+                  <td colspan="1" class="text-uppercase text-right font-weight-bold">TOTAL</td>
+                  <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{number_format($total,0,',','.')}} vnđ</span></td>
+                </tr>
+                </tbody>
+              </table>
 
 
     <hr class="mb-4">
