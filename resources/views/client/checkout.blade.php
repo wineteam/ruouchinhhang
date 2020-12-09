@@ -455,7 +455,7 @@ if(@$_POST['nlpayment']) {
 
                         <tr>
                           <td colspan="1" class="text-uppercase text-right font-weight-bold">TAX</td>
-                          <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{number_format($tax,0,',','.')}} vnđ</span></td>
+                          <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{Cart::tax(0,',','.')}} vnđ</span></td>
                         </tr>
                           <tr>
                             <td colspan="1" class="text-uppercase text-right font-weight-bold">TOTAL</td>
