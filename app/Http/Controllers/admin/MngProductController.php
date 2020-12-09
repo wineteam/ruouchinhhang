@@ -197,7 +197,7 @@ class MngProductController extends Controller
 
       };
       session()->flash('message','success');
-      return redirect()->back();
+      return redirect()->route('MngProduct.index');
     }
 
     public function destroy(Product $id)

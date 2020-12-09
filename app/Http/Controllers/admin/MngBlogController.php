@@ -90,7 +90,6 @@ class MngBlogController extends Controller
       }
       if($saved === false){
         Storage::delete($name);
-
       };
       session()->flash('success', 'Thêm thành công');
 

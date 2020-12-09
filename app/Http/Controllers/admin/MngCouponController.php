@@ -47,7 +47,7 @@ class MngCouponController extends Controller
     $coupon->value = $request->value;
     $coupon->expiry = $request->expiry.' 11:59:59';
     $coupon->save();
-    return redirect()->back()->with(['message'=>'Thêm thành công']);
+    return redirect()->route('MngCoupon.index')->with(['message'=>'Thêm thành công']);
 
   }
 
@@ -81,7 +81,7 @@ class MngCouponController extends Controller
     $id->value = $request->value;
     $id->expiry = $request->expiry;
     $id->save();
-    return redirect()->back()->with(['message'=>'Sửa thành công']);
+    return redirect()->route('MngCoupon.index')->with(['message'=>'Thêm thành công']);
   }
 
   public function destroy(Coupon $id)
