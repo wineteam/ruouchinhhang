@@ -78,7 +78,7 @@
                   @forelse(Cart::content() as $item)
                     <div class="card card-border-0 flex-row align-items-center h-100" style="margin-top: 20px;margin-left: 10px;">
                         <div class="card-header bg-products-cart">
-                            <img src="{{ $item->model->thumbnail }}" alt="" width="40px">
+                            <img src="{{asset('storage/'.$item->model->thumbnail) }}" alt="" width="40px">
                         </div>
                         <div class="card-block px-2">
                             <p class="card-text Re-font-ms" style="width: 100%;"><span style="font-size: 15px;"><a href="" class="Font-Blue">{{\Illuminate\Support\Str::limit($item->name,20)}}</a></span></p>
