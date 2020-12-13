@@ -60,7 +60,7 @@ class MngCouponController extends Controller
   public function update(Request $request,Coupon $id)
   {
     $validator = Validator::make($request->all(),[
-      'code' =>'required|max:8|min:6',
+      'code' =>'required|max:8|min:6|unique:coupons',
       'value' =>'required|integer',
       'expiry' => 'required | string | max:255'
     ],
@@ -68,6 +68,7 @@ class MngCouponController extends Controller
         'code.required' => "Chưa nhập mã giảm giá",
         'code.max' => 'Độ dài mã tối đa là 8 kí tự',
         'code.min' => 'Độ dài mã ít nhất là 6 kí tự',
+        'code.unique'=>'Mã giảm giá này đã tồn tại mời nhập lại',
         'value.required' => 'Chưa nhập giá trị',
         'value.integer' => 'Yêu cầu giá trị là số nguyên',
         'expiry.required' => 'Chưa nhập ngày hết hạn'

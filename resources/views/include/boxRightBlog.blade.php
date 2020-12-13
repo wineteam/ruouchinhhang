@@ -40,12 +40,12 @@
             @endforeach
         </ul>
     </div>
-    <div class="tags" style="margin-bottom: 100px;">
+    {{-- <div class="tags" style="margin-bottom: 100px;">
         <h5 style="margin-bottom: 40px;">Tags</h5>
         <div class="tagclound">
           @foreach($tagPrimary as $tag)
             <a href="{{route('blog.search.tag',$tag->slug)}}">{{$tag->name}}</a>
           @endforeach
         </div>
-    </div>
+    </div> --}}
 </div>

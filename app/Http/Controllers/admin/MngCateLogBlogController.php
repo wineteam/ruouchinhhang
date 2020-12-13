@@ -41,7 +41,11 @@ class MngCateLogBlogController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'name' => ['required', 'string', 'max:255'],
+        'name' => ['required', 'string', 'max:255','unique:categories'],
+      ],
+      [
+        'name.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+        'name.unique'=>'Tên danh mục đã bị trùng mời nhập tên khác',
       ]);
       $user_id = Auth()->user()->id;
       $categoryBlog = new Category;

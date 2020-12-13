@@ -35,7 +35,7 @@ use App\Http\Controllers\ProfileController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-  Route::redirect('/','vn');
+Route::redirect('/','langugage/vn');
   Route::get('language/{language}', function ($language){
     session()->put('language',$language);
   return redirect()->back();
@@ -112,19 +112,19 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::delete('/dashboard/categories_blogs/delete/{id}',[MngCateLogBlogController::class,'destroy'])->name('MngCateLogBlog.destroy');
   Route::delete('/dashboard/categories_blogs/DeleteAll', [MngCateLogBlogController::class,'deleteAll'])->name('MngCateLogBlog.deleteAll');
 
-//ADMIN - TAGS
-  Route::get('/dashboard/tags', [MngTagsController::class,'index'])->name('MngTags.index');
-  Route::get('/dashboard/tags/search', [MngTagsController::class,'search'])->name('MngTags.search');
-  Route::get('/dashboard/tags/order={order}', [MngTagsController::class,'orderPro'])->name('MngTags.order');
-//ADMIN - TAGS - CREATES
-  Route::get('/dashboard/tags/create', [MngTagsController::class,'create'])->name('MngTags.create');
-  Route::post('/dashboard/tags/store', [MngTagsController::class,'store'])->name('MngTags.store');
-//ADMIN - TAGS - EIDTS
-  Route::get('/dashboard/tags/edit/{id}', [MngTagsController::class,'edit'])->name('MngTags.edit');
-  Route::patch('/dashboard/tags/update/{id}', [MngTagsController::class,'update'])->name('MngTags.update');
-//ADMIN - TAGS - DELETE
-  Route::delete('/dashboard/tags/delete/{id}',[MngTagsController::class,'destroy'])->name('MngTags.destroy');
-  Route::delete('/dashboard/tags/DeleteAll', [MngTagsController::class,'deleteAll'])->name('MngTags.deleteAll');
+// //ADMIN - TAGS
+//   Route::get('/dashboard/tags', [MngTagsController::class,'index'])->name('MngTags.index');
+//   Route::get('/dashboard/tags/search', [MngTagsController::class,'search'])->name('MngTags.search');
+//   Route::get('/dashboard/tags/order={order}', [MngTagsController::class,'orderPro'])->name('MngTags.order');
+// //ADMIN - TAGS - CREATES
+//   Route::get('/dashboard/tags/create', [MngTagsController::class,'create'])->name('MngTags.create');
+//   Route::post('/dashboard/tags/store', [MngTagsController::class,'store'])->name('MngTags.store');
+// //ADMIN - TAGS - EIDTS
+//   Route::get('/dashboard/tags/edit/{id}', [MngTagsController::class,'edit'])->name('MngTags.edit');
+//   Route::patch('/dashboard/tags/update/{id}', [MngTagsController::class,'update'])->name('MngTags.update');
+// //ADMIN - TAGS - DELETE
+//   Route::delete('/dashboard/tags/delete/{id}',[MngTagsController::class,'destroy'])->name('MngTags.destroy');
+//   Route::delete('/dashboard/tags/DeleteAll', [MngTagsController::class,'deleteAll'])->name('MngTags.deleteAll');
 
 
 //ADMIN - PRODUCTS
@@ -222,7 +222,7 @@ Route::middleware('CheckAdminLogin')->group(function(){
 });
 
   Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
-
+  Route::post('/checkout/create',[checkoutController::class,'create'])->name('checkout.create');
 //contact
   Route::get('/contact', [ContactController::class,'index'])->name('contact');
   Route::post('/contact',[ContactController::class,'sendMail'])->name('contact.sendMail');

@@ -203,12 +203,12 @@
               <li><a href="{{route ('MngCateLogBlog.index')}}">{{__('catelogblog')}}</a></li>
             </ul>
           </li>
-          <li><!-- PRODUCTS -->
+          {{-- <li><!-- PRODUCTS -->
             <a href="{{route ('MngTags.index')}}">
               <i class="fa fa-tags" aria-hidden="true"></i>
               <span>{{__('tags')}}</span>
             </a>
-          </li>
+          </li> --}}
           <li><!-- PRODUCTS -->
             <a href="{{route ('MngProduct.index')}}">
               <i class="fas fa-wine-bottle"></i>
