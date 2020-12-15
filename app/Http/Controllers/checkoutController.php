@@ -42,9 +42,9 @@ class checkoutController extends Controller
          session(['cost_id' => $request->id]);
          session(['url_prev' => url()->previous()]);
          $vnp_TmnCode = "A7ZSUS6G"; //Mã website tại VNPAY 
-         $vnp_HashSecret = "TZASUGJOGKKWVITQGXJKISDFXVIMWJVP"; //Chuỗi bí mật
+         $vnp_HashSecret = "O9YI22PK3GNOJE1KKP6OEXW4B1UOKPZM"; //Chuỗi bí mật
          $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-         $vnp_Returnurl = "http://localhost:8000/return-vnpay";
+         $vnp_Returnurl = route('checkout.return');
          $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
          $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
          $vnp_OrderType = 'billpayment';
@@ -96,7 +96,7 @@ class checkoutController extends Controller
 
      public function return(Request $request)
      {
-         $url = session('url_prev','/');
+         $url = session('url_prev','/checkout/return');
          if($request->vnp_ResponseCode == "00") {
              $this->apSer->thanhtoanonline(session('cost_id'));
              return redirect($url)->with('success' ,'Đã thanh toán phí dịch vụ');

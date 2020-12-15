@@ -82,28 +82,27 @@
                     <div class="form-group">
                         <label for="language">Loại hàng hóa </label>
                         <select name="order_type" id="order_type" class="form-control">
-                            <option value="topup">Nạp tiền điện thoại</option>
-                            <option value="billpayment">Thanh toán hóa đơn</option>
-                            <option value="fashion">Thời trang</option>
-                            <option value="other">Khác - Xem thêm tại VNPAY</option>
+                            <option selected value="billpayment">Thanh toán hóa đơn</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="order_id">Mã hóa đơn</label>
-                        <input class="form-control" id="order_id" name="order_id" type="text" value="<?php echo date("YmdHis") ?>"/>
+                        <p class="form-control" id="order_id"><?php echo date("YmdHis") ?></p>
+                        <input hidden class="form-control" id="order_id" name="order_id" type="text" value="<?php echo date("YmdHis") ?>"/>
                     </div>
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
+                        <p class="form-control" id="amount">{{number_format($total,0,',','.')}}</p>
                         <input class="form-control" id="amount"
-                               name="amount" type="number" value="{{$total}}"/>
+                               name="amount"  type="number" value="{{number_format($total,0,'','')}}00"/>
                     </div>
                     <div class="form-group">
                         <label for="order_desc">Nội dung thanh toán</label>
                         <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2">Noi dung thanh toan</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="bank_code">Ngân hàng</label>
-                        <select name="bank_code" id="bank_code" class="form-control">
+                        <label for="vnp_BankCode">Ngân hàng</label>
+                        <select name="vnp_BankCode" id="vnp_BankCode" class="form-control">
                             <option value="">Không chọn</option>
                             <option value="NCB"> Ngan hang NCB</option>
                             <option value="AGRIBANK"> Ngan hang Agribank</option>

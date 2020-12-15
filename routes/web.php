@@ -223,6 +223,7 @@ Route::middleware('CheckAdminLogin')->group(function(){
 
   Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
   Route::post('/checkout/create',[checkoutController::class,'create'])->name('checkout.create');
+  Route::POST('/checkout/return',[checkoutController::class,'return'])->name('checkout.return');
 //contact
   Route::get('/contact', [ContactController::class,'index'])->name('contact');
   Route::post('/contact',[ContactController::class,'sendMail'])->name('contact.sendMail');
