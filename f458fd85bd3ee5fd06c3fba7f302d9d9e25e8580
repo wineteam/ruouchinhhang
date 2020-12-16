@@ -1,0 +1,559 @@
+[33mcommit 2bc5ddeecd92389f04989a589021853eda8dc164[m[33m ([m[1;36mHEAD -> [m[1;32mducaopham[m[33m, [m[1;31morigin/ducaopham[m[33m)[m
+Author: Duc Ao <ducaopham@email.com>
+Date:   Wed Dec 9 20:28:47 2020 +0700
+
+    09/12/2020
+
+[33mcommit 83a43f4d29ed75d3bda5af8851a84de4529663f0[m
+Merge: c389def 148cf50
+Author: Duc Ao <ducaopham@email.com>
+Date:   Sun Dec 6 22:57:54 2020 +0700
+
+    Merge branch 'master' of https://github.com/wineteam/ruouchinhhang into ducaopham
+
+[33mcommit c389def2bc945bbc1cd8095e1a35260d6691be4f[m
+Author: Duc Ao <ducaopham@email.com>
+Date:   Sun Dec 6 22:56:18 2020 +0700
+
+    6/12/2020
+
+[33mcommit 148cf504b3e730d8f6156a1b98e5afa15a4d45c8[m
+Merge: ee4a872 7d177a4
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sun Dec 6 22:40:34 2020 +0700
+
+    Merge branch 'master' of https://github.com/wineteam/ruouchinhhang
+
+[33mcommit ee4a872f8ba09a4ac54e651c7b3149264c114f10[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sun Dec 6 22:40:07 2020 +0700
+
+    Fix lai URL product vs Blogs Fix composer install Errors do Composer.jison
+
+[33mcommit 7d177a4656c8556dc2052746fe6e6e512cf6a227[m[33m ([m[1;32mmaster[m[33m, [m[1;32mducao[m[33m)[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sun Dec 6 17:36:14 2020 +0700
+
+    Fix lai duong dan A
+
+[33mcommit ff6e74dd59a04447e7647bf1b8a31a78c27af36c[m
+Merge: 802174c cbb67b5
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sun Dec 6 17:12:48 2020 +0700
+
+    Thay doi du lieu Database
+
+[33mcommit 802174c7123cdd0ad669dc8def0038e70f9fa9f0[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sun Dec 6 17:12:20 2020 +0700
+
+    Thay doi du lieu Database
+
+[33mcommit cbb67b5adfffb9d1598d2747b09a0bbb41d6591e[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Dec 6 17:02:27 2020 +0700
+
+    them file env.example
+
+[33mcommit 51adba496f538aff3440ac1ca5c332f25fa4117f[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Dec 6 16:53:13 2020 +0700
+
+    merge all brand
+
+[33mcommit deab5c663bd4c99bd58e2db333660b7daa898611[m
+Merge: 1b415e1 dbccd5a
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Dec 6 16:52:52 2020 +0700
+
+    Merge branch 'master' of https://github.com/wineteam/ruuchinhhang into master
+
+[33mcommit dbccd5a13900daad0af33c00b2e3dbf584a49850[m
+Author: tuvo1999 <53426646+tuvo1999@users.noreply.github.com>
+Date:   Sun Dec 6 16:37:45 2020 +0700
+
+[33mcommit 1b415e10abf40c2272d08d42db0f57d9ba1625cf[m
+Merge: 6d4a0a7 c7d40d0
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Dec 6 16:36:22 2020 +0700
+
+    Merge branch 'master' of https://github.com/wineteam/ruuchinhhang into master
+
+[33mcommit 6d4a0a7a16912d777d94f2d80ec0dbbe0083528b[m
+Merge: 12bb56b 204e2b8
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Dec 6 16:34:48 2020 +0700
+
+    sua reponsive
+
+[33mcommit c7d40d0ee290b2a01bca01ef5992a865b428aba9[m
+Author: tuvo1999 <53426646+tuvo1999@users.noreply.github.com>
+Date:   Sun Dec 6 16:34:39 2020 +0700
+
+[33mcommit 12bb56bc40ad171d9c85cdec0324ea13a5022ea9[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Dec 6 16:31:25 2020 +0700
+
+    fix loi after merge
+
+[33mcommit 204e2b8383930d1650987d0b047d0542afe26539[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sun Dec 6 16:30:41 2020 +0700
+
+    Xong Fix lai meun
+
+[33mcommit 5d6ec0c2badb664a6f772e7a028f11a697791de0[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Dec 6 15:44:21 2020 +0700
+
+    fix migrate
+
+[33mcommit 8773f9a201216f2805444b0467d4e64bb3dcc30e[m
+Merge: 2ca611b d2b0b54
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Dec 6 15:41:56 2020 +0700
+
+    merge long
+
+[33mcommit 2ca611b7ad3270fceee3822cda4d446b6296011e[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Dec 6 15:35:56 2020 +0700
+
+    fix xong loi
+
+[33mcommit d2b0b5475479e869557168682b65ca15aba4e0b4[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sun Dec 6 15:30:23 2020 +0700
+
+    Xong DONE Merge vs cua Hoai Anh la hoan chinh?
+
+[33mcommit bca934a5fb7b36d0f6ae219233785ce5d373549d[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sun Dec 6 03:23:10 2020 +0700
+
+    Xong DONE Merge vs cua Hoai Anh la hoan chinh?
+
+[33mcommit 002a5f762b7df2b4bb37d7c5694907cd940abb34[m
+Merge: 0e74c3c d5f6fd3
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Dec 6 02:22:07 2020 +0700
+
+    Merge branch 'master' of https://github.com/wineteam/ruuchinhhang into master
+
+[33mcommit d5f6fd3bd7af529e91745c76735ae2eee9a246bf[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sun Dec 6 02:19:44 2020 +0700
+
+    sua create, edit product
+
+[33mcommit 0e74c3c029cbdef550d27a8cdf2b951184febcd6[m
+Merge: 03b31ff 86b1d03
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sat Dec 5 23:47:41 2020 +0700
+
+    Merge branch 'master' of https://github.com/wineteam/ruuchinhhang into master
+
+[33mcommit 03b31ff063d1e2ed590039ae37ef49dd326e5c23[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sat Dec 5 23:47:34 2020 +0700
+
+    thay doi database, chinh sua table coupon, quan li comment, quan li coupon
+
+[33mcommit 86b1d037e2f43902410a8ec85cff525900476f06[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sat Dec 5 16:48:39 2020 +0700
+
+    Truc Trac ve sync vs TAGS \ hoan thanh Blog
+
+[33mcommit c3de802c3076a4b4388ccccd0515929080ae9501[m
+Merge: a904fef 4e02404
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sat Dec 5 09:55:24 2020 +0700
+
+    Merge branch 'master' of https://github.com/wineteam/ruuchinhhang into master
+
+[33mcommit a904fefa32645f3c8ab26af560071649fb5e8db8[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sat Dec 5 09:54:21 2020 +0700
+
+    xong quan li comment
+
+[33mcommit 4e02404cc3fcbcc1abf003d7b466dfd82c868c70[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sat Dec 5 04:25:29 2020 +0700
+
+    Xong MngORDER vs MngORDERDETAILS
+
+[33mcommit 299774595f73afe5a2640d5f9c7d15553db548fa[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sat Dec 5 03:20:38 2020 +0700
+
+    Xong MngCATELOG product vs CATELOG blog
+
+[33mcommit 1e5e7019a00fec3b4a07ba8518c8a7120fcb0af2[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sat Dec 5 03:13:21 2020 +0700
+
+    Xong MngCATELOG product vs CATELOG blog
+
+[33mcommit 7c87e8b1746ab978429e3d6b20bcbd0bed97f235[m
+Merge: 197ce3a bea9e8b
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Fri Dec 4 03:46:30 2020 +0700
+
+    Merge branch 'master' of https://github.com/wineteam/ruouchinhhang
+
+[33mcommit 197ce3af3eeec607ecd35cd195085d2577a275dc[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Fri Dec 4 03:46:19 2020 +0700
+
+    Xong MngTag MngBanner | co Loi o MngProduct Khong add ID vao Tags vs Catelog
+
+[33mcommit 81f31bf9dc8233db20e1e9288b9bc3a95a61f644[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Fri Dec 4 00:24:16 2020 +0700
+
+    RIP Validate IMG - Loi Laravel 8 ???
+
+[33mcommit bea9e8bff10cd334883f7cdc6458bd1349de854f[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Fri Dec 4 00:21:50 2020 +0700
+
+    modified workspace
+
+[33mcommit be8498ebf812f106a37d96807983b33b1de96875[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Fri Dec 4 00:17:51 2020 +0700
+
+    sau loi xoa nguoi dung
+
+[33mcommit e91f53963fcec0fcf3c1e7793245216376368496[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Thu Dec 3 20:40:29 2020 +0700
+
+    chinh sua hien thi gia tien
+
+[33mcommit 58ded14c1051626ce74c0a32b8cce4d8528e1014[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Thu Dec 3 21:44:51 2020 +0700
+
+    Loi file Input Upload Cua MngProduct va Validate cua MngProduct
+
+[33mcommit 5aaff40468cdab712760c3c47998963ee054d448[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Wed Dec 2 21:46:22 2020 +0700
+
+    UPLOAD CREATE PRODUCT (ERROR IMG VALIDATION)
+
+[33mcommit fdc58de5bd7edc3838b18683c050dfe2f859cc10[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Tue Dec 1 19:05:15 2020 +0700
+
+    chinh sua thu muc chua cac file quan tri va route file web.php
+
+[33mcommit ad0a77b23f34ed9b2ca9a0686245b5f20cc16aba[m
+Merge: f3f7d52 14876c6
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Tue Dec 1 02:25:13 2020 +0700
+
+    them chuc nang tim kiem va loc san pham
+
+[33mcommit f3f7d52eea12879eb9e433c8f1a1d6477b28cd9f[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Nov 29 20:52:32 2020 +0700
+
+    merge Long-Fix 2
+
+[33mcommit 14876c6ccf59e23b929222f2b5c9089d8efe4a17[m[33m ([m[1;31morigin/Longnnb-Fix-2[m[33m)[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sun Nov 29 20:27:26 2020 +0700
+
+    ADMIN DASHBOARD FIN USER | MAY CAI KIA CHUA XONG
+
+[33mcommit 69fe0e2cad40bff45d8ef6147d48acb15135449a[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sat Nov 28 21:15:14 2020 +0700
+
+    FIX LAI UPLOAD PROFILE
+
+[33mcommit 49fb84fd3ad53ff82e1c2a4e14c3d43ec4f662b9[m
+Merge: c521dcf 7499488
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sat Nov 28 20:02:50 2020 +0700
+
+    Merge commit '749948879bb6c31057c2830061385a0a0c375c5c' into Longnnb-Fix-2
+
+[33mcommit c521dcfd41ce927f65b7584fd2f7c28e3b209e5f[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sat Nov 28 20:02:48 2020 +0700
+
+    FILE ERROR khong DOWNLOAD
+
+[33mcommit 749948879bb6c31057c2830061385a0a0c375c5c[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Sat Nov 28 19:54:18 2020 +0700
+
+    Xong Quan li User ADD | DELETE | EDIT
+
+[33mcommit c26d395e26443c86dd8ca0ca76741eacaa7041c1[m
+Merge: 5fc0e53 1c39574
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sat Nov 28 00:24:18 2020 +0700
+
+    chinh sua lay san pham dac biet show ra homepage
+
+[33mcommit 5fc0e53d6641b231bb4069852de7421bd1986dc2[m
+Merge: 5938295 ec64f12
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Fri Nov 27 19:12:23 2020 +0700
+
+    chinh sua giao dien comment
+
+[33mcommit 5938295b1cff69e56afcf1c25f6abc72804d306b[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Fri Nov 27 16:28:36 2020 +0700
+
+    them comment
+
+[33mcommit 1c39574f3177f5edd8965ba96cd11fd42e4b9646[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Fri Nov 27 14:39:30 2020 +0700
+
+    Xong phan add ve dashboard
+
+[33mcommit ea85577ec3de29c401df33395ce63e0961e18f63[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Fri Nov 27 11:31:00 2020 +0700
+
+    Final PROFILE | Xong phan perms cho ADmin | dang lam dashboard
+
+[33mcommit c5bf7538fc9623b90eba8f671b649cb0e4cd8905[m
+Merge: e2cba3a ec64f12
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Thu Nov 26 17:03:43 2020 +0700
+
+    Fix giao dien Profile
+
+[33mcommit ec64f125b3602b2faddd3e369fc7661c8ca75267[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Thu Nov 26 17:02:21 2020 +0700
+
+    Fix giao dien Profile
+
+[33mcommit 7d340da5661ea1812bc219d470976b5fc70bbb52[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Thu Nov 26 10:28:36 2020 +0700
+
+    them sweet alert
+
+[33mcommit e2cba3a310e2a2a1f556b822c43f223b5647571a[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Thu Nov 26 10:11:05 2020 +0700
+
+    Them Ngon Ngu cho Trang Contact vs Blog
+
+[33mcommit 450f24494ae9d41d9b3d265c213cceafc3f5487f[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Wed Nov 25 22:36:57 2020 +0700
+
+    chinh sua loi khi commit
+
+[33mcommit e26c71da4f684f6afc0b3a9cd4c8a32408d23f26[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Wed Nov 25 22:14:35 2020 +0700
+
+    push
+
+[33mcommit 15bd29615155ac427f1b1b934a7198eeb48c9199[m
+Merge: d85fa4b 7e43e3b
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Wed Nov 25 19:30:01 2020 +0700
+
+    Fix Number Product Details
+
+[33mcommit d85fa4bfffbd5822a335adc7b2c50e908ba23c3e[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Tue Nov 24 17:01:16 2020 +0700
+
+    message 2
+
+[33mcommit cb93f63d5afda1471b9b1203bf0d708115f41f36[m
+Author: unknown <nguyenngocbaolong1410@gmail.com>
+Date:   Tue Nov 24 16:40:42 2020 +0700
+
+    message
+
+[33mcommit 7e43e3be61f75db1b48ac984824911d95937a482[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Nov 22 20:31:02 2020 +0700
+
+    merge Long-Fix
+
+[33mcommit 98ab4668184e99e6d9c7a763f2c180ffe3b282df[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Sat Nov 21 13:43:44 2020 +0700
+
+    Fix Blogs x2
+
+[33mcommit a12ffe9c0877f4ee69072faf43dfaa3d2df87ebc[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Fri Nov 20 08:33:28 2020 +0700
+
+    ADD LoadMore Cua Trang Blogs
+
+[33mcommit 22b08cca6468d637123af952ad2b7bcd3d2ecfd1[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Thu Nov 19 21:49:17 2020 +0700
+
+    NEW
+
+[33mcommit ab9f67d7e8948299fe3e263f93d71bc66938e788[m[33m ([m[1;31morigin/Longnnb-Project[m[33m)[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Wed Nov 18 20:30:31 2020 +0700
+
+    thay doi database va show,tim kiem du lieu product
+
+[33mcommit 6a30078b75eef8600856d8d2313351cdf4812584[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Wed Nov 11 18:56:43 2020 +0700
+
+    lay du lieu show ra trang shop chỉnh sua database
+
+[33mcommit aadb079a2da967528d1c1416b791f1a90242f483[m
+Merge: d3cd06e 5706f96
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Tue Nov 3 18:18:51 2020 +0700
+
+    link page detail
+
+[33mcommit d3cd06e0f4f2d1d29009010ad01e749f6cdc8f62[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Tue Nov 3 16:56:29 2020 +0700
+
+    sua file databaseSeeder.php de them du lieu vao database
+
+[33mcommit 5706f968c27f147f3b286844519b8fc3656f0c4f[m
+Merge: 8f2f770 3bf5607
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Mon Nov 2 10:04:01 2020 +0700
+
+    Them Cart Details
+
+[33mcommit 8f2f7701aaa65a87cc46384007a44574b0c984f4[m
+Merge: f2d13d7 811a435
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Mon Nov 2 10:00:49 2020 +0700
+
+    Merge branch 'Longnnb-Project' into master
+
+[33mcommit 811a435e777d95b2add944bf4d743eef98abde07[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Mon Nov 2 10:00:15 2020 +0700
+
+    Them Cart Details
+
+[33mcommit 3bf5607ecb5fa92f7869e6c0b2a9f273e496d09e[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Nov 1 10:20:10 2020 +0700
+
+    sua loi da ngon ngu. tao file shopcontroller, thay doi route trong file web.php
+
+[33mcommit f2d13d77d28bb0ac5e8cc505bb51b84f5f4040c4[m
+Merge: fef1850 7a4c789
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Sat Oct 31 18:52:03 2020 +0700
+
+    Hoan thanh Profile Longnnb
+
+[33mcommit 7a4c789507175599c44442a2ee196aa3fdb4e438[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Sat Oct 31 18:46:54 2020 +0700
+
+    Hoan thanh Profile
+
+[33mcommit aecb8c8378e87d25eba7442cc72447ef47ae0d17[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Sat Oct 31 11:56:24 2020 +0700
+
+    Tien trinh làm profile
+
+[33mcommit fef185064176cb8729a56db4aad878047f75b10d[m
+Merge: 0805d8f 0396969
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Fri Oct 30 17:39:08 2020 +0700
+
+    sua route checkout
+
+[33mcommit 0805d8f19ee91f87379e1cf5e5a42140d533abda[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Fri Oct 30 17:26:51 2020 +0700
+
+    thêm tính năng đa ngôn ngữ chỉnh sửa trang home,lấy dữ liệu ra home page
+
+[33mcommit 03969696c2dc169ebcf94e8ff5f10584eff827da[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Thu Oct 29 10:01:36 2020 +0700
+
+    ADD ProductDetails
+
+[33mcommit 3e2a5668eb25da414ea767556a9c22befcd811b1[m
+Merge: 140bc62 8ff3935
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Wed Oct 28 18:17:16 2020 +0700
+
+    Merge branch 'master' of https://github.com/wineteam/ruuchinhhang into master
+
+[33mcommit 140bc62e04a3beecbdefbe679fb7b31ef12c855b[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Wed Oct 28 18:17:01 2020 +0700
+
+    show data in homepage
+
+[33mcommit 8ff3935fa871b8a2b9dd51060273eaedad2fa7f0[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Wed Oct 28 18:10:36 2020 +0700
+
+    Fix lai Menu Filter
+
+[33mcommit 03af56a00c6f2f17fd543ee4053146ca527ed8c4[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Sun Oct 25 15:37:21 2020 +0700
+
+    tao factory va sua database
+
+[33mcommit 79127d7b9e4890a8f8046c1c7d731b65db86b978[m
+Merge: e52101e 2352802
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Wed Oct 21 18:06:14 2020 +0700
+
+    merge branch Longnnb, fix page home
+
+[33mcommit e52101edf851aa4bac8720aae1b4d5e1cd0177dc[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Wed Oct 21 15:48:20 2020 +0700
+
+    chinh sua homepage
+
+[33mcommit 2352802bab8181073d00f98d4b4766b94fbb2d51[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Fri Oct 16 10:12:35 2020 +0700
+
+    Fix lai loi hien thi trang contact do thieu Style - Nguyen Ngoc Bao Long - Fix III
+
+[33mcommit eb8b4c080b612df2f24a144cdb545dfabfcbcc62[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Thu Oct 15 15:12:17 2020 +0700
+
+    Them Checkout 3:11PM / 15-10-2020 / Nguyen Ngoc Bao Long
+
+[33mcommit 42132d023a792ff43fe328c176e5d1ad8df447e0[m
+Author: nguyenngocbaolong1410 <70367056+nguyenngocbaolong1410@users.noreply.github.com>
+Date:   Thu Oct 15 11:14:09 2020 +0700
+
+    FIX Nguon Trang Cac Kieu - Date 10-15-2020 - Nguyen Ngoc Bao Long
+
+[33mcommit 7899983fa55d37a07189ee7b0b8dd2f00bb31e7f[m
+Author: Hoai Anh <hoaianh0123450@gmail.com>
+Date:   Wed Oct 14 19:50:00 2020 +0700
+
+    Initial commit
