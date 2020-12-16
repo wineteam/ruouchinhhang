@@ -61,10 +61,8 @@
                         </div>
                     </a>
                     <a href="{{route('shop.show',$product->slug)}}">
-                        <div style="max-height: 250px;overflow:auto" class="No-scroll-overflow">
-                            <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
-                        </div>
-                    </a>
+                        <img class="" style="margin-bottom: 1rem;" width="auto" height="250px" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
+                    </a> <br>
                     @forelse($product->categories as $category)
                     <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
                         @if(!$loop->last)
@@ -140,10 +138,8 @@
                             </div>
                         </a>
                         <a href="{{route('shop.show',$product->slug)}}">
-                            <div style="max-height: 250px;overflow:auto" class="No-scroll-overflow">
-                                <img class="" style="margin-bottom: 1rem;" width="100%" height="auto" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
-                            </div>
-                        </a>
+                            <img class="text-center" style="margin-bottom: 1rem;" width="auto" height="250px" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
+                        </a> <br>
                         @forelse($product->categories as $category)
                         <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
                             @if(!$loop->last)
