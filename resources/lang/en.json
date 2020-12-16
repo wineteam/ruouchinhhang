@@ -89,5 +89,6 @@
     "ConfirmPassword": "Confirm Password",
 
     "catelogall": "Main Category","catelogproduct": "Products Category","catelogblog":"Blogs Category",
-    "account": "Account","historyPass": "History Reset Password","latest":"Latest","oldest": "Oldest"
+    "account": "Account","historyPass": "History Reset Password","latest":"Latest","oldest": "Oldest",
+    "checkoutsuccess": "Payment success","checkEmail":"Please check your Email we're send for you."
 }

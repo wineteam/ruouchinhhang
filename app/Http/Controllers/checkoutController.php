@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PaymentSuccess;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Models\NL_Checkout;
+use Illuminate\Support\Facades\Mail;
+
 class checkoutController extends Controller
 {
     /**
@@ -44,7 +47,7 @@ class checkoutController extends Controller
          $vnp_TmnCode = "A7ZSUS6G"; //Mã website tại VNPAY 
          $vnp_HashSecret = "O9YI22PK3GNOJE1KKP6OEXW4B1UOKPZM"; //Chuỗi bí mật
          $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-         $vnp_Returnurl = route('checkout.return');
+         $vnp_Returnurl = route('checkout.return');//Return về khi thanh toán thành công < Lấy cái này làm request cho Create Store ORDERS
          $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
          $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
          $vnp_OrderType = 'billpayment';
@@ -96,13 +99,15 @@ class checkoutController extends Controller
 
      public function return(Request $request)
      {
-         $url = session('url_prev','/checkout/return');
+         //$url = session('url_prev','/checkout/return');
          if($request->vnp_ResponseCode == "00") {
-             $this->apSer->thanhtoanonline(session('cost_id'));
-             return redirect($url)->with('success' ,'Đã thanh toán phí dịch vụ');
+            $user = auth()->user();
+            Mail::to($user)->send(new PaymentSuccess($user));
+            Cart::destroy();
+            return view('client.return')->with('success' ,'Đã thanh toán phí dịch vụ');
          }
-         session()->forget('url_prev');
-         return redirect($url)->with('errors' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
+         //session()->forget('url_prev');
+         return view('client.return')->with('errors' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
      }
     
 }
