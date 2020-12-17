@@ -56,6 +56,7 @@ class CartController extends Controller
       $product = $products->find($request->product_id);
       $categories = $product->categories()->get();
       $price = $product->price;
+      $codeProduct = $product->codeProduct;
       if($product->discount != 0 || $product->discount != null){
         $price =  $product->discount;
       }
@@ -63,10 +64,11 @@ class CartController extends Controller
         $qty = (int) $request->qty;
       }
 
-      Cart::add(['id' => $product->id, 'name' => $product->name, 'qty' => $qty,
+      Cart::add(['id' => $product->id, 'name' => $product->name, 'codeProduct'=>$codeProduct, 'qty' => $qty,
         'price' => $price,'image'=>$product->thumbnail,'categories'=>$categories,'options'=>['size'=>$product->size,
-        'vintage'=>$product->vintage]])->associate(Product::class);
+        'vintage'=>$product->vintage,'codeProduct'=>$codeProduct,]])->associate(Product::class);
 //      return redirect()->back();
+     // DD(Cart::content());
     }
 
     /**

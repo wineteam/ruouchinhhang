@@ -7,6 +7,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Models\NL_Checkout;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Mail;
@@ -40,23 +41,31 @@ class checkoutController extends Controller
 
 
 
-
-
-    
      public function create(Request $request)
      {
+      $request->validate([
+        'user_name' => 'required | string | max:255',
+        'ship_address' => 'required | string | max:255',
+        'ship_phone' => 'required|numeric|digits_between:10,11',
+        'ship_mail' => 'required|email',
+        ],
+        [
+            'name.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+        ]);
         $user_name = $request->input('user_name');
         $ship_address = $request->input('ship_address');
         $ship_mail = $request->input('ship_mail');
         $ship_phone = $request->input('ship_phone');
         $total = $request->input('total');
         $order_id = $request->input('order_id');
+        $contentbilling = $request->input('contentbilling');
         session()->put('UserName', $user_name);
         session()->put('AddressShip', $ship_address);
         session()->put('EmailShip', $ship_mail);
         session()->put('PhoneShip', $ship_phone);
         session()->put('ToTal', $total);
         session()->put('Bills', $order_id);
+        session()->put('contentbilling', $contentbilling);
          session(['cost_id' => $request->id]);
          session(['url_prev' => url()->previous()]);
          $vnp_TmnCode = "A7ZSUS6G"; //Mã website tại VNPAY 
@@ -64,7 +73,7 @@ class checkoutController extends Controller
          $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
          $vnp_Returnurl = route('checkout.return');//Return về khi thanh toán thành công < Lấy cái này làm request cho Create Store ORDERS
          $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-         $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
+         $vnp_OrderInfo = "Thanh toán hóa đơn sản phẩm";
          $vnp_OrderType = 'billpayment';
          $vnp_Amount = $request->input('amount');
          $vnp_Locale = 'vn';
@@ -123,6 +132,7 @@ class checkoutController extends Controller
         $PhoneShip = session()->get('PhoneShip');
         $ToTal = session()->get('ToTal');
         $Bills = session()->get('Bills');
+        $contentbilling = session()->get('contentbilling');
          //$url = session('url_prev','/checkout/return');
          if($request->vnp_ResponseCode == "00") {
            
@@ -132,6 +142,7 @@ class checkoutController extends Controller
             $orders->ship_address = $AddressShip;
             $orders->ship_mail = $EmailShip;
             $orders->ship_phone = $PhoneShip;
+            $orders->contentbilling = $contentbilling;
             $orders->status = '0';
             $orders->payment_type = '1';
             $orders->day_buy = date('d/m/Y');
@@ -140,9 +151,23 @@ class checkoutController extends Controller
             $orders->bill = $Bills;
             $saved = $orders->save();
 
+            $finalArray = array();
+            foreach(Cart::content() as $products){
+              array_push($finalArray, array(
+                'order_id' => $orders->id,
+                'product_id' => $products->id,
+                'product_code' => $products->options->codeProduct,
+                'product_name' => $products->name,
+                'price' => $products->price(0,"",""),
+                'quantity' => $products->qty,
+              ));
+            }
+            OrderDetail::insert($finalArray);
+            //$saveds = $orderDetails->save();
             $user = auth()->user();
-            Mail::to($user)->send(new PaymentSuccess($user));
+            Mail::to($EmailShip)->send(new PaymentSuccess($EmailShip));
             Cart::destroy();
+            session()->forget('UserName','AddressShip','EmailShip','PhoneShip','ToTal','Bills');
             return view('client.return')->with('success' ,'Đã thanh toán phí dịch vụ');
          }
          //session()->forget('url_prev');

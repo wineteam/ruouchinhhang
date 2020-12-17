@@ -16,8 +16,8 @@
                 <a href="{{$banners->link}}">
                     <img class="d-block w-100" src="{{asset('storage/'.$banners->thumbnail) }}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block FIX-Carousel-Caption">
-                        <h1 style="padding-bottom: 10px;" class="Font-Yellow text-left carousel-SlideShow Forum">{{$banners->name}}</h1>
-                        <p class="Font-dark text-left Edit-Font-Size-SlideShow">{{$banners->description}}</p>
+                        <h1 style="padding-bottom: 10px;font-family: Verdana !important;" class="Font-Yellow2 text-left carousel-SlideShow Forum">{{$banners->name}}</h1>
+                        <p style="font-family: Verdana !important;" class="text-left Edit-Font-Size-SlideShow "><span class="Font-Red">{{$banners->description}}</span></p>
                     </div>
                 </a>
             </div>

@@ -232,7 +232,7 @@
 											<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 5px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
 											<div style="color:#000000;font-family:Lato, Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 												<div style="font-size: 12px; line-height: 1.2; color: #000000; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14px;">
-													<p style="font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><strong><span style="font-size: 18px;">Trân thành cảm ơn {{Auth::user()->name}}</span></strong></p>
+													<p style="font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><strong><span style="font-size: 18px;">Trân thành cảm ơn @if(Auth::check()) {{Auth::user()->name}} @else Quý Khách @endif</span></strong></p>
 													<p style="font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><strong><span style="font-size: 18px;">Đã tin tưởng cửa hàng của chúng tôi !</span></strong></p>
 												</div>
 											</div>

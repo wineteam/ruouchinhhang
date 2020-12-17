@@ -55,6 +55,12 @@ Route::redirect('/','langugage/vn');
   Route::get('/cart',[CartController::class,'index'])->name('cart.index');
   Route::post('/cart',[CartController::class,'store'])->name('cart.store');
   Route::delete('cart/{product}',[CartController::class,'destroy'])->name('cart.destroy');
+//  CHECKOUTS
+  Route::middleware('CheckoutHasProducts')->group(function(){
+  Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
+  Route::post('/checkout/create',[checkoutController::class,'create'])->name('checkout.create');
+  Route::get('/checkout/return',[checkoutController::class,'return'])->name('checkout.return');
+  });
 //blog
   Route::middleware('passDataForBLogPage')->group(function (){
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
@@ -77,14 +83,8 @@ Route::redirect('/','langugage/vn');
 Route::middleware('auth')->group(function(){
   Route::get('/profile', [ProfileController::class,'edit'])->name('profile.edit');
   Route::post('/profile/{id}', [ProfileController::class,'update'])->name('profile.update');
-
-  Route::middleware('CheckoutHasProducts')->group(function(){
-    Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
-    Route::post('/checkout/create',[checkoutController::class,'create'])->name('checkout.create');
-    Route::get('/checkout/return',[checkoutController::class,'return'])->name('checkout.return');
-  });
-
 });
+
 
 Route::middleware('CheckAdminLogin')->group(function(){
 
@@ -221,6 +221,12 @@ Route::middleware('CheckAdminLogin')->group(function(){
   Route::get('/dashboard/order', [MngOrderController::class,'index'])->name('MngOrder.index');
   Route::get('/dashboard/order/search', [MngOrderController::class,'search'])->name('MngOrder.search');
   Route::get('/dashboard/order/order={order}', [MngOrderController::class,'orderPro'])->name('MngOrder.order');
+//ADMIN - ORDERS - EIDTS
+  Route::patch('/dashboard/order/update/{id}', [MngOrderController::class,'update'])->name('MngOrder.update');
+  Route::patch('/dashboard/order/UNupdate/{id}', [MngOrderController::class,'UNupdate'])->name('MngOrder.UNupdate');
+//ADMIN - ORDERS - DELETE
+  Route::delete('/dashboard/order/delete/{id}',[MngOrderController::class,'destroy'])->name('MngOrder.destroy');
+  Route::delete('/dashboard/order/DeleteAll', [MngOrderController::class,'deleteAll'])->name('MngOrder.deleteAll');
 //ADMIN - ORDERS_DETAILS
   Route::get('/dashboard/orderDetail', [MngOrderDetailController::class,'index'])->name('MngOrderDetail.index');
   Route::get('/dashboard/orderDetail/search', [MngOrderDetailController::class,'search'])->name('MngOrderDetail.search');

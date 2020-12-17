@@ -17,7 +17,15 @@
                     <li><span class="none-color">Checkout</span></li>
                 </ul>
             </div>
-
+            @if ($errors->any())
+                <div class="alert alert-danger col-12">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div style="height: 5em"><span></span></div>
             <div class="Display-noneX" style="height: 5.8em"><span></span></div>
         </div>
@@ -32,13 +40,13 @@
           @if(Route::has('login'))
             @guest
             <div class="col-12 bg-Box border-top-Box box-title">
-                <p><i class="fa fa-window-maximize" aria-hidden="true"></i> Returning customer? <a href="{{route('login')}}"><span>Click here to login</span></a></p>
+                <p><i class="fa fa-window-maximize" aria-hidden="true"></i> {{__('Returningcustomer')}} <a href="{{route('login')}}"><span>{{__('clickheretologin')}}</span></a></p>
             </div>
             @endguest
           @endif
           @if(!session()->has('coupon'))
             <div class="col-12 bg-Box border-top-Box box-title">
-                <p><i class="fa fa-window-maximize" aria-hidden="true"></i> Have a coupon? <a href="{{route('cart.index')}}"><span>Click here to enter your code</span></a></p>
+                <p><i class="fa fa-window-maximize" aria-hidden="true"></i> {{__('havecoupon')}} <a href="{{route('cart.index')}}"><span>{{__('clickpoupon')}}</span></a></p>
             </div>
           @endif
         </div>
@@ -56,85 +64,49 @@
                         <div class="col-md-12 mb-3">
                             <label for="firstName">{{__('checkout.name')}}</label>
                             <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" 
-                            name="user_name" id="user_name" placeholder="{{__('checkout.name')}}" value=" @if (Auth::check()) {{Auth::user()->name}} @endif " required>
+                            name="user_name" id="user_name" placeholder="{{__('checkout.name')}}" value=" @if (Auth::check()) {{Auth::user()->name}} @else {{__('checkout.name')}}{{old('user_name')}} @endif " required>
                         </div>
 
                     </div>
                     <div class="mb-3">
                         <label for="Phone">{{__('checkout.address')}}</label>
                             <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" 
-                            name="ship_address" id="ship_address" placeholder="{{__('checkout.address')}}" value="@if (Auth::check()) {{Auth::user()->address}} @endif" required>
+                            name="ship_address" id="ship_address" placeholder="{{__('checkout.address')}}" value="@if (Auth::check()) {{Auth::user()->address}} @else {{__('checkout.address')}}{{old('ship_address')}} @endif" required>
                     </div>
                     <div class="mb-3">
                       <label for="Phone">{{__('checkout.phone')}}</label>
                           <input type="number" class="form-control Fix-input-checkout Fix-high-checkout" 
-                          name="ship_phone" id="ship_phone" placeholder="{{__('checkout.phone')}}" value="@if (Auth::check()) {{Auth::user()->phone}} @endif" required>
+                          name="ship_phone" id="ship_phone" placeholder="{{__('checkout.phone')}}" value="@if (Auth::check()) {{Auth::user()->phone}} @else {{old('ship_phone')}} @endif" required>
                     </div>
                     <div class="mb-3">
                         <label for="Emailaddress">{{__('checkout.email')}}</label>
                             <input type="email" class="form-control Fix-input-checkout Fix-high-checkout" 
-                            name="ship_mail" id="ship_mail" placeholder="{{__('checkout.email')}}" value="@if (Auth::check()) {{Auth::user()->email}} @endif" required>
+                            name="ship_mail" id="ship_mail" placeholder="{{__('checkout.email')}}" value="@if (Auth::check()) {{Auth::user()->email}} @else {{old('ship_mail')}} @endif" required>
                     </div>
                 </div>
 
                 <div class="col-xl-12 col-md-12 col-sm-12 no-pdd-buyed">
-                    <h4 class="mb-3">{{__('VNPay')}}</h4>
+                    <h4 class="mb-3 Font-Blue" style="font-weight:bold">{{__('VNPay')}} <img src="{{asset('images/vnpay.jpg')}}" width="auto" height="80px" alt=""></h4>
                     <div class="form-group">
-                        <label for="language">Loại hàng hóa </label>
-                        <select name="order_type" id="order_type" class="form-control">
+                        <select hidden name="order_type" id="order_type" class="form-control">
                             <option selected value="billpayment">Thanh toán hóa đơn</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="order_id">Mã hóa đơn</label>
-                        <p class="form-control" id="order_id"><?php echo date("YmdHis") ?></p>
+                        <label for="order_id">{{__('CodeBill')}}</label>
+                        <p class="form-control Font-Red" style="font-weight:bold" id="order_id"><?php echo date("YmdHis") ?></p>
                         <input hidden class="form-control" id="order_id" name="order_id" type="text" value="<?php echo date("YmdHis") ?>"/>
                     </div>
                     <div class="form-group">
-                        <label for="amount">Số tiền</label>
-                        <p class="form-control" id="amount">{{number_format($total,0,',','.')}}</p>
+                        <label for="amount">{{__('MoneyTotal')}}</label>
+                        <p class="form-control Font-Red" style="font-weight:bold" id="amount">{{number_format($total,0,',','.')}} vnđ</p>
                         <input hidden class="form-control" id="amount"
                                name="amount"  type="number" value="{{number_format($total,0,'','')}}00"/>
                         <input hidden class="form-control" id="total" name="total" type="number" value="{{number_format($total,0,'','')}}">
                     </div>
                     <div class="form-group">
-                        <label for="order_desc">Nội dung thanh toán</label>
-                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2">Noi dung thanh toan</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="vnp_BankCode">Ngân hàng</label>
-                        <select name="vnp_BankCode" id="vnp_BankCode" class="form-control">
-                            <option value="">Không chọn</option>
-                            <option value="NCB"> Ngan hang NCB</option>
-                            <option value="AGRIBANK"> Ngan hang Agribank</option>
-                            <option value="SCB"> Ngan hang SCB</option>
-                            <option value="SACOMBANK">Ngan hang SacomBank</option>
-                            <option value="EXIMBANK"> Ngan hang EximBank</option>
-                            <option value="MSBANK"> Ngan hang MSBANK</option>
-                            <option value="NAMABANK"> Ngan hang NamABank</option>
-                            <option value="VNMART"> Vi dien tu VnMart</option>
-                            <option value="VIETINBANK">Ngan hang Vietinbank</option>
-                            <option value="VIETCOMBANK"> Ngan hang VCB</option>
-                            <option value="HDBANK">Ngan hang HDBank</option>
-                            <option value="DONGABANK"> Ngan hang Dong A</option>
-                            <option value="TPBANK"> Ngân hàng TPBank</option>
-                            <option value="OJB"> Ngân hàng OceanBank</option>
-                            <option value="BIDV"> Ngân hàng BIDV</option>
-                            <option value="TECHCOMBANK"> Ngân hàng Techcombank</option>
-                            <option value="VPBANK"> Ngan hang VPBank</option>
-                            <option value="MBBANK"> Ngan hang MBBank</option>
-                            <option value="ACB"> Ngan hang ACB</option>
-                            <option value="OCB"> Ngan hang OCB</option>
-                            <option value="IVB"> Ngan hang IVB</option>
-                            <option value="VISA"> Thanh toan qua VISA/MASTER</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="language">Ngôn ngữ</label>
-                        <select name="language" id="language" class="form-control">
-                            <option value="vn">Tiếng Việt</option>
-                            <option value="en">English</option>
-                        </select>
+                        <label for="contentbilling">{{__('contentbilling')}}</label>
+                        <textarea class="form-control" cols="20" id="contentbilling" name="contentbilling" rows="2">Không có nội dung nào.{{old('contentbilling')}}</textarea>
                     </div>
                 </div>
     
@@ -159,7 +131,7 @@
                 <tbody>
                 @foreach(Cart::content() as $item)
                   <tr>
-                    <td colspan="1">{{$item->name}}  × <span class="font-weight-bold">{{$item->qty}}</span></td>
+                    <td colspan="1">{{$item->name}} × <span class="font-weight-bold">{{$item->qty}}</span></td>
                     <td colspan="2">{{$item->price(0,",",".")}} vnđ</td>
                   </tr>
                 @endforeach
@@ -180,7 +152,7 @@
                 </tr>
                 <tr>
                   <td colspan="1" class="text-uppercase text-right font-weight-bold">TOTAL</td>
-                  <td colspan="2" class="text-uppercase"><span class="font-weight-bold">{{number_format($total,0,',','.')}} vnđ</span></td>
+                  <td colspan="2" class="text-uppercase"><span class="font-weight-bold Font-Red">{{number_format($total,0,',','.')}} vnđ</span></td>
                 </tr>
                 </tbody>
               </table>

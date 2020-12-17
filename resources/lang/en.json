@@ -90,5 +90,8 @@
 
     "catelogall": "Main Category","catelogproduct": "Products Category","catelogblog":"Blogs Category",
     "account": "Account","historyPass": "History Reset Password","latest":"Latest","oldest": "Oldest",
-    "checkoutsuccess": "Payment success","checkEmail":"Please check your Email we're send for you."
+    "checkoutsuccess": "Payment success","checkEmail":"Please check your Email we're send for you.",
+    "VNPay":"payment by VNPay","contentbilling": "Content Billing","payments":"Payments","CodeBill":"Code Billing","MoneyTotal":"Money Total",
+    "havecoupon":"Have a coupon ?", "clickpoupon":"Click here to enter your code","Returningcustomer":"Returning customer?","clickheretologin":"click here to login",
+    "Unshipping":"Not delivery","shipping":"Delivered"
 }
