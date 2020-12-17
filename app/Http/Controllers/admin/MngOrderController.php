@@ -4,14 +4,16 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MngOrderController extends Controller
 {
     public function index(){
+        $newDateTime = Carbon::now()->addDays(5);
         $orderNumber = 1;
         $orders = Order::orderBy('created_at','desc')->paginate(12);
-        return view('admin.order.index')->with(["orders"=>$orders,"orderNumber"=>$orderNumber]);
+        return view('admin.order.index')->with(["orders"=>$orders,"orderNumber"=>$orderNumber,"newDateTime"=>$newDateTime]);
     }
     public function orderPro($order)
     {

@@ -6,6 +6,9 @@ use App\Mail\PaymentSuccess;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Models\NL_Checkout;
+use App\Models\Order;
+use Carbon\Carbon;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Mail;
 
 class checkoutController extends Controller
@@ -42,6 +45,18 @@ class checkoutController extends Controller
     
      public function create(Request $request)
      {
+        $user_name = $request->input('user_name');
+        $ship_address = $request->input('ship_address');
+        $ship_mail = $request->input('ship_mail');
+        $ship_phone = $request->input('ship_phone');
+        $total = $request->input('total');
+        $order_id = $request->input('order_id');
+        session()->put('UserName', $user_name);
+        session()->put('AddressShip', $ship_address);
+        session()->put('EmailShip', $ship_mail);
+        session()->put('PhoneShip', $ship_phone);
+        session()->put('ToTal', $total);
+        session()->put('Bills', $order_id);
          session(['cost_id' => $request->id]);
          session(['url_prev' => url()->previous()]);
          $vnp_TmnCode = "A7ZSUS6G"; //Mã website tại VNPAY 
@@ -93,14 +108,38 @@ class checkoutController extends Controller
              $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
              $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
          }
+
+
+
          return redirect($vnp_Url);
      }
 
 
      public function return(Request $request)
      {
+        $UserName = session()->get('UserName');
+        $AddressShip = session()->get('AddressShip');
+        $EmailShip = session()->get('EmailShip');
+        $PhoneShip = session()->get('PhoneShip');
+        $ToTal = session()->get('ToTal');
+        $Bills = session()->get('Bills');
          //$url = session('url_prev','/checkout/return');
          if($request->vnp_ResponseCode == "00") {
+           
+            $newDateTime = Carbon::now()->addDays(6);
+            $orders = new Order();
+            $orders->user_name = $UserName;
+            $orders->ship_address = $AddressShip;
+            $orders->ship_mail = $EmailShip;
+            $orders->ship_phone = $PhoneShip;
+            $orders->status = '0';
+            $orders->payment_type = '1';
+            $orders->day_buy = date('d/m/Y');
+            $orders->day_ship = $newDateTime->format('d/m/Y');
+            $orders->total = $ToTal;
+            $orders->bill = $Bills;
+            $saved = $orders->save();
+
             $user = auth()->user();
             Mail::to($user)->send(new PaymentSuccess($user));
             Cart::destroy();

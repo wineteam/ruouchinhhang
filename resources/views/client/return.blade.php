@@ -10,7 +10,7 @@
                 <h1 class="mb-3 text-center font-weight-bolder">{{__('checkoutsuccess')}}</h1>
             
                 <!-- Show ra nếu đã gửi được Email -->
-                <h3><span class="Font-Blue text-center font-weight-bold">{{__('checkEmail')}}</span></h3>
+                <h3 class="text-center"><span class="Font-Blue font-weight-bold">{{__('checkEmail')}}</span></h3>
 
             </div>
         </div><!--/row-->

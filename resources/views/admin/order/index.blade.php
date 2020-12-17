@@ -34,6 +34,7 @@
                             <th scope="col">{{__('Phone')}}</th>
                             <th scope="col">{{__('Status')}}</th>
                             <th scope="col">Hình thức thanh toán</th>
+                            <th scope="col">Mã hóa đơn</th>
                             <th scope="col">{{__('datepurchase')}}</th>
                             <th scope="col">{{__('deliverydate')}}</th>
                             <th scope="col">{{__('totally')}}</th>
@@ -49,9 +50,10 @@
                               <td>{{$order->ship_mail}}</td>
                               <td>{{$order->ship_phone}}</td>
                               <td> @if ($order->status == 1) Đã Giao Hàng @else Chưa Giao Hàng @endif </td>
-                              <td> @if ($order->payment_type == 1) Giao Hàng Online @else Trả tiền trực tiếp @endif </td>
-                              <td>{{$order->day_ship}}</td>
+                              <td> @if ($order->payment_type == 1) Thanh toán Online @else Trả tiền trực tiếp @endif </td>
+                              <td>{{$order->bill}}</td>
                               <td>{{$order->day_buy}}</td>
+                              <td>{{$order->day_ship}}</td>
                               <td>{{$order->total}}</td>
                               <td>{{\Carbon\Carbon::parse( $order->created_at)->format('d/m/Y')}}</td>
                             </tr>

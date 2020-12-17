@@ -56,24 +56,24 @@
                         <div class="col-md-12 mb-3">
                             <label for="firstName">{{__('checkout.name')}}</label>
                             <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" 
-                            name="buyer_fullname" id="buyer_fullname" placeholder="{{__('checkout.name')}}" value=" @if (Auth::check()) {{Auth::user()->name}} @endif " required>
+                            name="user_name" id="user_name" placeholder="{{__('checkout.name')}}" value=" @if (Auth::check()) {{Auth::user()->name}} @endif " required>
                         </div>
 
                     </div>
                     <div class="mb-3">
                         <label for="Phone">{{__('checkout.address')}}</label>
                             <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" 
-                            name="buyer_address" id="buyer_address" placeholder="{{__('checkout.address')}}" value="@if (Auth::check()) {{Auth::user()->address}} @endif" required>
+                            name="ship_address" id="ship_address" placeholder="{{__('checkout.address')}}" value="@if (Auth::check()) {{Auth::user()->address}} @endif" required>
                     </div>
                     <div class="mb-3">
                       <label for="Phone">{{__('checkout.phone')}}</label>
                           <input type="number" class="form-control Fix-input-checkout Fix-high-checkout" 
-                          name="buyer_mobile" id="buyer_mobile" placeholder="{{__('checkout.phone')}}" value="@if (Auth::check()) {{Auth::user()->phone}} @endif" required>
+                          name="ship_phone" id="ship_phone" placeholder="{{__('checkout.phone')}}" value="@if (Auth::check()) {{Auth::user()->phone}} @endif" required>
                     </div>
                     <div class="mb-3">
                         <label for="Emailaddress">{{__('checkout.email')}}</label>
                             <input type="email" class="form-control Fix-input-checkout Fix-high-checkout" 
-                            name="buyer_email" id="buyer_email" placeholder="{{__('checkout.email')}}" value="@if (Auth::check()) {{Auth::user()->email}} @endif" required>
+                            name="ship_mail" id="ship_mail" placeholder="{{__('checkout.email')}}" value="@if (Auth::check()) {{Auth::user()->email}} @endif" required>
                     </div>
                 </div>
 
@@ -93,8 +93,9 @@
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
                         <p class="form-control" id="amount">{{number_format($total,0,',','.')}}</p>
-                        <input class="form-control" id="amount"
+                        <input hidden class="form-control" id="amount"
                                name="amount"  type="number" value="{{number_format($total,0,'','')}}00"/>
+                        <input hidden class="form-control" id="total" name="total" type="number" value="{{number_format($total,0,'','')}}">
                     </div>
                     <div class="form-group">
                         <label for="order_desc">Nội dung thanh toán</label>
