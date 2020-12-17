@@ -17,15 +17,6 @@
                     <li><span class="none-color">Checkout</span></li>
                 </ul>
             </div>
-            @if ($errors->any())
-                <div class="alert alert-danger col-12">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <div style="height: 5em"><span></span></div>
             <div class="Display-noneX" style="height: 5.8em"><span></span></div>
         </div>
@@ -65,23 +56,35 @@
                             <label for="firstName">{{__('checkout.name')}}</label>
                             <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" 
                             name="user_name" id="user_name" placeholder="{{__('checkout.name')}}" value=" @if (Auth::check()) {{Auth::user()->name}} @else {{__('checkout.name')}}{{old('user_name')}} @endif " required>
+                            @error('user_name')
+                            <br><div class="alert alert-danger">{{ $errors->first('user_name') }}</div>
+                            @enderror
                         </div>
 
                     </div>
                     <div class="mb-3">
                         <label for="Phone">{{__('checkout.address')}}</label>
-                            <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" 
-                            name="ship_address" id="ship_address" placeholder="{{__('checkout.address')}}" value="@if (Auth::check()) {{Auth::user()->address}} @else {{__('checkout.address')}}{{old('ship_address')}} @endif" required>
+                        <input type="text" class="form-control Fix-input-checkout Fix-high-checkout" 
+                        name="ship_address" id="ship_address" placeholder="{{__('checkout.address')}}" value="@if (Auth::check()) {{Auth::user()->address}} @else {{__('checkout.address')}}{{old('ship_address')}} @endif" required>
+                        @error('ship_address')
+                        <br><div class="alert alert-danger">{{ $errors->first('ship_address') }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                       <label for="Phone">{{__('checkout.phone')}}</label>
-                          <input type="number" class="form-control Fix-input-checkout Fix-high-checkout" 
-                          name="ship_phone" id="ship_phone" placeholder="{{__('checkout.phone')}}" value="@if (Auth::check()) {{Auth::user()->phone}} @else {{old('ship_phone')}} @endif" required>
+                        <input type="number" class="form-control Fix-input-checkout Fix-high-checkout" 
+                        name="ship_phone" id="ship_phone" placeholder="{{__('checkout.phone')}}" value="@if (Auth::check()) {{Auth::user()->phone}} @else {{old('ship_phone')}} @endif" required>
+                        @error('ship_phone')
+                        <br><div class="alert alert-danger">{{ $errors->first('ship_phone') }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="Emailaddress">{{__('checkout.email')}}</label>
-                            <input type="email" class="form-control Fix-input-checkout Fix-high-checkout" 
-                            name="ship_mail" id="ship_mail" placeholder="{{__('checkout.email')}}" value="@if (Auth::check()) {{Auth::user()->email}} @else {{old('ship_mail')}} @endif" required>
+                        <input type="email" class="form-control Fix-input-checkout Fix-high-checkout" 
+                        name="ship_mail" id="ship_mail" placeholder="{{__('checkout.email')}}" value="@if (Auth::check()) {{Auth::user()->email}} @else {{old('ship_mail')}} @endif" required>
+                        @error('ship_mail')
+                        <br><div class="alert alert-danger">{{ $errors->first('ship_mail') }}</div>
+                        @enderror
                     </div>
                 </div>
 

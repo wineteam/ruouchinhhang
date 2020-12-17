@@ -167,7 +167,7 @@ class checkoutController extends Controller
             $user = auth()->user();
             Mail::to($EmailShip)->send(new PaymentSuccess($EmailShip));
             Cart::destroy();
-            session()->forget('UserName','AddressShip','EmailShip','PhoneShip','ToTal','Bills');
+            session()->forget('UserName','AddressShip','EmailShip','PhoneShip','ToTal','Bills','contentbilling');
             return view('client.return')->with('success' ,'Đã thanh toán phí dịch vụ');
          }
          //session()->forget('url_prev');
