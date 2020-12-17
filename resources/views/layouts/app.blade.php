@@ -167,6 +167,10 @@
                 @endif
                 @endif
                 @endif
+            </li></li>
+            <li class="nav-item" style="margin-top: 5px">
+                <a class="nav-link Font-white" style="float: left;margin-right:20px;margin-left:15px" href="{{route('setLanguage','en')}}"><span class="@if(App()->getLocale() == 'en') Font-Red @else Font-white @endif">English</span></a>
+                <a class="nav-link Font-white" style="float: left"  href="{{route('setLanguage','vn')}}"><span class="@if(App()->getLocale() == 'vn') Font-Red @else Font-white @endif">Việt Nam</span></a>
             </li>
         </ul>
         <div class="box-menu-scroll">
