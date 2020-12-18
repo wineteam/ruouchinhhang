@@ -239,9 +239,8 @@
                 <div style="padding-left: 80px;padding-right: 5rem;padding-top: 3rem;">
                     <h1 class=" color_subtitle text-capitalize">{{__('client.get_it_touch')}}</h1>
                     <div class="item_descr3 Font-Yellow2" style="width: auto;">{{__('client.info_company')}}</div>
-                    <div class="item_descr2 Font-Yellow2" style="width: auto;">{{__('client.address')}}: Austria, Vienna Leip Strasse 156</div>
-                    <div class="item_descr2 Font-Yellow2" style="width: auto;">Phone: <a href=""><span class="Font-Red">+125 256 36 85</span></a></div>
-                    <div class="item_descr2 Font-Yellow2" style="width: auto;">E-mail: <a href=""><span class="Font-Red">office@luxurywine.com</span></a></div>
+                    <div class="item_descr2 Font-Yellow2" style="width: auto;">{{__('client.address')}}: Phần Mềm Quang Trung Cơ Sở 3 FPT Polytechnic</div>
+                    <div class="item_descr2 Font-Yellow2" style="width: auto;">Phone: <a href=""><span class="Font-Red">+84 943 355 123</span></a></div>
                     <div class="mr-subtitle Display-None2">
                         <a href=""class="btn-subtitle-contact Display-None4" style="float: left;">{{__('client.get_it_touch')}}</a>
                     </div>
