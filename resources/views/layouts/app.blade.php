@@ -237,7 +237,7 @@ $(document).ready(function(){
             </div>
         </div>
         <div class="text-center show-in-moblie" style="display: none;">
-          <p class="card-text Re-font-ms" style="padding-top:30px;"><span class="Font-dark"></span>@if(isset($info)) {{$info->address}}@endif</p>
+          <p class="card-text Re-font-ms Fix-moblie-footer-Font" style="padding-top:30px;"><span class="Font-dark"></span>@if(isset($info)) {{$info->address}}@endif</p>
         </div>
         </div>
     </div>

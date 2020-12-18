@@ -3576,3 +3576,18 @@ ul.chat-available-user li a:hover {
     max-height: 300px;
     overflow: auto;
 }
+.link-to-category a{
+    text-align: center;
+    font-size: 20px;
+}
+.Font-Red{color: #d03e3b;}
+.Font-Yellow{color: #7b6d1d;}
+.Font-purple2{color: #343240;}
+.Font-Green{color: #3c5a3d;}
+@media screen and (max-width: 780px){
+
+    .Padding-For-Moblie{
+        margin-bottom: 20px !important;
+    }
+
+}

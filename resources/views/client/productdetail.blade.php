@@ -3,7 +3,7 @@
 <div class="product-page">
    <!-- Breadcrumb -->
    <div class="banner-page col-lg-12">
-    <p class="title-page">{{$product->name}}</p>
+    <p class="title-page Fix-moblie-ProDetail-Font">{{$product->name}}</p>
     <ul class="breadcrumb-page">
         <li><a href="{{ route('home') }}">{{__('client.HOME')}}</a></li>
         <li aria-current="page"><a href="{{ route('shop') }}">{{__('client.STORE')}}</a></li>
@@ -64,22 +64,22 @@
             <p>Product ID: {{$product->codeProduct}}</p>
             <p>Categories:
               @forelse($product->categories as $category)
-                <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
+                <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase">{{$category->name}}</a>
                 @if(!$loop->last)
                   ,
                 @endif
               @empty
-                <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
+                <span class="text-center text-info">Không có danh mục</span>
               @endforelse
             </p>
-            <p>Tags:
+            {{-- <p>Tags:
               @foreach($product->tags as $tag)
               <a href="{{route('shop.search.tag',$tag->slug)}}" class="Font-Red">{{$tag->name}}</a>
               @if(!$loop->last)
                 ,
               @endif
               @endforeach
-            </p>
+            </p> --}}
 
         </div>
 

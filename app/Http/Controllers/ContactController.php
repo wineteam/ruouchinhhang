@@ -20,10 +20,10 @@ class ContactController extends Controller
         'message'=>$request->message
       ];
 
-      Mail::to('hoaianh0123450@gmail.com')->send(new contactForm($details));
+      Mail::to('lghost6996@gmail.com')->send(new contactForm($details));
       if (count(Mail::failures()) > 0){
-        return redirect()->route('contact')->withError('Hien tai khong the gui mail. Vui long thu lai sau!');
+        return redirect()->route('contact')->withError('Hiện tại không thể gửi Mail. Vui lòng thử lại sau.');
       }
-      return redirect()->back()->with('message-contact','Cam on phan hoi cua ban');
+      return redirect()->back()->with('message-contact','Cảm ơn phản hồi của bạn.');
   }
 }

@@ -3,7 +3,7 @@
 <div class="product-page">
    <!-- Breadcrumb -->
    <div class="banner-page col-lg-12">
-    <p class="title-page text-capitalize">
+    <p class="title-page text-capitalize Fix-moblie-ProDetail-Font">
       @if(isset($message))
         {{$message}}
       @else
@@ -24,11 +24,11 @@
   <div class=" col-xl-9 col-md-12 col-sm-12">
     <div class="row" style="align-items: stretch">
     @foreach($products  as $product)
-      <div class="col-xl-4 col-md-4 col-sm-6 text-center productItem mb-4 Fix-product-pdd">
+      <div class="col-xl-4 col-md-6 col-6 text-center productItem mb-4 Fix-product-pdd">
         <div class="productItem__content" style="height: 100%">
           <a href="{{route('shop.show',$product->slug)}}"> 
-            <div id="hiddenScroll" style="max-height: 250px;overflow: hidden;">
-              <img style="margin-bottom: 1rem;" width="auto" height="250px" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
+            <div id="hiddenScroll" class="Fix-moblie-img-Shop-max-height" style="max-height: 250px;overflow: hidden;">
+              <img style="margin-bottom: 1rem;" class="Fix-moblie-img-Shop" width="auto" height="250px" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
             </div>
           </a> <br>
           @forelse($product->categories as $category)

@@ -56,8 +56,7 @@ return [
         // ],
         'public' => [
             'driver' => 'local',
-            'root' => public_path() . '/uploads',// upload file in public dir
-            'url' => env('APP_URL').'/uploads', // help to get Storage::url() 
+            'root' => public_path('storage'),
             'visibility' => 'public',
         ],
         's3' => [

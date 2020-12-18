@@ -4,7 +4,7 @@
 <section id="main-content">
   <section class="wrapper">
     <div class="py-3 row">
-       <div class="col-md-4">
+       <div class="col-md-4 Padding-For-Moblie">
         <div class="block-statistical">
           <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
           <div class="link-to-category">
@@ -73,7 +73,7 @@
             <div class="ScrollListPosts">
               @foreach ($blogViews as $Rblogs)
                 <div class="block-rank-post">
-                  <h4 class="title"><a href="{{route('blog.show',$Rblogs->slug)}}">{{$Rblogs->title}}</a>
+                  <h4 class="title"><a href="{{route('blog.show',$Rblogs->slug)}}"><span class="Font-Red">{{$Rblogs->title}}</span></a>
                   </h4>
                   <i class="mr-4">{{\Carbon\Carbon::parse( $Rblogs->day_up)->format('d/m/Y')}}</i>
                   <i class="fas fa-eye"></i> {{$Rblogs->view}}
@@ -85,10 +85,20 @@
       <div class="col-md-6">
         <div class="total-income" >
           <h3 class="mb-5" style="border-bottom:3px solid #ff7675">{{__('allmoney')}}</h3>
-          <div class="block-total-cost">
-            <i class="fas fa-coins" style="font-size: 84px; color: #fbc531;"></i>
-           <p style="font-size: 54px;"> {{NULL}} </p>
-          </div>
+          <div class="ScrollListPosts">
+            @foreach ($orders as $order)
+              <div class="block-rank-post">
+                <h4 class="title Font-Red" style="margin-bottom: 20px"> <i class="fa fa-user-circle" aria-hidden="true"></i> <span class="Font-Yellow">{{$order->user_name}}</span></h4>
+                <div style="max-height: 80px;overflow:auto;margin-bottom: 20px">
+                  <p>
+                    <span class="mr-4"><i class="fa fa-commenting" style="color: #d03e3b;" aria-hidden="true"></i> {{$order->contentbilling}}</span>
+                  </p>
+                </div>
+                <p style="margin-bottom: 20px"><i class="fa fa-shopping-bag" style="color: #d03e3b;" aria-hidden="true"></i> @if ($order->payment_type == 1) <span style="font-weight:bold" class="Font-Green"> Thanh toán Online </span> @else <span style="font-weight:bold" class="Font-Font-purple2"> Trả tiền trực tiếp </span> @endif</p>
+                <h5 style="margin-bottom: 20px"><i class="fa fa-truck" style="color: #d03e3b;" aria-hidden="true"></i> @if ($order->status == 1) <span style="font-weight:bolder;color: #d03e3b;">Đã Giao Hàng <i class="fa fa-check" style="padding-left:10px" aria-hidden="true"></i></span> @else Chưa Giao Hàng @endif </h5>
+              </div>  
+            @endforeach   
+          </div>     
       </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ body {background-image: url("../images/audio_bg.jpg");background-size: 100%;back
 }
 input:focus, textarea:focus, select:focus,button:focus{outline: none;}
 .edit-icon{border-radius: 100%;background-color: #ffffff00 !important;border: 2px solid #bdb68e;}
-.day{font-size: 2vw;color: #b9b391;}
+.day{color: #b9b391;}
 .position-Re{position: relative;}.position-Ab{position: absolute;}
 .card-border-0{border: none !important;}
 .padding-Header{padding: 3.7em 0 3.5em;}
@@ -24,6 +24,7 @@ input:focus, textarea:focus, select:focus,button:focus{outline: none;}
 .padding-text{margin: 0 0.75rem 0 0.75rem;}
 .Font-Size-1vw{font-size: 0.75vw;}
 .Font-Size-07vw{font-size: 0.7vw;}
+.Font-Size-01vw{font-size: 1vw;}
 .Blue-Link li a{color: #0a2843 !important;font-weight: 600;transition: 0.2s;}
 .Blue-Link li a:hover{color: #d03e3b !important;transition: 0.2s;}
 .bg-purple{background-color: #CAB9B3;}
@@ -62,6 +63,7 @@ input:focus, textarea:focus, select:focus,button:focus{outline: none;}
 .mySidenavNONE *{
   display: none ;
 }
+.BlockAll-show-Shop *{display: none}
 .padding-less{padding-left: 0.55rem !important; padding-right: 0.55rem !important;}
 .nobtnshow{background-color: #ffffff00 !important;border: none !important;padding: 1rem;}
 .color_subtitle{color: #d03e3b;}
@@ -563,6 +565,15 @@ li .dropdown-item:hover span{color: #b9b391;transition: 0.2s;}
   li .FIXS > *{
     display: none;
   }
+  .Fix-moblie-ProDetail-Font{
+    font-size: 30px !important;
+  }
+  .FIX-moblie-Show-Orders *{
+    display: none !important;
+  }
+  .FIX-moblie-Show-Orders-Block *{
+    display: block !important;
+  }
 }
 @media screen and (max-width: 750px){
 .Display-None {display: none;}
@@ -617,6 +628,13 @@ li .dropdown-item:hover span{color: #b9b391;transition: 0.2s;}
     padding: calc(0.759em - 1px) calc(1.3em - 1px);
     font-size: 1em;
   }
+  .Fix-moblie-img-Shop{
+    width: 100% !important;
+    height: auto !important;
+  }
+  .Fix-moblie-img-Shop-max-height{
+    height: 200px;
+  }
 }
 @media screen and (max-width: 450px){
   .sidenav-Moblie {
@@ -625,8 +643,14 @@ li .dropdown-item:hover span{color: #b9b391;transition: 0.2s;}
   .Moblie-Fonts-Menu li a{
     font-size: 5vw;
   }
+  .Fix-moblie-ProDetail-Font{
+    font-size: 20px !important;
+  }
 }
-
+@media screen and (max-width: 420px){
+  .Display-None4 {display: none !important;}
+  .Fix-moblie-footer-Font{font-size: 12px;width: 80%;margin-left: 10%;}
+}
 @media screen and (max-width: 370px){
   .Display-None4 {display: none !important;}
   .Cart-list{

@@ -64,12 +64,12 @@
                         <img class="" style="margin-bottom: 1rem;" width="auto" height="250px" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
                     </a> <br>
                     @forelse($product->categories as $category)
-                    <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
+                    <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase ">{{$category->name}}</a>
                         @if(!$loop->last)
                             ,
                         @endif
                     @empty
-                        <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
+                        <span class="text-center text-info ">Không có danh mục</span>
                     @endforelse
                         <div class="col-12 mx-auto" style="padding: 20px;">
                         <a class="Hover-Red" href="{{route('shop.show',$product->slug)}}"><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{\Illuminate\Support\Str::limit($product->name,15  )}}</h5></a>
@@ -141,12 +141,12 @@
                             <img class="text-center" style="margin-bottom: 1rem;" width="auto" height="250px" src="{{asset('storage/'.$product->thumbnail) }}" alt="">
                         </a> <br>
                         @forelse($product->categories as $category)
-                        <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase Font-Size-07vw">{{$category->name}}</a>
+                        <a href="{{route('getProByCat',$category->slug)}}" class="text-center text-info text-uppercase ">{{$category->name}}</a>
                             @if(!$loop->last)
                                 ,
                             @endif
                         @empty
-                            <span class="text-center text-info Font-Size-07vw">Không có danh mục</span>
+                            <span class="text-center text-info ">Không có danh mục</span>
                         @endforelse
                             <div class="col-12 mx-auto" style="padding: 20px;">
                             <a class="Hover-Red" href="{{route('shop.show',$product->slug)}}"><h5 class="Font-Blue" style="height: 50px;transition: 0.3s;">{{\Illuminate\Support\Str::limit($product->name,15  )}}</h5></a>
@@ -209,7 +209,7 @@
                                     </div>
                                 </a>
                                 <a href="#">
-                                    <span class="day">{{\Carbon\Carbon::parse($blog->created_at)->format('d')}}</span> <span class="Font-dark">{{\Carbon\Carbon::parse($blog->created_at)->format('M')}}</span>
+                                    <span class="day" style="font-size: 30px">{{\Carbon\Carbon::parse($blog->created_at)->format('d')}}</span> <span class="Font-dark">{{\Carbon\Carbon::parse($blog->created_at)->format('M')}}</span>
                                 </a>
                                 <h5 class="sc_item_title" style="margin-top: 30px;"><a class="text-danger" href="{{route('blog.show',$blog->slug)}}">{{\Illuminate\Support\Str::limit($blog->title,30)}}</a></h5>
 
