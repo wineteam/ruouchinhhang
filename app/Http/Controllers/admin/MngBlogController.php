@@ -61,6 +61,7 @@ class MngBlogController extends Controller
           'title' => 'required | string | max:255',
           'description' => 'required | string',
           'contentProduct' => 'required | string',
+          'thumbnail' => 'image|max:2048',
       ],
       [
           'title.required' => 'Mảng :attribute yêu cầu bắt buộc.',
@@ -68,6 +69,10 @@ class MngBlogController extends Controller
           'description.required' => 'Mảng :attribute yêu cầu bắt buộc.',
 
           'contentProduct.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+          'thumbnail.image' => 'Mảng :attribute yêu cầu là hình ảnh.',
+
+          'thumbnail.max' => 'Mảng :attribute vượt quá mức băng thông cho phép (2048).',
       ]);
       $user_id = Auth()->user()->id;
       $blogs = new Blog;
@@ -116,6 +121,13 @@ class MngBlogController extends Controller
 
     public function update(Request $request,$id)
     {
+      $request->validate([
+        'thumbnail' => 'image|max:2048',
+      ],
+      [
+          'thumbnail.image' => 'Mảng :attribute yêu cầu là hình ảnh.',
+          
+      ]);
       $blogs = Blog::find($id);
       $user_id = Auth()->user()->id;
       $slug = str_slug($request->title);

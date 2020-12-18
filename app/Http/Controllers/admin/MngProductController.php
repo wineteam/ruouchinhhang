@@ -57,6 +57,7 @@ class MngProductController extends Controller
           'discount' => 'required | integer',
           'nation' => 'required | string | max:255',
           'amount' => 'required | integer',
+          'thumbnail' => 'image|max:2048',
       ],
       [
           'name.required' => 'Mảng :attribute yêu cầu bắt buộc.',
@@ -81,6 +82,9 @@ class MngProductController extends Controller
 
           'amount.required' => 'Mảng :attribute yêu cầu bắt buộc.',
           'amount.integer' => 'Mảng :attribute yêu câu số nguyên.',
+
+          'thumbnail.image' => 'Mảng :attribute yêu cầu là hình ảnh.',
+          'thumbnail.max' => 'Mảng :attribute vượt quá mức băng thông cho phép (2048).',
       ]);
       $user_id = Auth()->user()->id;
       $product = new Product;
@@ -135,6 +139,14 @@ class MngProductController extends Controller
 
     public function update(Request $request,$id)
     {
+      $request->validate([
+        'thumbnail' => 'image|max:2048',
+      ],
+      [
+        'thumbnail.image' => 'Mảng :attribute yêu cầu là hình ảnh.',
+
+        'thumbnail.max' => 'Mảng :attribute vượt quá mức băng thông cho phép (2048).',
+      ]);
       $product = Product::find($id);
       $user_id = Auth()->user()->id;
       if($user_id != false){

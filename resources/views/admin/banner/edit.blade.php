@@ -33,6 +33,9 @@
                         <label for="thumbnail">Hình ảnh Banner</label> <br>
                         <img src="{{asset('storage/'.$banner->thumbnail) }}" id="ImagesProduct" class="img-thumbnail" alt="" width="450px"> <br><br>
                         <input type='file' id="thumbnail" value="" name="thumbnail" onchange="readURL_Images(this);"/>
+                        @if($errors->has('thumbnail'))
+                              <br><div class="alert alert-danger">{!! $errors->first('thumbnail') !!}</div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="link">Link Banner (ra URL lấy)</label>

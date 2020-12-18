@@ -39,6 +39,17 @@ class MngBannerController extends Controller
       $request->validate([
         'link' => ['required', 'string', 'max:255'],
         'order' => ['required', 'integer'],
+        'thumbnail' => 'image|max:2048',
+      ],
+      [
+        'link.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+
+        'order.required' => 'Mảng :attribute yêu cầu bắt buộc.',
+        'order.integer' => 'Mảng :attribute yêu câu số nguyên.',
+
+        'thumbnail.image' => 'Mảng :attribute yêu cầu là hình ảnh.',
+
+        'thumbnail.max' => 'Mảng :attribute vượt quá mức băng thông cho phép (2048).',
       ]);
       $banner = new banner;
       $banner->name = $request->name;
@@ -66,6 +77,14 @@ class MngBannerController extends Controller
 
     public function update(Request $request,$id)
     {
+      $request->validate([
+        'thumbnail' => 'image|max:2048',
+      ],
+      [
+        'thumbnail.image' => 'Mảng :attribute yêu cầu là hình ảnh.',
+
+        'thumbnail.max' => 'Mảng :attribute vượt quá mức băng thông cho phép (2048).',
+      ]);
       $banner = banner::find($id);
       if(isset($request->name)){
         $banner->name = $request->name;

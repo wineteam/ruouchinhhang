@@ -24,12 +24,12 @@ class ProfileController extends Controller
   public function update(Request $request)
   {
     $this->validate($request, [
-      'image' => 'mimes:jpeg,png,bmp,tiff |max:2048',
+      'image' => 'image|max:2048',
     ],
-      $messages = [
-        'mimes' => 'Only jpeg, png, bmp,tiff are allowed.'
-      ]
-    );
+    [
+      'thumbnail.image' => 'Mảng :attribute yêu cầu là hình ảnh.',
+      'thumbnail.max' => 'Mảng :attribute vượt quá mức băng thông cho phép (2048).',
+    ]);
     $user = Auth()->user();
     if(isset($request->name)){
       $user->name = $request->name;
