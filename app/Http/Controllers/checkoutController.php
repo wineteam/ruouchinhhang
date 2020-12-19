@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 use App\Models\NL_Checkout;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class checkoutController extends Controller
@@ -161,9 +163,15 @@ class checkoutController extends Controller
                 'price' => $products->price(0,"",""),
                 'quantity' => $products->qty,
               ));
+              DB::table('products')->where('id', $products->id)->increment('bought',$products->qty);
             }
+            
             OrderDetail::insert($finalArray);
-            //$saveds = $orderDetails->save();
+
+            
+            DB::table('products')
+            ->where('id', $products->id)
+            ->increment('bought');
             $user = auth()->user();
             Mail::to($EmailShip)->send(new PaymentSuccess($EmailShip));
             Cart::destroy();

@@ -86,14 +86,14 @@
         <div class="col-xl-12" style="margin-top: 50px;">
             <nav>
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Description</a>
-                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Additional information</a>
-                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Reviews ({{$product->approvedComments()->count()}})</a>
+                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{{__('Description')}}</a>
+                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">{{__('Additionalinformation')}}</a>
+                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">{{__('Reviews')}} ({{$product->approvedComments()->count()}})</a>
                 </div>
             </nav>
 
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" style="width:90%;margin-left:5%">
                     <p class="Content-PDetails">
                         {!! $product->description !!}
                     </p>
@@ -102,7 +102,7 @@
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
                     <div class="box-infomation-PDetail">
-                        <h4 class="mb-3">Additional information</h4>
+                        <h4 class="mb-3">{{__('Additionalinformation')}}</h4>
                         <table class="table table-bordered">
                             <tbody>
                             <tr class="col-3">
@@ -228,7 +228,7 @@
             qty: $('#qty').val()
           }
         }).done(function (response){
-          swal("da them san pham " +response+ "vao gio hang")
+          swal("Đã thêm sản phẩm " +response+ "vào giỏ hàng")
         })
       })
     })

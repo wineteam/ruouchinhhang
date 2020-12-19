@@ -6,27 +6,27 @@
     <div class="py-3 row">
        <div class="col-md-4 Padding-For-Moblie">
         <div class="block-statistical">
-          <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
+          <img src="{{ asset('images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
           <div class="link-to-category">
-            <img src="{{ asset('Images/IconImages/wine-glass.png') }}" width="10%" alt="" style="z-index: 1000">
+            <img src="{{ asset('images/IconImages/wine-glass.png') }}" width="10%" alt="" style="z-index: 1000">
             <a href="{{route ('MngProduct.index')}}">{{__('totally')}} {{$productsCount}} {{__('product')}}</a>
           </div>
         </div>
        </div>
        <div class="col-md-4">
         <div class="block-statistical">
-          <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
+          <img src="{{ asset('images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
           <div class="link-to-category">
-            <img src="{{ asset('Images/IconImages/box.png') }}" width="10%" alt="" style="z-index: 1000">         
-            <a href="{{route ('MngOrder.index')}}">{{NULL}} {{__('order')}}</a>
+            <img src="{{ asset('images/IconImages/box.png') }}" width="10%" alt="" style="z-index: 1000">         
+            <a href="{{route ('MngOrder.index')}}">{{$ordersCount}} {{__('order')}}</a>
           </div>
         </div>
        </div>
        <div class="col-md-4">
         <div class="block-statistical">
-          <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
+          <img src="{{ asset('images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
           <div class="link-to-category">
-            <img src="{{ asset('Images/IconImages/account.png') }}" width="10%" alt="" style="z-index: 1000">
+            <img src="{{ asset('images/IconImages/account.png') }}" width="10%" alt="" style="z-index: 1000">
             <a href="{{route ('MngUser.index')}}">{{$usersCount}} {{__('accountuser')}}</a>
           </div>
         </div>
@@ -36,27 +36,27 @@
     <div class="py-3 row">
       <div class="col-md-4">
        <div class="block-statistical">
-         <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
+         <img src="{{ asset('images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
          <div class="link-to-category">
-          <img src="{{ asset('Images/IconImages/blog.png') }}" width="10%" alt="" style="z-index: 1000">             
+          <img src="{{ asset('images/IconImages/blog.png') }}" width="10%" alt="" style="z-index: 1000">             
            <a href="{{route ('MngBlog.index')}}">{{__('totally')}} {{$blogsCount}} {{__('BLOG')}}</a>
          </div>
        </div>
       </div>
       <div class="col-md-4">
        <div class="block-statistical">
-         <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
+         <img src="{{ asset('images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
          <div class="link-to-category">
-          <img src="{{ asset('Images/IconImages/comment.png') }}" width="10%" alt="" style="z-index: 1000">         
-           <a href="{{route ('MngComment.index')}}">{{NULL}} {{__('comment')}} / {{__('reviews')}}</a>
+          <img src="{{ asset('images/IconImages/comment.png') }}" width="10%" alt="" style="z-index: 1000">         
+           <a href="{{route ('MngComment.index')}}">{{$reviewsCount}} {{__('reviews')}}</a>
          </div>
        </div>
       </div>
       <div class="col-md-4">
        <div class="block-statistical">
-         <img src="{{ asset('Images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
+         <img src="{{ asset('images/IconImages/icon-bg.jpg') }}" width="100%" height="auto" alt="" style="overflow: hidden;">
          <div class="link-to-category">
-          <img src="{{ asset('Images/IconImages/catelog.png') }}" width="10%" alt="" style="z-index: 1000">
+          <img src="{{ asset('images/IconImages/catelog.png') }}" width="10%" alt="" style="z-index: 1000">
          <a href="{{ route ('dashboard.index') }}">{{$categoriesCount}} {{__('catelog')}}</a>
          </div>
        </div>

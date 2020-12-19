@@ -95,5 +95,6 @@
     "checkoutsuccess": "Thanh toán thành công","checkEmail":"Vui lòng kiểm tra Email của bạn mà chúng tôi gửi cho bạn.",
     "VNPay":"Thanh toán với VNPay","contentbilling": "Nội dung thanh toán","payments": "Hình thức thanh toán","CodeBill":"Mã Hóa Đơn","MoneyTotal":"Tổng số tiền",
     "havecoupon":"Bạn có mã giảm giá ?", "clickpoupon":"Bấm vào đây để nhập mã của bạn","Returningcustomer":"Phản hồi khách hàng ?","clickheretologin":"nhấn vào đây để đăng nhập",
-    "Unshipping":"Chưa Giao Hàng","shipping":"Đã giao hàng"
+    "Unshipping":"Chưa Giao Hàng","shipping":"Đã giao hàng","Description":"Giới thiệu","Additionalinformation":"Thông tin thêm","Reviews":"Đánh giá","bought":"Lượt mua"
+
 }

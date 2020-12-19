@@ -66,9 +66,9 @@ class CartController extends Controller
 
       Cart::add(['id' => $product->id, 'name' => $product->name, 'codeProduct'=>$codeProduct, 'qty' => $qty,
         'price' => $price,'image'=>$product->thumbnail,'categories'=>$categories,'options'=>['size'=>$product->size,
-        'vintage'=>$product->vintage,'codeProduct'=>$codeProduct,]])->associate(Product::class);
+        'vintage'=>$product->vintage,'codeProduct'=>$codeProduct,'bought'=>$product->bought,]])->associate(Product::class);
 //      return redirect()->back();
-     // DD(Cart::content());
+     //DD(Cart::content());
     }
 
     /**

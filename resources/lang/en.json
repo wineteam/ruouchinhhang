@@ -93,5 +93,5 @@
     "checkoutsuccess": "Payment success","checkEmail":"Please check your Email we're send for you.",
     "VNPay":"payment by VNPay","contentbilling": "Content Billing","payments":"Payments","CodeBill":"Code Billing","MoneyTotal":"Money Total",
     "havecoupon":"Have a coupon ?", "clickpoupon":"Click here to enter your code","Returningcustomer":"Returning customer?","clickheretologin":"click here to login",
-    "Unshipping":"Not delivery","shipping":"Delivered"
+    "Unshipping":"Not delivery","shipping":"Delivered","Description":"Description","Additionalinformation":"Additional information","Reviews":"Reviews","bought":"Bought"
 }

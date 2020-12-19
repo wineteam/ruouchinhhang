@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -25,6 +26,9 @@ class ShopController extends Controller
         $idRelation[] = $id->product_relation_id;
       }
       $productRelations = Product::whereIn('id',$idRelation)->limit('3')->get();
+      DB::table('products')
+      ->where('id', $product->id)
+      ->increment('view');
       return view('client.productdetail')
         ->with(['product'=>$product,'productRelations'=>$productRelations]);
     }

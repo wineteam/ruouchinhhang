@@ -42,6 +42,8 @@
                                <th scope="col" width="200">{{__('nation')}}</th>
                                 <th scope="col" width="200">{{__('Especially')}}</th>
                                 <th scope="col" width="200">{{__('Status')}}</th>
+                                <th scope="col" width="80">{{__('view')}}</th>
+                                <th scope="col" width="80">{{__('bought')}}</th>
                                 <th scope="col" width="200">{{__('Datecreated')}}</th>
                                 <th scope="col" width="200">{{__('Language')}}</th>
                                 <th scope="col" width="129">{{__('Action')}}</th>
@@ -59,6 +61,8 @@
                                 <td>{{ $product->nation }}</td>
                                 <td> @if ($product->especially == 1) Có @else Không @endif</td>
                                 <td>  @if ($product->is_published == 1) Đang hiển thị @else Không hiển thị @endif </td>
+                                <td>{{$product->view}}</td>
+                                <td>{{$product->bought}}</td>
                                 <td>{{\Carbon\Carbon::parse( $product->created_at)->format('d/m/Y')}}</td>
                                 <td> @if ($product->language_id == 1) Tiếng việt @else Tiếng anh @endif</td>
 

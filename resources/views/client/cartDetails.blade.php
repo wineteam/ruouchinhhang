@@ -166,20 +166,20 @@
     $('.deleteItem').click(function (e) {
       e.preventDefault();
       swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this imaginary file!",
+        title: "Bạn chắc chắn chưa?",
+        text: "Sau khi xóa, bạn sẽ không thể khôi phục mục này!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
       })
         .then((willDelete) => {
           if (willDelete) {
-            swal("Poof! Your imaginary file has been deleted!", {
+            swal("Mục sản phẩm của bạn đã bị xóa", {
               icon: "success",
             });
             setTimeout($('#delete_item').submit(),3000);
           } else {
-            swal("Your imaginary file is safe!");
+            swal("Mục sản phẩm của bạn vẫn giữ nguyên");
           }
         });
     });

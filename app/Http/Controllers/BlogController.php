@@ -32,6 +32,11 @@ class BlogController extends Controller
       $join->on('language_id', '=', 'language_switches.id')->where('language_switches.slug', '=', App()->getLocale());
     }
     )->select('blogs.*')->where('is_published', '1')->where('especially', '1')->inRandomOrder()->take(4)->orderBy('view', 'desc')->get();
+    
+    DB::table('blogs')
+    ->where('id', $blog->id)
+    ->increment('view');
+
     return view('client.blogdetails')->with(['blogs' => $blogPOST, 'blog' => $blog]);
 
   }

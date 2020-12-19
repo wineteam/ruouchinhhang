@@ -39,7 +39,6 @@
                             <th scope="col">{{__('title')}}</th>
                             <th scope="col">{{__('author')}}</th>
                             <th scope="col">{{__('catelog')}}</th>
-                            <th scope="col" >{{__('tag')}}</th>
                             <th scope="col" width="80">{{__('view')}}</th>
                             <th scope="col"width="80">{{__('Language')}}</th>
                             <th scope="col" width="100">{{__('Datecreated')}}</th>
@@ -59,12 +58,6 @@
                             @foreach ($categorys as $category)
                               {{$category->name}} @if(!$loop->last) , @endif
                             @endforeach
-                          </td>
-                          <td>
-                            @foreach ($blog->tags as $tag)
-                              {{$tag->name}} @if (!$loop->last) , @endif
-                            @endforeach
-                            ...
                           </td>
                           <td>{{$blog->view}}</td>
                           <td>
