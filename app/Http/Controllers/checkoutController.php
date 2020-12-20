@@ -169,9 +169,9 @@ class checkoutController extends Controller
             OrderDetail::insert($finalArray);
 
             
-            DB::table('products')
-            ->where('id', $products->id)
-            ->increment('bought');
+            // DB::table('products')
+            // ->where('id', $products->id)
+            // ->increment('bought');
             $user = auth()->user();
             Mail::to($EmailShip)->send(new PaymentSuccess($EmailShip));
             Cart::destroy();
