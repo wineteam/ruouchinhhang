@@ -39,7 +39,8 @@
                                 <th scope="col" width="60">{{__('name')}}</th>
                                 <th scope="col" width="60">Giá</th>
                                 <th scope="col" width="60">Giá giảm</th>
-                               <th scope="col" width="200">{{__('nation')}}</th>
+                                <th scope="col" width="100">{{__('nation')}}</th>
+                                <th scope="col" width="100">{{__('catelog')}}</th>
                                 <th scope="col" width="200">{{__('Especially')}}</th>
                                 <th scope="col" width="200">{{__('Status')}}</th>
                                 <th scope="col" width="80">{{__('view')}}</th>
@@ -59,6 +60,18 @@
                                 <td>{{number_format($product->price,0,',','.')}}</td>
                                 <td>{{number_format($product->discount,0,',','.')}}</td>
                                 <td>{{ $product->nation }}</td>
+                                <td>
+
+                                  @forelse($product->categories as $category)
+                                  {{$category->name}}
+                                  @if(!$loop->last)
+                                    ,
+                                  @endif
+                                  @empty
+                                    <span class="Font-Red">Không phân loại</span>
+                                  @endforelse
+
+                                </td>
                                 <td> @if ($product->especially == 1) Có @else Không @endif</td>
                                 <td>  @if ($product->is_published == 1) Đang hiển thị @else Không hiển thị @endif </td>
                                 <td>{{$product->view}}</td>

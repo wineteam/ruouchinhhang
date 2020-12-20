@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class MngProductController extends Controller
 {
-    public function index()
+    public function index(Product $product)
     {
       $products = Product::orderBy('created_at','desc')->paginate(12);
-      return view('admin.product.index')->with(["products"=>$products]);
+      return view('admin.product.index')->with(["product"=>$product,"products"=>$products]);
     }
     public function orderPro($order)
     {

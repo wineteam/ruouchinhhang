@@ -55,9 +55,15 @@
                           <td><a href="{{route('blog.show',$blog->slug)}}">{{$blog->title}}</a></td>
                           <td>{{$blog->user()->name}}</td>
                           <td>
-                            @foreach ($categorys as $category)
-                              {{$category->name}} @if(!$loop->last) , @endif
-                            @endforeach
+
+                            @forelse($blog->categories as $category)
+                            {{$category->name}}
+                            @if(!$loop->last)
+                              ,
+                            @endif
+                            @empty
+                              <span class="Font-Red">Không phân loại</span>
+                            @endforelse
                           </td>
                           <td>{{$blog->view}}</td>
                           <td>

@@ -12,12 +12,11 @@ use Illuminate\Support\Facades\Storage;
 
 class MngBlogController extends Controller
 {
-    public function index()
+    public function index(Blog $blog)
     {
       $blogs = Blog::orderBy('created_at','desc')->paginate(12);
       $tags = Tag::select('tags.*')->where('primary', '1')->get();
-      $categorys = Category::select('categories.*')->where('is_published','1')->where('type','1')->get();
-      return view('admin.post.index')->with(["blogs"=>$blogs,"tags"=>$tags,"categorys"=>$categorys]);
+      return view('admin.post.index')->with(["blog"=>$blog,"blogs"=>$blogs,"tags"=>$tags]);
     }
 
     public function orderPro($order)
