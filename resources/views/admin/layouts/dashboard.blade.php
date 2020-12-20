@@ -48,6 +48,10 @@
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="{{ route('Logout') }}">{{__('Logout')}}</a></li>
+          <li class="nav-item" style="margin-top: 15px">
+            <a class="nav-link Font-white" style="float: left;margin-right:20px;margin-left:15px" href="{{route('setLanguage','en')}}"><span class="@if(App()->getLocale() == 'en') Font-Yellow2 @else Font-white @endif">English</span></a>
+            <a class="nav-link Font-white" style="float: left"  href="{{route('setLanguage','vn')}}"><span class="@if(App()->getLocale() == 'vn') Font-Red2 @else Font-white @endif">Việt Nam</span></a>
+          </li>
         </ul>
 
       </div>
@@ -132,11 +136,11 @@
           <li class="sub-menu"><!-- ORDERS -->
             <a href="javascript:;">
               <i class="fas fa-file-invoice-dollar"></i>
-              <span>Đơn hàng</span>
+              <span>{{__('order')}}</span>
               </a>
             <ul class="sub">
-              <li><a href="{{route ('MngOrder.index')}}">Đơn hàng</a></li>
-              <li><a href="{{route ('MngOrderDetail.index')}}">Đơn hàng chi tiết</a></li>
+              <li><a href="{{route ('MngOrder.index')}}">{{__('order')}}</a></li>
+              <li><a href="{{route ('MngOrderDetail.index')}}">{{__('orderDetail')}}</a></li>
             </ul>
           </li>
         </ul>

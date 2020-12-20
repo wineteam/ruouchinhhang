@@ -37,8 +37,8 @@
                                 <th scope="col" width="60">#</th>
                                 <th scope="col" width="60">{{__('image')}}</th>
                                 <th scope="col" width="60">{{__('name')}}</th>
-                                <th scope="col" width="60">Giá</th>
-                                <th scope="col" width="60">Giá giảm</th>
+                                <th scope="col" width="60">{{__('price')}}</th>
+                                <th scope="col" width="60">{{__('priceSale')}}</th>
                                 <th scope="col" width="100">{{__('nation')}}</th>
                                 <th scope="col" width="100">{{__('catelog')}}</th>
                                 <th scope="col" width="200">{{__('Especially')}}</th>
@@ -90,7 +90,7 @@
                                     </form>
                                   </div>
                                 </td>
-                            </tr>
+                              </tr>
                             @endforeach
 
                         </tbody>
