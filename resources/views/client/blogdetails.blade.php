@@ -8,7 +8,7 @@
 </style>
     <div class="blog-page">
         <!-- Breadcrumb -->
-        <div class="banner-page col-lg-12">
+        <div class="banner-page text-center col-lg-12">
             <p class="title-page">{{$blog->title}}</p>
             <ul class="breadcrumb-page">
                 <li><a  href="{{ route('home',app()->getLocale()) }}">{{__('HOME')}}</a></li>

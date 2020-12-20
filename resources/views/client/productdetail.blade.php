@@ -2,7 +2,7 @@
 @section('content')
 <div class="product-page">
    <!-- Breadcrumb -->
-   <div class="banner-page col-lg-12">
+   <div class="banner-page text-center col-lg-12">
     <p class="title-page Fix-moblie-ProDetail-Font">{{$product->name}}</p>
     <ul class="breadcrumb-page">
         <li><a href="{{ route('home') }}">{{__('client.HOME')}}</a></li>

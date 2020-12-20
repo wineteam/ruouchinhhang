@@ -2,7 +2,7 @@
 @section('content')
     <div class="blog-page">
         <!-- Breadcrumb -->
-        <div class="banner-page col-lg-12">
+        <div class="banner-page text-center col-lg-12">
           @if(isset($message))
             <p class="title-page text-capitalize">{{$message}}</p>
           @else

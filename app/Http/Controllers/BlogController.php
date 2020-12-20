@@ -46,7 +46,7 @@ class BlogController extends Controller
     $blogs = Blog::join('language_switches', function ($join) {
       $join->on('blogs.language_id', '=', 'language_switches.id')
         ->where('language_switches.slug', '=', App()->getLocale());
-    })
+    })->select('blogs.*')->where('is_published', '1')->orderBy('created_at', 'desc')
       ->where('blogs.title', 'like', '%' . $request->searching . '%')
       ->where('blogs.is_published', '1')->distinct()->get();
     return view('client.blog')->with(['blogs' => $blogs,'message'=>__('searching').': '.$request->searching]);
