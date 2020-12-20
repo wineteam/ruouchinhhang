@@ -10,21 +10,19 @@
     <li class="carousel-items" data-target="#carouselIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-
+        
         @foreach ($banner as $banners)
             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                 <a href="{{$banners->link}}">
                     <img class="d-block w-100" src="{{asset('storage/'.$banners->thumbnail) }}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block FIX-Carousel-Caption">
-                        <div class="bg-purple2" style="width:60%;border-radius:10px;opacity: 0.7">
-                            <h1 style="padding-bottom: 10px;font-family: Verdana !important;font-size: 40pt;padding:20px" class="Font-Red text-left carousel-SlideShow Forum">{{$banners->name}}</h1>
-                            <p style="font-family: Verdana !important;padding:20px" class="text-left"><span class="Font-Red" style="font-size: 14pt">{{$banners->description}}</span></p>
-                        </div>
+                        <h1 style="padding-bottom: 10px;" class="Font-Yellow text-left carousel-SlideShow Forum">{{$banners->name}}</h1>
+                        <p class="Font-dark text-left Edit-Font-Size-SlideShow"><span class="Font-Yellow" style="font-size:15pt">{{$banners->description}}</span></p>
                     </div>
                 </a>
-            </div>
+            </div>    
         @endforeach
-
+    
     </div>
 </div>
 <!--====================================== END SLIDE SHOW ======================================-->
